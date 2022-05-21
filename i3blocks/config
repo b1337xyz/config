@@ -1,0 +1,86 @@
+align=center
+markup=pango
+#full_text=""
+separator=false
+separator_block_width=1
+#color=#000000
+background=#eeeeee
+
+[scratchpad]
+command=~/.config/i3blocks/scripts/scratchpad.py|cat
+signal=11
+interval=persist
+
+[internet]
+command=~/.config/i3blocks/scripts/internet
+min_width=" OFFLINE "
+interval=600
+
+#[song]
+#command=~/.config/i3blocks/scripts/song
+#interval=15
+
+#[caps-lock]
+#command=xset -q | awk '/Caps/{if($4=="on")print "<span background=\"#f99\"> CAPSLOCK </span>"}'
+##command=~/.config/i3blocks/scripts/capslock
+#interval=once
+#signal=12
+
+#[disk-io]
+#command=dstat --noheaders --nocolor --noupdate -d 3
+#interval=persist
+
+# [disks]
+# command=~/.config/i3blocks/scripts/disks
+# interval=15
+# 
+# [bandwidth]
+# command=~/.config/i3blocks/scripts/bandwidth
+# min_width=" DL 00.0K UP 00.0K "
+# interval=5
+# 
+# [cpu_freq]
+# command=~/.config/i3blocks/scripts/cpu_freq
+# min_width=" 2600 MHz "
+# interval=15
+# 
+# [cpu_freq]
+# command=~/.config/i3blocks/scripts/cpu_usage
+# min_width=" CPU 000% "
+# interval=15
+# 
+# [memory]
+# command=~/.config/i3blocks/scripts/memory
+# #min_width=" MEM 100% "
+# min_width=" MEM 0000/0000 "
+# interval=15
+# 
+# [memory]
+# command=~/.config/i3blocks/scripts/temp
+# interval=15
+# 
+[battery]
+command=~/.config/i3blocks/scripts/battery
+min_width=" CHR 100% "
+interval=60
+# 
+# [volume]
+# command=~/.config/i3blocks/scripts/volume
+# signal=10
+# min_width=" VOL 100% "
+# interval=once
+
+#[weather]
+#command=~/.config/i3blocks/scripts/weather
+#min_width=" WW +99ºC "
+#interval=60
+
+[time]
+command=~/.config/i3blocks/scripts/time
+min_width=" 00:00 "
+interval=15
+
+[pacman]
+command=~/.config/i3blocks/scripts/pacman
+min_width=" 99 "
+interval=300

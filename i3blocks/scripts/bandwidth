@@ -1,0 +1,48 @@
+#!/bin/sh
+case "$BLOCK_BUTTON" in
+    1|2)
+        xterm -name floating_terminal -e 'nload -i 192000 -o 80000 -u K wlan0'
+    ;;
+esac
+
+IFACE=wlan0
+CACHE=~/.cache/bandwidth
+
+read -r state < "/sys/class/net/${IFACE}/operstate"
+[ "$state" != "up" ] && { echo OFFLINE ; exit 0; }
+read -r rx < "/sys/class/net/${IFACE}/statistics/rx_bytes"
+read -r tx < "/sys/class/net/${IFACE}/statistics/tx_bytes"
+
+time=$(date +%s)
+
+[ -f "$CACHE" ] || echo "$time $rx $tx" > "$CACHE"
+
+read -r prev_time prev_rx prev_tx < "$CACHE"
+echo "$time $rx $tx" > "$CACHE"
+
+time_diff=$(( time - prev_time ))
+
+[ "$time_diff" -gt 0 ] || return 1
+
+rx_diff=$(( rx - prev_rx ))
+tx_diff=$(( tx - prev_tx ))
+rx_rate=$(( rx_diff / time_diff ))
+tx_rate=$(( tx_diff / time_diff ))
+
+rx_kib=$(( rx_rate >> 10 ))
+if hash bc 2>/dev/null && [ "$rx_rate" -gt 1048576 ]; then
+    printf '<span foreground="#9f0000">DL</span> %sM' "$(echo "scale=1; $rx_kib / 1024" | bc)"
+else
+    printf '<span foreground="#9f0000">DL</span> %sK' "${rx_kib}"
+fi
+
+printf ' '
+
+tx_kib=$(( tx_rate >> 10 ))
+if hash bc 2>/dev/null && [ "$tx_rate" -gt 1048576 ]; then
+    printf '<span foreground="#009f00">UP</span> %sM' "$(echo "scale=1; $tx_kib / 1024" | bc)"
+else
+    printf '<span foreground="#009f00">UP</span> %sK' "${tx_kib}"
+fi
+
+echo

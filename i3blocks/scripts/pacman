@@ -1,0 +1,15 @@
+#!/bin/sh
+
+main() {
+    pacman -Qu --color=never | grep -v ignored
+}
+case "$BLOCK_BUTTON" in
+    1|2)
+        notify-send "Upgradable packages" "$(main)"
+    ;;
+esac
+
+n=$(main | wc -l)
+[ "$n" -gt 0 ] && echo "$n"
+
+exit 0

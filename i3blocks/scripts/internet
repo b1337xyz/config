@@ -1,0 +1,9 @@
+#!/bin/sh
+#ping -w 10 -W 10 -t 10 -c1 -q google.com >/dev/null 2>&1 ||
+#    printf '<span foreground="#ff0000">OFFLINE</span>\n'
+
+if ! ip -br a |  awk '/wlan0/{print $2}' | grep -q UP
+then
+    echo OFFLINE
+fi
+

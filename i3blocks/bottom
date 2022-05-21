@@ -1,0 +1,30 @@
+align=center
+#full_text=│
+#separator=false
+#separator_block_width=0
+markup=pango
+
+[song]
+command=~/.config/i3blocks/scripts/song
+align=center
+min_width=1160
+interval=15
+signal=11
+
+[separator]
+
+[prev]
+command=~/.config/i3blocks/scripts/prev
+min_width=" > "
+interval=once
+
+[playpause]
+command=~/.config/i3blocks/scripts/playpause
+min_width=" = "
+interval=once
+signal=11
+
+[next]
+command=~/.config/i3blocks/scripts/next
+min_width=" > "
+interval=once

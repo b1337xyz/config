@@ -1,0 +1,16 @@
+#!/bin/sh
+case "$BLOCK_BUTTON" in
+    1|2)
+        xterm -geometry 32x8-10+25 \
+            -name floating_terminal -e bash -c 'curl -s wttr.in/?0\&Q ; sleep 3'
+    ;;
+esac
+cache=~/.cache/weather
+weather=$(curl wttr.in/?format='%c%t' | sed 's/Unknown location.*//')
+if [ -n "$weather" ];then
+    echo "$weather" | tee "$cache"
+elif grep -qi error "$cache";then
+    echo "404"
+else
+    cat "$cache"
+fi

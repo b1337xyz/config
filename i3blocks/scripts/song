@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+#song="$(playerctl -p ncspot metadata -f '♪ {{xesam:artist}} - {{xesam:title}}' 2>/dev/null)"
+song=$(mpc -f '♪ %artist% - %title%' 2>/dev/null | head -1)
+[ "${#song}" -le 6 ] && { echo ""; exit 1; }
+if [ "${#song}" -gt 83 ];then
+    #echo "<span foreground=\"#B0FFE8\">${song::80}... </span>"
+    echo "${song::80}... "
+else
+    echo "$song "
+fi

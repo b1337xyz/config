@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+case "$BLOCK_BUTTON" in
+    1|2) alacritty --class floating_terminal -e pulsemixer ;;
+    3) pactl set-sink-mute @DEFAULT_SINK@ toggle ;;
+    5|6) volupdown.sh up ;;
+    4|7) volupdown.sh down ;;
+esac
+
+volume=$(pactl list sinks | sed 's/\s*//;s/%//' | grep ^Volume | awk '{print $5}')
+if [ "$volume" -le 5 ] || pactl list sinks | grep -q 'Mute: yes';then
+    echo "MUTED"
+else
+    echo "VOL ${volume}%" 
+fi
+
+exit 0

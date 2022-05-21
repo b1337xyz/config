@@ -1,0 +1,10 @@
+#!/bin/sh
+case "$BLOCK_BUTTON" in
+    1|2) playerctl -p ncspot play-pause ;; 
+esac
+
+_status=$(playerctl -p ncspot status)
+case $_status in
+    Playing) echo "  " ;;
+    *) echo "  " ;;
+esac
