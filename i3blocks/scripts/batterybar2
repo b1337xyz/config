@@ -3,8 +3,8 @@
 bar=(   )
 i=0
 while :;do
-    capacity=$(cat /sys/class/power_supply/BAT?/capacity)
-    status=$(cat /sys/class/power_supply/BAT?/status)
+    capacity=$(< /sys/class/power_supply/BAT?/capacity)
+    status=$(< /sys/class/power_supply/BAT?/status)
     case $status in
         "Charging")
             echo "$capacity% ${bar[i]}" 

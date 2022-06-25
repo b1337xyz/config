@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+icons=(
+
+
+
+
+)
+red="#ff9090"
+full_icon=battery-full-charging-symbolic.symbolic
+low_icon=battery-caution-symbolic.symbolic
+NID=$$
+while :;do
+    capacity=$(< /sys/class/power_supply/BAT?/capacity)
+    _status=$(< /sys/class/power_supply/BAT?/status)
+    case "$_status" in
+        Charging)
+            if [ "$capacity" -gt 90 ];then
+                dunstify -r "$NID" -i "$full_icon" \
+                    "Battery charged!" "$(acpi)"
+                echo "$i  ${capacity}%"
+                sleep $(( 60 * 5 ))
+            else
+                for i in "${icons[@]}";do
+                    echo "$i  ${capacity}%"
+                    sleep 1.5
+                done
+            fi
+        ;;
+        *)
+            i=0
+            if [ "$capacity" -ge 90 ];then
+                i=3
+            elif [ "$capacity" -ge 60 ];then
+                i=2
+            elif [ "$capacity" -ge 30 ];then
+                i=1
+            fi
+            echo "${icons[i]}  ${capacity}%"
+            if [ "$capacity" -lt 20 ];then
+                dunstify -r "$NID" -i "$low_icon" \
+                    "Battery discharging!" "$(acpi)"
+            fi
+            sleep 60
+        ;;
+    esac
+done

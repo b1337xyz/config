@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-capacity=$(cat /sys/class/power_supply/BAT?/capacity)
-_status=$(cat /sys/class/power_supply/BAT?/status)
+capacity=$(< /sys/class/power_supply/BAT?/capacity)
+_status=$(< /sys/class/power_supply/BAT?/status)
 charging_color="#80F8E5"
 full_color="#FFFFFF"
 
