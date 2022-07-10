@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 case "$BLOCK_BUTTON" in
-    1|2) alacritty --class floating_terminal -e pulsemixer ;;
+    1|2) alacritty --class floating_terminal -e pulsemixer ; exit 0 ;;
     3) pactl set-sink-mute @DEFAULT_SINK@ toggle ;;
     5|6) volupdown.sh up ;;
     4|7) volupdown.sh down ;;
@@ -10,7 +10,8 @@ volume=$(pactl list sinks | awk '/^[ \t]*Volume:/{print substr($5, 1, length($5)
 if [ "$volume" -le 5 ] || pactl list sinks | grep -q 'Mute: yes';then
     echo "MUTED"
 else
-    echo "VOL ${volume}%" 
+    notify-send -i audio-volume-high -h "int:value:$volume" "Volume" 
+    printf 'VOL %s%%\n' "${volume}" 
 fi
 
 exit 0
