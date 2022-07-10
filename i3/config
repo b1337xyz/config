@@ -1,36 +1,50 @@
 set $mod Mod4
 set $terminal alacritty
-set $ws1 "1: 一 "
-set $ws2 "2: 二 "
-set $ws3 "3: 三 "
-set $ws4 "4: 四 "
-set $ws5 "5: 五 "
-set $ws6 "6: 六 "
-set $ws7 "7: 七 "
-set $ws8 "8: 八 "
-set $ws9 "9: 九 "
-set $ws10 "10: 零 "
-#set $ws10 "10: 十 "
-#set $ws1 "1: I "
-#set $ws2 "2: II "
-#set $ws3 "3: III "
-#set $ws4 "4: IV "
-#set $ws5 "5: V  "
-#set $ws6 "6: VI "
-#set $ws7 "7: VII "
-#set $ws8 "8: VIII "
-#set $ws9 "9: IX "
-#set $ws10 "10: X "
-#set $ws1 "1: cmd "
-#set $ws2 "2: web "
-#set $ws3 "3: soc "
-#set $ws4 "4: nws "
-#set $ws5 "5: tmp "
-#set $ws6 "6: tmp "
-#set $ws7 "7: tmp "
-#set $ws8 "8: tmp "
-#set $ws9 "9: mus "
-#set $ws10 "10: end "
+
+# set $ws1 "1: 1 "
+# set $ws2 "2: 2 "
+# set $ws3 "3: 3 "
+# set $ws4 "4: 4 "
+# set $ws5 "5: 5 "
+# set $ws6 "6: 6 "
+# set $ws7 "7: 7 "
+# set $ws8 "8: 8 "
+# set $ws9 "9: 9 "
+# set $ws0 "10: 0 "
+
+# set $ws1 "1: 一 "
+# set $ws2 "2: 二 "
+# set $ws3 "3: 三 "
+# set $ws4 "4: 四 "
+# set $ws5 "5: 五 "
+# set $ws6 "6: 六 "
+# set $ws7 "7: 七 "
+# set $ws8 "8: 八 "
+# set $ws9 "9: 九 "
+# set $ws0 "10: 零 "
+# set $ws0 "10: 十 "
+
+# set $ws1 "1: I "
+# set $ws2 "2: II "
+# set $ws3 "3: III "
+# set $ws4 "4: IV "
+# set $ws5 "5: V  "
+# set $ws6 "6: VI "
+# set $ws7 "7: VII "
+# set $ws8 "8: VIII "
+# set $ws9 "9: IX "
+# set $ws0 "10: X "
+
+set $ws1 "1: cmd "
+set $ws2 "2: web "
+set $ws3 "3: soc "
+set $ws4 "4: rss "
+set $ws5 "5: tmp "
+set $ws6 "6: tmp "
+set $ws7 "7: iso "
+set $ws8 "8: exe "
+set $ws9 "9: wav "
+set $ws0 "10: bit "
 
 workspace $ws1 output nonprimary
 
@@ -39,11 +53,11 @@ workspace_layout tabbed
 title_align center
 # none|vertical|horizontal|both|smart
 hide_edge_borders smart
-floating_maximum_size 1366 x 740
-default_border pixel 4
-default_floating_border pixel 4
-font pango:monospace 9
+floating_maximum_size 1280 x -1
+default_border pixel 2
+default_floating_border pixel 2
 floating_modifier $mod
+font pango: Hack Nerd Font 9
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -54,7 +68,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+0 workspace $ws0
 
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -65,7 +79,7 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+0 move container to workspace $ws0
 
 bindsym Mod1+Tab focus left
 bindsym Mod1+shift+Tab focus left
@@ -90,13 +104,13 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+g split h
-bindsym $mod+v split v
+bindsym $mod+g split h ; exec pkill -SIGRTMIN+13 i3blocks
+bindsym $mod+v split v ; exec pkill -SIGRTMIN+13 i3blocks
 
 bindsym $mod+f fullscreen toggle
 
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+s layout stacking ; exec pkill -SIGRTMIN+13 i3blocks
+bindsym $mod+w layout tabbed ; exec pkill -SIGRTMIN+13 i3blocks
 bindsym $mod+e layout toggle split
 
 bindsym $mod+Shift+space floating toggle
@@ -109,26 +123,27 @@ bindsym $mod+Shift+e exec i3-msg exit
 bindsym $mod+b exec i3-msg bar mode toggle
 bindsym $mod+shift+b exec i3-msg border toggle
 bindsym $mod+minus move scratchpad ; exec pkill -SIGRTMIN+11 i3blocks
-bindsym $mod+Shift+minus exec i3-scratchpad-dmenu.py && pkill -SIGRTMIN+11 i3blocks
+bindsym $mod+Shift+minus exec i3-scratchpad-dmenu.py && exec pkill -SIGRTMIN+11 i3blocks
 
 bindsym XF86AudioRaiseVolume exec volupdown.sh up
 bindsym XF86AudioLowerVolume exec volupdown.sh down
 bindsym XF86AudioMute exec volupdown.sh toggle
 bindsym XF86MonBrightnessUp exec brightnessctl s +2%
 bindsym XF86MonBrightnessDown exec brightnessctl s 2%-
-#bindsym XF86AudioPlay exec cmus-remote -u
-#bindsym XF86AudioPrev exec cmus-remote -r
-#bindsym XF86AudioNext exec cmus-remote -n
+# bindsym XF86AudioPlay exec cmus-remote -u
+# bindsym XF86AudioPrev exec cmus-remote -r
+# bindsym XF86AudioNext exec cmus-remote -n
 bindsym XF86AudioPlay exec mpvc.sh toggle
 bindsym XF86AudioPrev exec mpvc.sh next
 bindsym XF86AudioNext exec mpvc.sh prev
 bindsym Print exec print.sh
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+12 i3blocks
 
+bindsym ctrl+Shift+space exec dunstctl close
+bindsym $mod+Return exec alacritty -e tmux
 bindsym $mod+period exec mpvc.sh toggle 
 bindsym $mod+shift+greater exec mpvc.sh next
 bindsym $mod+shift+less exec mpvc.sh prev
-bindsym $mod+Return exec alacritty -e tmux
 bindsym $mod+Shift+Return exec alacritty --class floating_terminal -e tmux
 bindsym $mod+q kill
 bindsym $mod+d exec drun.sh
@@ -136,10 +151,9 @@ bindsym $mod+x exec xwall.sh --dmenu
 bindsym $mod+Shift+x exec xwall.sh --sxiv
 bindsym $mod+F5 exec chscreen.sh
 bindsym $mod+t exec toggle_transparency.sh
-bindsym ctrl+Shift+space exec dunstctl close
+bindsym $mod+c exec i3cloneterm.py
 bindsym --release $mod+ccedilla exec lock.sh
 bindsym --release $mod+Shift+ccedilla exec run_i3lock.sh off
-bindsym $mod+c exec i3cloneterm.py
 bindsym $mod+shift+s exec print.sh selc
 
 set $print_mode [p]rint [f]ocused [c]opy [C]opy-focused [s]elect [S]elect-copy
@@ -159,18 +173,10 @@ bindsym $mod+p mode "$print_mode"
 
 set $launch_mode [f]irefox [q]ute [t]elegram [p]ulsemixer
 mode "$launch_mode" {
-    # bindsym c exec alacritty --class cmus --title cmus -e cmus ; mode "default"
-    # bindsym c exec code ; mode "default"
-    # bindsym e exec pcmanfm; mode "default"
-    bindsym a exec alacritty -o window.opacity=1.0 -e fzfanime.sh ; mode "default"
     bindsym f exec firefox ; mode "default"
-    bindsym k exec passc.sh ; mode "default"
     bindsym p exec alacritty --class floating_terminal -e pulsemixer ; mode "default"
     bindsym q exec qutebrowser ; mode "default"
-    bindsym r exec radio.sh ; mode "default"
-    bindsym s exec slideshow.sh ; mode "default"
     bindsym t exec telegram ; mode "default"
-    bindsym e exec emoticons.sh ; mode "default"
 
     bindsym q mode "default"
     bindsym Escape mode "default"
@@ -202,16 +208,6 @@ bindcode $mod+85 exec i3_edge.py -r right
 bindcode $mod+87 exec i3_edge.py -r bottom-left 
 bindcode $mod+88 exec i3_edge.py -r bottom 
 bindcode $mod+89 exec i3_edge.py -r bottom-right
-#bindcode $mod+shift+79 exec i3_edge.py top-left
-#bindcode $mod+shift+80 exec i3_edge.py top
-#bindcode $mod+shift+81 exec i3_edge.py top-right
-#bindcode $mod+shift+83 exec i3_edge.py left
-#bindcode $mod+shift+84 exec i3_edge.py middle
-#bindcode $mod+shift+85 exec i3_edge.py right
-#bindcode $mod+shift+87 exec i3_edge.py bottom-left 
-#bindcode $mod+shift+88 exec i3_edge.py bottom 
-#bindcode $mod+shift+89 exec i3_edge.py bottom-right
-
 
 mode "resize" {
     bindcode 80 resize shrink height 20 px
@@ -243,61 +239,57 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    font pango: Source Code Pro 9
-    #i3bar_command i3bar --transparency
+    font pango: Hack Nerd Font 9
+
+    # i3bar_command i3bar --transparency
     status_command i3blocks -c ~/.config/i3blocks/config
     strip_workspace_numbers yes
     binding_mode_indicator yes
     workspace_buttons yes
-    #separator_symbol "╱"
-    #separator_symbol "│"
-    #separator_symbol "⁝"
-    position top 
+    position top
     # dock, hide
     mode dock
     tray_output primary
     output primary
 
+    set $c0 #D27589
+    set $c1 #923549
+    set $c2 #F699AD
     colors {
-        background #2E3440
+        background $c0
         statusline #000000
-        separator  #000000
+        separator  #999999
 
-        # class border background color
-        focused_workspace    #eeeeee #eeeeee #000000
-        inactive_workspace   #eeeeee #eeeeee #999999
-        active_workspace     #eeeeee #eeeeee #999999
-        urgent_workspace     #800000 #f09090 #000000
-        binding_mode         #eeeeee #eeeeee #000000
+        # class              border background color
+        focused_workspace    $c1 $c1 $c2
+        inactive_workspace   $c2 $c2 $c1
+        active_workspace     $c2 $c2 $c1
+        urgent_workspace     $c2 $c2 $c1
+        binding_mode         $c2 $c2 $c1
     }
 }
+
 #bar {
 #    font pango: Source Code Pro 9
 #    status_command i3blocks -c ~/.config/i3blocks/bottom
 #    workspace_buttons no
-#    #separator_symbol "╱"
 #    separator_symbol "│"
-#    #separator_symbol "┆"
-#    #separator_symbol "〈〈"
 #    position bottom
 #    output primary
-#    mode dock # dock,hide
 #    tray_output none
-#
-#    colors {
-#        background $bar_bg 
-#        statusline $bar_fg 
-#        separator  $bar_alt_fg
-#    }
 #}
 
+
+set $c4 #D27589
+set $c5 #923549
+set $c6 #F699AD
 # class                 border|backgr|text|indicator|child_border
-client.focused          #eeeeee #eeeeee #000000 #eeeeee #eeeeee 
+client.focused          #eeeeee #eeeeee #000000 $c6 $c6
 client.focused_inactive #dddddd #dddddd #999999 #eeeeee #444444
 client.unfocused        #dddddd #dddddd #999999 #eeeeee #444444
 client.urgent           #903f3f #ff9f9f #ffffff #903f3f #903f3f
 
-#for_window [class=".*"] border toggle
+# for_window [class=".*"] border toggle
 for_window [window_type="pop-up"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_role="pop-up"] floating enable
@@ -307,7 +299,6 @@ for_window [class="torbrowser-launcher"] floating enable
 for_window [class="mpv"] floating enable
 for_window [class="Gpick"] floating enable
 for_window [class="GLava"] sticky enable
-for_window [class="GLava"] floating enable
 for_window [class="scrcpy"] floating enable
 for_window [class="MEGAsync"] floating enable
 for_window [class="Snes9x-gtk"] floating enable
@@ -330,7 +321,6 @@ for_window [class="Lightdm-gtk-greeter-settings"] floating enable
 for_window [class="Pea"] floating enable
 for_window [class="explorer.exe"] floating enable
 for_window [class="ROX-Filer"] floating enable
-# for_window [class="TelegramDesktop"] floating enable
 for_window [instance="Event Tester"] floating enable
 for_window [instance="branchdialog"] floating enable
 for_window [instance="pinentry"] floating enable
@@ -338,10 +328,8 @@ for_window [instance="floating_terminal"] floating enable
 for_window [instance="floating_window"] floating enable
 for_window [title="Event Tester"] floating enable
 for_window [title="PyQt window"] floating enable
-#for_window [title="Wine"] floating enable
-#for_window [instance="ncspot"] floating enable
-#for_window [instance="newsboat"] floating enable
-#for_window [class="Alacritty"] border none
+for_window [class="Gkrellm"] floating enable
+for_window [class="Pcmanfm"] floating enable
 assign [class="Pea"] $ws3
 assign [class="Steam"] $ws8
 assign [class="firefox"] $ws2
@@ -357,28 +345,17 @@ assign [class="TelegramDesktop"] $ws3
 assign [class="discord"] $ws3
 assign [class="Hexchat"] $ws3
 assign [class="Spotify"] $ws9
-assign [class="qBittorrent"] $ws10
-assign [class="Amule"] $ws10
-assign [class="Deluge-gtk"] $ws10
+assign [class="qBittorrent"] $ws0
+assign [class="Amule"] $ws0
+assign [class="Deluge-gtk"] $ws0
 assign [class="Jellyfin Media Player"] $ws9
+assign [class="Qemu-system-x86_64"] $ws7
 assign [instance="Steam"] $ws8
-assign [instance="irssi"] $ws10
+assign [instance="irssi"] $ws0
 assign [instance="newsboat"] $ws4
 assign [instance="ncspot"] $ws9
 assign [instance="cmus"] $ws9
 assign [instance="Spotify"] $ws9
-assign [instance="download"] $ws10
+assign [instance="download"] $ws0
 
-# exec --no-startup-id xset s off -dpms
-# exec --no-startup-id xset s noblank
-# exec --no-startup-id sleep 0.5 && run_i3lock.sh
-# exec --no-startup-id $terminal -e tmux
-# exec --no-startup-id toggle_transparency.sh
-exec --no-startup-id ~/.cache/xwallpaper
 exec --no-startup-id dunst
-# exec --no-startup-id set_screen.sh
-exec --no-startup-id automount.sh 
-# exec --no-startup-id alacritty --title newsboat --class newsboat -e newsboat
-exec --no-startup-id qbittorrent
-# exec --no-startup-id mntartix.sh 
-exec --no-startup-id rclone_mnt.sh
