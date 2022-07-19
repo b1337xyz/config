@@ -1,0 +1,11 @@
+#!/bin/sh
+sleep .2
+cmus-remote -Q | awk '{
+if ($0 ~ /^file/) { split($0, a, "/"); file = a[length(a)]; }
+if ($0 ~ /^tag title/) { sub(/(\w* ){2}/, "", $0); title = $0 }
+if ($0 ~ /^tag artist/) { sub(/(\w* ){2}/, "", $0); artist = $0 }
+} END {
+    if ( !title ) title = file
+    if ( length(title) > 40 ) title = substr(title, 1, 37)"..."
+    printf(" ♪ %s - %s \n", artist, title)
+}'
