@@ -1,0 +1,19 @@
+# $include /etc/inputrc
+
+set editing-mode vi
+set show-mode-in-prompt on
+set vi-cmd-mode-string "cmd "
+set vi-ins-mode-string ""
+set colored-completion-prefix on
+set colored-stats on
+set show-all-if-ambiguous on
+set completion-ignore-case on
+set menu-complete-display-prefix on
+
+"\C-d": delete-char
+"\t": menu-complete
+"\C-l": clear-display
+"\C-a": beginning-of-line
+"\C-e": end-of-line
+"\C-k": kill-line
+"\C-u": backward-kill-line

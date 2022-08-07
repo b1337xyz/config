@@ -1,33 +1,59 @@
 [[ $- != *i* ]] && return
+# source ~/.local/src/ble.sh/out/ble.sh
+source ~/.scripts/shell/functions.sh
+source ~/.scripts/shell/mediainfo.sh
+source ~/.scripts/shell/aria2.sh
+source ~/.scripts/shell/fzf.sh
+source ~/.config/bash_aliases
+source /usr/share/bash-completion/bash_completion
 
 umask 0077
 eval "$(dircolors -b)"
 
-[ -n "$TMUX" ] && export TERM=screen-256color
+[ -n "$TMUX" ] && export TERM=xterm-256color
 
-# set -o vi
+set -o vi
 set -o noclobber
 shopt -s autocd
 shopt -s checkwinsize
 shopt -s no_empty_cmd_completion
 shopt -s histappend
 
-# source ~/.local/src/ble.sh/out/ble.sh
-# source ~/.scripts/shell/functions.sh
-# source ~/.scripts/shell/mediainfo.sh
-# source ~/.scripts/shell/aria2.sh
-# source ~/.scripts/shell/fzf.sh
-# source ~/.config/bash_aliases
-source /usr/share/bash-completion/bash_completion
+expand-dir() {
+    local cmd=
+    for arg in $READLINE_LINE;do
+        if test -d "$arg";then
+            path=$(realpath "$arg")
+            cmd="$cmd $path"
+        else
+            cmd="$cmd $arg"
+        fi
+    done
+    READLINE_LINE="${cmd/ /}"
+    READLINE_POINT=${#cmd}
+}
+bind -x '"\C-x": expand-dir'
 
+export BAT_STYLE=plain
+export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_OPTS='cE'
 export NNN_SSHFS_OPTS='sshfs -o allow_other,follow_symlinks,reconnect'
-export NNN_PLUG='m:mediainf;f:fzf_mal;o:fzopen;i:imgview;c:cbcp:C:cbcp -p;b:bcat;v:video;l:pager;r:launch;e:extract;p:sxpv'
+export NNN_PLUG='m:mediainf;f:fzf_mal;o:fzopen;i:imgview;c:cbcp:C:cbcp -p;b:bcat;v:video;l:pager;r:launch;e:extract;p:preview-tui'
 export NNN_CONTEXT_COLORS="1234"
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_OPENER="$HOME/.config/nnn/plugins/launch"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+cd() {
+    # if autocd is enabled
+    if [ "$1" = "--" ];then
+        command cd "$@"
+    else
+        command cd -- "$@"
+    fi || return $?
+    ls -lt 2>/dev/null
+}
+gb() { cd - ; }
 n() {
     if [ -n "$NNNLVL" ] && [ "${NNNLVL:-0}" -ge 1 ]; then
         echo "nnn is already running"; return
@@ -60,12 +86,12 @@ timer_stop() {
         if [ "$mm" -gt 60 ];then
             hh=$((mm / 60))
             mm=$((mm % 60))
-            timer_show="(${hh}h ${mm}m ${ss}s)-"
+            timer_show="took ${hh}h ${mm}m ${ss}s "
         else
-            timer_show="(${mm}m ${ss}s)-"
+            timer_show="took ${mm}m ${ss}s "
         fi
     else
-        timer_show="(${timer_show}s)-"
+        timer_show="took ${timer_show}s "
     fi
     unset timer
 }
@@ -105,11 +131,11 @@ prompt() {
     PS1="\${timer_show}${bar}(${grn}${perm}${bar})-"
     test -n "$fsize" && PS1+="(${red}${fsize}${rst}${bar})-"
     PS1+="(${rst}"
-    test -n "$file_count" && PS1+="${file_count::-2}, "
+    test -n "$file_count"      && PS1+="${file_count::-2}, "
     test "$hidden_count" -gt 0 && PS1+="$hidden_count ., "
     PS1+="${files:-0}${bar})"
-    test -n "$exts" && PS1+="-(${rst}${exts::-2}${rst}${bar})$rst"
-    test -n "$last_mod" && PS1+="${bar}-(${rst}${last_mod}${bar})$rst"
+    test -n "$exts"      && PS1+="-(${rst}${exts::-2}${rst}${bar})$rst"
+    test -n "$last_mod"  && PS1+="${bar}-(${rst}${last_mod}${bar})$rst"
     test -n "$(jobs -p)" && PS1+="${bar}-(${rst}\j${bar})"
     PS1+="\n${blu}\w${rst}"
     PS1+="$git_branch"
@@ -118,6 +144,9 @@ prompt() {
     else
         PS1+=" (${red}${out}${rst}) ${red}>$rst "
     fi
+
+    # set title
+    echo -ne "\033]0;${PWD/$HOME/\~}\007"
 }
 PROMPT_COMMAND="prompt; timer_stop"
 
