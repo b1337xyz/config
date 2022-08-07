@@ -19,20 +19,20 @@ shopt -s checkwinsize
 shopt -s no_empty_cmd_completion
 shopt -s histappend
 
-expand-dir() {
+expand_files() {
     local cmd=
     for arg in $READLINE_LINE;do
-        if test -d "$arg";then
-            path=$(realpath "$arg")
+        if test -e "${arg/\~/$HOME}";then
+            path=$(realpath "${arg/\~/$HOME}")
             cmd="$cmd $path"
         else
             cmd="$cmd $arg"
         fi
     done
-    READLINE_LINE="${cmd/ /}"
+    READLINE_LINE="${cmd:1}"
     READLINE_POINT=${#cmd}
 }
-bind -x '"\C-x": expand-dir'
+bind -x '"\C-x": expand_files'
 
 export BAT_STYLE=plain
 export NNN_FIFO='/tmp/nnn.fifo'
