@@ -12,7 +12,8 @@ set menu-complete-display-prefix on
 
 "\C-d": delete-char
 "\t": menu-complete
-"\C-l": clear-display
+"\e[Z": menu-complete-backward
+"\C-l": clear-screen
 "\C-a": beginning-of-line
 "\C-e": end-of-line
 "\C-k": kill-line
