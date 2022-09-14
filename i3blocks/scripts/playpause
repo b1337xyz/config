@@ -1,10 +1,8 @@
 #!/bin/sh
-case "$BLOCK_BUTTON" in
-    1|2) playerctl -p ncspot play-pause ;; 
-esac
+test -n "$BLOCK_BUTTON" && cmus-remote -u
 
-_status=$(playerctl -p ncspot status)
+_status=$(cmus-remote -Q | awk '/status/{print $2}')
 case $_status in
-    Playing) echo "  " ;;
+    playing) echo "  " ;;
     *) echo "  " ;;
 esac

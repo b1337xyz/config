@@ -16,5 +16,5 @@ command df -h -t ext4 -t btrfs | awk '/^\/dev/{
         mp = $6
     }
     printf("[%s %s] ", mp, $4)}
-' | sed 's/^/ /'
+' | sed 's/^/ /;'
 echo

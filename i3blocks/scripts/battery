@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
-case "$BLOCK_BUTTON" in
-    1|2) notify-send -i battery "$(acpi | cut -d':' -f2- | cut -c2-)" ;;
-esac
-
-
 capacity=$(< /sys/class/power_supply/BAT?/capacity)
 _status=$(< /sys/class/power_supply/BAT?/status)
-full_icon=battery-full-charging-symbolic.symbolic
-low_icon=battery-caution-symbolic.symbolic
+full_icon=battery-full-charged
+low_icon=battery-low
 
 case "$_status" in
     Charging)
         if [ "$capacity" -gt 90 ];then
-            printf '<span background="#ff9090">CHR %s%%</span>\n' \
+            printf 'CHR %s%%\n' \
                 "$capacity"
             notify-send -i "$full_icon" \
                 "Battery charged!" "$(acpi)"
@@ -22,8 +17,7 @@ case "$_status" in
     ;;
     *)
         if [ "$capacity" -lt 20 ];then
-            printf '<span background="#ff9090">BAT %s%%</span>\n' \
-                "$capacity"
+            printf 'BAT %s%%\n' "$capacity"
             notify-send -i "$low_icon" \
                 "Battery discharging!" "$(acpi)"
         else
