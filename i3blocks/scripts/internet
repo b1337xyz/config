@@ -2,8 +2,9 @@
 #ping -w 10 -W 10 -t 10 -c1 -q google.com >/dev/null 2>&1 ||
 #    printf '<span foreground="#ff0000">OFFLINE</span>\n'
 
-if ! ip -br a |  awk '/wlan0/{print $2}' | grep -q UP
-then
+if ip -br a |  awk '/wlan0/{print $2}' | grep -q UP;then
+    ip -br a | awk '/wlan0/{print substr($3, 1, length($3)-3)}'
+else
     echo OFFLINE
 fi
 

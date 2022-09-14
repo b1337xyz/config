@@ -1,17 +1,21 @@
 align=center
-#full_text=│
-#separator=false
-#separator_block_width=0
+separator=false
+separator_block_width=1
 markup=pango
+# blue
+# background=#0E99EE
+# color=#E9E8F0
+background=#eeeeee
+color=#000000
 
-[song]
-command=~/.config/i3blocks/scripts/song
-align=center
-min_width=1160
-interval=15
-signal=11
+# [cava]
+# command=~/.config/i3blocks/scripts/cava
+# interval=persist
 
-[separator]
+[cmus]
+command=~/.config/i3blocks/scripts/cmus
+interval=5
+signal=21
 
 [prev]
 command=~/.config/i3blocks/scripts/prev
@@ -22,9 +26,11 @@ interval=once
 command=~/.config/i3blocks/scripts/playpause
 min_width=" = "
 interval=once
-signal=11
+signal=20
 
 [next]
 command=~/.config/i3blocks/scripts/next
 min_width=" > "
 interval=once
+
+# vim: ft=cfg
