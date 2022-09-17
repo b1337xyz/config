@@ -17,7 +17,7 @@ printf "push changes? (y/N) "
 read ask
 if [ "$ask" = y ];then
     git add -Av
-    git commit -m "update config $(date +%Y.%m.%d)"
+    git commit -m "$(date +%Y.%m.%d)"
     git push
 fi
 
