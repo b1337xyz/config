@@ -1,7 +1,6 @@
 align=center
 separator=false
 separator_block_width=1
-markup=pango
 # blue
 # background=#0E99EE
 # color=#E9E8F0
@@ -18,19 +17,22 @@ interval=5
 signal=21
 
 [prev]
+markup=pango
 command=~/.config/i3blocks/scripts/prev
-min_width=" > "
+min_width="..."
 interval=once
 
 [playpause]
+markup=pango
 command=~/.config/i3blocks/scripts/playpause
-min_width=" = "
+min_width="..."
 interval=once
 signal=20
 
 [next]
+markup=pango
 command=~/.config/i3blocks/scripts/next
-min_width=" > "
+min_width="..."
 interval=once
 
 # vim: ft=cfg

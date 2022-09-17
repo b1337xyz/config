@@ -18,6 +18,6 @@ if test -n "$BLOCK_BUTTON";then
     notify-send -i "$ICON"  "Copied to clipboard" "$title"
     echo -n "$title" | xclip -sel clip >/dev/null 2>&1
 fi
-[ -n "$title" ] && echo " ♪ ${title//\&/and} "
+[ -n "$title" ] && echo " ♪ $title "
 
 exit 0

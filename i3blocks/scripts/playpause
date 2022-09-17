@@ -3,6 +3,7 @@ test -n "$BLOCK_BUTTON" && cmus-remote -u
 
 _status=$(cmus-remote -Q | awk '/status/{print $2}')
 case $_status in
-    playing) echo "  " ;;
-    *) echo "  " ;;
+    playing) s="" ;;
+    *)       s="" ;;
 esac
+printf '<span size="18pt"><tt>%s</tt></span>\n' "$s"

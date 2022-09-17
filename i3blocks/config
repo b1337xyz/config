@@ -1,79 +1,55 @@
 align=center
-markup=pango
-#full_text=""
-# separator=false
-# separator_block_width=1
-#color=#000000
-background=#2E3440
+#full_text="|"
+separator=false
+separator_block_width=1
+# pink
+# background=#F699AD
+# color=#722539
+# green
+# background=#B4D499
+# color=#253525
+# blue
+# background=#0E99EE
+# color=#FFFFFF
+background=#eeeeee
+color=#000000
 
-[scratchpad]
-command=~/.config/i3blocks/scripts/scratchpad.py|cat
-signal=11
-interval=persist
-
-[internet]
-command=~/.config/i3blocks/scripts/internet
-min_width=" OFFLINE "
-interval=600
-
-#[song]
-#command=~/.config/i3blocks/scripts/song
-#interval=15
-
-#[caps-lock]
-#command=xset -q | awk '/Caps/{if($4=="on")print "<span background=\"#f99\"> CAPSLOCK </span>"}'
-##command=~/.config/i3blocks/scripts/capslock
-#interval=once
-#signal=12
-
-# [disk-io]
-# command=dstat --noheaders --nocolor --noupdate -d 3
+# [title]
+# background=#8CB48C
+# color=#000000
+# command=~/.config/i3blocks/scripts/title
 # interval=persist
 
-# [disks]
-# command=~/.config/i3blocks/scripts/disks
-# interval=15
-
-# [bandwidth]
-# command=~/.config/i3blocks/scripts/bandwidth
-# min_width=" DL 00.0K UP 00.0K "
-# interval=5
-
-# [cpu_freq]
-# command=~/.config/i3blocks/scripts/cpu_freq
-# min_width=" 2600 MHz "
-# interval=15
-
-# [cpu_freq]
-# command=~/.config/i3blocks/scripts/cpu_usage
-# min_width=" CPU 000% "
-# interval=15
-
-# [memory]
-# command=~/.config/i3blocks/scripts/memory
-# #min_width=" MEM 100% "
-# min_width=" MEM 0000/0000 "
-# interval=15
-
-# [memory]
-# command=~/.config/i3blocks/scripts/temp
-# interval=15
-
-[battery]
-command=~/.config/i3blocks/scripts/battery_icons
-interval=persist
-min_width=" I 100% "
-
-[volume]
-command=~/.config/i3blocks/scripts/volume_icons
-min_width=" I 100% "
-signal=10
+[scratchpad]
+background=#cccccc
+command=~/.config/i3blocks/scripts/scratchpad.sh
+signal=11
 interval=once
 
-# [weather]
-# command=~/.config/i3blocks/scripts/weather
-# min_width=" WW +99ºC "
-# interval=60
+[numlock]
+command=~/.config/i3blocks/scripts/numlock
+interval=once
+signal=12
+
+[disks]
+command=~/.config/i3blocks/scripts/disks
+interval=15
+
+[ip]
+command=~/.config/i3blocks/scripts/internet
+interval=15
+min_width=" 255.255.0.255 "
+
+[battery]
+command=~/.config/i3blocks/scripts/battery
+interval=60
+min_width=" BAT 100% "
+
+[volume]
+command=~/.config/i3blocks/scripts/volume
+min_width=" VOL 100% "
+signal=10
+interval=once
 
 [time]
 command=~/.config/i3blocks/scripts/time
@@ -82,11 +58,10 @@ interval=15
 min_width=" 00:00 "
 
 [pacman]
+markup=pango
 command=~/.config/i3blocks/scripts/pacman
-min_width=" 99 "
+min_width=" 99 I "
 interval=300
 
-[layout]
-command=~/.config/i3blocks/scripts/layout.py
-signal=13
-interval=once
+# vim: ft=cfg
+

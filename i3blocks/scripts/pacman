@@ -10,6 +10,6 @@ case "$BLOCK_BUTTON" in
 esac
 
 n=$(main | wc -l)
-[ "$n" -gt 0 ] && printf '%s \n' "$n"
+[ "$n" -gt 0 ] && printf '%s <span size="13pt"><tt></tt></span>\n' "$n"
 
 exit 0

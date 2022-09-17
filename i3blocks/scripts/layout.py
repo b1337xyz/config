@@ -4,9 +4,9 @@ con = i3ipc.Connection()
 tree = con.get_tree()
 layout = tree.find_focused().parent.layout
 x = {
-    'splith': 'h',
-    'splitv': 'v',
-    'stacked': 's',
-    'tabbed': 't'
+    'splith': '',
+    'splitv': '',
+    'stacked': '',
+    'tabbed': '裡'
 }
-print('[{}]'.format(x[layout]))
+print('<span size="20pt"><tt>{}</tt></span>'.format(x[layout]))

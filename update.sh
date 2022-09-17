@@ -12,3 +12,13 @@ done
 old=~/.local/src/config/bashrc
 new=~/.bashrc
 diff --color=always "$old" "$new" || cp -vi "$new" "$old"
+
+printf "push changes? (y/N) "
+read ask
+if [ "$ask" = y ];then
+    git add -Av
+    git commit -m "update config $(date +%Y.%m.%d)"
+    git push
+fi
+
+exit 0
