@@ -1,3 +1,7 @@
+#include "/home/anon/.config/X11/themes/base16-gruvbox-dark-hard-256"
+
+Xcursor.theme: Adwaita
+Xcursor.size: 21
 XTerm*geometry: 95x24
 XTerm*selectToClipboard: true
 XTerm*font: xft:monospace:pixelsize=16
@@ -19,11 +23,11 @@ Xft.lcdfilter: lcddefault
 Nsxiv.bar.font: monospace-10
 Nsxiv.bar.foreground: #000000
 Nsxiv.bar.background: #eeeeee
-Nsxiv.window.background: #000000
-Nsxiv.window.foreground: #888888
-Nsxiv.mark.foreground: #90ff90
+Nsxiv.window.background: #333333
+Nsxiv.window.foreground: #ff3e5e
+Nsxiv.mark.foreground: #ff3080
 dmenu.font: monospace-10
-dmenu.background: #D27589
-dmenu.foreground: #923549
-dmenu.selbackground: #F699AD
+dmenu.background: #eeeeee
+dmenu.foreground: #888888
+dmenu.selbackground: #dddddd
 dmenu.selforeground: #000000

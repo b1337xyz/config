@@ -1,12 +1,14 @@
-# import:
-#   - ~/.config/alacritty/themes/3024.dark.yml
-
-colors:
-  primary:
-    foreground: "#F699AD"
+import:
+  - ~/.config/alacritty/themes/Ashes.dark.yml
 
 env:
   TERM: xterm-256color
+
+# green
+# colors:
+#   primary:
+#     background: "#253525"
+#     foreground: "#B4D499"
 
 window:
   dimensions:
@@ -18,17 +20,25 @@ window:
     y: 3
 
   dynamic_padding: true
-  opacity: 1.0
+  decorations: full
+  opacity: 0.88
 
 font:
   normal:
+    # family: monospace 
+    # family: SauceCodePro Nerd Font
+    # family: More Perfect DOS VGA
+    # family: Perfect DOS VGA 437 Win
+    # family: Noto Sans Mono
+    # family: Source Code Pro
     family: mononoki Nerd Font Mono
+    # family: Iosevka
 
   offset:
     x: 0
     y: 0
     
-  size: 11
+  size: 12
 
 mouse:
   hide_when_typing: true
