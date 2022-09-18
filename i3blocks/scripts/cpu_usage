@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
-case "$BLOCK_BUTTON" in
-    1|2) alacritty --class floating_terminal -e top  ;; 
-esac
+test -n "$BLOCK_BUTTON" && alacritty --class floating_terminal -e top
 
 cpu_file=/tmp/.cpu_usage
-if [ -f $cpu_file ];then
-    IFS=' ' read -r -a arr < $cpu_file
-fi
+[ -f "$cpu_file" ] && IFS=' ' read -r -a arr < "$cpu_file"
 PREV_TOTAL=${arr[0]:-0}
 PREV_IDLE=${arr[1]:-0}
 
@@ -16,17 +12,14 @@ IDLE=${CPU[3]} # Just the idle CPU time.
 
 # Calculate the total CPU time.
 TOTAL=0
-for VALUE in "${CPU[@]:0:8}"; do
-    TOTAL=$((TOTAL+VALUE))
-done
+for VALUE in "${CPU[@]:0:8}";do ((TOTAL+=VALUE)) ;done
 
 # Calculate the CPU usage since we last checked.
-DIFF_IDLE=$((IDLE-PREV_IDLE))
-DIFF_TOTAL=$((TOTAL-PREV_TOTAL))
-DIFF_USAGE=$(((1000*(DIFF_TOTAL-DIFF_IDLE)/DIFF_TOTAL+5)/10))
+DIFF_IDLE=$((IDLE - PREV_IDLE))
+DIFF_TOTAL=$((TOTAL - PREV_TOTAL))
+DIFF_USAGE=$(( (1000 * (DIFF_TOTAL - DIFF_IDLE) / DIFF_TOTAL + 5) / 10))
 
-printf 'CPU %2d%%\n' "$DIFF_USAGE"
+printf ' CPU %3d%% \n' "$DIFF_USAGE"
 
 # Remember the total and idle CPU times for the next check.
-[ -f "$cpu_file" ] && rm -f "$cpu_file"
 echo "$TOTAL $IDLE" > "$cpu_file"
