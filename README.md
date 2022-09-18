@@ -1,6 +1,6 @@
 ```
       /\         OS: Arch Linux x86_64
-     /  \        Shell: bash 5.1.16
+     /  \        Shell: bash
     /\   \       WM: i3
    /      \      Terminal: alacritty/tmux
   /   ,,   \     Terminal Font: mononoki Nerd Font Mono
