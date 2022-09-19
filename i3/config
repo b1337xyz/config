@@ -411,7 +411,7 @@ exec --no-startup-id ~/.cache/xwallpaper
 exec --no-startup-id set_screen.sh
 exec --no-startup-id dunst
 exec --no-startup-id automount.sh 
-exec --no-startup-id playing_now.sh 
+# exec --no-startup-id playing_now.sh 
 exec --no-startup-id alacritty --title newsboat --class newsboat -e newsboat
 exec --no-startup-id qbittorrent
 # exec --no-startup-id rclone_mnt.sh
