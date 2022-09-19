@@ -31,13 +31,13 @@ command=~/.config/i3blocks/scripts/numlock
 interval=once
 signal=12
 
-[cpu]
-command=~/.config/i3blocks/scripts/cpu_usage
-interval=5
-
 [disks]
 command=~/.config/i3blocks/scripts/disks
 interval=15
+
+[cpu]
+command=~/.config/i3blocks/scripts/cpu_usage
+interval=5
 
 [ip]
 command=~/.config/i3blocks/scripts/internet
