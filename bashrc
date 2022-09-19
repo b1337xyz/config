@@ -24,7 +24,7 @@ export NNN_OPTS='cE'
 export NNN_PLUG='t:trash;m:mediainf;o:fzopen;i:imgview;c:cbcp:C:cbcp -p;b:bcat;v:video;l:pager;r:launch;e:extract;p:preview-tui'
 export NNN_SSHFS_OPTS='sshfs -o allow_other,follow_symlinks,reconnect'
 export PAGER=less
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export TERM=${TERM:-xterm-256color}
 source /usr/share/bash-completion/bash_completion
@@ -67,7 +67,7 @@ cd() {
     else
         command cd -- "$@"
     fi || return $?
-    timeout 2 ls --color=always -ltr 2>/dev/null
+    timeout 2 ls --color=always -hltr 2>/dev/null || true
 }
 gb() { cd - ; }
 n() {
