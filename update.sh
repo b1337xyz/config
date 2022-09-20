@@ -2,16 +2,16 @@
 
 set -eo pipefail
 
-find ~/.local/src/config -mindepth 2 -type f | while read -r old
+find ~/.local/src/config -type f \! -path '.git*' | while read -r old
 do
     new=${old/local\/src\//}
     [ -e "$new" ] || continue
-    diff --color=always "$old" "$new" || cp -vi "$new" "$old" </dev/tty
+    diff --color "$old" "$new" || cp -vi "$new" "$old" </dev/tty
 done
 
 old=~/.local/src/config/bashrc
 new=~/.bashrc
-diff --color=always "$old" "$new" || cp -vi "$new" "$old"
+diff --color "$old" "$new" || cp -vi "$new" "$old"
 
 printf "push changes? (y/N) "
 read ask

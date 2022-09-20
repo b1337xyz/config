@@ -21,7 +21,7 @@ window:
 
   dynamic_padding: true
   decorations: full
-  opacity: 0.88
+  opacity: 1.0
 
 font:
   normal:

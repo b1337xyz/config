@@ -21,7 +21,7 @@ export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_OPENER="$HOME/.config/nnn/plugins/launch"
 export NNN_OPTS='cE'
-export NNN_PLUG='t:trash;m:mediainf;o:fzopen;i:imgview;c:cbcp:C:cbcp -p;b:bcat;v:video;l:pager;r:launch;e:extract;p:preview-tui'
+export NNN_PLUG='t:lstar;T:trash;m:mediainf;o:fzopen;i:imgview;c:cbcp:C:cbcp -p;b:bcat;v:video;l:pager;r:launch;e:extract;p:preview-tui'
 export NNN_SSHFS_OPTS='sshfs -o allow_other,follow_symlinks,reconnect'
 export PAGER=less
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -170,6 +170,7 @@ prompt() {
 PROMPT_COMMAND="prompt; timer_stop"
 
 if [ -n "$DISPLAY" ];then
+    # printf '\e[1;31m'; cat ~/Documents/ASCII/Nerv; printf '\e[m\n'
     # shuf -n1 ~/.cache/quotes.csv | sed 's/|/\n\t- /'
     # random_color
     # random_anime_quote
