@@ -39,11 +39,6 @@ interval=15
 command=~/.config/i3blocks/scripts/cpu_usage
 interval=5
 
-[ip]
-command=~/.config/i3blocks/scripts/internet
-interval=15
-min_width=" 255.255.0.255 "
-
 [battery]
 command=~/.config/i3blocks/scripts/battery
 interval=60
