@@ -59,6 +59,15 @@ expand_files() {
     READLINE_POINT=${#cmd}
 }
 bind -x '"\C-x": expand_files'
+fzfhist() {
+    cmd=$(
+        history | sed 's/^ *\?[0-9]* *//' | grep -vP '^(cd|ls) ?' |
+        awk '!s[$0]++' | fzf --height 20
+    )
+    READLINE_LINE="$cmd"
+    READLINE_POINT=${#cmd}
+}
+bind -x '"\C-h": fzfhist'
 
 cd() {
     # if autocd is enabled
