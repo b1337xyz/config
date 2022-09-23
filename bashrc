@@ -27,6 +27,7 @@ export PAGER=less
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export TERM=${TERM:-xterm-256color}
+export TODOFILE="$XDG_CACHE_HOME"/.todo
 source /usr/share/bash-completion/bash_completion
 source "$CARGO_HOME"/env
 source ~/.config/dircolors
@@ -62,7 +63,7 @@ bind -x '"\C-x": expand_files'
 fzfhist() {
     cmd=$(
         history | sed 's/^ *\?[0-9]* *//' | grep -vP '^(cd|ls) ?' |
-        awk '!s[$0]++' | fzf --height 20
+        awk '!s[$0]++' | fzf --height 20 --no-sort --tac
     )
     READLINE_LINE="$cmd"
     READLINE_POINT=${#cmd}
@@ -193,3 +194,4 @@ function bye {
     [ -n "$SSH_CLIENT" ] && bash ~/.local/src/seeyouspacecowboy.sh
 }
 trap bye EXIT
+
