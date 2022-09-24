@@ -35,10 +35,6 @@ signal=12
 command=~/.config/i3blocks/scripts/disks
 interval=15
 
-[cpu]
-command=~/.config/i3blocks/scripts/cpu_usage
-interval=5
-
 [battery]
 command=~/.config/i3blocks/scripts/battery
 interval=60
