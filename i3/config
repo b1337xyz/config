@@ -189,6 +189,7 @@ mode "$launch_mode" {
     bindsym r exec radio.sh ; mode "default"
     bindsym s exec slideshow.sh ; mode "default"
     bindsym t exec telegram ; mode "default"
+    bindsym y exec alacritty --class floating_terminal -e ytcli.py ; mode "default"
     bindsym shift+e exec emoticons.sh ; mode "default"
 
     bindsym q mode "default"
@@ -256,7 +257,6 @@ bar {
     #separator_symbol "╱"
     #separator_symbol "│"
     #separator_symbol "⁝"
-    binding_mode_indicator no
     position top
     # dock, hide
     mode dock
@@ -406,7 +406,7 @@ assign [title="radio"] $ws9
 # exec --no-startup-id toggle_transparency.sh
 exec --no-startup-id mpv --profile=radio
 exec --no-startup-id xsettingsd
-exec --no-startup-id alacritty --title cmus --class cmus -e cmus
+# exec --no-startup-id alacritty --title cmus --class cmus -e cmus
 exec --no-startup-id aria2rpc.sh
 exec --no-startup-id ~/.cache/xwallpaper
 exec --no-startup-id set_screen.sh
