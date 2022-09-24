@@ -134,12 +134,12 @@ bindsym XF86AudioLowerVolume exec volupdown.sh down
 bindsym XF86AudioMute exec volupdown.sh toggle
 bindsym XF86MonBrightnessUp exec brightnessctl s +2%
 bindsym XF86MonBrightnessDown exec brightnessctl s 2%-
-bindsym XF86AudioPlay exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks
-bindsym XF86AudioPrev exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
-bindsym XF86AudioNext exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
-# bindsym XF86AudioPlay exec mpvc.sh toggle
-# bindsym XF86AudioPrev exec mpvc.sh next
-# bindsym XF86AudioNext exec mpvc.sh prev
+# bindsym XF86AudioPlay exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks
+# bindsym XF86AudioPrev exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
+# bindsym XF86AudioNext exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
+bindsym XF86AudioPlay exec mpvc.sh toggle
+bindsym XF86AudioPrev exec mpvc.sh next
+bindsym XF86AudioNext exec mpvc.sh prev
 bindsym Print exec print.sh
 # bindsym --release Caps_Lock exec pkill -SIGRTMIN+12 i3blocks
 bindsym --release $mod+equal exec sleep .3 && xset dpms force off
@@ -282,24 +282,24 @@ bar {
         binding_mode         $b1 $b1 $b3
     }
 }
-bar {
-    # font pango: SauceCodePro Nerd Font 10
-    font pango: $font
-    status_command i3blocks -c ~/.config/i3blocks/bottom
-    # i3bar_command i3bar --transparency
-    workspace_buttons no
-    separator_symbol "│"
-    position bottom
-    output primary
-    mode dock
-    tray_output none
-    colors {
-        background $b0
-        statusline #000000
-        separator  #999999
-        binding_mode         $b1 $b1 $b3
-    }
-}
+# bar {
+#     # font pango: SauceCodePro Nerd Font 10
+#     font pango: $font
+#     status_command i3blocks -c ~/.config/i3blocks/bottom
+#     # i3bar_command i3bar --transparency
+#     workspace_buttons no
+#     separator_symbol "│"
+#     position bottom
+#     output primary
+#     mode dock
+#     tray_output none
+#     colors {
+#         background $b0
+#         statusline #000000
+#         separator  #999999
+#         binding_mode         $b1 $b1 $b3
+#     }
+# }
 
 # blue
 # set $c0 #2662DF
@@ -404,6 +404,7 @@ assign [title="radio"] $ws9
 # exec --no-startup-id sleep 0.5 && run_i3lock.sh
 # exec --no-startup-id $terminal -e tmux
 # exec --no-startup-id toggle_transparency.sh
+exec --no-startup-id mpv --profile=radio
 exec --no-startup-id xsettingsd
 exec --no-startup-id alacritty --title cmus --class cmus -e cmus
 exec --no-startup-id aria2rpc.sh
