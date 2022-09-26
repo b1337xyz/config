@@ -263,7 +263,7 @@ bar {
     tray_output primary
     output primary
 
-    set $b0 #333333
+    set $b0 #111111
     set $b1 #eeeeee
     set $b2 #999999
     set $b3 #000000
