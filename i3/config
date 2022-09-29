@@ -189,7 +189,7 @@ mode "$launch_mode" {
     bindsym r exec radio.sh ; mode "default"
     bindsym s exec slideshow.sh ; mode "default"
     bindsym t exec telegram ; mode "default"
-    bindsym y exec ytcli.py --dmenu ; mode "default"
+    bindsym y exec ytcli.py --history --dmenu ; mode "default"
     bindsym shift+e exec emoticons.sh ; mode "default"
 
     bindsym q mode "default"
@@ -263,7 +263,7 @@ bar {
     tray_output primary
     output primary
 
-    set $b0 #111111
+    set $b0 #1c2023
     set $b1 #eeeeee
     set $b2 #999999
     set $b3 #000000

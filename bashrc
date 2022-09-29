@@ -29,7 +29,6 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 export TERM=${TERM:-xterm-256color}
 export TODOFILE="$XDG_CACHE_HOME"/.todo
 source /usr/share/bash-completion/bash_completion
-source "$CARGO_HOME"/env
 source ~/.config/dircolors
 source ~/.config/bash_aliases
 source ~/.scripts/shell/functions.sh
@@ -63,7 +62,7 @@ bind -x '"\C-x": expand_files'
 fzfhist() {
     cmd=$(
         history | sed 's/^ *\?[0-9]* *//' | grep -vP '^(cd|ls) ?' |
-        awk '!s[$0]++' | fzf --height 20 --no-sort --tac
+        awk 'length($0) > 2 && !s[$0]++' | fzf --height 20 --no-sort --tac --bind 'tab:accept'
     )
     READLINE_LINE="$cmd"
     READLINE_POINT=${#cmd}
@@ -179,6 +178,8 @@ prompt() {
 }
 PROMPT_COMMAND="prompt; timer_stop"
 
+[ -f "${HOME}/.python_history" ] && rm "${HOME}/.python_history"
+
 if [ -n "$DISPLAY" ];then
     # printf '\e[1;31m'; cat ~/Documents/ASCII/Nerv; printf '\e[m\n'
     # shuf -n1 ~/.cache/quotes.csv | sed 's/|/\n\t- /'
@@ -189,9 +190,7 @@ if [ -n "$DISPLAY" ];then
     ls -lt
 fi
 function bye {
-    echo "bye"
-    # https://gist.github.com/yyolk/ba07f96e6a289e4e6fde21feab4f0bbb
-    [ -n "$SSH_CLIENT" ] && bash ~/.local/src/seeyouspacecowboy.sh
+    echo "bye ^-^"
+    [ -n "$SSH_CLIENT" ] && cat ~/.local/src/seeyouspacecowboy.txt
 }
 trap bye EXIT
-
