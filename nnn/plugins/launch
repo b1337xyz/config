@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+PAGER="${PAGER:-less -R}"
+
+mimetype=$(file -Lbi -- "$1")
+ext=${1##*.}
+ext=${ext,,}
+case "$mimetype" in
+    audio/*) mpv --really-quiet=no "$1" ;;
+    image/*)
+        if [ "$ext" = "gif" ];then
+            mpv --really-quiet=yes "$1" &
+        else
+            nsxiv -q "$1" >/dev/null 2>&1 &
+        fi
+    ;;
+    text/*) vim "$1" ;;
+    video/*) mpv --volume=50 --really-quiet=no "$1" ;;
+    *) false ;;
+esac && exit 0
+
+case "$ext" in
+    a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|\
+    rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)
+        atool --list -- "$1" | eval "$PAGER"
+    ;;
+    rar) unrar lt -p- -- "$1" | eval "$PAGER" ;;
+    7z) 7z l -p -- "$1" | eval "$PAGER" ;;
+    pdf|epub) zathura "$1" >/dev/null 2>&1 & ;;
+    torrent) xdg-open "$1" >/dev/null 2>&1 & ;;
+    md) glow -sdark "$1" | eval "$PAGER" ;;
+    htm|html|xhtml) w3m -dump "$1" | eval "$PAGER" ;;
+    json) jq --color-output . "$1" | eval "$PAGER" ;;
+    mts) mpv "$1" ;;
+    *) false ;;
+esac && exit 0
+
+exit 1

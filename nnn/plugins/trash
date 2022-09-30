@@ -1,0 +1,11 @@
+#!/bin/sh
+# Note: nnn auto-detects and invokes this plugin if available
+
+SEL=~/.config/nnn/.selection
+if [ -s "$SEL" ];then
+    xargs -r0 trash.sh < "$SEL"
+elif [ -f "$1" ];then
+    trash.sh "$1"
+fi
+printf 'press ENTER'
+read 

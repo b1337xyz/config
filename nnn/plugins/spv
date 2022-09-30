@@ -1,0 +1,50 @@
+#!/bin/sh
+# Simple PreView 
+PREVIEWPID='/tmp/nnn_preview.pid'
+FIFOPID='/tmp/nnn_fifo.pid'
+
+pidkill() { [ -f "$1" ] && kill "$(cat "$1")" >/dev/null 2>&1; }
+preview() {
+    clear
+    mime=$(file -Lbi -- "$1")
+    ext=$(echo -n "${1##*.}" | tr '[:upper:]' '[:lower:]')
+    case "$mime" in
+        text/*) bat "$1" & ;;
+        */x-bittorrent*) aria2c -S "$1" | bat & ;;
+        *) [ -d "$1" ] && tree -C -L 1 "$1" | bat & ;;
+    esac
+    case "$ext" in
+        gz) gunzip -l "$1" | bat -l ls & ;;
+        7z|a|ace|alz|arc|arj|bz|cab|cpio|deb|jar|lha|lz|lzh|lzma|lzo\
+        |rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z)
+            atool -l "$1" | bat -l ls & ;;
+        *) [ -d "$1" ] || mediainfo "$1" | bat & ;;
+    esac
+    echo "$!" > "$PREVIEWPID"
+}
+preview_fifo() {
+    while read -r sel;do
+        pidkill "$PREVIEWPID"
+        [ "$sel" = "close" ] && break
+        [ -n "$sel" ] && preview "$sel"
+    done < "$NNN_FIFO"
+    pkill -P "$$"
+}
+
+if [ "$PREVIEW_MODE" ];then
+    preview "$1" &
+    preview_fifo & 
+    echo "$!" > "$FIFOPID"
+    trap 'rm "$PREVIEWPID" "$FIFOPID" 2>/dev/null' EXIT INT HUP
+    wait "$!" 
+    exit 0
+else
+    if pidkill "$FIFOPID" ;then
+        pidkill "$PREVIEWPID"
+    else
+        tmux split-window -h -d -l '50%' \
+            -e "FIFOPID=$FIFOPID" -e "PREVIEWPID=$PREVIEWPID" \
+            -e "PREVIEW_MODE=1" "$0" "$1" &
+    fi
+fi
+

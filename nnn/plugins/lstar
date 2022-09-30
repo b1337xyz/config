@@ -1,0 +1,3 @@
+#!/bin/sh
+
+tar tvf "$1" 2>/dev/null | bat -l ls
