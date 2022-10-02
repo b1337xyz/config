@@ -1,7 +1,7 @@
 [[ $- != *i* ]] && return
 # export GPG_TTY=$(tty)
 export BAT_STYLE=plain
-export BAT_THEME="Nord"
+export BAT_THEME="Sublime Snazzy"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export HISTCONTROL=ignoreboth
 export HISTFILESIZE=9000
