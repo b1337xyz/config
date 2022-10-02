@@ -1,7 +1,7 @@
 align=center
-#full_text="|"
-separator=false
-separator_block_width=1
+# full_text="|"
+separator=true
+# separator_block_width=1
 # pink
 # background=#F699AD
 # color=#722539
@@ -13,6 +13,10 @@ separator_block_width=1
 # color=#FFFFFF
 background=#eeeeee
 color=#000000
+
+[sep]
+full_text=" "
+interval=once
 
 # [title]
 # background=#8CB48C

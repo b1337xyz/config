@@ -6,24 +6,29 @@ FIFOPID='/tmp/nnn_fifo.pid'
 pidkill() { [ -f "$1" ] && kill "$(cat "$1")" >/dev/null 2>&1; }
 preview() {
     clear
-    mime=$(file -Lbi -- "$1" | cut -d';' -f1)
     ext=$(echo -n "${1##*.}" | tr '[:upper:]' '[:lower:]')
     case "$ext" in
-        json) jq . "$1" | bat -l json & return ;;
-        gz) gunzip -l "$1" | bat -l ls & return ;;
+        json) jq . "$1" | bat -l json & ;;
+        gz) gunzip -l "$1" | bat -l ls & ;;
         7z|a|ace|alz|arc|arj|bz|cab|cpio|deb|jar|lha|lz|lzh|lzma|lzo\
         |rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z)
-            atool -l "$1" | bat -l ls & return ;;
-    esac
+            atool -l "$1" | bat -l ls & ;;
+        *) false ;;
+    esac && return
+
+    mime=$(file -Lbi -- "$1" | cut -d';' -f1)
     case "$mime" in
-        text/*) bat "$1" & return ;;
-        */x-bittorrent) aria2c -S "$1" | bat & return ;;
-    esac
+        text/*) bat "$1" & ;;
+        */x-bittorrent) aria2c -S "$1" | bat & ;;
+        *) false ;;
+    esac && return
+
     if [ -d "$1" ];then
-        tree -C -L 1 "$1"
+        tree -C -L 1 "$1" | bat &
     else
-        mediainfo "$1"
-    fi | bat &
+        # mediainfo "$1"
+        file -b -- "$1"
+    fi
 }
 preview_fifo() {
     while read -r sel;do
@@ -36,7 +41,7 @@ preview_fifo() {
 }
 
 if [ "$PREVIEW_MODE" ];then
-    preview "$1" &
+    preview "$1"
     preview_fifo & 
     echo "$!" > "$FIFOPID"
     trap 'rm "$PREVIEWPID" "$FIFOPID" 2>/dev/null' EXIT INT HUP

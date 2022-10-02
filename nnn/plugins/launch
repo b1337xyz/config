@@ -1,21 +1,12 @@
 #!/usr/bin/env bash
 
-PAGER="${PAGER:-less -R}"
-
-mimetype=$(file -Lbi -- "$1")
+mimetype=$(file -Lbi -- "$1" | cut -d';' -f1)
 ext=${1##*.}
 ext=${ext,,}
 case "$mimetype" in
-    audio/*) mpv --really-quiet=no "$1" ;;
-    image/*)
-        if [ "$ext" = "gif" ];then
-            mpv --really-quiet=yes "$1" &
-        else
-            nsxiv -q "$1" >/dev/null 2>&1 &
-        fi
-    ;;
-    text/*) vim "$1" ;;
-    video/*) mpv --volume=50 --really-quiet=no "$1" ;;
+    audio/*|video/*|image/gif) mpv "$1" ;;
+    image/*) nsxiv -q "$1" >/dev/null 2>&1 & ;;
+    text/*)  vim "$1" ;;
     *) false ;;
 esac && exit 0
 

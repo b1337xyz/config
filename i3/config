@@ -129,6 +129,17 @@ bindsym $mod+shift+b exec i3-msg border toggle 3
 bindsym $mod+minus move scratchpad ; exec pkill -SIGRTMIN+11 i3blocks
 bindsym $mod+Shift+minus exec i3-scratchpad-dmenu.py && exec pkill -SIGRTMIN+11 i3blocks
 
+# 106 KP_Divide
+# 63  KP_Multiply
+# 82  KP_Subtract
+# 86  KP_Add
+# 129 KP_Decimal
+bindcode 86 exec volupdown.sh up
+bindcode 129 exec volupdown.sh down
+bindcode 106 exec mpvc.sh toggle
+bindcode 63  exec mpvc.sh next
+bindcode 82  exec mpvc.sh prev
+
 bindsym XF86AudioRaiseVolume exec volupdown.sh up
 bindsym XF86AudioLowerVolume exec volupdown.sh down
 bindsym XF86AudioMute exec volupdown.sh toggle
@@ -263,7 +274,7 @@ bar {
     tray_output primary
     output primary
 
-    set $b0 #1c2023
+    set $b0 #eeeeee
     set $b1 #eeeeee
     set $b2 #999999
     set $b3 #000000
@@ -306,13 +317,15 @@ bar {
 # set $c1 #0E99EE
 # set $c2 #FFFFFF
 # set $c3 #FFFFFF
-set $c0 #eeeeee
-set $c1 #999999
-set $c2 #335588
+set $c0 #D4D0C8
+set $c1 #a19d95
+set $c2 #ffffff
+set $c3 #a19d95
+set $c4 #F9807A
 
 # class                 border|backgr|text|indicator|child_border
-client.focused          $c0     $c0     #000000 $c2 $c0
-client.focused_inactive $c1     $c1     $c0 #333333 #333333
+client.focused          $c0     $c0     #000000 $c4 $c0
+client.focused_inactive $c3     $c3     $c0 $c4 $c3
 client.unfocused        $c1     $c1     $c0 #333333 #333333
 client.urgent           #903f3f #ff9f9f #ffffff #903f3f #903f3f
 
