@@ -9,6 +9,7 @@ set colored-stats on
 set show-all-if-ambiguous on
 set completion-ignore-case off
 set menu-complete-display-prefix on
+# set completion-query-items 50
 
 "\C-d": delete-char
 "\t": menu-complete

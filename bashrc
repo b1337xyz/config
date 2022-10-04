@@ -61,8 +61,8 @@ expand_files() {
 bind -x '"\C-x": expand_files'
 fzfhist() {
     cmd=$(
-        history | sed 's/^ *\?[0-9]* *//' | grep -vP '^(cd|ls) ?' |
-        awk 'length($0) > 2 && !s[$0]++' | fzf --height 20 --no-sort --tac --bind 'tab:accept'
+        history | sed 's/^ *\?[0-9]* *//' | awk 'length($0) > 2 && !s[$0]++' |
+        fzf --height 20 --no-sort --tac --bind 'tab:accept'
     )
     READLINE_LINE="$cmd"
     READLINE_POINT=${#cmd}
@@ -194,3 +194,4 @@ function bye {
     [ -n "$SSH_CLIENT" ] && cat ~/.local/src/seeyouspacecowboy.txt
 }
 trap bye EXIT
+

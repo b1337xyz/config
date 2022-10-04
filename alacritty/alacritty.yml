@@ -32,13 +32,19 @@ font:
     # family: Source Code Pro
     # family: mononoki Nerd Font Mono
     # family: Iosevka
-    family: Comic Shanns
+    family: Comic Mono
+    style: Normal
+
+  bold:
+    family: Comic Mono
+    style: Bold
+
 
   offset:
     x: 0
     y: 0
     
-  size: 12
+  size: 13
 
 mouse:
   hide_when_typing: true

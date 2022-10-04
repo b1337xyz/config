@@ -3,6 +3,7 @@
 PREVIEWPID='/tmp/nnn_preview.pid'
 FIFOPID='/tmp/nnn_fifo.pid'
 
+
 pidkill() { [ -f "$1" ] && kill "$(cat "$1")" >/dev/null 2>&1; }
 preview() {
     clear
@@ -52,6 +53,7 @@ else
     else
         tmux split-window -h -d -l '55%' \
             -e "FIFOPID=$FIFOPID" -e "PREVIEWPID=$PREVIEWPID" \
+            -e "BAT_STYLE=$BAT_STYLE" -e "BAT_THEME=$BAT_THEME" \
             -e "PREVIEW_MODE=1" "$0" "$1" &
     fi
 fi

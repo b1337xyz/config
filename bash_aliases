@@ -18,6 +18,7 @@ alias ls='ls -vNh --color' \
     reboot='/sbin/reboot' \
     mount='sudo mount' \
     umount='sudo umount' \
+    fdisk='sudo fdisk' \
     xclip='xclip -sel clip' \
     iftop='sudo iftop -nN' \
     iotop='sudo /sbin/iotop -e -o -d 5' \
@@ -72,7 +73,7 @@ alias clock='tty-clock -scC 7' \
     linuxlogo='linux_logo -c -u -y -L 13' \
     mpipe='mpv --playlist=- --no-resume-playback --loop-file=inf' \
     h='history | tail -n ' \
-    artix='sshfs atom:mnt ~/mnt/artix -o Compression=no,reconnect,allow_other' \
+    atom='sshfs atom: /mnt/anon/atom -o Compression=no,reconnect,allow_other' \
     termux='sshfs termux:/data/data/com.termux/files/home ~/mnt/termux -o port=8022,allow_other,no_check_root,follow_symlinks,reconnect' \
     kcat='kitty icat' \
     sl='ls' \
