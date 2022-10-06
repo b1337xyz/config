@@ -67,6 +67,12 @@ fzfhist() {
     READLINE_POINT=${#cmd}
 }
 bind -x '"\C-h": fzfhist'
+fzfgov() {
+    awk '{for (i=1;i<=NF;++i) print $i}' \
+        /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors |
+        fzf --height 8 | xargs -ro sudo cpupower frequency-set -g 
+}
+bind -x '"\C-g": fzfgov' 
 
 cd() {
     # if autocd is enabled
