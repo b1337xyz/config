@@ -13,7 +13,7 @@ fifo_pager() {
     tmpfifopath=$(mktemp --dry-run)
     mkfifo "$tmpfifopath" || return
 
-    bat < "$tmpfifopath" &
+    less -P?n -RX < "$tmpfifopath" &
     printf "%s" "$!" > "$PREVIEWPID"
 
     (

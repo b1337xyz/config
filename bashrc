@@ -7,8 +7,6 @@ export HISTCONTROL=ignoreboth
 export HISTFILESIZE=9000
 export HISTSIZE=9000
 export LESS=-Ri
-export LESSHISTFILE=- # disable less history
-export LESSKEY="${XDG_CONFIG_HOME}/less/lesskey"
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
 export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
 export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
@@ -28,6 +26,7 @@ export PAGER=less
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export TERM=${TERM:-xterm-256color}
 export TODOFILE="$XDG_CACHE_HOME"/.todo
+
 source /usr/share/bash-completion/bash_completion
 source ~/.config/dircolors
 source ~/.config/bash_aliases
