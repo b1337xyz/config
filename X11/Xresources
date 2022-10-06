@@ -27,7 +27,7 @@ Nsxiv.window.background: #333333
 Nsxiv.window.foreground: #ff3e5e
 Nsxiv.mark.foreground: #ff3080
 dmenu.font: monospace-10
-dmenu.background: #D0CBBD
+dmenu.background: #eeeeee
 dmenu.foreground: #888888
-dmenu.selbackground: #908c84
+dmenu.selbackground: #ffffff
 dmenu.selforeground: #000000

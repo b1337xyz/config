@@ -1,34 +1,58 @@
 #!/bin/sh
-# Simple PreView 
+# nnn SimplePreView 
 PREVIEWPID='/tmp/nnn_preview.pid'
 FIFOPID='/tmp/nnn_fifo.pid'
 
 
 pidkill() { [ -f "$1" ] && kill "$(cat "$1")" >/dev/null 2>&1; }
-preview() {
-    clear
-    ext=$(echo -n "${1##*.}" | tr '[:upper:]' '[:lower:]')
-    case "$ext" in
-        json) jq . "$1" | bat -l json & ;;
-        gz) gunzip -l "$1" | bat -l ls & ;;
-        7z|a|ace|alz|arc|arj|bz|cab|cpio|deb|jar|lha|lz|lzh|lzma|lzo\
-        |rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z)
-            atool -l "$1" | bat -l ls & ;;
-        *) false ;;
-    esac && return
+fifo_pager() {
+    cmd="$1"
+    shift
 
+    # We use a FIFO to access $PAGER PID in jobs control
+    tmpfifopath=$(mktemp --dry-run)
+    mkfifo "$tmpfifopath" || return
+
+    bat < "$tmpfifopath" &
+    printf "%s" "$!" > "$PREVIEWPID"
+
+    (
+        exec > "$tmpfifopath"
+        if [ "$cmd" = "bat" ];then
+            bat --color=always --paging=never \
+                --style="$BAT_STYLE" --theme="$BAT_THEME" "$@" &
+        else
+            "$cmd" "$@" &
+        fi
+    )
+
+    rm "$tmpfifopath"
+}
+handle_mime() {
     mime=$(file -Lbi -- "$1" | cut -d';' -f1)
     case "$mime" in
-        text/*) bat "$1" & ;;
-        */x-bittorrent) aria2c -S "$1" | bat & ;;
-        *) false ;;
-    esac && return
-
+        text/*) fifo_pager bat "$1" ;;
+        */x-bittorrent) fifo_pager aria2c -S "$1" ;;
+        *) file -b -- "$1" ;;
+    esac
+}
+handle_ext() {
+    ext=$(printf '%s' "${1##*.}" | tr '[:upper:]' '[:lower:]')
+    case "$ext" in
+        json) fifo_pager jq . "$1" ;;
+        gz) fifo_pager gunzip -l "$1" ;;
+        7z|a|ace|alz|arc|arj|bz|cab|cpio|deb|jar|lha|lz|lzh|lzma|lzo\
+        |rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z)
+            fifo_pager atool -l "$1" ;;
+        *) handle_mime "$1" ;;
+    esac
+}
+preview() {
+    clear
     if [ -d "$1" ];then
-        tree -C -L 1 "$1" | bat &
+        fifo_pager tree -C -L 1 "$1"
     else
-        # mediainfo "$1"
-        file -b -- "$1"
+        handle_ext "$1"
     fi
 }
 preview_fifo() {
@@ -36,7 +60,7 @@ preview_fifo() {
         pidkill "$PREVIEWPID"
         [ "$sel" = "close" ] && break
         [ -n "$sel" ] && preview "$sel"
-        echo "$!" > "$PREVIEWPID"
+        printf "$!" > "$PREVIEWPID"
     done < "$NNN_FIFO"
     pkill -P "$$"
 }
@@ -44,7 +68,7 @@ preview_fifo() {
 if [ "$PREVIEW_MODE" ];then
     preview "$1"
     preview_fifo & 
-    echo "$!" > "$FIFOPID"
+    printf '%s' "$!" > "$FIFOPID"
     trap 'rm "$PREVIEWPID" "$FIFOPID" 2>/dev/null' EXIT INT HUP
     wait "$!" 
 else
