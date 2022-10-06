@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/Cobalt-2.yml
+  - ~/.config/alacritty/themes/Base16-Default-Dark.yml
 
 env:
   TERM: xterm-256color
@@ -44,7 +44,7 @@ font:
     x: 0
     y: 0
     
-  size: 11
+  size: 12
 
 mouse:
   hide_when_typing: true
