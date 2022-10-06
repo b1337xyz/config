@@ -39,7 +39,7 @@ handle_mime() {
 handle_ext() {
     ext=$(printf '%s' "${1##*.}" | tr '[:upper:]' '[:lower:]')
     case "$ext" in
-        json) fifo_pager jq . "$1" ;;
+        json) fifo_pager jq -C . "$1" ;;
         gz) fifo_pager gunzip -l "$1" ;;
         7z|a|ace|alz|arc|arj|bz|cab|cpio|deb|jar|lha|lz|lzh|lzma|lzo\
         |rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z)
@@ -60,7 +60,6 @@ preview_fifo() {
         pidkill "$PREVIEWPID"
         [ "$sel" = "close" ] && break
         [ -n "$sel" ] && preview "$sel"
-        printf "$!" > "$PREVIEWPID"
     done < "$NNN_FIFO"
     pkill -P "$$"
 }
