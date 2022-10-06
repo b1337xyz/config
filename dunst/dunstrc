@@ -58,17 +58,17 @@
     fullscreen = pushback
 
 [urgency_low]
-    background = "#D4D0C8"
+    background = "#eeeeee"
     foreground = "#000000"
     timeout = 10
 
 [urgency_normal]
-    background = "#D4D0C8"
+    background = "#eeeeee"
     foreground = "#000000"
     timeout = 10
 
 [urgency_critical]
-    background = "#D4D0C8"
+    background = "#eeeeee"
     foreground = "#000000"
     frame_color = "#F9807A"
     timeout = 0
