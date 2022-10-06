@@ -1,8 +1,7 @@
 #!/bin/sh
 # nnn SimplePreView 
-PREVIEWPID='/tmp/nnn_preview.pid'
-FIFOPID='/tmp/nnn_fifo.pid'
-
+PREVIEW_PID=/tmp/nnn_preview.pid
+FIFO_PID=/tmp/nnn_fifo.pid
 
 pidkill() { [ -f "$1" ] && kill "$(cat "$1")" >/dev/null 2>&1; }
 fifo_pager() {
@@ -14,7 +13,7 @@ fifo_pager() {
     mkfifo "$tmpfifopath" || return
 
     less -P?n -R < "$tmpfifopath" &
-    printf "%s" "$!" > "$PREVIEWPID"
+    printf "%s" "$!" > "$PREVIEW_PID"
 
     (
         exec > "$tmpfifopath"
@@ -57,25 +56,24 @@ preview() {
 }
 preview_fifo() {
     while read -r sel;do
-        pidkill "$PREVIEWPID"
+        pidkill "$PREVIEW_PID"
         [ "$sel" = "close" ] && break
         [ -n "$sel" ] && preview "$sel"
     done < "$NNN_FIFO"
-    pkill -P "$$"
 }
 
 if [ "$PREVIEW_MODE" ];then
     preview "$1"
     preview_fifo & 
-    printf '%s' "$!" > "$FIFOPID"
-    trap 'rm "$PREVIEWPID" "$FIFOPID" 2>/dev/null' EXIT INT HUP
+    printf '%s' "$!" > "$FIFO_PID"
+    trap 'rm "$PREVIEW_PID" "$FIFO_PID" 2>/dev/null' EXIT INT HUP
     wait "$!" 
 else
-    if pidkill "$FIFOPID" ;then
-        pidkill "$PREVIEWPID"
+    if pidkill "$FIFO_PID" ;then
+        pidkill "$PREVIEW_PID"
     else
         tmux split-window -h -d -l '60%' \
-            -e "FIFOPID=$FIFOPID" -e "PREVIEWPID=$PREVIEWPID" \
+            -e "FIFO_PID=$FIFO_PID" -e "PREVIEW_PID=$PREVIEW_PID" \
             -e "BAT_STYLE=$BAT_STYLE" -e "BAT_THEME=$BAT_THEME" \
             -e "PREVIEW_MODE=1" "$0" "$1" &
     fi
