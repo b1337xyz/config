@@ -13,7 +13,7 @@ fifo_pager() {
     tmpfifopath=$(mktemp --dry-run)
     mkfifo "$tmpfifopath" || return
 
-    less -P?n -RX < "$tmpfifopath" &
+    less -P?n -R < "$tmpfifopath" &
     printf "%s" "$!" > "$PREVIEWPID"
 
     (
@@ -74,7 +74,7 @@ else
     if pidkill "$FIFOPID" ;then
         pidkill "$PREVIEWPID"
     else
-        tmux split-window -h -d -l '55%' \
+        tmux split-window -h -d -l '60%' \
             -e "FIFOPID=$FIFOPID" -e "PREVIEWPID=$PREVIEWPID" \
             -e "BAT_STYLE=$BAT_STYLE" -e "BAT_THEME=$BAT_THEME" \
             -e "PREVIEW_MODE=1" "$0" "$1" &
