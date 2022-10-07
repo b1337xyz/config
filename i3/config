@@ -195,7 +195,7 @@ mode "$launch_mode" {
     bindsym a exec alacritty -o window.opacity=1.0 -e fzfanime.sh ; mode "default"
     bindsym f exec firefox ; mode "default"
     bindsym k exec passc.sh ; mode "default"
-    bindsym p exec alacritty --class floating_terminal -e pulsemixer ; mode "default"
+    bindsym p exec alacritty --class floating_terminal -e pulsemixer && pkill -SIGRTMIN+10 i3blocks; mode "default"
     bindsym q exec qutebrowser ; mode "default"
     bindsym r exec radio.sh ; mode "default"
     bindsym s exec slideshow.sh ; mode "default"
@@ -429,4 +429,5 @@ exec --no-startup-id automount.sh
 exec --no-startup-id alacritty --title newsboat --class newsboat -e newsboat
 exec --no-startup-id qbittorrent
 # exec --no-startup-id rclone_mnt.sh
+exec --no-startup-id mntatom.sh
 exec --no-startup-id mpv --no-config --really-quiet --no-video ~/.cache/win95.wav
