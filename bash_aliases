@@ -26,13 +26,6 @@ alias ls='ls -vNh --color' \
     dosbox='dosbox -conf "$XDG_CONFIG_HOME"/dosbox/dosbox.conf' \
     top='top -u $USER'
 
-### cd
-alias dow='cd ~/Downloads' \
-    vid='cd ~/Videos' \
-    doc='cd ~/Documents' \
-    pic='cd ~/Pictures' \
-    wal='cd ~/Pictures/wallpapers'
-
 ### devour
 alias dsx='devour sxiv'
 
