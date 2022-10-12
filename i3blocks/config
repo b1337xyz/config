@@ -1,6 +1,6 @@
 align=center
 # full_text="|"
-separator=false
+separator=true
 separator_block_width=1
 # pink
 # background=#F699AD
@@ -34,10 +34,6 @@ interval=once
 command=~/.config/i3blocks/scripts/numlock
 interval=once
 signal=12
-
-[disks]
-command=~/.config/i3blocks/scripts/disks
-interval=15
 
 [battery]
 command=~/.config/i3blocks/scripts/battery

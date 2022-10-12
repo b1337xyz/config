@@ -1,5 +1,5 @@
 align=center
-separator=false
+separator=true
 separator_block_width=1
 # blue
 # background=#0E99EE
@@ -7,32 +7,25 @@ separator_block_width=1
 background=#eeeeee
 color=#000000
 
-# [cava]
-# command=~/.config/i3blocks/scripts/cava
-# interval=persist
+[disks]
+command=~/.config/i3blocks/scripts/disks
+interval=15
 
-[cmus]
-command=~/.config/i3blocks/scripts/cmus
+[bandwidth]
+markup=pango
+command=~/.config/i3blocks/scripts/bandwidth
+min_width=" DL 000K UP 000K "
 interval=5
-signal=21
 
-[prev]
-markup=pango
-command=~/.config/i3blocks/scripts/prev
-min_width="..."
-interval=once
+[temp]
+command=~/.config/i3blocks/scripts/temp
+min_width=" CPU: 69.C WIFI: 69.C "
+interval=5
 
-[playpause]
-markup=pango
-command=~/.config/i3blocks/scripts/playpause
-min_width="..."
-interval=once
-signal=20
+[loadavg]
+command=~/.config/i3blocks/scripts/load_average
+min_width=" 0.00 0.00 0.00 "
+interval=5
 
-[next]
-markup=pango
-command=~/.config/i3blocks/scripts/next
-min_width="..."
-interval=once
 
 # vim: ft=cfg

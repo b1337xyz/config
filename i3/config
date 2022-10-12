@@ -260,7 +260,7 @@ bar {
     # set $font FantasqueSansMono Nerd Font 12
     # set $font monospace 10
     font pango: $font
-    # i3bar_command i3bar --transparency
+    i3bar_command i3bar --transparency
     status_command i3blocks -c ~/.config/i3blocks/config
     strip_workspace_numbers yes
     binding_mode_indicator yes
@@ -274,7 +274,7 @@ bar {
     tray_output primary
     output primary
 
-    set $b0 #eeeeee
+    set $b0 #eeeeee8f
     set $b1 #eeeeee
     set $b2 #999999
     set $b3 #000000
@@ -292,25 +292,27 @@ bar {
         urgent_workspace     $b1 $b1 $b4
         binding_mode         $b1 $b1 $b3
     }
+
 }
-# bar {
-#     # font pango: SauceCodePro Nerd Font 10
-#     font pango: $font
-#     status_command i3blocks -c ~/.config/i3blocks/bottom
-#     # i3bar_command i3bar --transparency
-#     workspace_buttons no
-#     separator_symbol "│"
-#     position bottom
-#     output primary
-#     mode dock
-#     tray_output none
-#     colors {
-#         background $b0
-#         statusline #000000
-#         separator  #999999
-#         binding_mode         $b1 $b1 $b3
-#     }
-# }
+bar {
+    # font pango: SauceCodePro Nerd Font 10
+    font pango: $font
+    status_command i3blocks -c ~/.config/i3blocks/bottom
+    i3bar_command i3bar --transparency
+    workspace_buttons no
+    # separator_symbol "│"
+    position bottom
+    output primary
+    mode dock
+    binding_mode_indicator no
+    tray_output none
+    colors {
+        background $b0
+        statusline #000000
+        separator  #888888
+        binding_mode         $b1 $b1 $b3
+    }
+}
 
 # blue
 # set $c0 #2662DF
@@ -383,6 +385,7 @@ for_window [class="qt5ct"] floating enable
 #for_window [class="Alacritty"] border none
 for_window [instance="Picture-in-Picture"] border none
 for_window [title="Picture-in-Picture"] border none
+for_window [class="Anydesk"] floating enable
 assign [class="Pea"] $ws3
 assign [class="Steam"] $ws8
 assign [class="firefox"] $ws2
@@ -431,3 +434,4 @@ exec --no-startup-id qbittorrent
 # exec --no-startup-id rclone_mnt.sh
 exec --no-startup-id mntatom.sh
 exec --no-startup-id mpv --no-config --really-quiet --no-video ~/.cache/win95.wav
+exec --no-startup-id tmux new-session -d ~/.scripts/python/myanimedb/watch.sh
