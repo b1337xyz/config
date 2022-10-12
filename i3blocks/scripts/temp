@@ -14,4 +14,4 @@ wifi=$(awk '{avg+=($1 / 1000); n+=1}END{printf("%0.f", avg / n)}' \
     /sys/devices/virtual/thermal/thermal_zone1/hwmon3/temp1_input)
 cpu=$(awk '{avg+=($1 / 1000); n+=1}END{printf("%0.f", avg / n)}' \
     /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp*_input)
-echo " CPU: $cpu°C WIFI: $wifi°C "
+echo "CPU $cpu°C WIFI $wifi°C"
