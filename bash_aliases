@@ -80,7 +80,6 @@ alias clock='tty-clock -scC 7' \
     sss='sudo ss -tupln' \
     fe='find . -maxdepth 1 -empty' \
     fwin='find . -type f -iregex ".*\.\(ini\|exe\|nfo\|bat\)"' \
-    sx='startx &>/dev/null' \
     gov='cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_governor' \
     cpu='sudo cpupower frequency-set' \
     mal='mal.py' \
@@ -98,7 +97,8 @@ alias clock='tty-clock -scC 7' \
     fumnt='fusermount3 -u' \
     dft='df -Th -x tmpfs -x devtmpfs --total' \
     dff='df -ht ext4 -t btrfs --total' \
-    tmux_defaults='tmux -f /dev/null -L temp start-server \; show-options -g'
+    tmux_defaults='tmux -f /dev/null -L temp start-server \; show-options -g' \
+    tsxiv='find . -maxdepth 1 -type f -iregex ".*\.\(jpe?g\|png\|gif\)" -printf "%T@ %p\n" | sort -rn | cut -d" " -f2- | sxiv -qi' 
 
 
 ### pacman
