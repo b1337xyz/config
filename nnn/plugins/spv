@@ -69,11 +69,11 @@ if [ "$PREVIEW_MODE" ];then
     trap 'rm "$PREVIEW_PID" "$FIFO_PID" 2>/dev/null' EXIT INT HUP
     wait "$!" 
 else
-    if pidkill "$FIFO_PID" ;then
+    if pidkill "$FIFO_PID";then
         pidkill "$PREVIEW_PID"
     else
         tmux split-window -h -d -l '60%' \
-            -e "FIFO_PID=$FIFO_PID" -e "PREVIEW_PID=$PREVIEW_PID" \
+            -e "FIFO_PID=$FIFO_PID"   -e "PREVIEW_PID=$PREVIEW_PID" \
             -e "BAT_STYLE=$BAT_STYLE" -e "BAT_THEME=$BAT_THEME" \
             -e "PREVIEW_MODE=1" "$0" "$1" &
     fi
