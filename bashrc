@@ -49,7 +49,7 @@ expand_files() {
     for arg in $READLINE_LINE;do
         if test -e "${arg/\~/$HOME}";then
             path=$(realpath "${arg/\~/$HOME}")
-            cmd="$cmd $path"
+            cmd="$cmd '$path'"
         else
             cmd="$cmd $arg"
         fi
@@ -68,9 +68,10 @@ fzfhist() {
 }
 bind -x '"\C-h": fzfhist'
 fzfgov() {
+    current=$(</sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
     awk '{for (i=1;i<=NF;++i) print $i}' \
         /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors |
-        fzf --height 8 | xargs -ro sudo cpupower frequency-set -g 
+        fzf --header "current: $current" --height 8 | xargs -ro sudo cpupower frequency-set -g 
 }
 bind -x '"\C-g": fzfgov' 
 
@@ -109,7 +110,7 @@ timer_stop() {
     local hh mm ss
     timer_show=$((SECONDS - timer))
     ss=$((timer_show % 60))
-    if [ "${timer_show:-0}" -lt 1 ];then
+    if [ "${timer_show:-0}" -lt 2 ];then
         timer_show=""
     elif [ "$timer_show" -ge 60 ];then
         mm=$((timer_show / 60))
@@ -126,6 +127,16 @@ timer_stop() {
     unset timer
 }
 trap 'timer_start' DEBUG
+# prompt_command() {
+#   local -i start elapsed
+#   read _ start _ < <(HISTTIMEFORMAT='%s ' history | tail -n 1)
+#   (( elapsed = $(date +%s) - start ))
+#   local label=${elapsed}s
+#   tput cuf 999
+#   tput cub ${#label}
+#   printf '%s\r' "$label"
+# }
+# PROMPT_COMMAND=prompt_command
 
 prompt() {
     out=$?
@@ -153,29 +164,31 @@ prompt() {
     #     if (length(ext) < 8 && !(ext ~ /^[0-9]$/) ) print tolower(ext)
     # }' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ')
     # local last_mod=$(stat -c '%Z' "$PWD" | xargs -rI{} date --date='@{}' '+%b %d %H:%M')
-    local last_mod=$(last_modified)
+    # local last_mod=$(last_modified)
     # local lavg=$(uptime | grep -oP '(?<=load average: ).*')
     # local cpu_usage=$(ps axch -o %cpu | awk '{x+=$1}END{ printf("%.1f%%\n", x)}')
     # local ram_usage=$(free -h | awk '/Mem:/{print $3"/"$2}')
-    local perm=$(stat -c '%a' .)
+    # local perm=$(stat -c '%a' .)
+    PS1=""
     # PS1="${bar}(${red}\V${bar})-"
-    PS1="${bar}(${grn}${perm}${bar})-"
+    # PS1="${bar}(${grn}${perm}${bar})-"
     # test -n "$fsize" && PS1+="(${red}${fsize}${rst}${bar})-"
     # PS1+="($rst"
     # test -n "$file_count"      && PS1+="${file_count::-2}, "
     # test "${hidden_count:-0}" -gt 0 && PS1+="$hidden_count ., "
     # PS1+="${files:-0}${bar})"
     # test -n "$exts"      && PS1+="-(${rst}${exts::-2}${rst}${bar})$rst"
-    test -n "$last_mod"  && PS1+="${bar}($rst$last_mod${bar})$rst"
-    test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})"
-    PS1+="\n"
+    # test -n "$last_mod"  && PS1+="${bar}($rst$last_mod${bar})$rst"
+    # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})"
+    # PS1+="\n"
     test -n "$VIRTUAL_ENV" && PS1+="$VIRTUAL_ENV_PROMPT "
     PS1+="\${timer_show}${blu}\w${rst}"
     PS1+="$git_branch"
     if test "${out:-0}" -eq 0;then
         PS1+="${grn}>$rst "
     else
-        PS1+=" (${red}${out}${rst}) ${red}>$rst "
+        # PS1+=" (${red}${out}${rst}) ${red}>$rst "
+        PS1+="${red}>$rst "
     fi
 
     # set title
@@ -192,11 +205,9 @@ if [ -n "$DISPLAY" ];then
     # random_anime_quote
     # bfetch
     todo ls 2>/dev/null
-    ls -lt
 fi
 function bye {
     echo "bye ^-^"
     [ -n "$SSH_CLIENT" ] && cat ~/.local/src/seeyouspacecowboy.txt
 }
 trap bye EXIT
-
