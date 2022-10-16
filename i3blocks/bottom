@@ -9,7 +9,7 @@ color=#000000
 
 [disks]
 command=~/.config/i3blocks/scripts/disks
-interval=15
+interval=10
 
 [memory]
 command=~/.config/i3blocks/scripts/memory
