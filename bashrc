@@ -95,7 +95,7 @@ n() {
 
     if [ -f "$NNN_TMPFILE" ]; then
         . "$NNN_TMPFILE"
-        rm -f "$NNN_TMPFILE" > /dev/null
+        command rm -f "$NNN_TMPFILE"
     fi
 }
 r() {
@@ -196,7 +196,7 @@ prompt() {
 }
 PROMPT_COMMAND="prompt; timer_stop"
 
-[ -f "${HOME}/.python_history" ] && rm "${HOME}/.python_history"
+[ -f "${HOME}/.python_history" ] && command rm "${HOME}/.python_history"
 
 if [ -n "$DISPLAY" ];then
     # printf '\e[1;31m'; cat ~/Documents/ASCII/Nerv; printf '\e[m\n'
@@ -211,3 +211,19 @@ function bye {
     [ -n "$SSH_CLIENT" ] && cat ~/.local/src/seeyouspacecowboy.txt
 }
 trap bye EXIT
+
+fixkbd() {
+    setxkbmap br
+    setxkbmap -option caps:escape
+    # xmodmap -e "keycode 108 = Alt_L" # Alt_Gr
+    xmodmap -e "keycode 97 = Alt_L" # backslash
+    xmodmap -e "keycode 34 = dead_grave backslash" # dead_acute 
+    xmodmap -e "keycode 47 = asciitilde bar" # ccedilla
+    xmodmap -e "keycode 87 = g" # KP_End
+    xmodmap -e "keycode 89 = h" # KP_Next (3)
+    # xmodmap -e "keycode 73 = g" # F7
+    # xmodmap -e "keycode 74 = h" # F8
+    # xmodmap -e "keycode 15 = 6 backslash"  # dead_diaeresis
+    # xmodmap -e "keycode 81 = bar backslash " # KP_Prior (9)
+    # xmodmap -e "keycode 91 = asciitilde"  # KP_Delete
+}
