@@ -27,13 +27,15 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 export TERM=${TERM:-xterm-256color}
 export TODOFILE="$XDG_CACHE_HOME"/.todo
 
-source /usr/share/bash-completion/bash_completion
 source ~/.config/dircolors
 source ~/.config/bash_aliases
 source ~/.scripts/shell/functions.sh
 source ~/.scripts/shell/mediainfo.sh
 source ~/.scripts/shell/aria2.sh
 source ~/.scripts/shell/fzf.sh
+source /usr/share/bash-completion/bash_completion
+source /usr/share/bash-completion/completions/man
+complete -F _man man apropos whatis fzman
 
 umask 0077
 

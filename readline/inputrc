@@ -1,17 +1,18 @@
 $include /etc/inputrc
 
+set colored-completion-prefix on
+set colored-stats on
+set completion-ignore-case off
+set completion-query-items 100
 set editing-mode vi
+set menu-complete-display-prefix on
+set page-completions off
+set print-completions-horizontally on
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
 set show-mode-in-prompt on
 set vi-cmd-mode-string "cmd "
 set vi-ins-mode-string ""
-set colored-stats on
-set colored-completion-prefix on
-set show-all-if-ambiguous on
-set completion-ignore-case off
-set menu-complete-display-prefix on
-set completion-query-items 100
-set page-completions off
-set print-completions-horizontally on
 
 "\C-d": delete-char
 "\t": menu-complete
