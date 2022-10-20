@@ -4,7 +4,6 @@ export BAT_STYLE=plain
 export BAT_THEME="Sublime Snazzy"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export HISTCONTROL=ignoreboth
-export HISTFILESIZE=9000
 export HISTSIZE=9000
 export LESS=-Ri
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
