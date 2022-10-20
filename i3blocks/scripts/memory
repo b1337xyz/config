@@ -1,10 +1,4 @@
-#!/usr/bin/env bash
-case "$BLOCK_BUTTON" in
-    1|2) urxvt -title floating -e top -o %MEM ;; 
-esac
+#!/bin/sh
+test -n "$BLOCK_BUTTON" && xterm -title floating -e top -o %MEM
 
-#val=$(free | awk '/Mem/{print ($3*100)/$2}')
-#printf 'MEM %.0f%%\n' "$val"
-command free -m | awk '/^Mem/{printf("MEM %s/%s\n", $3,$2)}'
-
-#[ "${val%.*}" -gt 80 ] && exit 33
+command free -m | awk '/^Mem/{printf("MEM %s/%s\n", $2 - $7, $2)}'
