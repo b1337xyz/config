@@ -4,7 +4,7 @@ main() {
     grep -vFf <(grep -oP '(?<=^IgnorePkg = ).*' /etc/pacman.conf | tr ' ' \\n) \
               <(pacman -Qqu --color=never)
 }
-[ -n "$BLOCK_BUTTON" ] && notify-send "Upgradable packages" "$(main)"
+[ -n "$BLOCK_BUTTON" ] && xterm -e bash -c 'yay -Syu; echo; read -p "Press ENTER to close"'
 
 n=$(main | wc -l)
 [ "$n" -gt 0 ] && printf '%s <span size="13pt"><tt></tt></span>\n' "$n"

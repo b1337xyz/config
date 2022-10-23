@@ -274,7 +274,7 @@ bar {
     tray_output primary
     output primary
 
-    set $b0 #000000
+    set $b0 #262626
     set $b1 #eeeeee
     set $b2 #999999
     set $b3 #000000
@@ -434,4 +434,4 @@ exec --no-startup-id qbittorrent
 # exec --no-startup-id rclone_mnt.sh
 exec --no-startup-id mntatom.sh
 exec --no-startup-id mpv --no-config --really-quiet --no-video ~/.cache/win95.wav
-exec --no-startup-id tmux new-session -d ~/.scripts/python/myanimedb/watch.sh
+exec --no-startup-id tmux new-session -d ~/.scripts/python/myanimedb/tools/watch.sh

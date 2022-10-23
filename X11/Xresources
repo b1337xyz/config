@@ -1,4 +1,4 @@
-#include "/home/anon/.config/X11/themes/base16-gruvbox-dark-hard-256"
+#include "/home/anon/.config/X11/themes/nord.Xresources"
 
 Xcursor.theme: Adwaita
 Xcursor.size: 21
