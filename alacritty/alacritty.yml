@@ -9,6 +9,12 @@ env:
 #   primary:
 #     background: "#253525"
 #     foreground: "#B4D499"
+colors:
+  primary:
+    background: "#000000"
+
+  cursor:
+    cursor: '#7cafc2'
 
 window:
   dimensions:
@@ -21,7 +27,7 @@ window:
 
   dynamic_padding: true
   decorations: full
-  opacity: 0.88
+  opacity: 0.80
 
 font:
   normal:

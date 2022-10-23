@@ -25,7 +25,7 @@ color=#000000
 # interval=persist
 
 [scratchpad]
-background=#cccccc
+background=#dddddd
 command=~/.config/i3blocks/scripts/scratchpad.sh
 signal=11
 interval=once
