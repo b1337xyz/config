@@ -260,7 +260,7 @@ bar {
     # set $font FantasqueSansMono Nerd Font 12
     # set $font monospace 10
     font pango: $font
-    i3bar_command i3bar --transparency
+    # i3bar_command i3bar --transparency
     status_command i3blocks -c ~/.config/i3blocks/config
     strip_workspace_numbers yes
     binding_mode_indicator yes
@@ -274,7 +274,7 @@ bar {
     tray_output primary
     output primary
 
-    set $b0 #2626268f
+    set $b0 #262626
     set $b1 #eeeeee
     set $b2 #999999
     set $b3 #000000
@@ -298,7 +298,7 @@ bar {
     # font pango: SauceCodePro Nerd Font 10
     font pango: $font
     status_command i3blocks -c ~/.config/i3blocks/bottom
-    i3bar_command i3bar --transparency
+    # i3bar_command i3bar --transparency
     workspace_buttons no
     # separator_symbol "│"
     position bottom
@@ -420,7 +420,6 @@ assign [title="radio"] $ws9
 # exec --no-startup-id sleep 0.5 && run_i3lock.sh
 # exec --no-startup-id $terminal -e tmux
 # exec --no-startup-id toggle_transparency.sh
-exec --no-startup-id mpv --profile=radio
 exec --no-startup-id xsettingsd
 # exec --no-startup-id alacritty --title cmus --class cmus -e cmus
 exec --no-startup-id aria2rpc.sh
@@ -433,5 +432,6 @@ exec --no-startup-id alacritty --title newsboat --class newsboat -e newsboat
 exec --no-startup-id qbittorrent
 # exec --no-startup-id rclone_mnt.sh
 exec --no-startup-id mntatom.sh
-exec --no-startup-id mpv --no-config --really-quiet --no-video ~/.cache/win95.wav
+exec --no-startup-id mpv --profile=radio
+exec --no-startup-id mpv --no-config --really-quiet --no-video ~/Music/windows_nt_5.0_startup.opus
 exec --no-startup-id tmux new-session -d ~/.scripts/python/myanimedb/tools/watch.sh
