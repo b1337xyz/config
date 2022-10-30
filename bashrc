@@ -83,7 +83,7 @@ cd() {
     else
         command cd -- "$@"
     fi || return $?
-    timeout 2 ls --color=always -hltr 2>/dev/null || true
+    timeout 1 ls --color=always -Nhltr 2>/dev/null || true
 }
 gb() { cd - ; }
 n() {
@@ -128,16 +128,6 @@ timer_stop() {
     unset timer
 }
 trap 'timer_start' DEBUG
-# prompt_command() {
-#   local -i start elapsed
-#   read _ start _ < <(HISTTIMEFORMAT='%s ' history | tail -n 1)
-#   (( elapsed = $(date +%s) - start ))
-#   local label=${elapsed}s
-#   tput cuf 999
-#   tput cub ${#label}
-#   printf '%s\r' "$label"
-# }
-# PROMPT_COMMAND=prompt_command
 
 prompt() {
     out=$?
@@ -153,10 +143,9 @@ prompt() {
     local bar="$cyn"
     local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1) /')
     # local fsize=$(find -L . -xdev -maxdepth 1 -type f -print0 | xargs -r0 du -ch | awk '/\ttotal$/{print $1}')
-    # local file_count=$(find -L . -xdev -mindepth 1 -maxdepth 1 -printf '%y\n' | sort | uniq -c |
-    #     sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ') 
+    # local file_count=$(find -L . -xdev -mindepth 1 -maxdepth 1 -printf '%y\n' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ') 
     # local hidden_count=$(find . -mindepth 1 -maxdepth 1 -name '.*' | wc -l)
-    # local hidden_count=$(ls --color=none -1A | grep -c '^\.')
+    # local hidden_count=$(ls --color=none -N1A | grep -c '^\.')
     # local files=$(find . -xdev -mindepth 1 -maxdepth 1 | wc -l)
     # local exts=$(find . -xdev -maxdepth 1 -type f -printf '%f\n' | awk '{
     #     split($0, a, ".");
@@ -165,31 +154,34 @@ prompt() {
     #     if (length(ext) < 8 && !(ext ~ /^[0-9]$/) ) print tolower(ext)
     # }' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ')
     # local last_mod=$(stat -c '%Z' "$PWD" | xargs -rI{} date --date='@{}' '+%b %d %H:%M')
-    # local last_mod=$(last_modified)
+    local last_mod=$(last_modified)
     # local lavg=$(uptime | grep -oP '(?<=load average: ).*')
     # local cpu_usage=$(ps axch -o %cpu | awk '{x+=$1}END{ printf("%.1f%%\n", x)}')
     # local ram_usage=$(free -h | awk '/Mem:/{print $3"/"$2}')
-    # local perm=$(stat -c '%a' .)
+    local perm=$(stat -c '%a' .)
     PS1=""
     # PS1="${bar}(${red}\V${bar})-"
-    # PS1="${bar}(${grn}${perm}${bar})-"
+    PS1="${bar}(${grn}${perm}${bar})-"
     # test -n "$fsize" && PS1+="(${red}${fsize}${rst}${bar})-"
     # PS1+="($rst"
-    # test -n "$file_count"      && PS1+="${file_count::-2}, "
+    # test -n "$file_count" && PS1+="${file_count::-2}, "
     # test "${hidden_count:-0}" -gt 0 && PS1+="$hidden_count ., "
-    # PS1+="${files:-0}${bar})"
+    # PS1+="${files:-0}${bar})-"
     # test -n "$exts"      && PS1+="-(${rst}${exts::-2}${rst}${bar})$rst"
-    # test -n "$last_mod"  && PS1+="${bar}($rst$last_mod${bar})$rst"
+    test -n "$last_mod"  && PS1+="${bar}($rst$last_mod${bar})$rst"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})"
-    # PS1+="\n"
+    PS1+="\n"
     test -n "$VIRTUAL_ENV" && PS1+="$VIRTUAL_ENV_PROMPT "
     PS1+="\${timer_show}${blu}\w${rst}"
     PS1+="$git_branch"
     if test "${out:-0}" -eq 0;then
+
         PS1+="${grn}>$rst "
     else
-        # PS1+=" (${red}${out}${rst}) ${red}>$rst "
-        PS1+="${red}>$rst "
+        local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
+        [ -f "$beep" ] && { mpv --no-config --no-video --really-quiet "$beep" & disown; }
+        PS1+=" (${red}${out}${rst}) ${red}!$rst "
+        # PS1+="${red}>$rst "
     fi
 
     # set title

@@ -192,7 +192,7 @@ set $launch_mode [a]nime [f]irefox [q]ute [t]elegram [p]ulsemixer [e]xplorer [r]
 mode "$launch_mode" {
     # bindsym c exec alacritty --class cmus --title cmus -e cmus ; mode "default"
     bindsym e exec pcmanfm; mode "default"
-    bindsym a exec alacritty -o window.opacity=1.0 -e fzfanime.sh ; mode "default"
+    bindsym a exec alacritty -o window.opacity=1.0 -o window.padding.y=1 -e fzfanime.sh ; mode "default"
     bindsym f exec firefox ; mode "default"
     bindsym k exec passc.sh ; mode "default"
     bindsym p exec alacritty --class floating_terminal -e pulsemixer && pkill -SIGRTMIN+10 i3blocks; mode "default"
@@ -432,6 +432,6 @@ exec --no-startup-id alacritty --title newsboat --class newsboat -e newsboat
 exec --no-startup-id qbittorrent
 # exec --no-startup-id rclone_mnt.sh
 exec --no-startup-id mntatom.sh
-exec --no-startup-id mpv --profile=radio
-exec --no-startup-id mpv --no-config --really-quiet --no-video ~/Music/windows_nt_5.0_startup.opus
+exec --no-startup-id mpvradio.sh
+exec --no-startup-id mpv --no-config --really-quiet --no-video ~/Music/Yuu_windows_theme/you_welcome.wav
 exec --no-startup-id tmux new-session -d ~/.scripts/python/myanimedb/tools/watch.sh

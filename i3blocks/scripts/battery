@@ -3,6 +3,7 @@ capacity=$(< /sys/class/power_supply/BAT?/capacity)
 _status=$(< /sys/class/power_supply/BAT?/status)
 full_icon=battery-full-charged
 low_icon=battery-low
+audio=~/Music/Madobe_Nanami_themepack/critical_battery.wav
 
 case "$_status" in
     Charging)
@@ -20,6 +21,11 @@ case "$_status" in
             printf 'BAT %s%%\n' "$capacity"
             notify-send -i "$low_icon" \
                 "Battery discharging!" "$(acpi)"
+            
+            if [ -f "$audio" ];then
+                mpv --no-config --no-video --really-quiet "$audio"
+            fi
+
         else
             printf 'BAT %s%%\n' "$capacity"
         fi
