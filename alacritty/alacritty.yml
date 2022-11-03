@@ -9,12 +9,13 @@ env:
 #   primary:
 #     background: "#253525"
 #     foreground: "#B4D499"
+#
 colors:
   primary:
     background: "#000000"
 
   cursor:
-    cursor: '#7cafc2'
+    cursor: '#D17288'
 
 window:
   dimensions:
