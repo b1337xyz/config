@@ -62,7 +62,8 @@ bind -x '"\C-x": expand_files'
 fzfhist() {
     cmd=$(
         history | sed 's/^ *\?[0-9]* *//' | awk 'length($0) > 2' |
-        fzf --height 20 --no-sort --tac --bind 'tab:accept'
+        fzf --info=hidden --border=none --layout=reverse \
+            --height 20 --no-sort --tac --bind 'tab:accept'
     )
     READLINE_LINE="$cmd"
     READLINE_POINT=${#cmd}
