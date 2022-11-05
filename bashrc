@@ -209,6 +209,7 @@ function bye {
 trap bye EXIT
 
 fixkbd() {
+    # localectl list-x11-keymap-options
     setxkbmap br
     setxkbmap -option caps:escape
     # xmodmap -e "keycode 108 = Alt_L" # Alt_Gr
