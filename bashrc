@@ -4,6 +4,7 @@ export BAT_STYLE=plain
 export BAT_THEME="Sublime Snazzy"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export HISTCONTROL=ignoreboth
+export HISTIGNORE='history:rm'
 export HISTSIZE=9000
 export LESS=-Ri
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
@@ -32,6 +33,7 @@ source ~/.scripts/shell/functions.sh
 source ~/.scripts/shell/mediainfo.sh
 source ~/.scripts/shell/aria2.sh
 source ~/.scripts/shell/fzf.sh
+source ~/.scripts/python/aria2bt/aria2bt_completion
 source /usr/share/bash-completion/bash_completion
 source /usr/share/bash-completion/completions/man
 complete -F _man man apropos whatis fzman
