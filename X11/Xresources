@@ -1,19 +1,21 @@
-#include "/home/anon/.config/X11/themes/nord.Xresources"
+#include "/home/anon/.config/X11/themes/base16-default-dark-256"
 
 Xcursor.theme: Adwaita
 Xcursor.size: 21
 XTerm*geometry: 95x24
 XTerm*selectToClipboard: true
-XTerm*font: xft:monospace:pixelsize=16
+XTerm.vt100.faceName: Comic Mono:style=Normal:antialias=true
+XTerm.vt100.boldFont: Comic Mono:style=Bold:antialias=true
+XTerm.vt100.faceSize: 12
 XTerm*termName: xterm-256color
 XTerm*iconName: terminal
-XTerm*internalBorder: 1
+XTerm*internalBorder: 2
 XTerm*cursorBlink: true
 XTerm*cursorUnderline: false
 XTerm*pointerBlank: true
 XTerm*pointerBlankDelay: 987654321
 XTerm*saveLines: 9000
-Xft.dpi:       96
+Xft.dpi:       102
 Xft.antialias: true
 Xft.hinting:   true
 Xft.rgba:      rgb
