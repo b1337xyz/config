@@ -9,4 +9,4 @@ END {
     sub(/^,/, "", s)
     gsub(/\//, "\\\\/", s)
     printf("bt-tracker=%s\n", s)
-}' | xargs -rI{} sed -i 's/^bt-tracker=.*/{}/' "$conf"
+}' | xargs -trI{} sed -i 's/^bt-tracker=.*/{}/' "$conf"
