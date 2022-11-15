@@ -178,7 +178,6 @@ prompt() {
     PS1+="\${timer_show}${blu}\w${rst}"
     PS1+="$git_branch"
     if test "${out:-0}" -eq 0;then
-
         PS1+="${grn}>$rst "
     else
         local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
