@@ -2,14 +2,9 @@
 # nnn SimplePreView 
 PREVIEW_PID=/tmp/nnn_preview.pid
 FIFO_PID=/tmp/nnn_fifo.pid
+NNN_FIFO=${NNN_FIFO:-/tmp/nnn.fifo}
 
-pidkill() {
-    local pid
-    [ -f "$1" ] || return
-    pid=$(cat "$1")
-    kill "$pid"
-    echo "killed $pid"
-}
+pidkill() { [ -f "$1" ] && kill "$(cat "$1")" >/dev/null 2>&1; }
 fifo_pager() {
     cmd="$1"
     shift
