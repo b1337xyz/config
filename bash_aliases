@@ -53,6 +53,7 @@ alias lx='ls -X' \
 
 ### shortcuts
 alias clock='tty-clock -scC 7' \
+    cmd='command' \
     +x='chmod u+x' \
     -x='chmod a-x' \
     ytdl='yt-dlp -o "%(title)s.%(ext)s"' \
@@ -61,6 +62,7 @@ alias clock='tty-clock -scC 7' \
     so='source' \
     v='nvim' \
     vi='nvim' \
+    vim='nvim' \
     :q=exit \
     :x=exit \
     linuxlogo='linux_logo -c -u -y -L 13' \

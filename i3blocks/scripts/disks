@@ -1,14 +1,5 @@
 #!/bin/sh
-case "$BLOCK_BUTTON" in
-    1|2)
-        #xterm -geometry 70x15 -name floating_terminal \
-        alacritty --class floating_terminal \
-            -e sh -c 'df --total -ht ext4 -t btrfs ; read -s -N 1'
-    ;;
-esac
-
-
-command df -h -t ext4 -t btrfs | awk '/^\/dev/{
+df -h -x tmpfs -x devtmpfs | awk '!/^Filesystem|\/boot$/{
     if ($6 != "/") {
         split($6, a, "/")
         mp = a[length(a)]
