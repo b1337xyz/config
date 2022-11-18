@@ -56,7 +56,6 @@ alias clock='tty-clock -scC 7' \
     cmd='command' \
     +x='chmod u+x' \
     -x='chmod a-x' \
-    ytdl='yt-dlp -o "%(title)s.%(ext)s"' \
     mnt='sudo mount -o noatime,users' \
     umnt='sudo umount' \
     so='source' \
