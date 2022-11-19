@@ -13,17 +13,17 @@ fifo_pager() {
     tmpfifopath=$(mktemp --dry-run)
     mkfifo "$tmpfifopath" || return
 
-    less -P?n -R < "$tmpfifopath" &
+    less -P?n --mouse -R < "$tmpfifopath" &
     printf "%s" "$!" > "$PREVIEW_PID"
 
     (
         exec > "$tmpfifopath"
         if [ "$cmd" = "bat" ];then
             bat --color=always --paging=never \
-                --style="$BAT_STYLE" --theme="$BAT_THEME" "$@" &
+                --style="$BAT_STYLE" --theme="$BAT_THEME" "$@"
         else
-            "$cmd" "$@" &
-        fi
+            "$cmd" "$@"
+        fi &
     )
 
     rm "$tmpfifopath"
@@ -56,9 +56,7 @@ preview() {
     fi
 }
 preview_fifo() {
-    echo "$PREVIEW_PID"
     while read -r sel; do
-        echo "$sel"
         pidkill "$PREVIEW_PID"
         [ "$sel" = "close" ] && break
         [ -n "$sel" ] && preview "$sel"
@@ -75,7 +73,7 @@ else
     if pidkill "$FIFO_PID";then
         pidkill "$PREVIEW_PID"
     else
-        tmux split-window -h -d -l '40%' -e "NNN_FIFO=$NNN_FIFO" \
+        tmux split-window -h -d -l '60%' -e "NNN_FIFO=$NNN_FIFO" \
             -e "FIFO_PID=$FIFO_PID"   -e "PREVIEW_PID=$PREVIEW_PID" \
             -e "BAT_STYLE=$BAT_STYLE" -e "BAT_THEME=$BAT_THEME" \
             -e "PREVIEW_MODE=1" "$0" "$1" &
