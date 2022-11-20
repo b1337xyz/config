@@ -1,5 +1,3 @@
-### [My wallpapers](https://gitlab.com/b1337xyz/wallpapers)
-
 ```
       /\         OS: Arch Linux x86_64
      /  \        Shell: bash
@@ -10,3 +8,5 @@
 /_-''    ''-_\    
 ```
 ![Screenshot](screenshot.png)
+
+[My wallpapers](https://gitlab.com/b1337xyz/wallpapers)
