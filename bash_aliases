@@ -16,15 +16,22 @@ alias ls='ls -vNh --color' \
     shutdown='/sbin/shutdown' \
     suspend='systemctl suspend' \
     reboot='/sbin/reboot' \
-    mount='sudo mount' \
-    umount='sudo umount' \
-    fdisk='sudo fdisk' \
     xclip='xclip -sel clip' \
-    iftop='sudo iftop -nNP' \
-    iotop='sudo /sbin/iotop -e -o -d 5' \
     ncdu='ncdu -x --color off --graph-style hash' \
     dosbox='dosbox -conf "$XDG_CONFIG_HOME"/dosbox/dosbox.conf' \
     top='top -u $USER'
+
+### sudo
+alias mount='sudo mount' \
+    umount='sudo umount' \
+    fdisk='sudo fdisk' \
+    iotop='sudo /sbin/iotop -e -o -d 5' \
+    iftop='sudo iftop -nNP' \
+    ptop='sudo /sbin/powertop' \
+    neth='sudo nethogs -d 3 wlan0' \
+    sss='sudo ss -tupln' \
+    cpu='sudo cpupower frequency-set' \
+    gputop='sudo intel_gpu_top'
 
 ### devour
 alias dsx='devour sxiv'
@@ -56,8 +63,6 @@ alias clock='tty-clock -scC 7' \
     cmd='command' \
     +x='chmod u+x' \
     -x='chmod a-x' \
-    mnt='sudo mount -o noatime,users' \
-    umnt='sudo umount' \
     so='source' \
     v='nvim' \
     vi='nvim' \
@@ -72,17 +77,13 @@ alias clock='tty-clock -scC 7' \
     kcat='kitty icat' \
     sl='ls' \
     jmtp='jmtpfs -o allow_other,noatime' \
-    ptop='sudo /sbin/powertop' \
-    neth='sudo nethogs -d 3 wlan0' \
     edi3='vim ~/.config/i3/config' \
     mdlnad='/sbin/minidlnad -f ~/.config/minidlna/minidlna.conf' \
     py='python3' \
     mi='mediainfo' \
-    sss='sudo ss -tupln' \
     fe='find . -maxdepth 1 -empty' \
     fwin='find . -type f -iregex ".*\.\(ini\|exe\|nfo\|bat\|url\)"' \
     gov='cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_governor' \
-    cpu='sudo cpupower frequency-set' \
     mal='mal.py' \
     syncdir='rsync -a -f"+ */" -f"- *"' \
     psmem='ps axch -o cmd:15,%mem --sort=-%mem | head -10' \
@@ -92,7 +93,6 @@ alias clock='tty-clock -scC 7' \
     soundcardinfo='lspci -nnk | grep -i audio -A2' \
     enabledservices='systemctl list-unit-files --state=enabled --no-pager' \
     yta='yt-dlp -x --audio-format mp3' \
-    gputop='sudo intel_gpu_top' \
     scrk='screenkey -t 0.4 -s medium -g 500x400-20-20' \
     nld='nload -i 192000 -o 80000 -u K wlan0' \
     fumnt='fusermount3 -u' \
@@ -101,7 +101,6 @@ alias clock='tty-clock -scC 7' \
     tmux_defaults='tmux -f /dev/null -L temp start-server \; show-options -g' \
     tsxiv='find . -maxdepth 1 -type f -iregex ".*\.\(jpe?g\|png\|gif\)" -printf "%T@ %p\n" | sort -rn | cut -d" " -f2- | sxiv -qi' 
 
-
 ### pacman
 alias pSs='pacman -Ss' \
     pSi='pacman -Si' \
@@ -109,6 +108,7 @@ alias pSs='pacman -Ss' \
     pQe='pacman -Qe' \
     pQm='pacman -Qm' \
     pQs='pacman -Qs' \
+    pQi='pacman -Qi' \
     pQent='pacman -Qent' \
     pS='sudo pacman -S' \
     pSyu='sudo pacman -Syu' \
