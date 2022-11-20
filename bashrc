@@ -47,6 +47,8 @@ shopt -s checkwinsize
 shopt -s no_empty_cmd_completion
 shopt -s histappend
 
+[ -f ~/.python_history ] && rm -v ~/.python_history
+
 expand_files() {
     local cmd=
     for arg in $READLINE_LINE;do
@@ -190,8 +192,6 @@ prompt() {
     echo -ne "\033]0;${PWD/$HOME/\~}\007"
 }
 PROMPT_COMMAND="prompt; timer_stop"
-
-[ -f "${HOME}/.python_history" ] && command rm "${HOME}/.python_history"
 
 if [ -n "$DISPLAY" ];then
     # printf '\e[1;31m'; cat ~/Documents/ASCII/Nerv; printf '\e[m\n'
