@@ -4,7 +4,7 @@
     /\   \       WM: i3
    /      \      Terminal: alacritty/tmux
   /   ,,   \     Terminal Font: Comic Mono
- /   |  |  -\    Font: DejaVu Serif Semi-Condensed 10 [GTK2/3]
-/_-''    ''-_\   Theme: Adwaita-dark [GTK3] 
+ /   |  |  -\    
+/_-''    ''-_\    
 ```
 ![Screenshot](screenshot.png)
