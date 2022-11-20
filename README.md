@@ -9,4 +9,4 @@
 ```
 ![Screenshot](screenshot.png)
 
-[My wallpapers](https://gitlab.com/b1337xyz/wallpapers)
+[Wallpapers](https://gitlab.com/b1337xyz/wallpapers)
