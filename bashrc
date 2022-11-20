@@ -26,6 +26,7 @@ export PAGER=less
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export TERM=${TERM:-xterm-256color}
 export TODOFILE="$XDG_CACHE_HOME"/.todo
+export FZF_DEFAULT_OPTS='--no-border --no-separator'
 
 source ~/.config/dircolors
 source ~/.config/bash_aliases
@@ -66,7 +67,7 @@ bind -x '"\C-x": expand_files'
 fzfhist() {
     cmd=$(
         history | sed 's/^ *\?[0-9]* *//' | awk 'length($0) > 2' |
-        fzf --info=hidden --border=none --layout=reverse \
+        fzf --info=hidden --layout=reverse \
             --height 20 --no-sort --tac --bind 'tab:accept'
     )
     READLINE_LINE="$cmd"

@@ -57,7 +57,6 @@ alias lx='ls -X' \
     lr='ll -R'    \
     loh='ls -d .[A-z]*'
 
-
 ### shortcuts
 alias clock='tty-clock -scC 7' \
     cmd='command' \
