@@ -19,8 +19,6 @@ color=#000000
 # interval=once
 
 # [title]
-# background=#8CB48C
-# color=#000000
 # command=~/.config/i3blocks/scripts/title
 # interval=persist
 
@@ -34,6 +32,16 @@ interval=once
 command=~/.config/i3blocks/scripts/numlock
 interval=once
 signal=12
+
+[disks]
+command=~/.config/i3blocks/scripts/disks
+interval=15
+
+[bandwidth]
+markup=pango
+command=~/.config/i3blocks/scripts/bandwidth
+min_width=" DL 000K UP 000K "
+interval=5
 
 [battery]
 command=~/.config/i3blocks/scripts/battery
@@ -59,4 +67,3 @@ min_width=" 99 I "
 interval=300
 
 # vim: ft=cfg
-

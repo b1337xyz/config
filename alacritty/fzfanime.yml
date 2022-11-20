@@ -1,0 +1,31 @@
+colors:
+  primary:
+    background: "#000000"
+
+window:
+  dimensions:
+    columns: 100
+    lines: 80
+
+  position:
+    x: 0
+    y: 0
+
+  padding:
+    x: 1
+    y: 1
+
+  dynamic_padding: true
+  startup_mode: Maximized
+  opacity: 1.0
+
+font:
+  normal:
+    family: Comic Mono
+    style: Normal
+
+  bold:
+    family: Comic Mono
+    style: Bold
+    
+  size: 12
