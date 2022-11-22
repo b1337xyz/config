@@ -36,7 +36,6 @@
     icon_position = left
     min_icon_size = 0
     max_icon_size = 168
-    icon_path = /usr/share/icons/Chicago95/actions/32:/usr/share/icons/Chicago95/animations/32:/usr/share/icons/Chicago95/apps/32:/usr/share/icons/Chicago95/categories/32:/usr/share/icons/Chicago95/devices/32:/usr/share/icons/Chicago95/emblems/32:/usr/share/icons/Chicago95/emotes/32:/usr/share/icons/Chicago95/mimes/32:/usr/share/icons/Chicago95/notifications/32:/usr/share/icons/Chicago95/panel/32:/usr/share/icons/Chicago95/places/32:/usr/share/icons/Chicago95/status/32:/usr/share/icons/Chicago95/stock/32
     sticky_history = yes
     history_length = 20
     dmenu = /usr/bin/dmenu -p dunst:
