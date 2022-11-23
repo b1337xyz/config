@@ -33,15 +33,15 @@ command=~/.config/i3blocks/scripts/numlock
 interval=once
 signal=12
 
-[disks]
-command=~/.config/i3blocks/scripts/disks
-interval=15
+# [disks]
+# command=~/.config/i3blocks/scripts/disks
+# interval=15
 
-[bandwidth]
-markup=pango
-command=~/.config/i3blocks/scripts/bandwidth
-min_width=" DL 000K UP 000K "
-interval=5
+# [bandwidth]
+# markup=pango
+# command=~/.config/i3blocks/scripts/bandwidth
+# min_width=" DL 000K UP 000K "
+# interval=5
 
 [battery]
 command=~/.config/i3blocks/scripts/battery

@@ -32,5 +32,4 @@ command=~/.config/i3blocks/scripts/load_average
 min_width=" 0.00 0.00 0.00 "
 interval=5
 
-
 # vim: ft=cfg
