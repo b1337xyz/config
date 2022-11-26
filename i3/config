@@ -73,16 +73,16 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws0
 
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws0
+bindsym $mod+shift+1 move container to workspace $ws1
+bindsym $mod+shift+2 move container to workspace $ws2
+bindsym $mod+shift+3 move container to workspace $ws3
+bindsym $mod+shift+4 move container to workspace $ws4
+bindsym $mod+shift+5 move container to workspace $ws5
+bindsym $mod+shift+6 move container to workspace $ws6
+bindsym $mod+shift+7 move container to workspace $ws7
+bindsym $mod+shift+8 move container to workspace $ws8
+bindsym $mod+shift+9 move container to workspace $ws9
+bindsym $mod+shift+0 move container to workspace $ws0
 
 bindsym Mod1+Tab focus left
 bindsym Mod1+shift+Tab focus left
@@ -100,15 +100,15 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+shift+h move left
+bindsym $mod+shift+j move down
+bindsym $mod+shift+k move up
+bindsym $mod+shift+l move right
 
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+shift+Left move left
+bindsym $mod+shift+Down move down
+bindsym $mod+shift+Up move up
+bindsym $mod+shift+Right move right
 
 bindsym $mod+g split h ; exec pkill -SIGRTMIN+13 i3blocks
 bindsym $mod+v split v ; exec pkill -SIGRTMIN+13 i3blocks
@@ -119,72 +119,75 @@ bindsym $mod+s layout stacking ; exec pkill -SIGRTMIN+13 i3blocks
 bindsym $mod+w layout tabbed ; exec pkill -SIGRTMIN+13 i3blocks
 bindsym $mod+e layout toggle split
 
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 bindsym $mod+y sticky toggle
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec i3-msg exit
+bindsym $mod+shift+c reload
+bindsym $mod+shift+r restart
+bindsym $mod+shift+e exec i3-msg exit
 bindsym $mod+b exec i3-msg bar mode toggle
 bindsym $mod+shift+b exec i3-msg border toggle 3
 bindsym $mod+minus move scratchpad ; exec pkill -SIGRTMIN+11 i3blocks
-bindsym $mod+Shift+minus exec i3-scratchpad-dmenu.py && exec pkill -SIGRTMIN+11 i3blocks
+bindsym $mod+shift+minus exec i3-scratchpad-dmenu.py && exec pkill -SIGRTMIN+11 i3blocks
 
 # 106 KP_Divide
 # 63  KP_Multiply
 # 82  KP_Subtract
 # 86  KP_Add
 # 129 KP_Decimal
-bindcode 86 exec volupdown.sh up
+bindcode 86  exec volupdown.sh up
 bindcode 129 exec volupdown.sh down
-bindcode 106 exec mpvc.sh toggle
-bindcode 63  exec mpvc.sh next
-bindcode 82  exec mpvc.sh prev
+bindcode 106 exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks
+bindcode 63  exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
+bindcode 82  exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
 
-bindsym XF86AudioRaiseVolume exec volupdown.sh up
-bindsym XF86AudioLowerVolume exec volupdown.sh down
-bindsym XF86AudioMute exec volupdown.sh toggle
-bindsym XF86MonBrightnessUp exec brightnessctl s +2%
-bindsym XF86MonBrightnessDown exec brightnessctl s 2%-
-# bindsym XF86AudioPlay exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks
-# bindsym XF86AudioPrev exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
-# bindsym XF86AudioNext exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
-bindsym XF86AudioPlay exec mpvc.sh toggle
-bindsym XF86AudioPrev exec mpvc.sh next
-bindsym XF86AudioNext exec mpvc.sh prev
 bindsym Print exec print.sh
-# bindsym --release Caps_Lock exec pkill -SIGRTMIN+12 i3blocks
-bindsym --release $mod+equal exec sleep .3 && xset dpms force off
-bindsym --release Num_Lock exec pkill -SIGRTMIN+12 i3blocks
+bindsym XF86AudioRaiseVolume  exec volupdown.sh up
+bindsym XF86AudioLowerVolume  exec volupdown.sh down
+bindsym XF86AudioMute         exec volupdown.sh toggle
+bindsym XF86MonBrightnessUp   exec brightnessctl s +2%
+bindsym XF86MonBrightnessDown exec brightnessctl s 2%-
+bindsym XF86AudioPlay         exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks
+bindsym XF86AudioNext         exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
+bindsym XF86AudioPrev         exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
+# bindsym XF86AudioPlay         exec mpvc.sh toggle
+# bindsym XF86AudioPrev         exec mpvc.sh next
+# bindsym XF86AudioNext         exec mpvc.sh prev
 
-bindsym $mod+period exec mpvc.sh toggle 
-bindsym $mod+shift+greater exec mpvc.sh next
-bindsym $mod+shift+less exec mpvc.sh prev
-bindsym $mod+Return exec alacritty -e tmux
-bindsym $mod+Shift+Return exec alacritty --class floating_terminal -e tmux
 bindsym $mod+q kill
-bindsym $mod+d exec drun.sh
-bindsym $mod+x exec xwall.sh --dmenu
-bindsym $mod+Shift+x exec xwall.sh --sxiv
-bindsym $mod+F5 exec chscreen.sh
-bindsym $mod+t exec toggle_transparency.sh
-bindsym ctrl+Shift+space exec dunstctl close
-bindsym --release $mod+ccedilla exec lock.sh
-bindsym --release $mod+Shift+ccedilla exec run_i3lock.sh off
-bindsym $mod+c exec i3cloneterm.py
-bindsym $mod+shift+s exec print.sh selc
+# bindsym --release Caps_Lock           exec pkill -SIGRTMIN+12 i3blocks
+bindsym --release $mod+equal          exec sleep .3 && xset dpms force off
+bindsym --release Num_Lock            exec pkill -SIGRTMIN+12 i3blocks
+bindsym --release $mod+ccedilla       exec lock.sh
+bindsym --release $mod+shift+ccedilla exec run_i3lock.sh off
+# bindsym $mod+period        exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks 
+# bindsym $mod+shift+less    exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
+# bindsym $mod+shift+greater exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
+bindsym $mod+period        exec mpvc.sh toggle 
+bindsym $mod+shift+greater exec mpvc.sh next
+bindsym $mod+shift+less    exec mpvc.sh prev
+bindsym $mod+Return        exec alacritty -e tmux
+bindsym $mod+shift+Return  exec alacritty --class floating_terminal -e tmux
+bindsym $mod+d             exec drun.sh
+bindsym $mod+F5            exec chscreen.sh
+bindsym $mod+t             exec toggle_transparency.sh
+bindsym $mod+c             exec i3cloneterm.py
+bindsym $mod+x             exec xwall.sh --dmenu
+bindsym $mod+shift+x       exec xwall.sh --sxiv
+bindsym $mod+shift+s       exec print.sh selc
+bindsym ctrl+shift+space   exec dunstctl close
 
 set $print_mode [p]rint [f]ocused [c]opy [C]opy-focused [s]elect [S]elect-copy
 mode "$print_mode" {
-    bindsym p exec print.sh
-    bindsym f exec print.sh focused
-    bindsym c exec print.sh copy
-    bindsym Shift+c exec print.sh copy-focused
-    bindsym s exec print.sh select
-    bindsym Shift+s exec print.sh copy-select
+    bindsym p       exec print.sh
+    bindsym f       exec print.sh focused
+    bindsym c       exec print.sh copy
+    bindsym s       exec print.sh select
+    bindsym shift+c exec print.sh copy-focused
+    bindsym shift+s exec print.sh copy-select
     
-    bindsym q mode "default"
+    bindsym q      mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -202,10 +205,9 @@ mode "$launch_mode" {
     bindsym r exec radio.sh ; mode "default"
     bindsym s exec slideshow.sh ; mode "default"
     bindsym y exec ytcli.py --history --dmenu ; mode "default"
-    bindsym shift+e exec emoticons.sh ; mode "default"
     bindsym t exec telegram ; mode "default"
 
-    bindsym q mode "default"
+    bindsym q      mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -213,17 +215,17 @@ bindsym $mod+o mode "$launch_mode"
 
 set $move_mode move
 mode "$move_mode" {
-    bindsym h exec i3_edge.py -r left
+    bindsym h       exec i3_edge.py -r left
+    bindsym j       exec i3_edge.py -r bottom 
+    bindsym k       exec i3_edge.py -r top
+    bindsym l       exec i3_edge.py -r right
     bindsym shift+h exec i3_edge.py -r bottom-left
-    bindsym j exec i3_edge.py -r bottom 
     bindsym shift+j exec i3_edge.py -r bottom-right
-    bindsym k exec i3_edge.py -r top
     bindsym shift+k exec i3_edge.py -r top-left
-    bindsym l exec i3_edge.py -r right
     bindsym shift+l exec i3_edge.py -r top-right
-    bindsym m exec i3_edge.py -r middle
+    bindsym m       exec i3_edge.py -r middle
 
-    bindsym q mode "default"
+    bindsym q      mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -236,18 +238,17 @@ mode "resize" {
     bindsym k resize shrink height 20 px
     bindsym l resize grow width 20 px
 
-    bindsym Left resize shrink width 20 px
-    bindsym Down resize grow height 20 px
-    bindsym Up resize shrink height 20 px
+    bindsym Left  resize shrink width 20 px
+    bindsym Down  resize grow height 20 px
+    bindsym Up    resize shrink height 20 px
     bindsym Right resize grow width 20 px
 
     bindsym minus resize shrink width 40 px ; resize shrink height 20 px
     bindsym equal resize grow width 40 px ; resize grow height 20 px
 
-    bindsym q mode "default"
+    bindsym q      mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
 
@@ -267,9 +268,9 @@ bar {
     strip_workspace_numbers yes
     binding_mode_indicator yes
     workspace_buttons yes
-    #separator_symbol "╱"
-    #separator_symbol "│"
-    #separator_symbol "⁝"
+    # separator_symbol "╱"
+    # separator_symbol "│"
+    # separator_symbol "⁝"
     position top
     # dock, hide
     mode dock
@@ -423,7 +424,9 @@ assign [title="radio"] $ws9
 # exec --no-startup-id $terminal -e tmux
 # exec --no-startup-id set_screen.sh
 # exec --no-startup-id toggle_transparency.sh
+exec --no-startup-id mpv --no-config --really-quiet --no-video ~/Music/Yuu_windows_theme/you_welcome.wav
 exec --no-startup-id ~/.cache/xwallpaper
 exec --no-startup-id dunst
 exec --no-startup-id qbittorrent
-exec --no-startup-id mpv --no-config --really-quiet --no-video ~/Music/Yuu_windows_theme/you_welcome.wav
+exec --no-startup-id alacritty --class newsboat -t newsboat -e newsboat
+exec --no-startup-id alacritty --class cmus -t cmus -e cmus
