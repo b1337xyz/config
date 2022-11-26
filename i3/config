@@ -139,8 +139,8 @@ bindsym $mod+shift+minus exec i3-scratchpad-dmenu.py && exec pkill -SIGRTMIN+11 
 bindcode 86  exec volupdown.sh up
 bindcode 129 exec volupdown.sh down
 bindcode 106 exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks
-bindcode 63  exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
-bindcode 82  exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
+bindcode 63  exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
+bindcode 82  exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
 
 bindsym Print exec print.sh
 bindsym XF86AudioRaiseVolume  exec volupdown.sh up
