@@ -1,5 +1,6 @@
 set $mod Mod4
 set $terminal alacritty
+ipc-socket /run/user/1000/i3/ipc.sock
 
 # set $ws1 "1: 1 "
 # set $ws2 "2: 2 "
@@ -53,7 +54,7 @@ title_align center
 # for_window [all] title_window_icon padding 5px
 # none|vertical|horizontal|both|smart
 hide_edge_borders smart
-floating_maximum_size 1280 x 720
+floating_maximum_size 1365 x 744
 # default_border normal 3
 default_border pixel 2
 # default_floating_border normal 3
@@ -337,7 +338,7 @@ client.urgent           #903f3f #ff9f9f #ffffff #903f3f #903f3f
 
 # for_window [class=".*"] border toggle
 # for_window [class=".*"] floating toggle
-for_window [window_type="pop-up"] floating enable
+for_window [window_type="popup_menu"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -359,10 +360,7 @@ for_window [class="splash"] floating enable
 for_window [class="toolbar"] floating enable
 for_window [class="Gcolor3"] floating enable
 for_window [class="confirmreset"] floating enable
-for_window [class="makebranch"] floating enable
-for_window [class="maketag"] floating enable
 for_window [class="ssh-askpass"] floating enable
-for_window [class="Wrapper-2.0"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable
@@ -389,7 +387,6 @@ for_window [class="qt5ct"] floating enable
 #for_window [class="Alacritty"] border none
 for_window [instance="Picture-in-Picture"] border none
 for_window [title="Picture-in-Picture"] border none
-for_window [class="Anydesk"] floating enable
 assign [class="Pea"] $ws3
 assign [class="Steam"] $ws8
 assign [class="firefox"] $ws2
@@ -422,11 +419,11 @@ assign [title="radio"] $ws9
 
 # exec --no-startup-id sleep 0.5 && run_i3lock.sh
 # exec --no-startup-id $terminal -e tmux
-# exec --no-startup-id set_screen.sh
 # exec --no-startup-id toggle_transparency.sh
+exec --no-startup-id set_screen.sh
 exec --no-startup-id mpv --no-config --really-quiet --no-video ~/Music/Yuu_windows_theme/you_welcome.wav
 exec --no-startup-id ~/.cache/xwallpaper
 exec --no-startup-id dunst
 exec --no-startup-id qbittorrent
 exec --no-startup-id alacritty --class newsboat -t newsboat -e newsboat
-exec --no-startup-id alacritty --class cmus -t cmus -e cmus
+exec --no-startup-id alacritty --class cmus -t cmus -e cmus.sh
