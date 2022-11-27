@@ -165,9 +165,9 @@ bindsym --release $mod+shift+ccedilla exec run_i3lock.sh off
 # bindsym $mod+period        exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks 
 # bindsym $mod+shift+less    exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
 # bindsym $mod+shift+greater exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
-bindsym $mod+period        exec mpvc.sh toggle 
-bindsym $mod+shift+greater exec mpvc.sh next
-bindsym $mod+shift+less    exec mpvc.sh prev
+bindsym $mod+period        exec mpvc.sh -s /tmp/mpvradio toggle 
+bindsym $mod+shift+greater exec mpvc.sh -s /tmp/mpvradio next
+bindsym $mod+shift+less    exec mpvc.sh -s /tmp/mpvradio prev
 bindsym $mod+Return        exec alacritty -e tmux
 bindsym $mod+shift+Return  exec alacritty --class floating_terminal -e tmux
 bindsym $mod+d             exec drun.sh
@@ -423,7 +423,6 @@ assign [title="radio"] $ws9
 exec --no-startup-id set_screen.sh
 exec --no-startup-id mpv --no-config --really-quiet --no-video ~/Music/Yuu_windows_theme/you_welcome.wav
 exec --no-startup-id ~/.cache/xwallpaper
-exec --no-startup-id dunst
 exec --no-startup-id qbittorrent
 exec --no-startup-id alacritty --class newsboat -t newsboat -e newsboat
 exec --no-startup-id alacritty --class cmus -t cmus -e cmus.sh
