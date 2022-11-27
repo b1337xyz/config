@@ -1,11 +1,11 @@
 [global]
     monitor = 0
-    follow = none
+    follow = mouse
     width = 512
-    height = 400
+    height = 280
     gap_size = 0
     origin = bottom-right
-    offset = 4x4
+    offset = 4x24
     scale = 0
     notification_limit = 0
     progress_bar = true
