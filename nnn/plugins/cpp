@@ -1,0 +1,9 @@
+#!/bin/sh
+IFS="$(printf '%b_' '\n')"; IFS="${IFS%_}" # protect trailing \n
+SELECTION="$HOME/.config/nnn/.selection"
+
+if [ -s "$SELECTION" ];then
+    tr '\0' '\n' < "$SELECTION"
+else
+    echo -n "$2/$1"
+fi | xclip -sel clip

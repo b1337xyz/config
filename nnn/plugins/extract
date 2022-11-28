@@ -1,0 +1,17 @@
+#!/bin/sh
+
+case "$1" in
+    *.zip) unzip "$1" -d "${1%.*}" && rm -fi "$1";;
+    *.rar) unrar x "$1" "${1%.*}/" && rm -fi "$1";;
+    *.tar.*) tar xaf "$1" ;;
+    *.bz2) bunzip2 "$1" ;;
+    *.gz) gunzip "$1" ;;
+    *.tar) tar xvf "$1" ;;
+    *.tbz2) tar xvjf "$1" ;;
+    *.tgz) tar xvzf "$1" ;;
+    *.Z) uncompress "$1" ;;
+    *.7z) 7z x "$1" ;;
+    *) printf "'%s' cannot be extracted\n" "$1" ; read ;;
+esac
+
+
