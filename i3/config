@@ -142,6 +142,15 @@ bindcode 129 exec volupdown.sh down
 bindcode 106 exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks
 bindcode 63  exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
 bindcode 82  exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
+# 80  KP_Up
+# 83  KP_Left
+# 85  KP_Right
+# 88  KP_Down
+bindcode 84       exec i3_edge.py -r center
+bindcode 83       exec i3_edge.py -r left
+bindcode 85       exec i3_edge.py -r right
+bindcode 80       exec i3_edge.py -r up
+bindcode 88       exec i3_edge.py -r down
 
 bindsym Print exec print.sh
 bindsym XF86AudioRaiseVolume  exec volupdown.sh up
@@ -214,22 +223,6 @@ mode "$launch_mode" {
 }
 bindsym $mod+o mode "$launch_mode"
 
-set $move_mode move
-mode "$move_mode" {
-    bindsym h       exec i3_edge.py -r left
-    bindsym j       exec i3_edge.py -r bottom 
-    bindsym k       exec i3_edge.py -r top
-    bindsym l       exec i3_edge.py -r right
-    bindsym m       exec i3_edge.py -r middle
-    bindsym minus resize shrink width 40 px ; resize shrink height 20 px
-    bindsym equal resize grow width 40 px ; resize grow height 20 px
-
-    bindsym q      mode "default"
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-}
-bindsym $mod+m mode "$move_mode"
-
 mode "resize" {
     bindsym backslash resize shrink left 20 px
     bindsym h resize shrink width 20 px
@@ -262,7 +255,7 @@ bar {
     # set $font FantasqueSansMono Nerd Font 12
     # set $font monospace 10
     font pango: $font
-    i3bar_command i3bar --transparency
+    # i3bar_command i3bar --transparency
     status_command i3blocks -c ~/.config/i3blocks/config
     strip_workspace_numbers yes
     binding_mode_indicator yes
@@ -276,7 +269,7 @@ bar {
     tray_output primary
     output primary
 
-    set $b0 #2626268f
+    set $b0 #262626
     set $b1 #eeeeee
     set $b2 #999999
     set $b3 #000000
@@ -301,7 +294,7 @@ bar {
     # font pango: SauceCodePro Nerd Font 10
     font pango: $font
     status_command i3blocks -c ~/.config/i3blocks/bottom
-    i3bar_command i3bar --transparency
+    # i3bar_command i3bar --transparency
     workspace_buttons no
     # separator_symbol "│"
     position bottom
