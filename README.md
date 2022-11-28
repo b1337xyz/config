@@ -7,6 +7,6 @@
  /   |  |  -\    
 /_-''    ''-_\    
 ```
-![Screenshot](screenshot.jpg)
+![Screenshot](screenshot.png)
 
 [Wallpapers](https://gitlab.com/b1337xyz/wallpapers)
