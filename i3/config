@@ -221,6 +221,8 @@ mode "$move_mode" {
     bindsym k       exec i3_edge.py -r top
     bindsym l       exec i3_edge.py -r right
     bindsym m       exec i3_edge.py -r middle
+    bindsym minus resize shrink width 40 px ; resize shrink height 20 px
+    bindsym equal resize grow width 40 px ; resize grow height 20 px
 
     bindsym q      mode "default"
     bindsym Escape mode "default"
