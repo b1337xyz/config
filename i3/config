@@ -220,10 +220,6 @@ mode "$move_mode" {
     bindsym j       exec i3_edge.py -r bottom 
     bindsym k       exec i3_edge.py -r top
     bindsym l       exec i3_edge.py -r right
-    bindsym shift+h exec i3_edge.py -r bottom-left
-    bindsym shift+j exec i3_edge.py -r bottom-right
-    bindsym shift+k exec i3_edge.py -r top-left
-    bindsym shift+l exec i3_edge.py -r top-right
     bindsym m       exec i3_edge.py -r middle
 
     bindsym q      mode "default"
