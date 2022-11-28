@@ -1,9 +1,6 @@
 #!/bin/sh
-case "$BLOCK_BUTTON" in
-    1|2)
-        xterm -name floating_terminal -e 'nload -i 192000 -o 80000 -u K wlan0'
-    ;;
-esac
+[ -n "$BLOCK_BUTTON" ] && command -v nload &&
+    xterm -name floating_terminal -e 'nload -i 192000 -o 80000 -u K wlan0' &
 
 IFACE=wlan0
 CACHE=~/.cache/bandwidth

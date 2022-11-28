@@ -1,4 +1,4 @@
 #!/bin/sh
-test -n "$BLOCK_BUTTON" && xterm -name floating_terminal -e top -o %MEM
+[ -n "$BLOCK_BUTTON" ] && xterm -name floating_terminal -e top -o %MEM
 
 command free -m | awk '/^Mem/{printf("MEM %s/%s\n", $2 - $7, $2)}'
