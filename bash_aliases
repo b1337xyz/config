@@ -59,6 +59,7 @@ alias lx='ls -X' \
 
 ### shortcuts
 alias clock='tty-clock -scC 7' \
+    F='less +F' \
     cmd='command' \
     +x='chmod u+x' \
     -x='chmod a-x' \
