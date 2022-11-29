@@ -24,3 +24,5 @@ set vi-ins-mode-string ""
 "\e[4~": end-of-line
 "\C-k": kill-line
 "\C-u": backward-kill-line
+"\C-p": history-search-backward
+"\C-n": history-search-forward
