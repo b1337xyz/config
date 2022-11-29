@@ -7,3 +7,5 @@ if [ -s "$SELECTION" ];then
 else
     echo -n "$2/$1"
 fi | xclip -sel clip
+
+notify-send -i clipman "[nnn] ${0##*/}" "$(xclip -o)"
