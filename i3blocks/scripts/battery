@@ -23,7 +23,7 @@ case "$_status" in
                 "Battery discharging!" "$(acpi)"
             
             if [ -f "$audio" ];then
-                mpv --no-config --no-video --really-quiet "$audio"
+                mpv --no-config --no-video --really-quiet --volume=125 "$audio"
             fi
 
         else
