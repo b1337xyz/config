@@ -1,4 +1,7 @@
 #!/bin/sh
+[ -n "$BLOCK_BUTTON" ] && xterm -name floating_terminal -e \
+    bash -c 'df -hT -x tmpfs -x devtmpfs; read -sn1'
+
 df -h -x tmpfs -x devtmpfs | awk '!/^Filesystem|\/boot$/{
     if ($6 != "/") {
         split($6, a, "/")
