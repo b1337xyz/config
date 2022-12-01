@@ -23,7 +23,10 @@ case "$_status" in
                 "Battery discharging!" "$(acpi)"
             
             if [ -f "$audio" ];then
-                mpv --no-config --no-video --really-quiet --volume=125 "$audio"
+                pacmd list-sink-inputs | awk '/index:/{print $2}' | xargs -rI{} pacmd set-sink-input-mute {} 1
+                # mpv --no-config --no-video --really-quiet "$audio"
+                aplay -q "$audio"
+                pacmd list-sink-inputs | awk '/index:/{print $2}' | xargs -rI{} pacmd set-sink-input-mute {} 0
             fi
 
         else

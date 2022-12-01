@@ -4,7 +4,7 @@ export BAT_STYLE=plain
 export BAT_THEME="Sublime Snazzy"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export HISTCONTROL='ignoreboth:erasedups'
-export HISTIGNORE='history:rm:ls:cd:sensors:top:btm:uptime:uptime -p'
+export HISTIGNORE='history:pwd:rm:ls:cd:sensors:top:btm:uptime:uptime -p'
 export HISTSIZE=9000
 export LESS=-Ri
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
@@ -27,6 +27,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 export TERM=${TERM:-xterm-256color}
 export TODOFILE="$XDG_CACHE_HOME"/.todo
 export FZF_DEFAULT_OPTS='--no-border --no-separator'
+export PROMPT_DIRTRIM=2
 
 source ~/.config/dircolors
 source ~/.config/bash_aliases
@@ -167,7 +168,7 @@ prompt() {
     local perm=$(stat -c '%a' .)
     PS1=""
     # PS1="${bar}(${red}\V${bar})-"
-    PS1="${bar}(${grn}${perm}${bar})-"
+    # PS1="${bar}(${grn}${perm}${bar})-"
     # test -n "$fsize" && PS1+="(${red}${fsize}${rst}${bar})-"
     # PS1+="($rst"
     # test -n "$file_count" && PS1+="${file_count::-2}, "
@@ -179,12 +180,14 @@ prompt() {
     PS1+="\n"
     test -n "$VIRTUAL_ENV" && PS1+="$VIRTUAL_ENV_PROMPT "
     PS1+="\${timer_show}${blu}\w${rst}"
+    # PS1+="\${timer_show}"
     PS1+="$git_branch"
     if test "${out:-0}" -eq 0;then
         PS1+="${grn}>$rst "
     else
         local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
-        [ -f "$beep" ] && { mpv --no-config --no-video --really-quiet "$beep" & disown; }
+        # [ -f "$beep" ] && { mpv --no-config --no-video --really-quiet "$beep" & disown; }
+        [ -f "$beep" ] && { aplay -q "$beep" & disown; }
         PS1+=" (${red}${out}${rst}) ${red}!$rst "
         # PS1+="${red}>$rst "
     fi

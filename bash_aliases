@@ -19,7 +19,8 @@ alias ls='ls -vNh --color' \
     xclip='xclip -sel clip' \
     ncdu='ncdu -x --color off --graph-style hash' \
     dosbox='dosbox -conf "$XDG_CONFIG_HOME"/dosbox/dosbox.conf' \
-    top='top -u $USER'
+    top='top -u $USER' \
+    yay='yay --removemake'
 
 ### sudo
 alias mount='sudo mount' \
@@ -58,7 +59,7 @@ alias lx='ls -X' \
     loh='ls -d .[A-z]*'
 
 ### shortcuts
-alias clock='tty-clock -scC 7' \
+alias clock='tty-clock -cC 7 -f %d.%m.%y' \
     F='less +F' \
     cmd='command' \
     +x='chmod u+x' \
