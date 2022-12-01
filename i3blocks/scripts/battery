@@ -22,12 +22,12 @@ case "$_status" in
             notify-send -i "$low_icon" \
                 "Battery discharging!" "$(acpi)"
             
-            if [ -f "$audio" ];then
-                pacmd list-sink-inputs | awk '/index:/{print $2}' | xargs -rI{} pacmd set-sink-input-mute {} 1
-                # mpv --no-config --no-video --really-quiet "$audio"
-                aplay -q "$audio"
-                pacmd list-sink-inputs | awk '/index:/{print $2}' | xargs -rI{} pacmd set-sink-input-mute {} 0
-            fi
+            # if [ -f "$audio" ];then
+            #     pacmd list-sink-inputs | awk '/index:/{print $2}' | xargs -rI{} pacmd set-sink-input-mute {} 1
+            #     # mpv --no-config --no-video --really-quiet "$audio"
+            #     aplay -q "$audio"
+            #     pacmd list-sink-inputs | awk '/index:/{print $2}' | xargs -rI{} pacmd set-sink-input-mute {} 0
+            # fi
 
         else
             printf 'BAT %s%%\n' "$capacity"

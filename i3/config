@@ -315,27 +315,27 @@ bar {
     }
 }
 
-bar {
-    font pango: $font
-    workspace_buttons yes
-    position top
-    output nonprimary
-    mode hide
-    binding_mode_indicator no
-    tray_output none
-    strip_workspace_numbers yes
-    colors {
-        background $b0
-        statusline #000000
-        separator  #888888
+# bar {
+#     font pango: $font
+#     workspace_buttons yes
+#     position top
+#     output nonprimary
+#     mode hide
+#     binding_mode_indicator no
+#     tray_output none
+#     strip_workspace_numbers yes
+#     colors {
+#         background $b0
+#         statusline #000000
+#         separator  #888888
 
-        # class              border background color
-        focused_workspace    $b1 $b1 $b3
-        inactive_workspace   $b1 $b1 $b2
-        active_workspace     $b1 $b1 $b2
-        urgent_workspace     $b1 $b1 $b4
-    }
-}
+#         # class              border background color
+#         focused_workspace    $b1 $b1 $b3
+#         inactive_workspace   $b1 $b1 $b2
+#         active_workspace     $b1 $b1 $b2
+#         urgent_workspace     $b1 $b1 $b4
+#     }
+# }
 
 # blue
 # set $c0 #2662DF
@@ -405,6 +405,7 @@ for_window [class="qt5ct"] floating enable
 #for_window [class="Alacritty"] border none
 for_window [instance="Picture-in-Picture"] border none
 for_window [title="Picture-in-Picture"] border none
+for_window [instance="clock"] floating enable
 assign [class="Pea"] $ws3
 assign [class="Steam"] $ws8
 assign [class="firefox"] $ws2
@@ -434,13 +435,14 @@ assign [instance="cmus"] $ws9
 assign [instance="Spotify"] $ws9
 assign [instance="download"] $ws0
 assign [title="radio"] $ws9
+assign [instance="clock"] $ws1
 
 # exec --no-startup-id sleep 0.5 && run_i3lock.sh
 # exec --no-startup-id $terminal -e tmux
 # exec --no-startup-id toggle_transparency.sh
+exec --no-startup-id xterm -title clock -name clock -geometry 42x11-5-5 -e tty-clock -cC 7 -f %d.%m.%y
 exec --no-startup-id set_screen.sh
 exec --no-startup-id mpv --no-config --really-quiet --no-video ~/Music/Yuu_windows_theme/you_welcome.wav
 exec --no-startup-id ~/.cache/xwallpaper
 exec --no-startup-id qbittorrent
 exec --no-startup-id alacritty --class newsboat -t newsboat -e newsboat
-exec --no-startup-id alacritty --class cmus -t cmus -e cmus.sh

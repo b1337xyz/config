@@ -185,9 +185,9 @@ prompt() {
     if test "${out:-0}" -eq 0;then
         PS1+="${grn}>$rst "
     else
-        local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
+        # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
         # [ -f "$beep" ] && { mpv --no-config --no-video --really-quiet "$beep" & disown; }
-        [ -f "$beep" ] && { aplay -q "$beep" & disown; }
+        # [ -f "$beep" ] && { aplay -q "$beep" & disown; }
         PS1+=" (${red}${out}${rst}) ${red}!$rst "
         # PS1+="${red}>$rst "
     fi
