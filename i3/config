@@ -442,7 +442,6 @@ assign [instance="clock"] $ws1
 # exec --no-startup-id toggle_transparency.sh
 exec --no-startup-id xterm -title clock -name clock -geometry 42x11-5-5 -e tty-clock -cC 7 -f %d.%m.%y
 exec --no-startup-id set_screen.sh
-exec --no-startup-id mpv --no-config --really-quiet --no-video ~/Music/Yuu_windows_theme/you_welcome.wav
 exec --no-startup-id ~/.cache/xwallpaper
 exec --no-startup-id qbittorrent
 exec --no-startup-id alacritty --class newsboat -t newsboat -e newsboat

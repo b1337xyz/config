@@ -54,9 +54,9 @@
     frame_color = "#888888"
     layer = overlay
 
-[fullscreen_show_critical]
-    msg_urgency = critical
-    fullscreen = show
+# [fullscreen_show_critical]
+#     msg_urgency = critical
+#     fullscreen = show
 
 [fullscreen_low]
     msg_urgency = low
