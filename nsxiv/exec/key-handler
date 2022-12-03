@@ -1,0 +1,63 @@
+#!/bin/sh
+tmpfile=$(mktemp)
+end() { rm "$tmpfile"; }
+trap end EXIT
+
+rotate() {
+    degree="$1"
+    tr '\n' '\0' | xargs -r0 realpath | sort -u | while read -r file; do
+        case "$(file -b -i "$file")" in
+            image/jpeg*)
+                jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
+            *) mogrify  -rotate "$degree" "$file" ;;
+        esac
+    done
+}
+
+case "$1" in
+    w) tr \\n \\0 | xargs -0 xwall.sh ;;
+    t) tr \\n \\0 | xargs -0 xwall.sh --tile ;;
+    T) tr \\n \\0 | xargs -0 trash.sh ;;
+    n) xclip -i -filter | tr \\n \\0 | xclip -i -sel clip ;;
+    x)
+        read -r file
+        if [ "${file##*.}" != "png" ];then
+            convert "$file" PNG:- | xclip -sel clip -target image/png
+        else
+            xclip -sel clip -target image/png "$file"
+        fi
+    ;;
+    g) tr \\n \\0 | xargs -0 gimp & ;;
+    p) head -1 | tr \\n \\0 | xargs -0 realpath | tr -d \\n | xclip -sel clip ;;
+    y) 
+        cat > "$tmpfile"
+        target=$(find ~/Pictures -type d | dmenu -c -l 15 -i)
+        [ -z "$target" ] && exit 0
+        while read -r i;do
+            [ -f "$i" ] || continue
+            cp -v "$i" "$target"
+        done < "$tmpfile"
+    ;;
+    P)
+        grep -oP '[^/]*\.(mkv|webm|mp4|avi)(?=\.jpg)' |
+            mpv --playlist=- --really-quiet=yes >/dev/null 2>&1
+    ;;
+    m)
+        cat > "$tmpfile"
+        target=$(find ~/Pictures ~/Videos/wallpapers -type d | dmenu -c -l 15 -i)
+        [ -z "$target" ] && exit 0
+        while read -r i;do
+            [ -f "$i" ] || continue
+            mv -v "$i" "$target"
+        done < "$tmpfile"
+    ;;
+    u)
+        head -1 | tr \\n \\0 | xargs -r0I{} curl -F'file=@{}' https://0x0.st | xclip -sel c
+        notify-send -i xfce4-clipman-plugin "Clipboard" "$(xclip -sel c -o)"
+    ;;
+    d) while read -r i;do rm -v "$i" ;done ;;
+    v) head -1 | tr \\n \\0 | xargs -r0 vbg.sh ;;
+    comma)  rotate 270 ;;
+    period) rotate  90 ;;
+    slash)  rotate 180 ;;
+esac
