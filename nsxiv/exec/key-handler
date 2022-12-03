@@ -44,7 +44,7 @@ case "$1" in
     ;;
     m)
         cat > "$tmpfile"
-        target=$(find ~/Pictures ~/Videos/wallpapers -type d | dmenu -c -l 15 -i)
+        target=$(find ~/Pictures -type d | dmenu -c -l 15 -i)
         [ -z "$target" ] && exit 0
         while read -r i;do
             [ -f "$i" ] || continue
