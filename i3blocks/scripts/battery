@@ -17,7 +17,7 @@ case "$_status" in
         fi
     ;;
     *)
-        if [ "$capacity" -lt 15 ];then
+        if [ "$capacity" -lt 20 ];then
             printf 'BAT %s%%\n' "$capacity"
             notify-send -u critical -i "$low_icon" \
                 "Battery discharging!" "$(acpi)"

@@ -5,7 +5,7 @@ trap end EXIT
 
 rotate() {
     degree="$1"
-    tr '\n' '\0' | xargs -r0 realpath | sort -u | while read -r file; do
+    tr '\n' '\0' | xargs -0 realpath | sort -u | while read -r file; do
         case "$(file -b -i "$file")" in
             image/jpeg*)
                 jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;

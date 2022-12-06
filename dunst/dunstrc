@@ -1,6 +1,6 @@
 [global]
     monitor = 0
-    follow = mouse
+    follow = none
     width = 512
     height = 280
     gap_size = 0
@@ -52,11 +52,10 @@
     mouse_right_click = close_all
     frame_width = 3
     frame_color = "#888888"
-    layer = overlay
 
-# [fullscreen_show_critical]
-#     msg_urgency = critical
-#     fullscreen = show
+[fullscreen_critical]
+    msg_urgency = critical
+    fullscreen = show
 
 [fullscreen_low]
     msg_urgency = low
