@@ -230,18 +230,20 @@ bindsym $mod+o mode "$launch_mode"
 
 mode "resize" {
     bindsym backslash resize shrink left 20 px
-    bindsym h resize shrink width 20 px
-    bindsym j resize grow height 20 px
-    bindsym k resize shrink height 20 px
-    bindsym l resize grow width 20 px
+    bindsym h exec i3resize.py shrink width 20 px
+    bindsym j exec i3resize.py grow height 20 px
+    bindsym k exec i3resize.py shrink height 20 px
+    bindsym l exec i3resize.py grow width 20 px
 
     bindsym Left  resize shrink width 20 px
     bindsym Down  resize grow height 20 px
     bindsym Up    resize shrink height 20 px
     bindsym Right resize grow width 20 px
 
-    bindsym minus resize shrink width 40 px ; resize shrink height 20 px
-    bindsym equal resize grow width 40 px ; resize grow height 20 px
+    # bindsym minus resize shrink width 40 px ; resize shrink height 20 px
+    # bindsym equal resize grow width 40 px ; resize grow height 20 px
+    bindsym minus exec i3resize.py shrink width 40 px ; exec i3resize.py shrink height 20 px
+    bindsym equal exec i3resize.py grow width 40 px   ; exec i3resize.py grow height 20 px
 
     bindsym q      mode "default"
     bindsym Return mode "default"
