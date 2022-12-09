@@ -411,6 +411,7 @@ for_window [instance="clock"] floating enable
 assign [class="Pea"] $ws3
 assign [class="Steam"] $ws8
 assign [class="firefox"] $ws2
+assign [class="Conky"] $ws1
 assign [class="Chromium"] $ws2
 assign [class="Firefox-esr"] $ws2
 assign [class="FreeTube"] $ws2
@@ -442,7 +443,7 @@ assign [instance="clock"] $ws1
 # exec --no-startup-id sleep 0.5 && run_i3lock.sh
 # exec --no-startup-id $terminal -e tmux
 # exec --no-startup-id toggle_transparency.sh
-exec --no-startup-id xterm -title clock -name clock -geometry 42x11-5-5 -e tty-clock -cC 7 -f %d.%m.%y
+exec --no-startup-id conky
 exec --no-startup-id set_screen.sh
 exec --no-startup-id ~/.cache/xwallpaper
 exec --no-startup-id qbittorrent

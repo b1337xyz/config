@@ -19,7 +19,7 @@ interval=15
 [bandwidth]
 markup=pango
 command=~/.config/i3blocks/scripts/bandwidth
-min_width=" DL 000K UP 000K "
+min_width=" DL 1000K UP 1000K "
 interval=5
 
 [temp]

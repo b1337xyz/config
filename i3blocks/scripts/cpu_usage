@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-test -n "$BLOCK_BUTTON" && alacritty --class floating_terminal -e top -u "$USER"
+[ "$BLOCK_BUTTON" -eq 1 ] && xterm -name floating_terminal -e top -u "$USER"
 
 cpu_file=/tmp/.cpu_usage
 [ -f "$cpu_file" ] && IFS=' ' read -r -a arr < "$cpu_file"
