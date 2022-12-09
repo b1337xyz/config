@@ -21,7 +21,8 @@ case "$_status" in
             printf 'BAT %s%%\n' "$capacity"
             notify-send -u critical -i "$low_icon" \
                 "Battery discharging!" "$(acpi)"
-            
+
+            # i3-msg fullscreen disable
             # if [ -f "$audio" ];then
             #     pacmd list-sink-inputs | awk '/index:/{print $2}' | xargs -rI{} pacmd set-sink-input-mute {} 1
             #     aplay -q "$audio"
