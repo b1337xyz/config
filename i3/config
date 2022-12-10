@@ -44,7 +44,7 @@ set $ws5 "5: tmp "
 set $ws6 "6: tmp "
 set $ws7 "7: iso "
 set $ws8 "8: exe "
-set $ws9 "9: wav "
+set $ws9 "9: snd "
 set $ws0 "10: bit "
 
 # default|stacking|tabbed
