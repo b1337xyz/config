@@ -28,14 +28,10 @@ window:
 
   dynamic_padding: true
   decorations: full
-  opacity: 0.80
+  opacity: 1.0
 
 font:
   normal:
-    # family: monospace 
-    # family: SauceCodePro Nerd Font
-    # family: More Perfect DOS VGA
-    # family: Perfect DOS VGA 437 Win
     # family: Source Code Pro
     # family: mononoki Nerd Font Mono
     # family: Iosevka

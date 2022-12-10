@@ -2,10 +2,10 @@
 
 Xcursor.theme: Adwaita
 Xcursor.size: 21
+XTerm*metaSendsEscape:  true
 XTerm*geometry: 95x24
 XTerm*selectToClipboard: true
-XTerm.vt100.faceName: Comic Mono:style=Normal:antialias=true
-XTerm.vt100.boldFont: Comic Mono:style=Bold:antialias=true
+XTerm.vt100.faceName: Source Code Pro:antialias=true:autohint=true
 XTerm.vt100.faceSize: 12
 XTerm*termName: xterm-256color
 XTerm*iconName: terminal
