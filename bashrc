@@ -82,6 +82,7 @@ fzfgov() {
 }
 
 if ! [[ "$TERM" =~ xterm* ]];then
+    # https://sparky.rice.edu//~hartigan/del.html
     bind -x '"\C-x": expand_files'
     bind -x '"\C-h": fzfhist'
     bind -x '"\C-g": fzfgov' 
