@@ -211,9 +211,9 @@ bindsym $mod+p mode "$print_mode"
 set $launch_mode [a]nime [f]irefox [q]ute [t]elegram [p]ulsemixer [e]xplorer [r]adio
 mode "$launch_mode" {
     # bindsym c exec alacritty --class cmus --title cmus -e cmus ; mode "default"
-    bindsym e exec xterm -name floating_terminal -e ranger; mode "default"
-    bindsym a exec xterm -e fzfanime.sh ; mode "default"
-    bindsym p exec xterm -name floating_terminal -e pulsemixer && pkill -SIGRTMIN+10 i3blocks; mode "default"
+    bindsym e exec ts -n floating_terminal -- ranger; mode "default"
+    bindsym a exec ts -- fzfanime.sh ; mode "default"
+    bindsym p exec ts -n floating_terminal -- pulsemixer && pkill -SIGRTMIN+10 i3blocks; mode "default"
     bindsym f exec firefox ; mode "default"
     bindsym k exec passc.sh ; mode "default"
     bindsym q exec qutebrowser ; mode "default"
@@ -448,4 +448,4 @@ exec --no-startup-id conky
 exec --no-startup-id set_screen.sh
 exec --no-startup-id ~/.cache/xwallpaper
 exec --no-startup-id qbittorrent
-exec --no-startup-id xterm -name newsboat -title newsboat -e newsboat
+exec --no-startup-id ts -n newsboat -t newsboat -- newsboat

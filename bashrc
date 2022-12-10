@@ -1,4 +1,5 @@
 [[ $- != *i* ]] && return
+
 # export GPG_TTY=$(tty)
 export BAT_STYLE=plain
 export BAT_THEME="Sublime Snazzy"
@@ -64,7 +65,6 @@ expand_files() {
     READLINE_LINE="${cmd:1}"
     READLINE_POINT=${#cmd}
 }
-bind -x '"\C-x": expand_files'
 fzfhist() {
     cmd=$(
         history | sed 's/^ *\?[0-9]* *//' | awk 'length($0) > 2' |
@@ -74,14 +74,18 @@ fzfhist() {
     READLINE_LINE="$cmd"
     READLINE_POINT=${#cmd}
 }
-bind -x '"\C-h": fzfhist'
 fzfgov() {
     current=$(</sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
     awk '{for (i=1;i<=NF;++i) print $i}' \
         /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors |
         fzf --header "current: $current" --height 8 | xargs -ro sudo cpupower frequency-set -g 
 }
-bind -x '"\C-g": fzfgov' 
+
+if ! [[ "$TERM" =~ xterm* ]];then
+    bind -x '"\C-x": expand_files'
+    bind -x '"\C-h": fzfhist'
+    bind -x '"\C-g": fzfgov' 
+fi
 
 cd() {
     # if autocd is enabled
@@ -225,3 +229,4 @@ fixkbd() {
     # xmodmap -e "keycode 81 = bar backslash " # KP_Prior (9)
     # xmodmap -e "keycode 91 = asciitilde"  # KP_Delete
 }
+
