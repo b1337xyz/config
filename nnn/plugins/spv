@@ -3,6 +3,7 @@
 PREVIEW_PID=/tmp/nnn_preview.pid
 FIFO_PID=/tmp/nnn_fifo.pid
 NNN_FIFO=${NNN_FIFO:-/tmp/nnn.fifo}
+UEBERZUG_FIFO=/tmp/nnn.ueberzug.fifo
 
 pidkill() { [ -f "$1" ] && kill "$(cat "$1")" >/dev/null 2>&1; }
 fifo_pager() {
@@ -28,9 +29,17 @@ fifo_pager() {
 
     rm "$tmpfifopath"
 }
+drawimg() { 
+    path=$1
+    read height width < <(</dev/tty stty size)
+    printf '{"action": "remove", "identifier": "test"}\n' > "$UEBERZUG_FIFO"
+    printf '{"action": "add", "identifier": "test", "x": %d, "y": %d, "width": "%d", "height": "%d", "scaler": "cover", "path": "%s"}\n' \
+        "${x:-0}" "${y:-0}" "$width" "$height" "$path" > "$UEBERZUG_FIFO"
+}
 handle_mime() {
     mime=$(file -Lbi -- "$1" | cut -d';' -f1)
     case "$mime" in
+        image*) drawimg "$1" ;;
         text/*) fifo_pager bat "$1" ;;
         */x-bittorrent) fifo_pager aria2c -S "$1" ;;
         *) file -b -- "$1" ;;
@@ -62,12 +71,18 @@ preview_fifo() {
         [ -n "$sel" ] && preview "$sel"
     done < "$NNN_FIFO"
 }
+end() {
+    jobs -p | xargs -r kill
+    rm "$PREVIEW_PID" "$FIFO_PID" "$UEBERZUG_FIFO" 2>/dev/null
+}
 
 if [ "$PREVIEW_MODE" ];then
+    mkfifo "$UEBERZUG_FIFO"
+    tail --follow "$UEBERZUG_FIFO" | ueberzug layer --parser json &
     preview "$1"
     preview_fifo &
     printf '%s' "$!" > "$FIFO_PID"
-    trap 'rm "$PREVIEW_PID" "$FIFO_PID" 2>/dev/null' EXIT INT HUP
+    trap end EXIT INT HUP
     wait "$!" 
 else
     if pidkill "$FIFO_PID";then
@@ -76,7 +91,7 @@ else
         tmux split-window -h -d -l '60%' -e "NNN_FIFO=$NNN_FIFO" \
             -e "FIFO_PID=$FIFO_PID"   -e "PREVIEW_PID=$PREVIEW_PID" \
             -e "BAT_STYLE=$BAT_STYLE" -e "BAT_THEME=$BAT_THEME" \
-            -e "PREVIEW_MODE=1" "$0" "$1" &
+            -e "PREVIEW_MODE=1" -e "UEBERZUG_FIFO=$UEBERZUG_FIFO" "$0" "$1" &
     fi
 fi
 
