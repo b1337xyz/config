@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Remove
+Operation = Install
+Type = Package
+Target = *
+
+[Action]
+Description = Package count
+When = PostTransaction
+Exec = /bin/sh -c '/usr/bin/pacman -Qq | wc -l > /opt/paccount'
