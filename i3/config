@@ -1,11 +1,4 @@
 # i3 config file (v4)
-
-include settings
-include bindings
-include rules
-include autostart
-include light_theme
-
 set $mod Mod4
 
 # set $ws1 "1: 一 "
@@ -32,12 +25,19 @@ set $mod Mod4
 # set $ws0 "10: X "
 
 set $ws1 "1: cmd "
-set $ws2 "2: web "
-set $ws3 "3: soc "
+set $ws2 "2: avi "
+set $ws3 "3: web "
 set $ws4 "4: rss "
 set $ws5 "5: tmp "
 set $ws6 "6: tmp "
-set $ws7 "7: iso "
+set $ws7 "7: cfg "
 set $ws8 "8: exe "
 set $ws9 "9: snd "
 set $ws0 "10: bit "
+
+include settings
+include bindings
+include rules
+include autostart
+include light_theme
+
