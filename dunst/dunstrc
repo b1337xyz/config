@@ -1,5 +1,5 @@
 [global]
-    monitor = 0
+    monitor = 1
     follow = none
     width = 400
     height = 280
