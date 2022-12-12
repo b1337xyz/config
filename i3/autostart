@@ -1,14 +1,12 @@
-set $exec exec --no-startup-id
-set $execa exec_always --no-startup-id
-
-# $exec sleep 0.5 && run_i3lock.sh
-# $exec $terminal -e tmux
-# $exec toggle_transparency.sh
-$exec i3_smart_resize.py
-$exec conky
-$exec set_screen.sh
-$exec ~/.cache/xwallpaper
-$exec qbittorrent
-$exec ts -n newsboat -t newsboat -- newsboat
+# exec --no-startup-id sleep 0.5 && run_i3lock.sh
+# exec --no-startup-id $terminal -e tmux
+# exec --no-startup-id toggle_transparency.sh
+exec --no-startup-id i3_smart_resize.py
+exec --no-startup-id conky
+exec --no-startup-id set_screen.sh
+exec --no-startup-id ~/.cache/xwallpaper
+exec --no-startup-id qbittorrent
+exec --no-startup-id ts -n newsboat -t newsboat -- newsboat
+exec --no-startup-id /bin/sh -c "systemd-analyze | grep -oP '(?<= = )\d.*s' > /tmp/.boot-time"
 
 # vim: ft=i3config
