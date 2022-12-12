@@ -1,0 +1,105 @@
+# set $bar_font Source Code Pro 9
+# set $bar_font mononoki Nerd Font 10
+# set $bar_font SauceCodePro Nerd Font 10
+# set $bar_font Hack Nerd Font Mono 9
+# set $bar_font Perfect DOS VGA 437 Win 11
+set $bar_font Iosevka Nerd Font 10
+# set $bar_font SauceCodePro Nerd Font 10
+# set $bar_font FantasqueSansMono Nerd Font 12
+# set $bar_font monospace 10
+
+bar {
+    font pango: $bar_font
+    # i3bar_command i3bar --transparency
+    status_command i3blocks -c ~/.config/i3blocks/config
+    strip_workspace_numbers yes
+    binding_mode_indicator yes
+    workspace_buttons yes
+    # separator_symbol "╱"
+    # separator_symbol "│"
+    # separator_symbol "⁝"
+    position top
+    # dock, hide
+    mode dock
+    tray_output primary
+    output primary
+
+    set $b0 #262626
+    set $b1 #eeeeee
+    set $b2 #999999
+    set $b3 #000000
+    set $b4 #900000
+
+    colors {
+        background $b0
+        statusline $b3
+        separator  $b2
+
+        # class              border background color
+        focused_workspace    $b1 $b1 $b3
+        inactive_workspace   $b1 $b1 $b2
+        active_workspace     $b1 $b1 $b2
+        urgent_workspace     $b1 $b1 $b4
+        binding_mode         $b1 $b1 $b3
+    }
+}
+
+bar {
+    font pango: $bar_font
+    status_command i3blocks -c ~/.config/i3blocks/bottom
+    # i3bar_command i3bar --transparency
+    workspace_buttons no
+    # separator_symbol "│"
+    position bottom
+    output primary
+    mode dock
+    binding_mode_indicator no
+    tray_output none
+    colors {
+        background $b0
+        statusline #000000
+        separator  #888888
+        binding_mode         $b1 $b1 $b3
+    }
+}
+
+# bar {
+#     font pango: $bar_font
+#     workspace_buttons yes
+#     position top
+#     output nonprimary
+#     mode hide
+#     binding_mode_indicator no
+#     tray_output none
+#     strip_workspace_numbers yes
+#     colors {
+#         background $b0
+#         statusline #000000
+#         separator  #888888
+
+#         # class              border background color
+#         focused_workspace    $b1 $b1 $b3
+#         inactive_workspace   $b1 $b1 $b2
+#         active_workspace     $b1 $b1 $b2
+#         urgent_workspace     $b1 $b1 $b4
+#     }
+# }
+
+# blue
+# set $c0 #2662DF
+# set $c1 #0E99EE
+# set $c2 #FFFFFF
+# set $c3 #FFFFFF
+set $c0 #eeeeee
+set $c1 #a19d95
+set $c2 #ffffff
+set $c3 #a19d95
+set $c4 #F9807A
+
+# class                 border|backgr|text|indicator|child_border
+client.focused          $c0     $c0     #000000 $c4 $c0
+client.focused_inactive $c3     $c3     $c0 $c4 $c3
+client.unfocused        $c1     $c1     $c0 #333333 #333333
+client.urgent           #903f3f #ff9f9f #ffffff #903f3f #903f3f
+
+# vim: ft=i3config

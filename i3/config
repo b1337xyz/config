@@ -4,107 +4,40 @@ include settings
 include bindings
 include rules
 include autostart
+include light_theme
 
-# set $font Source Code Pro 9
-# set $font mononoki Nerd Font 10
-# set $font SauceCodePro Nerd Font 10
-# set $font Hack Nerd Font Mono 9
-# set $font Perfect DOS VGA 437 Win 11
-set $font Iosevka Nerd Font 10
-# set $font SauceCodePro Nerd Font 10
-# set $font FantasqueSansMono Nerd Font 12
-# set $font monospace 10
+set $mod Mod4
 
-bar {
-    font pango: $font
-    # i3bar_command i3bar --transparency
-    status_command i3blocks -c ~/.config/i3blocks/config
-    strip_workspace_numbers yes
-    binding_mode_indicator yes
-    workspace_buttons yes
-    # separator_symbol "╱"
-    # separator_symbol "│"
-    # separator_symbol "⁝"
-    position top
-    # dock, hide
-    mode dock
-    tray_output primary
-    output primary
+# set $ws1 "1: 一 "
+# set $ws2 "2: 二 "
+# set $ws3 "3: 三 "
+# set $ws4 "4: 四 "
+# set $ws5 "5: 五 "
+# set $ws6 "6: 六 "
+# set $ws7 "7: 七 "
+# set $ws8 "8: 八 "
+# set $ws9 "9: 九 "
+# set $ws0 "10: 零 "
+# set $ws0 "10: 十 "
 
-    set $b0 #262626
-    set $b1 #eeeeee
-    set $b2 #999999
-    set $b3 #000000
-    set $b4 #900000
+# set $ws1 "1: I "
+# set $ws2 "2: II "
+# set $ws3 "3: III "
+# set $ws4 "4: IV "
+# set $ws5 "5: V  "
+# set $ws6 "6: VI "
+# set $ws7 "7: VII "
+# set $ws8 "8: VIII "
+# set $ws9 "9: IX "
+# set $ws0 "10: X "
 
-    colors {
-        background $b0
-        statusline $b3
-        separator  $b2
-
-        # class              border background color
-        focused_workspace    $b1 $b1 $b3
-        inactive_workspace   $b1 $b1 $b2
-        active_workspace     $b1 $b1 $b2
-        urgent_workspace     $b1 $b1 $b4
-        binding_mode         $b1 $b1 $b3
-    }
-}
-
-bar {
-    font pango: $font
-    status_command i3blocks -c ~/.config/i3blocks/bottom
-    # i3bar_command i3bar --transparency
-    workspace_buttons no
-    # separator_symbol "│"
-    position bottom
-    output primary
-    mode dock
-    binding_mode_indicator no
-    tray_output none
-    colors {
-        background $b0
-        statusline #000000
-        separator  #888888
-        binding_mode         $b1 $b1 $b3
-    }
-}
-
-# bar {
-#     font pango: $font
-#     workspace_buttons yes
-#     position top
-#     output nonprimary
-#     mode hide
-#     binding_mode_indicator no
-#     tray_output none
-#     strip_workspace_numbers yes
-#     colors {
-#         background $b0
-#         statusline #000000
-#         separator  #888888
-
-#         # class              border background color
-#         focused_workspace    $b1 $b1 $b3
-#         inactive_workspace   $b1 $b1 $b2
-#         active_workspace     $b1 $b1 $b2
-#         urgent_workspace     $b1 $b1 $b4
-#     }
-# }
-
-# blue
-# set $c0 #2662DF
-# set $c1 #0E99EE
-# set $c2 #FFFFFF
-# set $c3 #FFFFFF
-set $c0 #eeeeee
-set $c1 #a19d95
-set $c2 #ffffff
-set $c3 #a19d95
-set $c4 #F9807A
-
-# class                 border|backgr|text|indicator|child_border
-client.focused          $c0     $c0     #000000 $c4 $c0
-client.focused_inactive $c3     $c3     $c0 $c4 $c3
-client.unfocused        $c1     $c1     $c0 #333333 #333333
-client.urgent           #903f3f #ff9f9f #ffffff #903f3f #903f3f
+set $ws1 "1: cmd "
+set $ws2 "2: web "
+set $ws3 "3: soc "
+set $ws4 "4: rss "
+set $ws5 "5: tmp "
+set $ws6 "6: tmp "
+set $ws7 "7: iso "
+set $ws8 "8: exe "
+set $ws9 "9: snd "
+set $ws0 "10: bit "

@@ -10,3 +10,5 @@ $exec set_screen.sh
 $exec ~/.cache/xwallpaper
 $exec qbittorrent
 $exec ts -n newsboat -t newsboat -- newsboat
+
+# vim: ft=i3config
