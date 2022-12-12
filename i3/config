@@ -1,17 +1,20 @@
+# i3 config file (v4)
+
 include settings.conf
 include bindings.conf
 include rules.conf
 
+# set $font Source Code Pro 9
+# set $font mononoki Nerd Font 10
+# set $font SauceCodePro Nerd Font 10
+# set $font Hack Nerd Font Mono 9
+# set $font Perfect DOS VGA 437 Win 11
+set $font Iosevka Nerd Font 10
+# set $font SauceCodePro Nerd Font 10
+# set $font FantasqueSansMono Nerd Font 12
+# set $font monospace 10
+
 bar {
-    # set $font Source Code Pro 9
-    # set $font mononoki Nerd Font 10
-    # set $font SauceCodePro Nerd Font 10
-    # set $font Hack Nerd Font Mono 9
-    # set $font Perfect DOS VGA 437 Win 11
-    set $font Iosevka Nerd Font 10
-    # set $font SauceCodePro Nerd Font 10
-    # set $font FantasqueSansMono Nerd Font 12
-    # set $font monospace 10
     font pango: $font
     # i3bar_command i3bar --transparency
     status_command i3blocks -c ~/.config/i3blocks/config
@@ -45,11 +48,9 @@ bar {
         urgent_workspace     $b1 $b1 $b4
         binding_mode         $b1 $b1 $b3
     }
-
 }
 
 bar {
-    # font pango: SauceCodePro Nerd Font 10
     font pango: $font
     status_command i3blocks -c ~/.config/i3blocks/bottom
     # i3bar_command i3bar --transparency
