@@ -1,7 +1,7 @@
 [global]
     monitor = 0
     follow = none
-    width = 350
+    width = 400
     height = 280
     gap_size = 0
     origin = bottom-right
