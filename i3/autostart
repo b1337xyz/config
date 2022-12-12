@@ -1,0 +1,12 @@
+set $exec exec --no-startup-id
+set $execa exec_always --no-startup-id
+
+# $exec sleep 0.5 && run_i3lock.sh
+# $exec $terminal -e tmux
+# $exec toggle_transparency.sh
+$exec i3_smart_resize.py
+$exec conky
+$exec set_screen.sh
+$exec ~/.cache/xwallpaper
+$exec qbittorrent
+$exec ts -n newsboat -t newsboat -- newsboat

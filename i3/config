@@ -1,8 +1,9 @@
 # i3 config file (v4)
 
-include settings.conf
-include bindings.conf
-include rules.conf
+include settings
+include bindings
+include rules
+include autostart
 
 # set $font Source Code Pro 9
 # set $font mononoki Nerd Font 10
@@ -107,13 +108,3 @@ client.focused          $c0     $c0     #000000 $c4 $c0
 client.focused_inactive $c3     $c3     $c0 $c4 $c3
 client.unfocused        $c1     $c1     $c0 #333333 #333333
 client.urgent           #903f3f #ff9f9f #ffffff #903f3f #903f3f
-
-# exec --no-startup-id sleep 0.5 && run_i3lock.sh
-# exec --no-startup-id $terminal -e tmux
-# exec --no-startup-id toggle_transparency.sh
-exec --no-startup-id i3_smart_resize.py
-exec --no-startup-id conky
-exec --no-startup-id set_screen.sh
-exec --no-startup-id ~/.cache/xwallpaper
-exec --no-startup-id qbittorrent
-exec --no-startup-id ts -n newsboat -t newsboat -- newsboat
