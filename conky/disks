@@ -7,6 +7,6 @@ df -x tmpfs -x devtmpfs | awk '!/^Filesystem|\/boot$/{
         mp = "root"
     }
     mp = substr(mp, 1, 10)
-    printf("%s ${goto 90} ${fs_free %s} \
-${goto 185}┊${fs_size %s} ${goto 290}${fs_bar 10,170 %s} ${fs_used_perc %s}%%\n", mp, $6, $6, $6, $6)}
+    printf("%s ${goto 90} ${fs_free %s} ${goto 185}┊${fs_size %s} \
+${goto 290}${fs_bar 10,170 %s} ${fs_used_perc %s}%%\n", mp, $6, $6, $6, $6)}
 '
