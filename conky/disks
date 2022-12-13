@@ -1,17 +1,4 @@
 #!/bin/sh
 df -x tmpfs -x devtmpfs | awk '!/^Filesystem|\/boot$/{
-    # if ($6 != "/") {
-    #     split($6, a, "/")
-    #     mp = a[length(a)]
-    # } else {
-    #     mp = "root"
-    # }
-    # mp = substr(mp, 1, 10)
-    
-    printf("%s ${alignr}${fs_size %s}\n\
-${fs_bar 10,150 %s} ${fs_used_perc %s}%% \
-${alignr}${lua rjust 7 ${fs_free %s}}\n${voffset -5}$hr\n", $6, $6, $6, $6, $6)
-
-#   printf("${lua ljust 10 %s} ${lua rjust 8 ${fs_free %s}} ┊ ${lua ljust 8 ${fs_size %s}} \
-# ${fs_bar 10,120 %s} ${fs_used_perc %s}%%\n", mp, $6, $6, $6, $6)
+    printf("${template0 %s}\n", $6)
 }'
