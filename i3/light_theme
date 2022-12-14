@@ -44,6 +44,30 @@ bar {
     }
 }
 
+bar {
+    font pango: $bar_font
+    # i3bar_command i3bar --transparency
+    strip_workspace_numbers yes
+    binding_mode_indicator no
+    workspace_buttons yes
+    position top
+    mode dock
+    tray_output none
+    output nonprimary
+
+    colors {
+        background $b0
+        statusline $b3
+        separator  $b2
+
+        # class              border background color
+        focused_workspace    $b1 $b1 $b3
+        inactive_workspace   $b1 $b1 $b2
+        active_workspace     $b1 $b1 $b2
+        urgent_workspace     $b1 $b1 $b4
+    }
+}
+
 # bar {
 #     font pango: $bar_font
 #     status_command i3blocks -c ~/.config/i3blocks/bottom

@@ -209,6 +209,7 @@ if [ -n "$DISPLAY" ];then
     # random_anime_quote
     # bfetch
     todo ls 2>/dev/null
+    xmodmap -e "keycode 134 =" # disable SUPER_R
 fi
 function bye {
     echo "bye ^-^"
@@ -230,4 +231,3 @@ fixkbd() {
     # xmodmap -e "keycode 81 = bar backslash " # KP_Prior (9)
     # xmodmap -e "keycode 91 = asciitilde"  # KP_Delete
 }
-
