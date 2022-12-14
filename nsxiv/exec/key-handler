@@ -16,6 +16,7 @@ rotate() {
 
 case "$1" in
     w) tr \\n \\0 | xargs -0 xwall.sh ;;
+    W) tr \\n \\0 | xargs -0 xwall.sh --focus ;;
     t) tr \\n \\0 | xargs -0 xwall.sh --tile ;;
     T) tr \\n \\0 | xargs -0 trash.sh ;;
     n) xclip -i -filter | tr \\n \\0 | xclip -i -sel clip ;;

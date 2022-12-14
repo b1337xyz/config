@@ -4,8 +4,8 @@
     width = 400
     height = 280
     gap_size = 0
-    origin = top-right
-    offset = 2x25
+    origin = bottom-right
+    offset = 2x2
     scale = 0
     notification_limit = 0
     progress_bar = true
