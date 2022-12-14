@@ -25,7 +25,7 @@ set $mod Mod4
 # set $ws0 "10: X "
 
 set $ws1 "1: cmd "
-set $ws2 "2: avi "
+set $ws2 "2: sys "
 set $ws3 "3: web "
 set $ws4 "4: rss "
 set $ws5 "5: tmp "
