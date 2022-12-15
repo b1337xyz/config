@@ -80,9 +80,14 @@ fzfgov() {
         /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors |
         fzf --header "current: $current" --height 8 | xargs -ro sudo cpupower frequency-set -g 
 }
+undomv() {
+    READLINE_LINE="mv -vni !mv:2 !mv:1"
+}
 
 if ! [[ "$TERM" =~ xterm* ]];then
+    # Ctrl-V + key  to find any keycode
     # https://sparky.rice.edu//~hartigan/del.html
+    bind -x '"\eOP": undomv' # F1
     bind -x '"\C-x": expand_files'
     bind -x '"\C-h": fzfhist'
     bind -x '"\C-g": fzfgov' 
