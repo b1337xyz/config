@@ -14,6 +14,7 @@ set show-mode-in-prompt on
 set vi-cmd-mode-string "cmd "
 set vi-ins-mode-string ""
 
+"\ew": forward-word
 "\C-d": delete-char
 "\t": menu-complete
 "\e[Z": menu-complete-backward

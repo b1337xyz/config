@@ -8,4 +8,4 @@ else
     echo -n "$1"
 fi | xclip -sel clip
 
-notify-send -i clipman "[nnn] ${0##*/}" "$(xclip -o)"
+notify-send -i clipman "[nnn] ${0##*/}" "$(xclip -sel clip -o)"
