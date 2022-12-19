@@ -8,5 +8,6 @@ exec --no-startup-id sleep 1 && conky -c ~/.config/conky/conky.2.conf
 exec --no-startup-id ~/.cache/xwallpaper
 exec --no-startup-id qbittorrent
 exec --no-startup-id ts -n newsboat -t newsboat -- newsboat
+exec --no-startup-id unclutter --idle 1 --jitter 2 --root
 
 # vim: ft=i3config

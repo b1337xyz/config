@@ -59,7 +59,7 @@ alias lx='ls -X' \
     loh='ls -d .[A-z]*'
 
 ### shortcuts
-alias clock='tty-clock -cC 7 -f %d.%m.%y' \
+alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     F='less +F' \
     cmd='command' \
     +x='chmod u+x' \

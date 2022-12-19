@@ -84,6 +84,12 @@ undomv() {
     READLINE_LINE="mv -vni !mv:2 !mv:1 "
     READLINE_POINT=${#READLINE_LINE}
 }
+fzcd() {
+    local p
+    p=$(find . -mindepth 1 -maxdepth 1 -type d \! -name '\.*'  | sort -rV | fzf \
+        --info=hidden --layout=reverse --height 10 --bind 'tab:accept')
+    [ -e "$p" ] && cd "$p"
+}
 
 if ! [[ "$TERM" =~ xterm* ]];then
     # Ctrl-V + key  to find any keycode
@@ -92,6 +98,7 @@ if ! [[ "$TERM" =~ xterm* ]];then
     bind -x '"\C-x": expand_files'
     bind -x '"\C-h": fzfhist'
     bind -x '"\C-g": fzfgov' 
+    bind -x '"\C-f": fzcd'
 fi
 
 cd() {
