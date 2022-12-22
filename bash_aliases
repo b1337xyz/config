@@ -60,6 +60,7 @@ alias lx='ls -X' \
 
 ### shortcuts
 alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
+    reloadagent='gpg-connect-agent reloadagent /bye' \
     F='less +F' \
     cmd='command' \
     +x='chmod u+x' \
