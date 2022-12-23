@@ -60,7 +60,7 @@ alias lx='ls -X' \
 
 ### shortcuts
 alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
-    doit='git add -A && git commit -m "$(date +%Y.%m.%d)" && git push' \
+    doit='git add -Av --chmod=-x && git commit -m "$(date +%Y.%m.%d)" && git push' \
     reloadagent='gpg-connect-agent reloadagent /bye' \
     F='less +F' \
     cmd='command' \
