@@ -97,6 +97,8 @@ bindsym XF86AudioLowerVolume  exec volupdown.sh down
 bindsym XF86AudioMute         exec volupdown.sh toggle
 bindsym XF86MonBrightnessUp   exec brightnessctl s +2%
 bindsym XF86MonBrightnessDown exec brightnessctl s 2%-
+bindsym XF86Calculator        exec brightnessctl s +2%
+bindsym XF86Search            exec brightnessctl s 2%-
 bindsym XF86AudioPlay         exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks
 bindsym XF86AudioNext         exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
 bindsym XF86AudioPrev         exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
