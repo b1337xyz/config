@@ -39,7 +39,8 @@ drawimg() {
 handle_mime() {
     mime=$(file -Lbi -- "$1" | cut -d';' -f1)
     case "$mime" in
-        image*) drawimg "$1" ;;
+        image*) if [ -n "$DISPLAY" ];then drawimg "$1"; else mediainfo -- "$1" ;fi ;;
+        video*) mediainfo -- "$1" ;;
         text/*) fifo_pager bat "$1" ;;
         */x-bittorrent) fifo_pager aria2c -S "$1" ;;
         *) file -b -- "$1" ;;
@@ -58,6 +59,9 @@ handle_ext() {
 }
 preview() {
     clear
+    [ -e "$UEBERZUG_FIFO" ] &&
+        printf '{"action": "remove", "identifier": "test"}\n' > "$UEBERZUG_FIFO"
+
     if [ -d "$1" ];then
         fifo_pager tree -C -L 1 --dirsfirst "$1"
     else
@@ -77,8 +81,10 @@ end() {
 }
 
 if [ "$PREVIEW_MODE" ];then
-    mkfifo "$UEBERZUG_FIFO"
-    tail --follow "$UEBERZUG_FIFO" | ueberzug layer --parser json &
+    if [ -n "$DISPLAY" ];then
+        mkfifo "$UEBERZUG_FIFO"
+        tail --follow "$UEBERZUG_FIFO" | ueberzug layer --parser json &
+    fi
     preview "$1"
     preview_fifo &
     printf '%s' "$!" > "$FIFO_PID"
