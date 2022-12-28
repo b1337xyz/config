@@ -4,7 +4,7 @@
 export BAT_STYLE=plain
 export BAT_THEME="Sublime Snazzy"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-export HISTIGNORE='[a-z]:history:pwd:ls:cd:sensors:top:btm:uptime:uptime -p'
+export HISTIGNORE='?:??:???:history:sensors:uptime:uptime -?:uname:uname -?'
 export HISTCONTROL='ignoreboth:erasedups'
 export HISTSIZE=9999
 export LESS=-Ri
