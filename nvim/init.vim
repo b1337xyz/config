@@ -59,8 +59,10 @@ Plug 'ap/vim-css-color'
 Plug 'nvie/vim-flake8'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'Mofiqul/dracula.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" Colorschemes
+Plug 'Mofiqul/dracula.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'EdenEast/nightfox.nvim'
