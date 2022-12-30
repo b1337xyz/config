@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+FIFO_PID=/tmp/nnn_fifo.pid
+[ -f "$FIFO_PID" ] && kill $(cat "$FIFO_PID")
+
 mimetype=$(file -Lbi -- "$1" | cut -d';' -f1)
 ext=${1##*.}
 ext=${ext,,}

@@ -124,7 +124,7 @@ bindsym $mod+t             exec toggle_transparency.sh
 bindsym $mod+c             exec i3cloneterm.py
 bindsym $mod+x             exec xwall.sh --dmenu
 bindsym $mod+shift+x       exec xwall.sh --sxiv
-bindsym $mod+shift+s       exec print.sh selc
+bindsym $mod+shift+s       exec print.sh cops
 bindsym ctrl+shift+space   exec dunstctl close
 
 set $print_mode [p]rint [f]ocused [c]opy [C]opy-focused [s]elect [S]elect-copy
@@ -133,8 +133,8 @@ mode "$print_mode" {
     bindsym f       exec print.sh focused
     bindsym c       exec print.sh copy
     bindsym s       exec print.sh select
-    bindsym shift+c exec print.sh copy-focused
-    bindsym shift+s exec print.sh copy-select
+    bindsym shift+c exec print.sh copf
+    bindsym shift+s exec print.sh cops
     
     bindsym q      mode "default"
     bindsym Escape mode "default"
