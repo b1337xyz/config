@@ -27,6 +27,9 @@ set expandtab
 set cursorline
 set clipboard=unnamedplus
 set undofile
+set scrolloff=8
+set incsearch
+set nohlsearch
 
 noremap <F4> :set hlsearch! hlsearch?<CR>
 map Ee :FZF ~/.scripts<CR>
