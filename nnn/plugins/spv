@@ -1,5 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env bash
+# shellcheck disable=SC2317
+
+#
 # nnn SimplePreView 
+#
+
 PREVIEW_PID=/tmp/nnn_preview.pid
 FIFO_PID=/tmp/nnn_fifo.pid
 NNN_FIFO=${NNN_FIFO:-/tmp/nnn.fifo}
@@ -31,10 +36,10 @@ fifo_pager() {
 }
 drawimg() { 
     path=$1
-    read height width < <(</dev/tty stty size)
+    cols=$(tput cols) lines=$(tput lines)
     printf '{"action": "remove", "identifier": "test"}\n' > "$UEBERZUG_FIFO"
     printf '{"action": "add", "identifier": "test", "x": %d, "y": %d, "width": "%d", "height": "%d", "scaler": "cover", "path": "%s"}\n' \
-        "${x:-0}" "${y:-0}" "$width" "$height" "$path" > "$UEBERZUG_FIFO"
+        "${x:-0}" "${y:-0}" "$cols" "$lines" "$path" > "$UEBERZUG_FIFO"
 }
 handle_mime() {
     mime=$(file -Lbi -- "$1" | cut -d';' -f1)
