@@ -9,7 +9,7 @@ set showcmd
 set ignorecase
 set smartcase
 set backspace=indent,eol,start
-set smartindent
+set autoindent 
 set nostartofline
 set ruler
 set laststatus=2
