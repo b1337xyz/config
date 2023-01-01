@@ -102,7 +102,7 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     dft='df -Th -x tmpfs -x devtmpfs --total' \
     dff='df -ht ext4 -t btrfs --total' \
     tmux_defaults='tmux -f /dev/null -L temp start-server \; show-options -g' \
-    tsxiv='find . -maxdepth 1 -type f -iregex ".*\.\(jpe?g\|png\|gif\)" -printf "%T@ %p\n" | sort -n | cut -d" " -f2- | sxiv -qi' 
+    tsxiv='find . -maxdepth 3 -type f -iregex ".*\.\(jpe?g\|png\|gif\)" -printf "%T@ %p\n" | sort -n | cut -d" " -f2- | sxiv -qi' 
 
 ### pacman
 alias pSs='pacman -Ss' \
