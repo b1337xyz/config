@@ -9,6 +9,7 @@ set $bar_font Iosevka Nerd Font 10
 # set $bar_font monospace 10
 
 bar {
+    padding -2px 8px 
     font pango: $bar_font
     # i3bar_command i3bar --transparency
     status_command i3blocks -c ~/.config/i3blocks/config
@@ -120,7 +121,7 @@ set $c0 #eeeeee
 set $c1 #a19d95
 set $c2 #ffffff
 set $c3 #a19d95
-set $c4 #F9807A
+set $c4 #99f0fA
 
 # class                 border|backgr|text|indicator|child_border
 client.focused          $c0     $c0     #000000 $c4 $c0

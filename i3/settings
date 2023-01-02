@@ -13,9 +13,18 @@ for_window [all] title_format "%title"
 # for_window [all] title_window_icon padding 5px
 
 # none|vertical|horizontal|both|smart
-hide_edge_borders smart
+hide_edge_borders none
 
 # default|stacking|tabbed
 workspace_layout tabbed
 
+gaps inner 10
+
+# gaps outer|horizontal|vertical|top|left|bottom|right <gap_size>[px]
+gaps outer 8
+
+# smart_gaps on|off|inverse_outer
+smart_gaps off
+
 # vim: ft=i3config
+
