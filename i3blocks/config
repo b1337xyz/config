@@ -64,6 +64,10 @@ align=center
 interval=15
 min_width=" 00:00 "
 
+[wall]
+command=~/.config/i3blocks/scripts/wall
+interval=once
+
 [pacman]
 markup=pango
 command=~/.config/i3blocks/scripts/pacman

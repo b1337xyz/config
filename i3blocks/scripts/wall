@@ -1,0 +1,3 @@
+#!/bin/sh
+[ "$BLOCK_BUTTON" -eq 1 ] && xwall.sh
+echo " Wall "
