@@ -54,6 +54,8 @@ shopt -s histappend
 [ -f ~/.python_history ] && rm -v ~/.python_history
 
 expand_files() {
+    # Example:
+    #  ls ~/.bashrc file -> ls /home/<user>/.bashrc /home/<user>/file
     local cmd=
     for arg in $READLINE_LINE;do
         if test -e "${arg/\~/$HOME}";then
