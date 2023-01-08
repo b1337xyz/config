@@ -33,9 +33,9 @@ command=~/.config/i3blocks/scripts/numlock
 interval=once
 signal=12
 
-# [cmus]
-# command=~/.config/i3blocks/scripts/cmus
-# interval=5
+[cmus]
+command=~/.config/i3blocks/scripts/cmus
+interval=5
 
 # [disks]
 # command=~/.config/i3blocks/scripts/disks

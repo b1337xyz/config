@@ -1,4 +1,4 @@
-### DEFAULT
+### default
 alias ls='ls -vNh --color' \
     dir='dir --color' \
     vdir='vdir --color' \
@@ -53,9 +53,10 @@ alias lx='ls -X' \
     lu='ls -ltur' \
     la='ls -A' \
     l='command ls -vN1hl' \
-    ll='ls -ltr --time-style "+%Y.%m.%d %H:%M"'   \
+    ll='ls -ltr --time-style "+%Y.%m.%d %H:%M"' \
     lm='ll |less' \
-    lr='ll -R'    \
+    lr='ll -R' \
+    sl='ls' \
     loh='ls -d .[A-z]*'
 
 ### shortcuts
@@ -73,12 +74,11 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     :q=exit \
     :x=exit \
     linuxlogo='linux_logo -c -u -y -L 13' \
-    mpipe='mpv --playlist=- --no-resume-playback --loop-file=inf' \
+    mpipe='mpv --playlist=- --no-resume-playback' \
     h='history | tail -n ' \
     atom='sshfs atom: /mnt/anon/atom -o Compression=no,reconnect,allow_other' \
     termux='sshfs termux:/data/data/com.termux/files/home ~/mnt/termux -o port=8022,allow_other,no_check_root,follow_symlinks,reconnect' \
     kcat='kitty icat' \
-    sl='ls' \
     jmtp='jmtpfs -o allow_other,noatime' \
     edi3='vim ~/.config/i3/config' \
     mdlnad='/sbin/minidlnad -f ~/.config/minidlna/minidlna.conf' \
@@ -87,7 +87,6 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     fe='find . -maxdepth 1 -empty' \
     fwin='find . -type f -iregex ".*\.\(ini\|exe\|nfo\|bat\|url\)"' \
     gov='cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_governor' \
-    mal='mal.py' \
     syncdir='rsync -a -f"+ */" -f"- *"' \
     psmem='ps axch -o cmd:15,%mem --sort=-%mem | head -10' \
     pscpu='ps axch -o cmd:15,%cpu --sort=-%cpu | head -10' \
