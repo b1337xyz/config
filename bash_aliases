@@ -59,6 +59,9 @@ alias lx='ls -X' \
     sl='ls' \
     loh='ls -d .[A-z]*'
 
+### cd
+alias cdg='cd ~/.local/src/b1337xyz'
+
 ### shortcuts
 alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     doit='git add -Av --chmod=-x && git commit -m "$(date +%Y.%m.%d)" && git push' \
