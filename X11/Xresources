@@ -33,3 +33,9 @@ dmenu.background: #eeeeee
 dmenu.foreground: #888888
 dmenu.selbackground: #cccccc
 dmenu.selforeground: #000000
+
+/* Sixel support
+XTerm*decTerminalID: vt340
+XTerm*numColorRegisters: 256
+XTerm*disallowedWindowOps: 1,2,3,4,5,6,7,8,9,11,13,19,20,21,GetSelection,SetSelection,SetWinLines,SetXprop
+*/
