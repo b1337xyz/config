@@ -22,20 +22,20 @@ color=#000000
 # command=~/.config/i3blocks/scripts/title
 # interval=persist
 
-[scratchpad]
-background=#dddddd
-command=~/.config/i3blocks/scripts/scratchpad.sh
-signal=11
-interval=once
+# [scratchpad]
+# background=#dddddd
+# command=~/.config/i3blocks/scripts/scratchpad.sh
+# signal=11
+# interval=once
 
 [numlock]
 command=~/.config/i3blocks/scripts/numlock
 interval=once
 signal=12
 
-[cmus]
-command=~/.config/i3blocks/scripts/cmus
-interval=5
+# [cmus]
+# command=~/.config/i3blocks/scripts/cmus
+# interval=5
 
 # [disks]
 # command=~/.config/i3blocks/scripts/disks

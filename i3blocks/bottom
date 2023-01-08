@@ -7,9 +7,19 @@ separator_block_width=1
 background=#eeeeee
 color=#000000
 
-[disks]
-command=~/.config/i3blocks/scripts/disks
-interval=10
+[scratchpad]
+background=#dddddd
+command=~/.config/i3blocks/scripts/scratchpad.sh
+signal=11
+interval=once
+
+[cmus]
+command=~/.config/i3blocks/scripts/cmus
+interval=5
+
+# [disks]
+# command=~/.config/i3blocks/scripts/disks
+# interval=10
 
 # [memory]
 # command=~/.config/i3blocks/scripts/memory
