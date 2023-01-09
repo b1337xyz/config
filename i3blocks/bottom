@@ -13,9 +13,10 @@ command=~/.config/i3blocks/scripts/scratchpad.sh
 signal=11
 interval=once
 
-[cmus]
-command=~/.config/i3blocks/scripts/cmus
-interval=5
+[mpc]
+command=~/.config/i3blocks/scripts/mpc
+signal=21
+interval=once
 
 # [disks]
 # command=~/.config/i3blocks/scripts/disks

@@ -97,12 +97,16 @@ bindsym XF86MonBrightnessUp   exec brightnessctl s +2%
 bindsym XF86MonBrightnessDown exec brightnessctl s 2%-
 bindsym XF86Search            exec brightnessctl s +2%
 bindsym XF86Calculator        exec brightnessctl s 2%-
-bindsym XF86AudioPlay         exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks
-bindsym XF86AudioNext         exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
-bindsym XF86AudioPrev         exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
+# bindsym XF86AudioPlay         exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks
+# bindsym XF86AudioNext         exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
+# bindsym XF86AudioPrev         exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
 # bindsym XF86AudioPlay         exec mpvc.sh toggle
 # bindsym XF86AudioPrev         exec mpvc.sh next
 # bindsym XF86AudioNext         exec mpvc.sh prev
+bindsym XF86AudioPlay         exec mpc toggle
+bindsym XF86AudioNext         exec mpc next   && exec pkill -SIGRTMIN+21 i3blocks
+bindsym XF86AudioPrev         exec mpc prev   && exec pkill -SIGRTMIN+21 i3blocks
+
 
 bindsym $mod+q kill
 # bindsym --release Caps_Lock           exec pkill -SIGRTMIN+12 i3blocks
@@ -176,8 +180,8 @@ mode "resize" {
 
     # bindsym minus resize shrink width 40 px ; resize shrink height 20 px
     # bindsym equal resize grow width 40 px ; resize grow height 20 px
-    bindsym minus resize shrink width 40 px ; resize shrink height 20 px
-    bindsym equal resize grow width 40 px   ; resize grow height 20 px
+    bindsym minus resize shrink width 20 px ; resize shrink height 25 px
+    bindsym equal resize grow   width 20 px ; resize grow height 25 px
 
     bindsym q      mode "default"
     bindsym Return mode "default"
