@@ -72,6 +72,7 @@ bar {
 # }
 
 bar {
+    padding -2px
     font pango: $bar_font
     status_command i3blocks -c ~/.config/i3blocks/bottom
     # i3bar_command i3bar --transparency
@@ -90,27 +91,27 @@ bar {
     }
 }
 
-bar {
-    font pango: $bar_font
-    workspace_buttons yes
-    position top
-    output nonprimary
-    mode hide
-    binding_mode_indicator no
-    tray_output none
-    strip_workspace_numbers yes
-    colors {
-        background $b0
-        statusline #000000
-        separator  #888888
+# bar {
+#     font pango: $bar_font
+#     workspace_buttons yes
+#     position top
+#     output nonprimary
+#     mode hide
+#     binding_mode_indicator no
+#     tray_output none
+#     strip_workspace_numbers yes
+#     colors {
+#         background $b0
+#         statusline #000000
+#         separator  #888888
 
-        # class              border background color
-        focused_workspace    $b1 $b1 $b3
-        inactive_workspace   $b1 $b1 $b2
-        active_workspace     $b1 $b1 $b2
-        urgent_workspace     $b1 $b1 $b4
-    }
-}
+#         # class              border background color
+#         focused_workspace    $b1 $b1 $b3
+#         inactive_workspace   $b1 $b1 $b2
+#         active_workspace     $b1 $b1 $b2
+#         urgent_workspace     $b1 $b1 $b4
+#     }
+# }
 
 # blue
 # set $c0 #2662DF

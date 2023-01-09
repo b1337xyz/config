@@ -31,6 +31,7 @@ assign [instance="Spotify"] $ws9
 assign [instance="Steam"] $ws8
 assign [instance="clock"] $ws1
 assign [instance="cmus"] $ws9
+assign [instance="ncmpcpp"] $ws9
 assign [instance="download"] $ws0
 assign [instance="irssi"] $ws0
 assign [instance="ncspot"] $ws9
