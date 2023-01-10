@@ -35,6 +35,13 @@ set $ws0 "10: X "
 # set $ws9 "9: snd "
 # set $ws0 "10: bit "
 
+workspace $ws1 output nonprimary
+workspace $ws2 output primary
+workspace $ws3 output primary
+workspace $ws4 output primary
+workspace $ws9 output primary
+workspace $ws0 output primary
+
 include settings
 include bindings
 include rules

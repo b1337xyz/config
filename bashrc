@@ -29,6 +29,7 @@ export TERM=${TERM:-xterm-256color}
 export TODOFILE="$XDG_CACHE_HOME"/.todo
 export FZF_DEFAULT_OPTS='--no-border --no-separator'
 export PROMPT_DIRTRIM=2
+export COLORTERM=truecolor
 
 source ~/.config/dircolors
 source ~/.config/bash_aliases
