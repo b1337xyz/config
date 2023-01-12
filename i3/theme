@@ -7,7 +7,7 @@ set $bar_font Iosevka Nerd Font 10
 # set $bar_font FantasqueSansMono Nerd Font 12
 
 bar {
-    padding -2px
+    padding -2px 2px
     font pango: $bar_font
     # # i3bar_command i3bar --transparency
     status_command i3blocks -c ~/.config/i3blocks/config
@@ -45,7 +45,7 @@ bar {
 }
 
 bar {
-    padding -2px
+    padding -2px 2px
     font pango: $bar_font
     status_command i3blocks -c ~/.config/i3blocks/bottom
     # i3bar_command i3bar --transparency
