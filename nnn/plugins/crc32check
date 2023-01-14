@@ -1,0 +1,26 @@
+#!/bin/sh
+SELECTION="$HOME/.config/nnn/.selection"
+
+main() {
+    fname_crc=$(printf '%s' "$1" | grep -oP '(?<=(\[|\())[[:alnum:]]{8}(?=(\)|\]))' | tail -1)
+    [ -z "$fname_crc" ] && {
+        printf 'crc32 pattern not found in "%s"\n' "$1" 1>&2;
+        return 1;
+    }
+    src_crc=$(cksfv -v "$1" | sed '/^;/d; s/.*\(.\{8\}\)$/\1/')
+    if [ "$fname_crc" = "$src_crc" ];then
+        printf '%s \t\e[1;32m%s\e[m\n' "${1##*/}" "$src_crc"
+    else
+        printf '%s \t\e[1;31m%s\e[m\n' "${1##*/}" "$src_crc"
+    fi
+}
+
+printf 'please wait...\n'
+if [ -s "$SELECTION" ];then
+    tr \\0 \\n < "$SELECTION" | while read -r i;do main "$i" ;done
+else
+    main "$1"
+fi
+
+printf 'done\n'
+read -r _
