@@ -1,0 +1,14 @@
+#!/bin/sh
+
+bar_size=15
+while :;do
+    out=
+    curr_p=$(mpc | grep -oP '(?<= \()\d+(?=%\)$)')
+    [ -z "$curr_p" ] && { sleep 15; continue; }
+    bar=$(( curr_p * bar_size / 100 ))
+    for _ in $(seq 1 $bar);do out="${out}#" ;done
+    bar=$(( bar_size - bar ))
+    for _ in $(seq 1 $bar);do out="${out}-" ;done
+    echo " [${out}] ${curr_p}% "
+    sleep 5
+done
