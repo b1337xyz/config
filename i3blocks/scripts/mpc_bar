@@ -9,6 +9,6 @@ while :;do
     for _ in $(seq 1 $bar);do out="${out}#" ;done
     bar=$(( bar_size - bar ))
     for _ in $(seq 1 $bar);do out="${out}-" ;done
-    echo " [${out}] ${curr_p}% "
+    printf ' [%s] %3s%% \n' "$out" "$curr_p"
     sleep 5
 done
