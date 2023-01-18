@@ -18,9 +18,9 @@ command=~/.config/i3blocks/scripts/mpc
 signal=21
 interval=once
 
-[mpc_bar]
-command=~/.config/i3blocks/scripts/mpc_bar
-interval=persist
+# [mpc_bar]
+# command=~/.config/i3blocks/scripts/mpc_bar
+# interval=persist
 
 # [disks]
 # command=~/.config/i3blocks/scripts/disks

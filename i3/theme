@@ -44,25 +44,25 @@ bar {
     }
 }
 
-bar {
-    padding -2px 2px
-    font pango: $bar_font
-    status_command i3blocks -c ~/.config/i3blocks/bottom
-    # i3bar_command i3bar --transparency
-    workspace_buttons no
-    # separator_symbol "│"
-    position bottom
-    output primary
-    mode dock
-    binding_mode_indicator no
-    tray_output none
-    colors {
-        background $b0
-        statusline #000000
-        separator  #888888
-        binding_mode         $b1 $b1 $b3
-    }
-}
+# bar {
+#     padding -2px 2px
+#     font pango: $bar_font
+#     status_command i3blocks -c ~/.config/i3blocks/bottom
+#     # i3bar_command i3bar --transparency
+#     workspace_buttons no
+#     # separator_symbol "│"
+#     position bottom
+#     output primary
+#     mode dock
+#     binding_mode_indicator no
+#     tray_output none
+#     colors {
+#         background $b0
+#         statusline #000000
+#         separator  #888888
+#         binding_mode         $b1 $b1 $b3
+#     }
+# }
 
 # blue
 # set $c0 #2662DF
