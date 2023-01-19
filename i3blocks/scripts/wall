@@ -1,6 +1,6 @@
 #!/bin/sh
 wall_dir=~/Pictures/wallpapers
-log=/tmp/.wallpapers
+log=~/.cache/.wallpapers
 
 if ! [ -f "$log" ]; then
     cd "$wall_dir" || { echo "$wall_dir - 404"; exit 1; }
@@ -37,4 +37,5 @@ esac
 path=$(grep -- '-current$' "$log" | sed 's/-current$//')
 wall_dir="${wall_dir}/${path}"
 total=$(find "$wall_dir" -type f -name '*.jpg' | wc -l)
+path=$(echo "$path" | sed 's/^\.$/Wall/')
 echo " ${path} (${total}) "
