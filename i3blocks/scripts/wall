@@ -1,3 +1,39 @@
 #!/bin/sh
-[ "$BLOCK_BUTTON" -eq 1 ] && xwall.sh
-echo " Wall ($(find ~/Pictures/wallpapers -type f -name '*.jpg' | wc -l)) "
+wall_dir=~/Pictures/wallpapers
+log=/tmp/.wallpapers
+
+if ! [ -f "$log" ]; then
+    cd "$wall_dir" || { echo "$wall_dir - 404"; exit 1; }
+    find . -maxdepth 1 -type d | sed 's/^..//g' > "$log"
+    current=1
+else
+    current=$(grep -n -- '-current$' "$log" | cut -d':' -f1)
+fi
+
+case "$BLOCK_BUTTON" in
+    1)
+        path=$(grep -- '-current$' "$log" | sed 's/-current$//')
+        xwall.sh "${wall_dir}/${path}"
+    ;;
+    4|5)
+        old=$current
+        if [ "$current" -gt 1 ] && [ "$BLOCK_BUTTON" -eq 4 ];then
+            current=$((current - 1))
+        elif [ "$BLOCK_BUTTON" -eq 5 ];then
+            max=$(wc -l < "$log")
+            [ "$current" -le "$max" ] && current=$((current + 1))
+        fi
+
+        if [ "$current" -ne "$old" ];then
+            sed -i 's/-current$//' "$log"
+            sed -i "${current}s/\$/-current/" "$log"
+            path=$(grep -- '-current$' "$log" | sed 's/-current$//')
+            xwall.sh "${wall_dir}/${path}"
+        fi
+    ;;
+esac
+
+path=$(grep -- '-current$' "$log" | sed 's/-current$//')
+wall_dir="${wall_dir}/${path}"
+total=$(find "$wall_dir" -type f -name '*.jpg' | wc -l)
+echo " ${path} (${total}) "
