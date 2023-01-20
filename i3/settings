@@ -6,7 +6,7 @@ floating_maximum_size 1365 x 744
 floating_modifier $mod
 
 # font pango: Hack Nerd Font 9
-font pango: Iosevka 10
+font pango: Iosevka Nerd Font 10
 
 for_window [all] title_format "%title"
 # for_window [all] title_window_icon off
