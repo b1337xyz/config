@@ -109,6 +109,7 @@ function! Get_dependency_url()
     let sel = Get_visual_selection()
     if len(sel) > 0
         exec ':read ! pacman -Qi ' . sel . ' 2>/dev/null | grep -o "http.*"'
+        " normal d$k$p
     endif
 endfunction
 map cd :call Get_dependency_url()<CR>
