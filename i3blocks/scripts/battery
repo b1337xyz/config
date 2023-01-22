@@ -1,36 +1,17 @@
 #!/usr/bin/env bash
 capacity=$(< /sys/class/power_supply/BAT?/capacity)
 _status=$(< /sys/class/power_supply/BAT?/status)
-full_icon=battery-full-charged
+# full_icon=battery-full-charged
 low_icon=battery-low
-audio="$HOME"/Music/Madobe_Nanami_theme/critical_battery.wav
 
 case "$_status" in
-    Charging)
-        if [ "$capacity" -gt 90 ];then
-            printf 'CHR %s%%\n' \
-                "$capacity"
-            notify-send -i "$full_icon" \
-                "Battery charged!" "$(acpi)"
-        else
-            printf 'CHR %s%%\n' "$capacity"
-        fi
-    ;;
+    Charging) printf 'C %s%%\n' "$capacity" ;;
+    Not?charging) printf 'U %s%%\n' "$capacity" ;;
     *)
         if [ "$capacity" -lt 20 ];then
-            printf 'BAT %s%%\n' "$capacity"
             notify-send -u critical -i "$low_icon" \
                 "Battery discharging!" "$(acpi)"
-
-            # i3-msg fullscreen disable
-            # if [ -f "$audio" ];then
-            #     pacmd list-sink-inputs | awk '/index:/{print $2}' | xargs -rI{} pacmd set-sink-input-mute {} 1
-            #     aplay -q "$audio"
-            #     pacmd list-sink-inputs | awk '/index:/{print $2}' | xargs -rI{} pacmd set-sink-input-mute {} 0
-            # fi
-
-        else
-            printf 'BAT %s%%\n' "$capacity"
         fi
+        printf 'D %s%%\n' "$capacity"
     ;;
 esac

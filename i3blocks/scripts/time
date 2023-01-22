@@ -5,4 +5,4 @@ case "$BLOCK_BUTTON" in
 esac
 
 #date +' %b %d %H:%M ' # Jun 21 22:10
-date +'%H:%M'
+date +' %H:%M %d/%m/%Y '

@@ -1,0 +1,12 @@
+#!/bin/sh
+case "$BLOCK_BUTTON" in
+    1) dunstctl set-paused toggle >/dev/null 2>&1 ;;
+esac
+
+if dunstctl is-paused | grep -q true ;then
+    icon=󰪑
+else
+    icon=
+fi
+
+printf '<span size="20pt"><tt>%s</tt></span>\n' "$icon"

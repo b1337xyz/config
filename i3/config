@@ -47,4 +47,3 @@ include bindings
 include rules
 include autostart
 include theme
-

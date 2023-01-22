@@ -5,10 +5,15 @@ icons=(
 
 
 )
-red="#ff9090"
 full_icon=battery-full-charging-symbolic.symbolic
 low_icon=battery-caution-symbolic.symbolic
 NID=$$
+
+print() {
+    printf '<span size="21pt"><tt>%s</tt></span> <span rise="5pt">%s%%</span>\n' \
+        "$1" "$2"
+}
+
 while :;do
     capacity=$(< /sys/class/power_supply/BAT?/capacity)
     _status=$(< /sys/class/power_supply/BAT?/status)
@@ -17,14 +22,18 @@ while :;do
             if [ "$capacity" -gt 90 ];then
                 dunstify -r "$NID" -i "$full_icon" \
                     "Battery charged!" "$(acpi)"
-                echo "$i  ${capacity}%"
+
+                print "$i" "$capacity"
                 sleep $(( 60 * 5 ))
             else
                 for i in "${icons[@]}";do
-                    echo "$i  ${capacity}%"
+                    print "$i" "$capacity"
                     sleep 1.5
                 done
             fi
+        ;;
+        Not?charging)
+            printf 'U %s%%\n' "$capacity"
         ;;
         *)
             i=0
@@ -35,12 +44,12 @@ while :;do
             elif [ "$capacity" -ge 30 ];then
                 i=1
             fi
-            echo "${icons[i]}  ${capacity}%"
+            print "${icons[i]}"  "$capacity"
             if [ "$capacity" -lt 20 ];then
                 dunstify -r "$NID" -i "$low_icon" \
                     "Battery discharging!" "$(acpi)"
             fi
-            sleep 60
         ;;
     esac
+    sleep 60
 done
