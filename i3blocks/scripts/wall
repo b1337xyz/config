@@ -1,6 +1,7 @@
 #!/bin/sh
 wall_dir=~/Pictures/wallpapers
 log=~/.cache/.wallpapers
+xwall_log=~/.cache/xwall.log
 
 if ! [ -f "$log" ]; then
     cd "$wall_dir" || { echo "$wall_dir - 404"; exit 1; }
@@ -15,6 +16,18 @@ case "$BLOCK_BUTTON" in
     1)
         path=$(grep -- '-current$' "$log" | sed 's/-current$//')
         xwall.sh "${wall_dir}/${path}"
+    ;;
+    2|3)
+        # only goes backwards.. for now
+        if [ -s "$xwall_log" ];then
+            last_line=$(wc -l < "$xwall_log")
+            if [ "$last_line" -gt 1 ]; then
+                sed -i "${last_line}d" "$xwall_log"
+                last_line=$((last_line - 1))
+                wallpaper=$(sed "${last_line}!d" "$xwall_log")
+                [ -f "$wallpaper" ] && xwall.sh -n "$wallpaper"
+            fi
+        fi
     ;;
     4|5)
         old=$current
