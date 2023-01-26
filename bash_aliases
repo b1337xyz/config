@@ -79,7 +79,6 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     linuxlogo='linux_logo -c -u -y -L 13' \
     mpipe='mpv --playlist=- --no-resume-playback' \
     h='history | tail -n ' \
-    atom='sshfs atom: /mnt/anon/atom -o Compression=no,reconnect,allow_other' \
     termux='sshfs termux:/data/data/com.termux/files/home ~/mnt/termux -o port=8022,allow_other,no_check_root,follow_symlinks,reconnect' \
     kcat='kitty icat' \
     jmtp='jmtpfs -o allow_other,noatime' \
@@ -102,7 +101,7 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     nld='nload -i 192000 -o 80000 -u K wlan0' \
     fumnt='fusermount3 -u' \
     dft='df -Th -x tmpfs -x devtmpfs --total' \
-    dff='df -ht ext4 -t btrfs --total' \
+    dff='df -h -t ext4 -t btrfs -t nfs4 --total' \
     tmux_defaults='tmux -f /dev/null -L temp start-server \; show-options -g' \
     tsxiv='find . -maxdepth 3 -type f -iregex ".*\.\(jpe?g\|png\|gif\)" -printf "%T@ %p\n" | sort -n | cut -d" " -f2- | sxiv -qi' 
 

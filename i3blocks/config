@@ -87,4 +87,9 @@ command=~/.config/i3blocks/scripts/notifications
 min_width=" X "
 interval=once
 
+[menu]
+full_text=" Menu "
+command=~/.config/i3blocks/scripts/menu
+interval=once
+
 # vim: ft=cfg

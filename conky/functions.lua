@@ -17,6 +17,7 @@ end
 --    if f ~= nil then io.close(f) return true else return false end
 -- end
 -- function conky_cover_art()
+--     because conky can't handle white spaces
 --     local file = conky_parse("${mpd_file}")
 --     local music_dir = os.getenv('HOME') .. "/Music"
 --     local cache = os.getenv('HOME') .. '/.cache/thumbnails/mpc'

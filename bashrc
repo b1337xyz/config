@@ -52,7 +52,7 @@ shopt -s checkwinsize
 shopt -s no_empty_cmd_completion
 shopt -s histappend
 
-[ -f ~/.python_history ] && rm -v ~/.python_history
+[ -f ~/.python_history ] && command rm ~/.python_history
 
 expand_files() {
     # Example:
