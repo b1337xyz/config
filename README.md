@@ -1,4 +1,4 @@
-## README
+## ~/.config
 ```
       /\         OS: Arch Linux x86_64
      /  \        Shell: bash
