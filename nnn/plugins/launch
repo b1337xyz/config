@@ -1,13 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 FIFO_PID=/tmp/nnn_fifo.pid
-[ -f "$FIFO_PID" ] && kill $(cat "$FIFO_PID")
+[ -f "$FIFO_PID" ] && xargs -r kill < "$FIFO_PID"
 
 mimetype=$(file -Lbi -- "$1" | cut -d';' -f1)
-ext=${1##*.}
-ext=${ext,,}
+ext=$(printf '%s' "${1##*.}" | tr '[:upper:]' '[:lower:]')
 case "$mimetype" in
-    audio/*|video/*|image/gif) mpv "$1" ;;
+    audio/*|video/*|image/gif) mpv --really-quiet=yes "$1" >/dev/null 2>&1 & ;;
     image/*) nsxiv -q "$1" >/dev/null 2>&1 & ;;
     text/*)  vim "$1" ;;
     *) false ;;
