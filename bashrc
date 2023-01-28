@@ -90,8 +90,8 @@ undomv() {
 }
 fzcd() {
     local p
-    p=$(find . -mindepth 1 -maxdepth 1 -type d \! -name '\.*'  | sort -rV | fzf \
-        --info=hidden --layout=reverse --height 10 --bind 'tab:accept')
+    p=$(find . -mindepth 2 -maxdepth 4 -type d \! -name '\.*'  | sort -rV | fzf \
+        --info=hidden --layout=reverse --height 20 --bind 'tab:accept')
     [ -e "$p" ] && cd "$p"
 }
 

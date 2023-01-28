@@ -79,6 +79,7 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     linuxlogo='linux_logo -c -u -y -L 13' \
     mpipe='mpv --playlist=- --no-resume-playback' \
     h='history | tail -n ' \
+    atom='mount -o rw,async,noatime,noacl 192.168.1.10:/home/atom /mnt/anon/atom' \
     termux='sshfs termux:/data/data/com.termux/files/home ~/mnt/termux -o port=8022,allow_other,no_check_root,follow_symlinks,reconnect' \
     kcat='kitty icat' \
     jmtp='jmtpfs -o allow_other,noatime' \
