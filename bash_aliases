@@ -65,6 +65,7 @@ alias cdg='cd ~/.local/src/b1337xyz'
 ### shortcuts
 alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     doit='git add -Av --chmod=-x && git commit -m "$(date +%Y.%m.%d)" && git push' \
+    update_readme='git add README.md ; git commit -m "Update README.md"; git push' \
     reloadagent='gpg-connect-agent reloadagent /bye' \
     F='less +F' \
     cmd='command' \
