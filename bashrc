@@ -37,7 +37,7 @@ source ~/.scripts/shell/functions.sh
 source ~/.scripts/shell/mediainfo.sh
 source ~/.scripts/shell/aria2.sh
 source ~/.scripts/shell/fzf.sh
-source ~/.scripts/python/aria2bt/aria2bt_completion
+source ~/.scripts/python/aria2bt/completion/*
 source ~/.scripts/python/mal_completion
 source /usr/share/bash-completion/bash_completion
 source /usr/share/bash-completion/completions/man

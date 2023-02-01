@@ -101,8 +101,7 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     scrk='screenkey -t 0.4 -s medium -g 500x400-20-20' \
     nld='nload -i 192000 -o 80000 -u K wlan0' \
     fumnt='fusermount3 -u' \
-    dft='df -Th -x tmpfs -x devtmpfs --total' \
-    dff='df -h -t ext4 -t btrfs -t nfs4 --total' \
+    dff='df -Th -t ext4 -t btrfs -t nfs4 --total' \
     tmux_defaults='tmux -f /dev/null -L temp start-server \; show-options -g' \
     tsxiv='find . -maxdepth 3 -type f -iregex ".*\.\(jpe?g\|png\|gif\)" -printf "%T@ %p\n" | sort -n | cut -d" " -f2- | sxiv -qi' 
 

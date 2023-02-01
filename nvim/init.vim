@@ -32,6 +32,7 @@ set incsearch
 set nohlsearch
 
 noremap <F4> :set hlsearch! hlsearch?<CR>
+noremap gb :b#<CR>
 map Ee :FZF ~/.scripts<CR>
 
 autocmd BufEnter * :syntax sync fromstart
@@ -62,7 +63,7 @@ Plug 'ap/vim-css-color'
 Plug 'nvie/vim-flake8'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'sheerun/vim-polyglot'
 
 " Colorschemes
 Plug 'Mofiqul/dracula.nvim'
@@ -83,6 +84,8 @@ hi Normal guibg=NONE ctermbg=NONE
 
 autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 
+
+let g:python_highlight_all = 1
 let g:deoplete#enable_at_startup = 1
 let g:autoclose_on = 0
 let g:python_highlight_all = 1

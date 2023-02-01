@@ -84,7 +84,6 @@ interval=300
 [notifications]
 markup=pango
 command=~/.config/i3blocks/scripts/notifications
-min_width=" X "
 interval=once
 
 [menu]
