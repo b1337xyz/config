@@ -152,7 +152,7 @@ mode "$launch_mode" {
     bindsym e exec ts -- nnn; mode "default"
     bindsym a exec ts -- fzfanime.sh ; mode "default"
     bindsym p exec ts -n floating_terminal -- pulsemixer && pkill -SIGRTMIN+10 i3blocks; mode "default"
-    bindsym k exec ts -n floating_terminal -- passc.sh ; mode "default"
+    bindsym k exec passc.sh ; mode "default"
     bindsym f exec firefox ; mode "default"
     bindsym q exec qutebrowser ; mode "default"
     bindsym r exec radio.sh ; mode "default"

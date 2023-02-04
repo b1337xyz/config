@@ -1,6 +1,9 @@
 [[ $- != *i* ]] && return
 
-# export GPG_TTY=$(tty)
+if grep -q pinentry-curses ~/.config/gnupg/gpg-agent.conf; then
+    export GPG_TTY=$(tty)
+fi
+
 export BAT_STYLE=plain
 export BAT_THEME="Sublime Snazzy"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
