@@ -1,0 +1,19 @@
+bar {
+    padding -2px 2px
+    status_command i3blocks -c ~/.config/i3blocks/config
+    font pango: Iosevka Nerd Font 10
+    strip_workspace_numbers yes
+    binding_mode_indicator yes
+    workspace_buttons no
+    position bottom
+    mode dock
+    tray_output primary
+    output primary
+    workspace_min_width 50
+    set $bb0 #285577
+    set $bb1 #eeeece
+    colors {
+        background $bb0
+        binding_mode $bb1 $bb1 #000000
+    }
+}

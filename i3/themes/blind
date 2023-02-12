@@ -9,8 +9,8 @@ set $bar_font Iosevka Nerd Font 10
 bar {
     padding -2px 2px
     font pango: $bar_font
-    i3bar_command i3bar --transparency
-    status_command i3blocks -c ~/.config/i3blocks/config
+    # i3bar_command i3bar --transparency
+    #status_command i3blocks -c ~/.config/i3blocks/config
     strip_workspace_numbers yes
     binding_mode_indicator yes
     workspace_buttons yes
@@ -24,7 +24,7 @@ bar {
     output primary
     workspace_min_width 50
 
-    set $b0 #eeeeee00
+    set $b0 #eeeeee
     set $b1 #eeeeee
     set $b2 #999999
     set $b3 #000000
@@ -47,7 +47,7 @@ bar {
 # bar {
 #     padding -2px 2px
 #     font pango: $bar_font
-#     status_command i3blocks -c ~/.config/i3blocks/bottom
+#     #status_command i3blocks -c ~/.config/i3blocks/bottom
 #     i3bar_command i3bar --transparency
 #     workspace_buttons no
 #     # separator_symbol "│"
