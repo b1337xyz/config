@@ -46,4 +46,4 @@ include settings
 include bindings
 include rules
 include autostart
-include theme
+include themes/default
