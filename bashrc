@@ -34,16 +34,16 @@ export FZF_DEFAULT_OPTS='--no-border --no-separator'
 export PROMPT_DIRTRIM=2
 export COLORTERM=truecolor
 
+source /usr/share/bash-completion/bash_completion
+source /usr/share/bash-completion/completions/man
 source ~/.config/dircolors
 source ~/.config/bash_aliases
+source ~/.scripts/python/aria2bt/completion/*
+source ~/.scripts/python/mal_completion
 source ~/.scripts/shell/functions.sh
 source ~/.scripts/shell/mediainfo.sh
 source ~/.scripts/shell/aria2.sh
 source ~/.scripts/shell/fzf.sh
-source ~/.scripts/python/aria2bt/completion/*
-source ~/.scripts/python/mal_completion
-source /usr/share/bash-completion/bash_completion
-source /usr/share/bash-completion/completions/man
 complete -F _man man apropos whatis fzman
 
 umask 0077
