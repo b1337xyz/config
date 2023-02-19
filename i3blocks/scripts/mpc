@@ -1,0 +1,21 @@
+#!/bin/sh
+song=$(mpc -f '[%artist% - %title%]|File: %file%' 2>/dev/null | awk '!/ consume: off/{
+max = 60
+if ( length($0) > max ) {
+    printf("%s...\n", substr($0, 0, max - 3))
+} else {
+    print $0
+}
+exit
+}')
+case "$BLOCK_BUTTON" in
+    1)
+        notify-send -i "$ICON"  "Copied to clipboard" "$song"
+        printf '%s' "$song" | xclip -sel clip >/dev/null 2>&1
+    ;;
+esac
+case "$song" in
+    File:*) song=$(printf '%s' "${song##*/}" | sed -E 's/\.(mp3|opus|flac|wav)$//gI') ;;
+esac
+
+[ -n "$song" ] && echo " ♪ $song "
