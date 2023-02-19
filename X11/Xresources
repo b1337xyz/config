@@ -29,9 +29,9 @@ Nsxiv.window.background: #111111
 Nsxiv.window.foreground: #ff3e5e
 Nsxiv.mark.foreground: #ff3080
 dmenu.font: monospace-10
-dmenu.background: #eeeeee
-dmenu.foreground: #888888
-dmenu.selbackground: #cccccc
+dmenu.background: #83A36B
+dmenu.foreground: #253525
+dmenu.selbackground: #B3D39B
 dmenu.selforeground: #000000
 
 /* Sixel support

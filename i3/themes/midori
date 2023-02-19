@@ -1,0 +1,39 @@
+bar {
+    padding -2px 2px
+    status_command i3blocks -c ~/.config/i3blocks/config
+    font pango: Iosevka Nerd Font 10
+    strip_workspace_numbers yes
+    binding_mode_indicator yes
+    workspace_buttons yes
+    position bottom
+    mode dock
+    tray_output primary
+    output primary
+    workspace_min_width 25
+    set $bb0 #B3D39B
+    set $bb1 #83A36B
+    set $bf0 #253525
+    set $bf1 #839383
+    colors {
+        background $bb0
+        separator  $bb1
+        # class              border bg fg 
+        focused_workspace    $bb0 $bb0 $bf0
+        inactive_workspace   $bb0 $bb0 $bf1
+        active_workspace     $bb0 $bb0 $bf1
+        urgent_workspace     $bb0 $bb0 $bf1
+        binding_mode         $bb0 $bb0 $bf0
+    }
+}
+set $b0 #B3D39B
+set $b1 #253525
+set $f0 #253525
+set $f1 #839383
+
+# class                 border bg fg indicator child_border
+client.focused          $f0 $b0 $f0 $b0 $b0
+client.focused_inactive $b1 $b1 $f1 $f0 $f0
+client.unfocused        $b1 $b1 $f1 $f0 $f0
+client.urgent           $b1 $b1 $f1 $f0 $f0
+
+# vim: ft=i3config

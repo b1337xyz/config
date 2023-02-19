@@ -1,22 +1,22 @@
 align=center
 # full_text="|"
-separator=true
-separator_block_width=1
+# separator=false
+# separator_block_width=1
 # pink
 # background=#F699AD
 # color=#722539
 # green
-# background=#B4D499
-# color=#253525
+background=#B3D39B
+color=#253525
 # blue
 # background=#0E99EE
 # color=#FFFFFF
-background=#eeeeee
-color=#000000
+# background=#eeeeee
+# color=#000000
 
-# [sep]
-# full_text=" "
-# interval=once
+[blank]
+full_text=" "
+interval=once
 
 # [title]
 # command=~/.config/i3blocks/scripts/title
@@ -28,19 +28,19 @@ color=#000000
 # signal=11
 # interval=once
 
-[numlock]
-command=~/.config/i3blocks/scripts/numlock
-interval=once
-signal=12
+# [numlock]
+# command=~/.config/i3blocks/scripts/numlock
+# interval=once
+# signal=12
 
-[mpc]
-command=~/.config/i3blocks/scripts/mpc
-signal=21
-interval=once
+# [mpc]
+# command=~/.config/i3blocks/scripts/mpc
+# signal=21
+# interval=once
 
-[wall]
-command=~/.config/i3blocks/scripts/wall
-interval=once
+# [wall]
+# command=~/.config/i3blocks/scripts/wall
+# interval=once
 
 # [cmus]
 # command=~/.config/i3blocks/scripts/cmus
@@ -60,12 +60,12 @@ interval=once
 markup=pango
 command=~/.config/i3blocks/scripts/battery
 interval=150
-min_width=" B 100% "
+min_width=" B 00% "
 
 [volume]
 markup=pango
 command=~/.config/i3blocks/scripts/volume
-min_width=" V 100% "
+min_width=" V 00% "
 signal=10
 interval=once
 
@@ -81,14 +81,14 @@ command=~/.config/i3blocks/scripts/pacman
 min_width=" 99 I "
 interval=300
 
-[notifications]
-markup=pango
-command=~/.config/i3blocks/scripts/notifications
-interval=once
+# [notifications]
+# markup=pango
+# command=~/.config/i3blocks/scripts/notifications
+# interval=once
 
-[menu]
-full_text=" Menu "
-command=~/.config/i3blocks/scripts/menu
-interval=once
+# [menu]
+# full_text=" Menu "
+# command=~/.config/i3blocks/scripts/menu
+# interval=once
 
 # vim: ft=cfg

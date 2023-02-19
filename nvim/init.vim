@@ -73,7 +73,7 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'ellisonleao/gruvbox.nvim'
 call plug#end()
 
-colorscheme tokyonight
+colorscheme gruvbox
 
 hi Normal guibg=NONE ctermbg=NONE
 " hi ColorColumn ctermbg=236
