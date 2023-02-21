@@ -2,21 +2,12 @@ align=center
 # full_text="|"
 # separator=false
 # separator_block_width=1
-# pink
-# background=#F699AD
-# color=#722539
-# green
-background=#B3D39B
-color=#253525
-# blue
-# background=#0E99EE
+# background=#1464A0
 # color=#FFFFFF
-# background=#eeeeee
-# color=#000000
 
-[blank]
-full_text=" "
-interval=once
+# [blank]
+# full_text=" "
+# interval=once
 
 # [title]
 # command=~/.config/i3blocks/scripts/title
