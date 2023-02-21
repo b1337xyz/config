@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/gruvbox-material.yml
+  - ~/.config/alacritty/themes/Ayu-Mirage.yml
 
 env:
   TERM: xterm-256color
