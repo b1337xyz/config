@@ -34,7 +34,6 @@ set nohlsearch
 noremap <F4> :set hlsearch! hlsearch?<CR>
 noremap gb :b#<CR>
 map Ee :FZF ~/.scripts<CR>
-map gp :read !gpick -o -s -c color_web_hex<CR>
 
 autocmd BufEnter * :syntax sync fromstart
 autocmd BufWritePost */glava/* !~/.config/glava/restart
@@ -74,7 +73,7 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'ellisonleao/gruvbox.nvim'
 call plug#end()
 
-colorscheme nightfox
+colorscheme gruvbox
 
 hi Normal guibg=NONE ctermbg=NONE
 " hi ColorColumn ctermbg=236
