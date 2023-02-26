@@ -38,7 +38,7 @@ source /usr/share/bash-completion/bash_completion
 source /usr/share/bash-completion/completions/man
 source ~/.config/dircolors
 source ~/.config/bash_aliases
-source ~/.scripts/python/aria2bt/completion/*
+source ~/.scripts/python/a2cli/completion/*
 source ~/.scripts/python/mal_completion
 source ~/.scripts/shell/functions.sh
 source ~/.scripts/shell/mediainfo.sh
@@ -190,7 +190,7 @@ prompt() {
     # local lavg=$(uptime | grep -oP '(?<=load average: ).*')
     # local cpu_usage=$(ps axch -o %cpu | awk '{x+=$1}END{ printf("%.1f%%\n", x)}')
     # local ram_usage=$(free -h | awk '/Mem:/{print $3"/"$2}')
-    local perm=$(stat -c '%a' .)
+    # local perm=$(stat -c '%a' .)
     PS1=""
     # PS1="${bar}(${red}\V${bar})-"
     # PS1="${bar}(${grn}${perm}${bar})-"
@@ -200,12 +200,11 @@ prompt() {
     # test "${hidden_count:-0}" -gt 0 && PS1+="$hidden_count ., "
     # PS1+="${files:-0}${bar})-"
     # test -n "$exts"      && PS1+="-(${rst}${exts::-2}${rst}${bar})$rst"
-    test -n "$last_mod"  && PS1+="${bar}($rst$last_mod${bar})$rst"
+    test -n "$last_mod"  && PS1+="${bar}($rst$last_mod${bar})-"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})"
-    PS1+="\n"
+    PS1+="(${blu}\w${rst}${bar})$rst"
+    PS1+="\n\${timer_show}"
     test -n "$VIRTUAL_ENV" && PS1+="$VIRTUAL_ENV_PROMPT "
-    PS1+="\${timer_show}${blu}\w${rst}"
-    # PS1+="\${timer_show}"
     PS1+="$git_branch"
     if test "${out:-0}" -eq 0;then
         PS1+="${grn}>$rst "

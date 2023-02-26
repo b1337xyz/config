@@ -1,5 +1,6 @@
 assign [class="Conky"] $ws1
 assign [instance="clock"] $ws1
+assign [class="GLava"] $ws1
 
 assign [class="Brave-browser"] $ws3
 assign [class="Chromium"] $ws3
