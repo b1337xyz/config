@@ -184,31 +184,32 @@ prompt() {
     #     ext = a[length(a)];
     #     if (length(ext) < 8 && !(ext ~ /^[0-9]$/) ) print tolower(ext)
     # }' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ')
+    # local fsize=$(find . -maxdepth 1 -type f -print0 | xargs -r0 du -ch | awk '/\ttotal$/{print $1}')
     # local last_mod=$(stat -c '%Z' "$PWD" | xargs -rI{} date --date='@{}' '+%b %d %H:%M')
     # local lavg=$(uptime | grep -oP '(?<=load average: ).*')
     # local cpu_usage=$(ps axch -o %cpu | awk '{x+=$1}END{ printf("%.1f%%\n", x)}')
-    # local ram_usage=$(free -h | awk '/Mem:/{print $3"/"$2}')
-    # local fsize=$(find . -maxdepth 1 -type f -print0 | xargs -r0 du -ch | awk '/\ttotal$/{print $1}')
+    local ram_usage=$(command free -m | awk '/Mem:/{printf("%s\n", $2 - $7)}')
     local fsize=$(command ls -lhA | awk 'NR == 1 {print $2}')
     local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1) /')
     local last_mod=$(last_modified)
     local perm=$(stat -c '%a' .)
     
-    PS1="${bar}(${red}\V${bar})-"
-    PS1="${bar}(${grn}${perm}${bar})-"
-    test -n "$fsize" && PS1+="(${red}${fsize}${rst}${bar})-"
+    # PS1="${bar}[${red}\V${bar}]"
+    PS1+="${bar}[${cyn}${ram_usage}${bar}]"
+    PS1+="${bar}[${grn}${perm}${bar}]"
+    test -n "$fsize" && PS1+="[${red}${fsize}${rst}${bar}]"
     # PS1+="(${file_count::-2}, "
     # PS1+="${hidden_count:-0} ., "
     # PS1+="${files:-0}${bar})-"
     # test -n "$exts"      && PS1+="-(${rst}${exts::-2}${rst}${bar})$rst"
-    test -n "$last_mod"  && PS1+="${bar}($rst$last_mod${bar})-"
+    test -n "$last_mod"  && PS1+="${bar}[$rst$last_mod${bar}]"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
-    PS1+="(${blu}\w${rst}${bar})$rst"
+    PS1+="[${blu}\w${rst}${bar}]$rst"
     PS1+="\n\${timer_show}"
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
     if test "${out:-0}" -eq 0;then
-        PS1+="${grn}+$rst "
+        PS1+="${grn}λ${rst} "  # λ π β ω μ
     else
         # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
         # [ -f "$beep" ] && mpv --no-config --no-video --really-quiet "$beep" &
