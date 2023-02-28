@@ -202,7 +202,7 @@ prompt() {
     # PS1+="${files:-0}${bar})-"
     # test -n "$exts"      && PS1+="-(${rst}${exts::-2}${rst}${bar})$rst"
     test -n "$last_mod"  && PS1+="${bar}($rst$last_mod${bar})-"
-    test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
+    # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
     PS1+="(${blu}\w${rst}${bar})$rst"
     PS1+="\n\${timer_show}"
     PS1+="$VIRTUAL_ENV_PROMPT"
@@ -211,8 +211,8 @@ prompt() {
         PS1+="${grn}+$rst "
     else
         # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
-        # [ -f "$beep" ] && { mpv --no-config --no-video --really-quiet "$beep" & disown; }
-        # [ -f "$beep" ] && { aplay -q "$beep" & disown; }
+        # [ -f "$beep" ] && mpv --no-config --no-video --really-quiet "$beep" &
+        # [ -f "$beep" ] && aplay -q "$beep" &
         PS1+="${red}${out}!$rst "
         # PS1+="${red}>$rst "
     fi
