@@ -163,6 +163,7 @@ trap 'timer_start' DEBUG
 
 prompt() {
     out=$?
+    PS1=""
     local blk="\[\033[1;30m\]"
     local red="\[\033[1;31m\]"
     local grn="\[\033[1;32m\]"
@@ -173,8 +174,6 @@ prompt() {
     local whi="\[\033[1;37m\]"
     local rst="\[\033[00m\]"
     local bar="$cyn"
-    local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1) /')
-    # local fsize=$(find -L . -xdev -maxdepth 1 -type f -print0 | xargs -r0 du -ch | awk '/\ttotal$/{print $1}')
     # local file_count=$(find -L . -xdev -mindepth 1 -maxdepth 1 -printf '%y\n' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ') 
     # local hidden_count=$(find . -mindepth 1 -maxdepth 1 -name '.*' | wc -l)
     # local hidden_count=$(ls --color=none -N1A | grep -c '^\.')
@@ -186,33 +185,35 @@ prompt() {
     #     if (length(ext) < 8 && !(ext ~ /^[0-9]$/) ) print tolower(ext)
     # }' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ')
     # local last_mod=$(stat -c '%Z' "$PWD" | xargs -rI{} date --date='@{}' '+%b %d %H:%M')
-    local last_mod=$(last_modified)
     # local lavg=$(uptime | grep -oP '(?<=load average: ).*')
     # local cpu_usage=$(ps axch -o %cpu | awk '{x+=$1}END{ printf("%.1f%%\n", x)}')
     # local ram_usage=$(free -h | awk '/Mem:/{print $3"/"$2}')
-    # local perm=$(stat -c '%a' .)
-    PS1=""
-    # PS1="${bar}(${red}\V${bar})-"
-    # PS1="${bar}(${grn}${perm}${bar})-"
-    # test -n "$fsize" && PS1+="(${red}${fsize}${rst}${bar})-"
-    # PS1+="($rst"
-    # test -n "$file_count" && PS1+="${file_count::-2}, "
-    # test "${hidden_count:-0}" -gt 0 && PS1+="$hidden_count ., "
+    # local fsize=$(find . -maxdepth 1 -type f -print0 | xargs -r0 du -ch | awk '/\ttotal$/{print $1}')
+    local fsize=$(command ls -lhA | awk 'NR == 1 {print $2}')
+    local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1) /')
+    local last_mod=$(last_modified)
+    local perm=$(stat -c '%a' .)
+    
+    PS1="${bar}(${red}\V${bar})-"
+    PS1="${bar}(${grn}${perm}${bar})-"
+    test -n "$fsize" && PS1+="(${red}${fsize}${rst}${bar})-"
+    # PS1+="(${file_count::-2}, "
+    # PS1+="${hidden_count:-0} ., "
     # PS1+="${files:-0}${bar})-"
     # test -n "$exts"      && PS1+="-(${rst}${exts::-2}${rst}${bar})$rst"
     test -n "$last_mod"  && PS1+="${bar}($rst$last_mod${bar})-"
-    # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})"
+    test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
     PS1+="(${blu}\w${rst}${bar})$rst"
     PS1+="\n\${timer_show}"
-    test -n "$VIRTUAL_ENV" && PS1+="$VIRTUAL_ENV_PROMPT "
+    PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
     if test "${out:-0}" -eq 0;then
-        PS1+="${grn}>$rst "
+        PS1+="${grn}+$rst "
     else
         # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
         # [ -f "$beep" ] && { mpv --no-config --no-video --really-quiet "$beep" & disown; }
         # [ -f "$beep" ] && { aplay -q "$beep" & disown; }
-        PS1+=" (${red}${out}${rst}) ${red}!$rst "
+        PS1+="${red}${out}!$rst "
         # PS1+="${red}>$rst "
     fi
 
