@@ -27,7 +27,6 @@ export NNN_PLUG='t:lstar;T:trash;m:mediainf;i:imgview;c:cpb;C:cpp;v:video;e:extr
 export NNN_SSHFS_OPTS='sshfs -o allow_other,follow_symlinks,reconnect'
 export PAGER=less
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export RANGER_LOAD_DEFAULT_RC=FALSE
 export TERM=${TERM:-xterm-256color}
 export TODOFILE="$XDG_CACHE_HOME"/.todo
 export FZF_DEFAULT_OPTS='--no-border --no-separator'
@@ -188,34 +187,33 @@ prompt() {
     # local last_mod=$(stat -c '%Z' "$PWD" | xargs -rI{} date --date='@{}' '+%b %d %H:%M')
     # local lavg=$(uptime | grep -oP '(?<=load average: ).*')
     # local cpu_usage=$(ps axch -o %cpu | awk '{x+=$1}END{ printf("%.1f%%\n", x)}')
-    local ram_usage=$(command free -m | awk '/Mem:/{printf("%s\n", $2 - $7)}')
-    local fsize=$(command ls -lhA | awk 'NR == 1 {print $2}')
+    # local ram_usage=$(command free -m | awk '/Mem:/{printf("%s\n", $2 - $7)}')
+    # local fsize=$(command ls -lhA | awk 'NR == 1 {print $2}')
+    # local last_mod=$(last_modified)
+    # local perm=$(stat -c '%a' .)
     local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1) /')
-    local last_mod=$(last_modified)
-    local perm=$(stat -c '%a' .)
     
     # PS1="${bar}[${red}\V${bar}]"
-    PS1+="${bar}[${cyn}${ram_usage}${bar}]"
-    PS1+="${bar}[${grn}${perm}${bar}]"
-    test -n "$fsize" && PS1+="[${red}${fsize}${rst}${bar}]"
+    # PS1+="${bar}[${cyn}${ram_usage}${bar}]"
+    # PS1+="${bar}[${grn}${perm}${bar}]"
+    # test -n "$fsize" && PS1+="[${red}${fsize}${rst}${bar}]"
     # PS1+="(${file_count::-2}, "
     # PS1+="${hidden_count:-0} ., "
     # PS1+="${files:-0}${bar})-"
     # test -n "$exts"      && PS1+="-(${rst}${exts::-2}${rst}${bar})$rst"
-    test -n "$last_mod"  && PS1+="${bar}[$rst$last_mod${bar}]"
+    # test -n "$last_mod"  && PS1+="${bar}[$rst$last_mod${bar}]"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
-    PS1+="[${blu}\w${rst}${bar}]$rst"
-    PS1+="\n\${timer_show}"
+    PS1+="\${timer_show}"
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
+    PS1+="${bar}[${blu}\w${bar}]${rst}"
     if test "${out:-0}" -eq 0;then
-        PS1+="${grn}λ${rst} "  # λ π β ω μ
+        PS1+=" "  # λ π β ω μ
     else
         # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
         # [ -f "$beep" ] && mpv --no-config --no-video --really-quiet "$beep" &
         # [ -f "$beep" ] && aplay -q "$beep" &
-        PS1+="${red}${out}!$rst "
-        # PS1+="${red}>$rst "
+        PS1+=" ${red}${out}!$rst "
     fi
 
     # set title
