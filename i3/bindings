@@ -71,7 +71,7 @@ bindsym $mod+shift+minus exec i3-scratchpad-dmenu.py && exec pkill -SIGRTMIN+11 
 # 82  KP_Subtract
 # 86  KP_Add
 # 129 KP_Decimal
-bindcode 63 exec mpc toggle
+bindcode 63 exec mpvc.sh -s /tmp/mpvradio toggle
 bindcode 86 exec volupdown.sh up
 bindcode 82 exec volupdown.sh down
 
@@ -101,12 +101,12 @@ bindsym XF86Calculator        exec brightnessctl s 2%-
 # bindsym XF86AudioPlay         exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks
 # bindsym XF86AudioNext         exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
 # bindsym XF86AudioPrev         exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
-# bindsym XF86AudioPlay         exec mpvc.sh toggle
-# bindsym XF86AudioPrev         exec mpvc.sh next
-# bindsym XF86AudioNext         exec mpvc.sh prev
-bindsym XF86AudioPlay         exec mpc toggle
-bindsym XF86AudioNext         exec mpc next   && exec pkill -SIGRTMIN+21 i3blocks
-bindsym XF86AudioPrev         exec mpc prev   && exec pkill -SIGRTMIN+21 i3blocks
+bindsym XF86AudioPlay         exec mpvc.sh -s /tmp/mpvradio toggle
+bindsym XF86AudioPrev         exec mpvc.sh -s /tmp/mpvradio next
+bindsym XF86AudioNext         exec mpvc.sh -s /tmp/mpvradio prev
+# bindsym XF86AudioPlay         exec mpc toggle
+# bindsym XF86AudioNext         exec mpc next   && exec pkill -SIGRTMIN+21 i3blocks
+# bindsym XF86AudioPrev         exec mpc prev   && exec pkill -SIGRTMIN+21 i3blocks
 
 
 bindsym $mod+q kill

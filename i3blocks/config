@@ -24,10 +24,10 @@ align=center
 # interval=once
 # signal=12
 
-[mpc]
-command=~/.config/i3blocks/scripts/mpc
-signal=21
-interval=once
+# [mpc]
+# command=~/.config/i3blocks/scripts/mpc
+# signal=21
+# interval=once
 
 # [wall]
 # command=~/.config/i3blocks/scripts/wall
