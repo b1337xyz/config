@@ -208,7 +208,7 @@ prompt() {
     PS1+="$git_branch"
     PS1+="${blu}\w${rst}"
     if test "${out:-0}" -eq 0;then
-        PS1+=" ${grn}λ${rst} "  # λ π β ω μ
+        PS1+="\n${grn}λ${rst} "  # λ π β ω μ
     else
         # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
         # [ -f "$beep" ] && mpv --no-config --no-video --really-quiet "$beep" &
