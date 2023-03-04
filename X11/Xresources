@@ -37,10 +37,16 @@ dmenu.font: monospace-10
 /* dmenu.selforeground: #000000 */
 
 /* Dark */
-dmenu.background: #19232D
-dmenu.foreground: #ffffff
-dmenu.selbackground: #32414B
-dmenu.selforeground: #90f0ff
+/* dmenu.background: #19232D */
+/* dmenu.foreground: #ffffff */
+/* dmenu.selbackground: #32414B */
+/* dmenu.selforeground: #90f0ff */
+
+/* Light */
+dmenu.background: #eeeeee
+dmenu.foreground: #888888
+dmenu.selbackground: #ffffff
+dmenu.selforeground: #000000
 
 /* Sixel support
 XTerm*decTerminalID: vt340

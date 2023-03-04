@@ -1,7 +1,7 @@
 ipc-socket /run/user/1000/i3/ipc.sock
 title_align center
-default_border pixel 2
-default_floating_border pixel 2
+default_border normal 0
+default_floating_border pixel 0
 floating_maximum_size 1365 x 744
 floating_modifier $mod
 
@@ -9,11 +9,11 @@ floating_modifier $mod
 font pango: Iosevka Nerd Font 10
 
 for_window [all] title_format "%title"
-# for_window [all] title_window_icon off
-# for_window [all] title_window_icon padding 5px
+for_window [all] title_window_icon on
+for_window [all] title_window_icon padding 3px
 
 # none|vertical|horizontal|both|smart
-hide_edge_borders none
+hide_edge_borders smart
 
 # default|stacking|tabbed
 workspace_layout tabbed
@@ -27,4 +27,3 @@ gaps outer 8
 smart_gaps off
 
 # vim: ft=i3config
-

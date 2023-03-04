@@ -10,9 +10,9 @@ bar {
     tray_output primary
     output primary
     workspace_min_width 25
-    set $bbg #32414B
-    set $separator #90f0ff
-    set $bfg #ffffff
+    set $bbg #eeeeee
+    set $separator #888888
+    set $bfg #000000
     set $bifg #888888
     colors {
         background $bbg
@@ -29,13 +29,13 @@ bar {
 }
 
 
-set $fbg #32414B
-set $fborder #32414B
-set $ffg #ffffff
-set $indicator #90f0ff
-set $ubg #19232D
-set $uborder #32414B
-set $ufg #888888
+set $fbg #eeeeee
+set $fborder #888888
+set $ffg #000000
+set $indicator #eeeeee
+set $ubg #aaaaaa
+set $uborder #aaaaaa
+set $ufg #555555
 set $ibg #eeeeee
 set $ifg #888888
 
