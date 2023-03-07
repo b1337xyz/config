@@ -1,3 +1,24 @@
+call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'ap/vim-css-color'
+Plug 'nvie/vim-flake8'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'sheerun/vim-polyglot'
+
+" Colorschemes
+Plug 'Mofiqul/dracula.nvim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'EdenEast/nightfox.nvim'
+Plug 'ellisonleao/gruvbox.nvim'
+call plug#end()
+
+colorscheme nightfox
+
 syntax on
 filetype indent plugin on
 set statusline=%<%f\ %m%h%r%=%-8.(%l,%c,%L%)\ %P\ %#warningmsg#
@@ -55,26 +76,6 @@ autocmd BufNewFile *.py 0r     $XDG_CONFIG_HOME/nvim/templates/skeleton.py
 autocmd BufNewFile *.html 0r   $XDG_CONFIG_HOME/nvim/templates/skeleton.html
 autocmd BufNewFile *.css 0r    $XDG_CONFIG_HOME/nvim/templates/skeleton.css
 
-call plug#begin()
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'tpope/vim-commentary'
-Plug 'ap/vim-css-color'
-Plug 'nvie/vim-flake8'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'sheerun/vim-polyglot'
-
-" Colorschemes
-Plug 'Mofiqul/dracula.nvim'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-Plug 'EdenEast/nightfox.nvim'
-Plug 'ellisonleao/gruvbox.nvim'
-call plug#end()
-
-colorscheme nightfox
 
 hi Normal guibg=NONE ctermbg=NONE
 " hi ColorColumn ctermbg=236

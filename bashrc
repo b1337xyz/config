@@ -5,7 +5,7 @@ if grep -q pinentry-curses ~/.config/gnupg/gpg-agent.conf; then
 fi
 
 export BAT_STYLE=plain
-export BAT_THEME="Sublime Snazzy"
+export BAT_THEME="Solarized (light)"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export HISTIGNORE='?:??:???:history:sensors:uptime:uptime -?:uname:uname -?'
 export HISTCONTROL='ignoreboth:erasedups'
@@ -29,7 +29,7 @@ export PAGER=less
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export TERM=${TERM:-xterm-256color}
 export TODOFILE="$XDG_CACHE_HOME"/.todo
-export FZF_DEFAULT_OPTS='--no-border --no-separator'
+export FZF_DEFAULT_OPTS='--no-border --no-separator --color=dark'
 export PROMPT_DIRTRIM=2
 export COLORTERM=truecolor
 

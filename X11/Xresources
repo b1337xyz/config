@@ -48,6 +48,12 @@ dmenu.foreground: #888888
 dmenu.selbackground: #ffffff
 dmenu.selforeground: #000000
 
+/* Plan9 */
+/* dmenu.background: #edefda */
+/* dmenu.foreground: #888888 */
+/* dmenu.selbackground: #FDFFEA */
+/* dmenu.selforeground: #000000 */
+
 /* Sixel support
 XTerm*decTerminalID: vt340
 XTerm*numColorRegisters: 256
