@@ -33,10 +33,10 @@ window:
 
 font:
   normal:
-    # family: Source Code Pro
+    family: Source Code Pro
     # family: mononoki Nerd Font Mono
-    # family: Iosevka
-    family: Comic Mono
+    # family: Iosevka Nerd Font Mono
+    # family: Comic Mono
     style: Normal
 
   bold:
