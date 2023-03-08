@@ -32,7 +32,7 @@ bar {
 set $fbg #eeeeee
 set $fborder #888888
 set $ffg #000000
-set $indicator #eeeeee
+set $indicator #ffffff
 set $ubg #aaaaaa
 set $uborder #aaaaaa
 set $ufg #555555
@@ -40,7 +40,7 @@ set $ibg #eeeeee
 set $ifg #888888
 
 # class                 border bg fg indicator child_border
-client.focused          $fborder $fbg $ffg $findicator $indicator
+client.focused          $fborder $fbg $ffg $indicator $indicator
 client.focused_inactive $ibg $ibg $ifg $ibg $ibg
 client.unfocused        $ubg $ubg $ufg $ubg $ubg
 client.urgent           $ubg $ubg $ufg $ubg $ubg

@@ -29,9 +29,9 @@ align=center
 # signal=21
 # interval=once
 
-[wall]
-command=~/.config/i3blocks/scripts/wall
-interval=once
+# [wall]
+# command=~/.config/i3blocks/scripts/wall
+# interval=once
 
 # [cmus]
 # command=~/.config/i3blocks/scripts/cmus
