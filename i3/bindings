@@ -127,7 +127,7 @@ bindsym $mod+d             exec drun.sh
 bindsym $mod+F5            exec chscreen.sh
 bindsym $mod+t             exec toggle_transparency.sh
 bindsym $mod+c             exec i3cloneterm.py
-bindsym $mod+x             exec xwall.sh --dmenu
+bindsym $mod+x             exec xwall.sh --current
 bindsym $mod+shift+x       exec xwall.sh --sxiv
 bindsym $mod+shift+s       exec print.sh cops
 bindsym ctrl+shift+space   exec dunstctl close

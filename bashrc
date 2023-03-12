@@ -5,7 +5,8 @@ if grep -q pinentry-curses ~/.config/gnupg/gpg-agent.conf; then
 fi
 
 export BAT_STYLE=plain
-export BAT_THEME="Solarized (light)"
+export BAT_THEME="OneHalfDark"
+# export BAT_THEME="gruvbox-light"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export HISTIGNORE='?:??:???:history:sensors:uptime:uptime -?:uname:uname -?'
 export HISTCONTROL='ignoreboth:erasedups'
@@ -19,7 +20,7 @@ export LESS_TERMCAP_so=$'\E[40;32m'    # begin reverse video
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export NNN_CONTEXT_COLORS="1234"
-export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
+export NNN_FCOLORS='c1e2f029006033f7c6d6abc4'
 export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_OPENER="$HOME/.config/nnn/plugins/launch"
 export NNN_OPTS='cEA'
@@ -203,12 +204,12 @@ prompt() {
     # test -n "$exts"      && PS1+="-(${rst}${exts::-2}${rst}${bar})$rst"
     # test -n "$last_mod"  && PS1+="${bar}[$rst$last_mod${bar}]"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
+    PS1+="${blu}\w${rst}\n"
     PS1+="\${timer_show}"
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
-    PS1+="${blu}\w${rst}"
     if test "${out:-0}" -eq 0;then
-        PS1+="\n${grn}>${rst} "  # λ π β ω μ
+        PS1+="${grn}>${rst} "  # λ π β ω μ
     else
         # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
         # [ -f "$beep" ] && mpv --no-config --no-video --really-quiet "$beep" &

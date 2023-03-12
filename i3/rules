@@ -46,6 +46,7 @@ assign [instance="irssi"] $ws0
 # for_window [instance="newsboat"] floating enable
 # for_window [title="Wine"] floating enable
 
+for_window [class="Anydesk"] floating enable
 for_window [class="GLava"] floating enable
 for_window [class="Gcolor3"] floating enable
 for_window [class="Gkrellm"] floating enable

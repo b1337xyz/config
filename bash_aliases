@@ -105,7 +105,7 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     dff='df -Th -t ext4 -t btrfs -t nfs4 --total' \
     tmux_defaults='tmux -f /dev/null -L temp start-server \; show-options -g' \
     tsxiv='find . -maxdepth 3 -type f -iregex ".*\.\(jpe?g\|png\|gif\)" -printf "%T@ %p\n" | sort -n | cut -d" " -f2- | sxiv -qi' \
-    tmpv='find . -maxdepth 3 -type f -iregex ".*\.\(mkv\|mp4\|webm\|avi\|m4v\|gif\)" -printf "%T@ %p\n" | sort -nr | cut -d" " -f2- | mpv --playlist=-' 
+    tmpv='find . -maxdepth 3 -type f -iregex ".*\.\(mkv\|mp4\|webm\|avi\|m4v\|gif\)" -printf "%T@ %p\n" | sort -n | cut -d" " -f2- | mpv --playlist=-' 
 
 ### pacman
 alias pSs='pacman -Ss' \

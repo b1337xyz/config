@@ -25,9 +25,9 @@ Xft.lcdfilter: lcddefault
 Nsxiv.bar.font: monospace-10
 Nsxiv.bar.foreground: #000000
 Nsxiv.bar.background: #eeeeee
-Nsxiv.window.background: #111111
-Nsxiv.window.foreground: #ff3e5e
-Nsxiv.mark.foreground: #ff3080
+Nsxiv.window.background: #fefee8
+Nsxiv.window.foreground: #000040
+Nsxiv.mark.foreground: #ff3040
 dmenu.font: monospace-10
 
 /* Midori */

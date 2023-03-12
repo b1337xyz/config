@@ -39,7 +39,7 @@ drawimg() {
     cols=$(tput cols) lines=$(tput lines)
     printf '{"action": "remove", "identifier": "test"}\n' > "$UEBERZUG_FIFO"
     printf '{"action": "add", "identifier": "test", "x": %d, "y": %d, "width": "%d", "height": "%d", "scaler": "cover", "path": "%s"}\n' \
-        "${x:-0}" "${y:-0}" "$cols" "$lines" "$path" > "$UEBERZUG_FIFO"
+        "${x:-1}" "${y:-0}" "$((cols - 2))" "$((lines - 2))" "$path" > "$UEBERZUG_FIFO"
 }
 handle_mime() {
     mime=$(file -Lbi -- "$1" | cut -d';' -f1)
@@ -100,7 +100,7 @@ else
     if pidkill "$FIFO_PID";then
         pidkill "$PREVIEW_PID"
     else
-        tmux split-window -h -d -l '60%' -e "NNN_FIFO=$NNN_FIFO" \
+        tmux split-window -h -d -l '45%' -e "NNN_FIFO=$NNN_FIFO" \
             -e "FIFO_PID=$FIFO_PID"   -e "PREVIEW_PID=$PREVIEW_PID" \
             -e "BAT_STYLE=$BAT_STYLE" -e "BAT_THEME=$BAT_THEME" \
             -e "PREVIEW_MODE=1" -e "UEBERZUG_FIFO=$UEBERZUG_FIFO" "$0" "$1" &
