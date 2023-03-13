@@ -20,7 +20,7 @@ export LESS_TERMCAP_so=$'\E[40;32m'    # begin reverse video
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export NNN_CONTEXT_COLORS="1234"
-export NNN_FCOLORS='c1e2f029006033f7c6d6abc4'
+export NNN_FCOLORS='c1e22729006033f7c6d6abc4'
 export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_OPENER="$HOME/.config/nnn/plugins/launch"
 export NNN_OPTS='cEA'
@@ -229,7 +229,7 @@ if [ -n "$DISPLAY" ];then
     # random_anime_quote
     # bfetch
     todo ls 2>/dev/null
-    xmodmap -e "keycode 134 =" # disable SUPER_R
+    # xmodmap -e "keycode 134 =" # disable SUPER_R
 fi
 function bye {
     echo "bye ^-^"
