@@ -214,7 +214,7 @@ prompt() {
         # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
         # [ -f "$beep" ] && mpv --no-config --no-video --really-quiet "$beep" &
         # [ -f "$beep" ] && aplay -q "$beep" &
-        PS1+=" ${red}${out}!$rst "
+        PS1+="${red}${out}!$rst "
     fi
 
     # set title

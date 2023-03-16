@@ -24,12 +24,12 @@ window:
     lines: 24
 
   padding:
-    x: 1
-    y: 3
+    x: 5
+    y: 5
 
   dynamic_padding: true
   decorations: full
-  opacity: 1.0
+  opacity: 0.9
 
 font:
   normal:

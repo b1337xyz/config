@@ -57,4 +57,4 @@ include settings
 include bindings
 include rules
 include autostart
-include themes/light
+include themes/polybar

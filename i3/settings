@@ -20,8 +20,9 @@ workspace_layout tabbed
 
 
 # gaps outer|horizontal|vertical|top|left|bottom|right <gap_size>[px]
-# gaps inner 4
-# gaps outer 4
+gaps inner 4
+gaps outer 4
+gaps bottom 32
 
 # smart_gaps on|off|inverse_outer
 # smart_gaps off

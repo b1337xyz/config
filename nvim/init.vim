@@ -66,6 +66,7 @@ autocmd BufWritePost */i3/* !i3-msg reload
 autocmd BufWritePost */i3blocks/config !i3-msg restart
 autocmd BufWritePost */X11/themes/* !xrdb load ~/.config/X11/Xresources
 autocmd BufWritePost */alacritty/themes/*.yml !touch -m ~/.config/alacritty/*.yml
+autocmd BufWritePost */polybar/config.ini !~/.config/polybar/launch
 autocmd BufNewFile,BufRead *.py set colorcolumn=80
 autocmd BufNewFile,BufRead .bashrc,.bash_aliases,.profile set filetype=bash
 autocmd BufNewFile,BufRead lfrc set syntax=config
