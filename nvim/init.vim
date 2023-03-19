@@ -62,7 +62,7 @@ autocmd BufWritePost */glava/* !~/.config/glava/restart
 autocmd BufWritePost .tmux.conf !tmux source-file ~/.tmux.conf \; display "Reloaded"
 autocmd BufWritePost Xresources !xrdb load %
 autocmd BufWritePost dunstrc !~/.scripts/shell/dunst/reload.sh
-autocmd BufWritePost */i3/* !i3-msg reload
+autocmd BufWritePost ~/.config/i3/* !i3-msg reload
 autocmd BufWritePost */i3blocks/config !i3-msg restart
 autocmd BufWritePost */X11/themes/* !xrdb load ~/.config/X11/Xresources
 autocmd BufWritePost */alacritty/themes/*.yml !touch -m ~/.config/alacritty/*.yml
@@ -70,7 +70,7 @@ autocmd BufWritePost */polybar/config.ini !~/.config/polybar/launch
 autocmd BufNewFile,BufRead *.py set colorcolumn=80
 autocmd BufNewFile,BufRead .bashrc,.bash_aliases,.profile set filetype=bash
 autocmd BufNewFile,BufRead lfrc set syntax=config
-autocmd BufNewFile,BufRead */i3/* set syntax=i3config
+autocmd BufNewFile,BufRead ~/.config/i3/* set syntax=i3config
 autocmd BufNewFile,BufRead ~/.config/X11/themes/* set syntax=xdefaults
 autocmd BufNewFile *.sh 0r     $XDG_CONFIG_HOME/nvim/templates/skeleton.sh
 autocmd BufNewFile *.py 0r     $XDG_CONFIG_HOME/nvim/templates/skeleton.py
