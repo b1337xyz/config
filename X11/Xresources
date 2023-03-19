@@ -24,8 +24,8 @@ Xft.hintstyle: hintlight
 Xft.lcdfilter: lcddefault
 Nsxiv.bar.font: monospace-10
 Nsxiv.bar.foreground: #cccccc
-Nsxiv.bar.background: #333333
-Nsxiv.window.background: #333333
+Nsxiv.bar.background: #222222
+Nsxiv.window.background: #222222
 Nsxiv.window.foreground: #2090c0
 Nsxiv.mark.foreground: #ff3040
 dmenu.font: monospace-10

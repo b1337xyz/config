@@ -149,7 +149,7 @@ mode "$print_mode" {
 }
 bindsym $mod+p mode "$print_mode"
 
-set $launch_mode [a]nime [f]irefox [q]ute [t]elegram [s]team [p]ulsemixer [e]xplorer [r]adio
+set $launch_mode [f]irefox [q]ute [t]elegram [p]ulsemixer [e]xplorer [r]adio
 mode "$launch_mode" {
     # bindsym c exec alacritty --class cmus --title cmus -e cmus ; mode "default"
     bindsym e exec ts -- nnn; mode "default"

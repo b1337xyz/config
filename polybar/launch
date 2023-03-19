@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-polybar-msg cmd quit
+pgrep -x polybar && polybar-msg cmd quit
+sleep .3
 polybar -q main >/dev/null 2>&1 & disown
