@@ -9,6 +9,7 @@ PREVIEW_PID=/tmp/nnn_preview.pid
 FIFO_PID=/tmp/nnn_fifo.pid
 NNN_FIFO=${NNN_FIFO:-/tmp/nnn.fifo}
 UEBERZUG_FIFO=/tmp/nnn.ueberzug.fifo
+THUMBS=~/.cache/thumbnails/video
 
 pidkill() { [ -f "$1" ] && kill "$(cat "$1")" >/dev/null 2>&1; }
 fifo_pager() {
@@ -41,11 +42,27 @@ drawimg() {
     printf '{"action": "add", "identifier": "test", "x": %d, "y": %d, "width": "%d", "height": "%d", "scaler": "cover", "path": "%s"}\n' \
         "${x:-1}" "${y:-0}" "$((cols - 2))" "$((lines - 2))" "$path" > "$UEBERZUG_FIFO"
 }
+gen_thumb() {
+    img=${THUMBS}/${1}.jpg
+    if ! [ -f "$img" ];then
+        mkdir -p "${img%/*}"
+        ffmpegthumbnailer -s 512 -i "$1" -o "$img" 2>/dev/null 
+    fi
+    printf '%s' "$img"
+}
 handle_mime() {
     mime=$(file -Lbi -- "$1" | cut -d';' -f1)
     case "$mime" in
-        image*) if [ -n "$DISPLAY" ];then drawimg "$1"; else mediainfo -- "$1" ;fi ;;
-        video*) mediainfo -- "$1" ;;
+        image*)
+            if [ -n "$DISPLAY" ];then drawimg "$1"; else mediainfo -- "$1" ;fi ;;
+        video*)
+            if [ -n "$DISPLAY" ];then
+                img=$(gen_thumb "$1")
+                drawimg "$img"
+            else
+                mediainfo -- "$1"
+            fi
+        ;;
         text/*) fifo_pager bat "$1" ;;
         */x-bittorrent) fifo_pager aria2c -S "$1" ;;
         *) file -b -- "$1" ;;

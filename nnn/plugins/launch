@@ -1,7 +1,7 @@
 #!/bin/sh
 
-FIFO_PID=/tmp/nnn_fifo.pid
-[ -f "$FIFO_PID" ] && xargs -r kill < "$FIFO_PID"
+# FIFO_PID=/tmp/nnn_fifo.pid
+# [ -f "$FIFO_PID" ] && xargs -r kill < "$FIFO_PID"
 
 mimetype=$(file -Lbi -- "$1" | cut -d';' -f1)
 ext=$(printf '%s' "${1##*.}" | tr '[:upper:]' '[:lower:]')

@@ -30,6 +30,10 @@ case "$1" in
     ;;
     g) tr \\n \\0 | xargs -0 gimp & ;;
     p) head -1 | tr \\n \\0 | xargs -0 realpath | tr -d \\n | xclip -sel clip ;;
+    P)
+        grep -oP '[^/]*\.(mkv|webm|mp4|avi)(?=\.jpg)' |
+            mpv --playlist=- --really-quiet=yes >/dev/null 2>&1
+    ;;
     y) 
         cat > "$tmpfile"
         target=$(find ~/Pictures -type d | dmenu -c -l 15 -i)
@@ -38,10 +42,6 @@ case "$1" in
             [ -f "$i" ] || continue
             cp -v "$i" "$target"
         done < "$tmpfile"
-    ;;
-    P)
-        grep -oP '[^/]*\.(mkv|webm|mp4|avi)(?=\.jpg)' |
-            mpv --playlist=- --really-quiet=yes >/dev/null 2>&1
     ;;
     m)
         cat > "$tmpfile"
