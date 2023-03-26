@@ -9,7 +9,7 @@ exec --no-startup-id qbittorrent
 # exec --no-startup-id ts -n ncmpcpp -t ncmpcpp -- ncmpcpp
 exec --no-startup-id unclutter --idle 1 --jitter 2 --root
 # exec --no-startup-id i3_smart_resize.py
-exec --no-startup-id ~/.config/polybar/launch
-exec --no-startup-id ~/.scripts/shell/autostart/battery.sh
+# exec --no-startup-id ~/.config/polybar/launch
+# exec --no-startup-id ~/.scripts/shell/autostart/battery.sh
 
 # vim: ft=i3config

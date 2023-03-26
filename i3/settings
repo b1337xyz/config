@@ -6,7 +6,7 @@ floating_maximum_size 1365 x 744
 floating_modifier $mod
 
 # font pango: Hack Nerd Font 9
-font pango: Iosevka Nerd Font 10
+font pango: Iosevka Nerd Font 11
 
 # for_window [all] title_format "%title"
 # for_window [all] title_window_icon on
@@ -21,7 +21,7 @@ workspace_layout tabbed
 # gaps outer|horizontal|vertical|top|left|bottom|right <gap_size>[px]
 gaps inner 8
 gaps outer 8
-gaps bottom 28
+# gaps bottom 28
 
 # smart_gaps on|off|inverse_outer
 # smart_gaps off

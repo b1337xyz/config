@@ -43,10 +43,16 @@ dmenu.font: monospace-10
 /* dmenu.selforeground: #90f0ff */
 
 /* Light */
-dmenu.background: #eeeeee
-dmenu.foreground: #888888
-dmenu.selbackground: #ffffff
-dmenu.selforeground: #000000
+/* dmenu.background: #eeeeee */
+/* dmenu.foreground: #888888 */
+/* dmenu.selbackground: #ffffff */
+/* dmenu.selforeground: #000000 */
+
+/* gray */ 
+dmenu.background: #353E44
+dmenu.foreground: #999999
+dmenu.selbackground: #424B50
+dmenu.selforeground: #ffffff
 
 /* Plan9 */
 /* dmenu.background: #edefda */
