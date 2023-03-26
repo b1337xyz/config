@@ -66,11 +66,11 @@ command=~/.config/i3blocks/scripts/time
 align=center
 interval=15
 
-[pacman]
-markup=pango
-command=~/.config/i3blocks/scripts/pacman
-min_width=" 99 I "
-interval=300
+# [pacman]
+# markup=pango
+# command=~/.config/i3blocks/scripts/pacman
+# min_width=" 99 I "
+# interval=300
 
 # [notifications]
 # markup=pango

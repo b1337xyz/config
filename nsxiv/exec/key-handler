@@ -56,7 +56,7 @@ case "$1" in
         head -1 | tr \\n \\0 | xargs -r0I{} curl -F'file=@{}' https://0x0.st | xclip -sel c
         notify-send -i xfce4-clipman-plugin "Clipboard" "$(xclip -sel c -o)"
     ;;
-    d) while read -r i;do file -Lbi "$i" | grep -q image && rm -v "$i" ;done ;;
+    d) while read -r i;do rm -v "$i" ;done ;;
     v) head -1 | tr \\n \\0 | xargs -r0 vbg.sh ;;
     comma)  rotate 270 ;;
     period) rotate  90 ;;

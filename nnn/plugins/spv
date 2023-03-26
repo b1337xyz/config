@@ -75,7 +75,7 @@ handle_ext() {
         json) fifo_pager jq -C . "$1" ;;
         gz) fifo_pager gunzip -l "$1" ;;
         7z|a|ace|alz|arc|arj|bz|cab|cpio|deb|jar|lha|lz|lzh|lzma|lzo\
-        |rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z)
+        |rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)
             fifo_pager atool -l "$1" ;;
         *) handle_mime "$1" ;;
     esac
