@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/One-Dark.yml
+  - ~/.config/alacritty/themes/3024.dark.yml
 
 env:
   TERM: xterm-256color
@@ -11,9 +11,9 @@ env:
 #     foreground: "#B4D499"
 #
 
-colors:
-  primary:
-    background: "#252e34"
+# colors:
+#   primary:
+#     background: "#252e34"
 
 #   cursor:
 #     cursor: '#D17288'
@@ -37,7 +37,7 @@ font:
     # family: mononoki Nerd Font Mono
     # family: Iosevka Nerd Font Mono
     # family: Comic Mono
-    style: Normal
+    # style: Normal
 
   bold:
     family: Comic Mono
@@ -48,7 +48,7 @@ font:
     x: 0
     y: 0
     
-  size: 10
+  size: 11
 
 mouse:
   hide_when_typing: true

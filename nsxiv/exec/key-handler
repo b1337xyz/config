@@ -19,7 +19,8 @@ case "$1" in
     f) tr \\n \\0 | xargs -0 xwall.sh --focus ;;
     t) tr \\n \\0 | xargs -0 xwall.sh --tile ;;
     T) tr \\n \\0 | xargs -0 trash.sh ;;
-    n) xclip -i -filter | tr \\n \\0 | xclip -i -sel clip ;;
+    # n) xclip -i -filter | tr \\n \\0 | xclip -i -sel clip ;;
+    n) d=$(head -1); alacritty -e nnn "${d%/*}" & ;;
     x)
         read -r file
         if [ "${file##*.}" != "png" ];then
