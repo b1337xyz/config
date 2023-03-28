@@ -48,7 +48,7 @@ font:
     x: 0
     y: 0
     
-  size: 11
+  size: 10
 
 mouse:
   hide_when_typing: true
