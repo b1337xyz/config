@@ -15,12 +15,16 @@ rotate() {
 }
 
 case "$1" in
-    w) tr \\n \\0 | xargs -0 xwall.sh ;;
-    f) tr \\n \\0 | xargs -0 xwall.sh --focus ;;
-    t) tr \\n \\0 | xargs -0 xwall.sh --tile ;;
-    T) tr \\n \\0 | xargs -0 trash.sh ;;
-    # n) xclip -i -filter | tr \\n \\0 | xclip -i -sel clip ;;
-    n) d=$(head -1); alacritty -e nnn "${d%/*}" & ;;
+    d) while read -r i;do rm -v "$i" ;done ;;
+    w) xargs -rI{} xwall.sh '{}' ;;
+    f) xargs -rI{} xwall.sh --focus '{}' ;;
+    t) xargs -rI{} xwall.sh --tile '{}' ;;
+    T) xargs -rI{} trash.sh '{}' ;;
+    P) grep -oP '[^/]*\.(mkv|webm|mp4|avi)(?=\.\w+)' | mpv --playlist=- --really-quiet=yes >/dev/null 2>&1 ;;
+    p) head -1 | tr \\n \\0 | xargs -0 realpath | tr -d \\n | xclip -sel clip ;;
+    v) head -1 | tr \\n \\0 | xargs -r0 vbg.sh ;;
+    g) read -r f; gimp "$f" & ;;
+    n) read -r f; alacritty -e nnn "${f%/*}" & ;;
     x)
         read -r file
         if [ "${file##*.}" != "png" ];then
@@ -29,36 +33,22 @@ case "$1" in
             xclip -sel clip -target image/png "$file"
         fi
     ;;
-    g) tr \\n \\0 | xargs -0 gimp & ;;
-    p) head -1 | tr \\n \\0 | xargs -0 realpath | tr -d \\n | xclip -sel clip ;;
-    P)
-        grep -oP '[^/]*\.(mkv|webm|mp4|avi)(?=\.jpg)' |
-            mpv --playlist=- --really-quiet=yes >/dev/null 2>&1
-    ;;
-    y) 
+    m|y)
         cat > "$tmpfile"
-        target=$(find ~/Pictures -type d | dmenu -c -l 15 -i)
+        target=$(find ~ -xdev -maxdepth 5 -type d \! -path '*/\.*' | dmenu -c -l 15 -i)
         [ -z "$target" ] && exit 0
         while read -r i;do
-            [ -f "$i" ] || continue
-            cp -v "$i" "$target"
-        done < "$tmpfile"
-    ;;
-    m)
-        cat > "$tmpfile"
-        target=$(find ~/Pictures -type d | dmenu -c -l 15 -i)
-        [ -z "$target" ] && exit 0
-        while read -r i;do
-            [ -f "$i" ] || continue
-            mv -v "$i" "$target"
+            if [ "$1" = m ];then
+                mv -vn "$i" "$target"
+            else
+                cp -vn "$i" "$target"
+            fi
         done < "$tmpfile"
     ;;
     u)
         head -1 | tr \\n \\0 | xargs -r0I{} curl -F'file=@{}' https://0x0.st | xclip -sel c
         notify-send -i xfce4-clipman-plugin "Clipboard" "$(xclip -sel c -o)"
     ;;
-    d) while read -r i;do rm -v "$i" ;done ;;
-    v) head -1 | tr \\n \\0 | xargs -r0 vbg.sh ;;
     comma)  rotate 270 ;;
     period) rotate  90 ;;
     slash)  rotate 180 ;;
