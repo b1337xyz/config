@@ -1,4 +1,6 @@
 ### default
+alias DIR='dir -lak --color=never'
+
 alias ls='ls -vNh --color' \
     dir='dir --color' \
     vdir='vdir --color' \
