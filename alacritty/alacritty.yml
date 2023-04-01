@@ -33,22 +33,24 @@ window:
 
 font:
   normal:
+    # family: Perfect DOS VGA 437 Win
     family: Source Code Pro
     # family: mononoki Nerd Font Mono
     # family: Iosevka Nerd Font Mono
     # family: Comic Mono
     # style: Normal
 
-  bold:
-    family: Comic Mono
-    style: Bold
+  # bold:
+  #   family: Comic Mono
+  #   family: Perfect DOS VGA 437 Win
+  #   style: Normal
 
 
   offset:
     x: 0
     y: 0
     
-  size: 10
+  size: 11
 
 mouse:
   hide_when_typing: true

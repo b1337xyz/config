@@ -220,6 +220,10 @@ prompt() {
     # set title
     echo -ne "\033]0;${PWD/$HOME/\~}\007"
 }
+ms_prompt() {
+    msdos_pwd() { pwd | tr '/' '\\'; }
+    PS1='C:$(msdos_pwd)> '
+}
 PROMPT_COMMAND="prompt; timer_stop"
 
 if [ -n "$DISPLAY" ];then
@@ -228,8 +232,9 @@ if [ -n "$DISPLAY" ];then
     # random_color
     # random_anime_quote
     # bfetch
-    todo ls 2>/dev/null
     # xmodmap -e "keycode 134 =" # disable SUPER_R
+    # printf 'Microsft Windows XP [Version 5.1.2600]\n(C) Copyright 1985-2014 Microsoft Corp.\n\n\n'
+    todo ls 2>/dev/null
 fi
 function bye {
     echo "bye ^-^"
