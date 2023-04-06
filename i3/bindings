@@ -81,11 +81,11 @@ bindcode 82 exec volupdown.sh down
 # 83  KP_Left
 # 85  KP_Right
 # 88  KP_Down
-bindcode 84 exec i3_edge.py center
-bindcode 83 exec i3_edge.py left
-bindcode 85 exec i3_edge.py right
-bindcode 80 exec i3_edge.py up
-bindcode 88 exec i3_edge.py down
+# bindcode 84 exec i3_edge.py center
+# bindcode 83 exec i3_edge.py left
+# bindcode 85 exec i3_edge.py right
+# bindcode 80 exec i3_edge.py up
+# bindcode 88 exec i3_edge.py down
 bindcode $mod+84 exec i3_edge.py -r center
 bindcode $mod+83 exec i3_edge.py -r left
 bindcode $mod+85 exec i3_edge.py -r right
