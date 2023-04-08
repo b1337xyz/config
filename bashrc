@@ -233,7 +233,7 @@ if [ -n "$DISPLAY" ];then
     # random_anime_quote
     # bfetch
     # xmodmap -e "keycode 134 =" # disable SUPER_R
-    # printf 'Microsoft Windows XP [Version 5.1.2600]\n(C) Copyright 1985-2014 Microsoft Corp.\n\n\n'
+    # printf 'Microsoft Windows XP [Version 5.1.2600]\n(C) Copyright 1985-2004 Microsoft Corp.\n\n'
     todo ls 2>/dev/null
 fi
 function bye {

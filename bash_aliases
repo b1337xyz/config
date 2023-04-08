@@ -106,8 +106,10 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     fumnt='fusermount3 -u' \
     dff='df -Th -t fuse.rclone -t ext4 -t btrfs -t nfs4 --total' \
     tmux_defaults='tmux -f /dev/null -L temp start-server \; show-options -g' \
+    gdl_update='python3 -m pip install --user -U -I --no-deps --no-cache-dir https://github.com/mikf/gallery-dl/archive/master.tar.gz' \
     tsxiv='find . -maxdepth 3 -type f -iregex ".*\.\(jpe?g\|png\|gif\)" -printf "%T@ %p\n" | sort -n | cut -d" " -f2- | sxiv -qi' \
     tmpv='find . -maxdepth 3 -type f -iregex ".*\.\(mkv\|mp4\|webm\|avi\|m4v\|gif\)" -printf "%T@ %p\n" | sort -n | cut -d" " -f2- | mpv --playlist=-' 
+    
 
 ### pacman
 alias pSs='pacman -Ss' \

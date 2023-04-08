@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/3024.dark.yml
+  - ~/.config/alacritty/themes/Ayu-Dark.yml
 
 env:
   TERM: xterm-256color
@@ -10,11 +10,9 @@ env:
 #     background: "#253525"
 #     foreground: "#B4D499"
 #
-
 # colors:
 #   primary:
 #     background: "#252e34"
-
 #   cursor:
 #     cursor: '#D17288'
 
@@ -24,8 +22,8 @@ window:
     lines: 24
 
   padding:
-    x: 5
-    y: 5
+    x: 8
+    y: 8
 
   dynamic_padding: true
   decorations: full

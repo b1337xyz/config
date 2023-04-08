@@ -1,9 +1,21 @@
 align=center
 # full_text="|"
-# separator=false
-# separator_block_width=0
+separator=false
+separator_block_width=1
+
+# XP
 # background=#0899F3
 # color=#FFFFFF
+
+# denim
+# background=#4F6D91
+
+# dark
+# background=#42515B
+
+# zero
+# background=#1B5BF9
+background=#1442FE
 
 # [blank]
 # full_text=" "
@@ -56,7 +68,7 @@ align=center
 [volume]
 markup=pango
 command=~/.config/i3blocks/scripts/volume
-min_width=" V 00% "
+min_width="  V 00% "
 signal=10
 interval=once
 
