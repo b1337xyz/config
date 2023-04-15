@@ -1,7 +1,7 @@
 # exec --no-startup-id sleep 0.5 && run_i3lock.sh
 # exec --no-startup-id $terminal -e tmux
 # exec --no-startup-id toggle_transparency.sh
-exec --no-startup-id set_screen.sh
+# exec --no-startup-id set_screen.sh
 exec --no-startup-id ~/.cache/xwallpaper
 exec --no-startup-id qbittorrent
 # exec --no-startup-id ts -n newsboat -t newsboat -- newsboat

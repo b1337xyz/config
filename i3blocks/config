@@ -59,11 +59,11 @@ background=#1442FE
 # min_width=" DL 000K UP 000K "
 # interval=5
 
-# [battery]
-# markup=pango
-# command=~/.config/i3blocks/scripts/battery
-# interval=150
-# min_width=" B 00% "
+[battery]
+markup=pango
+command=~/.config/i3blocks/scripts/battery
+interval=300
+min_width=" B 00% "
 
 [volume]
 markup=pango

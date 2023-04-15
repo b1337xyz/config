@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
 capacity=$(< /sys/class/power_supply/BAT?/capacity)
-_status=$(< /sys/class/power_supply/BAT?/status)
-# full_icon=battery-full-charged
-low_icon=battery-low
+status=$(< /sys/class/power_supply/BAT?/status)
 
-case "$_status" in
-    Charging) printf 'C %s%%\n' "$capacity" ;;
-    Not?charging) printf 'U %s%%\n' "$capacity" ;;
-    *)
-        if [ "$capacity" -lt 20 ];then
-            notify-send -u critical -i "$low_icon" \
-                "Battery discharging!" "$(acpi)"
-        fi
+case "$status" in
+    Disc*)
+        [ "$capacity" -lt 20 ] &&
+            notify-send -u critical -i battery-low "Battery low!!!" "$(acpi)"
         printf 'D %s%%\n' "$capacity"
     ;;
+    Char*) printf 'C %s%%\n' "$capacity" ;;
+    *) printf 'U %s%%\n' "$capacity" ;;
 esac

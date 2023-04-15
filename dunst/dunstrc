@@ -5,7 +5,7 @@
     height = 280
     gap_size = 0
     origin = bottom-right
-    offset = 2x2
+    offset = 2x24
     scale = 0
     notification_limit = 0
     progress_bar = true
@@ -21,7 +21,7 @@
     text_icon_padding = 4
     separator_color = frame
     sort = yes
-    font = Iosevka Nerd Font 12
+    font = Iosevka Nerd Font 11
     line_height = 0
     markup = full
     format = "<b>%s %p</b>\n%b"

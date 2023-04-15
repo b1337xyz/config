@@ -13,14 +13,14 @@ font pango: Iosevka Nerd Font 11
 # for_window [all] title_window_icon padding 3 px
 
 # none|vertical|horizontal|both|smart
-hide_edge_borders none
+hide_edge_borders smart
 
 # default|stacking|tabbed
 workspace_layout tabbed
 
 # gaps outer|horizontal|vertical|top|left|bottom|right <gap_size>[px]
-gaps inner 8
-gaps outer 8
+# gaps inner 8
+# gaps outer 8
 # gaps bottom 28
 
 # smart_gaps on|off|inverse_outer
