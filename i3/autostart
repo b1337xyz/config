@@ -11,5 +11,6 @@ exec --no-startup-id unclutter --idle 1 --jitter 2 --root
 # exec --no-startup-id i3_smart_resize.py
 # exec --no-startup-id ~/.config/polybar/launch
 # exec --no-startup-id ~/.scripts/shell/autostart/battery.sh
+exec --no-startup-id mpv --no-config --no-video ~/Music/present.mp3
 
 # vim: ft=i3config
