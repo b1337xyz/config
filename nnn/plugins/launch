@@ -25,6 +25,7 @@ case "$ext" in
     htm|html|xhtml) w3m -dump "$1" | eval "$PAGER" ;;
     json) jq --color-output . "$1" | eval "$PAGER" ;;
     mts) mpv "$1" ;;
+    exe) wine "$1" ;;
     *) false ;;
 esac && exit 0
 

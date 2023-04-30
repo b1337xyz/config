@@ -5,7 +5,7 @@
     height = 280
     gap_size = 0
     origin = bottom-right
-    offset = 2x24
+    offset = 2x2
     scale = 0
     notification_limit = 0
     progress_bar = true
@@ -59,17 +59,18 @@
 #     fullscreen = pushback
 
 [urgency_low]
-    background = "#424B50"
+    # background = "#424B50"
+    background = "#202020"
     foreground = "#ffffff"
-    timeout = 10
+    timeout = 5
 
 [urgency_normal]
-    background = "#424B50"
+    background = "#202020"
     foreground = "#ffffff"
-    timeout = 15
+    timeout = 5
 
 [urgency_critical]
-    background = "#424B50"
+    background = "#202020"
     foreground = "#ffffff"
     frame_color = "#CD4533"
     timeout = 0

@@ -6,8 +6,8 @@ case "$status" in
     Disc*)
         [ "$capacity" -lt 20 ] &&
             notify-send -u critical -i battery-low "Battery low!!!" "$(acpi)"
-        printf 'D %s%%\n' "$capacity"
+        printf '󰁾 %s%%\n' "$capacity"
     ;;
-    Char*) printf 'C %s%%\n' "$capacity" ;;
-    *) printf 'U %s%%\n' "$capacity" ;;
+    Char*) printf '󰂄 %s%%\n' "$capacity" ;;
+    *) printf '󰂑 %s%%\n' "$capacity" ;;
 esac

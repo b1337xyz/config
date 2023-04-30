@@ -25,6 +25,7 @@ case "$1" in
     v) head -1 | tr \\n \\0 | xargs -r0 vbg.sh ;;
     g) read -r f; gimp "$f" & ;;
     n) read -r f; alacritty -e nnn "${f%/*}" & ;;
+    # n) read -r f; rm -rfv "${f%/*}" ;;
     x)
         read -r file
         if [ "${file##*.}" != "png" ];then

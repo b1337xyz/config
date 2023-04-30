@@ -1,7 +1,7 @@
 align=center
 # full_text="|"
-separator=false
-separator_block_width=1
+# separator=false
+# separator_block_width=1
 
 # XP
 # background=#0899F3
@@ -15,7 +15,7 @@ separator_block_width=1
 
 # zero
 # background=#1B5BF9
-background=#1442FE
+# background=#1442FE
 
 # [blank]
 # full_text=" "
