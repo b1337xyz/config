@@ -26,6 +26,7 @@ case "$ext" in
     json) jq --color-output . "$1" | eval "$PAGER" ;;
     mts) mpv "$1" ;;
     exe) wine "$1" ;;
+    ass|srt|vtt) aegisub "$1" >/dev/null 2>&1 & ;;
     *) false ;;
 esac && exit 0
 

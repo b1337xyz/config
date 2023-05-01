@@ -49,6 +49,10 @@ align=center
 # command=~/.config/i3blocks/scripts/cmus
 # interval=5
 
+[mpv]
+command=~/.config/i3blocks/scripts/mpvplaying.sh
+interval=15
+
 # [disks]
 # command=~/.config/i3blocks/scripts/disks
 # interval=15
