@@ -65,8 +65,8 @@ bindsym $mod+shift+e exec i3-msg exit
 # bindsym $mod+b exec polybar-msg cmd toggle
 bindsym $mod+b exec toggle_bar.sh
 bindsym $mod+shift+b exec i3-msg border toggle 3
-bindsym $mod+minus move scratchpad
-bindsym $mod+shift+minus exec i3-scratchpad-dmenu.py
+bindsym $mod+minus move scratchpad ; exec pkill -SIGRTMIN+11 i3blocks
+bindsym $mod+shift+minus exec i3-scratchpad-dmenu.py && pkill -SIGRTMIN+11 i3blocks
 
 # 106 KP_Divide
 # 63  KP_Multiply
@@ -100,15 +100,15 @@ bindsym XF86MonBrightnessUp   exec brightnessctl s +2%
 bindsym XF86MonBrightnessDown exec brightnessctl s 2%-
 bindsym XF86Search            exec brightnessctl s +2%
 bindsym XF86Calculator        exec brightnessctl s 2%-
-# bindsym XF86AudioPlay         exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks
-# bindsym XF86AudioNext         exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
-# bindsym XF86AudioPrev         exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
+# bindsym XF86AudioPlay         exec cmus-remote -u && pkill -SIGRTMIN+20 i3blocks
+# bindsym XF86AudioNext         exec cmus-remote -n && pkill -SIGRTMIN+21 i3blocks
+# bindsym XF86AudioPrev         exec cmus-remote -r && pkill -SIGRTMIN+21 i3blocks
 bindsym XF86AudioPlay         exec mpvc.sh -s /tmp/mpvradio toggle
 bindsym XF86AudioPrev         exec mpvc.sh -s /tmp/mpvradio next
 bindsym XF86AudioNext         exec mpvc.sh -s /tmp/mpvradio prev
 # bindsym XF86AudioPlay         exec mpc toggle
-# bindsym XF86AudioNext         exec mpc next   && exec pkill -SIGRTMIN+21 i3blocks
-# bindsym XF86AudioPrev         exec mpc prev   && exec pkill -SIGRTMIN+21 i3blocks
+# bindsym XF86AudioNext         exec mpc next && exec pkill -SIGRTMIN+21 i3blocks
+# bindsym XF86AudioPrev         exec mpc prev && exec pkill -SIGRTMIN+21 i3blocks
 
 
 bindsym $mod+q kill

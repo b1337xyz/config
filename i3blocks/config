@@ -25,11 +25,12 @@ align=center
 # command=~/.config/i3blocks/scripts/title
 # interval=persist
 
-# [scratchpad]
-# background=#dddddd
-# command=~/.config/i3blocks/scripts/scratchpad.sh
-# signal=11
-# interval=once
+[scratchpad]
+background=#dddddd
+color=#000000
+command=~/.config/i3blocks/scripts/scratchpad.sh
+signal=11
+interval=once
 
 # [numlock]
 # command=~/.config/i3blocks/scripts/numlock
@@ -66,7 +67,7 @@ align=center
 [battery]
 markup=pango
 command=~/.config/i3blocks/scripts/battery
-interval=300
+interval=60
 min_width=" B 00% "
 
 [volume]
