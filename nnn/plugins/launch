@@ -6,7 +6,7 @@
 mimetype=$(file -Lbi -- "$1" | cut -d';' -f1)
 ext=$(printf '%s' "${1##*.}" | tr '[:upper:]' '[:lower:]')
 case "$mimetype" in
-    audio/*|video/*|image/gif) mpv --really-quiet=yes "$1" >/dev/null 2>&1 & ;;
+    audio/*|video/*|image/gif) mpv "$1" ;; # >/dev/null 2>&1 & ;;
     image/*) nsxiv -q "$1" >/dev/null 2>&1 & ;;
     text/*)  vim "$1" ;;
     *) false ;;
@@ -19,7 +19,7 @@ case "$ext" in
     ;;
     rar) unrar lt -p- -- "$1" | eval "$PAGER" ;;
     7z) 7z l -p -- "$1" | eval "$PAGER" ;;
-    pdf|epub) zathura "$1" >/dev/null 2>&1 & ;;
+    cbz|pdf|epub) zathura "$1" >/dev/null 2>&1 & ;;
     torrent) xdg-open "$1" >/dev/null 2>&1 & ;;
     md) glow -sdark "$1" | eval "$PAGER" ;;
     htm|html|xhtml) w3m -dump "$1" | eval "$PAGER" ;;

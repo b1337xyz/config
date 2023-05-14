@@ -9,7 +9,7 @@ esac
 volume=$(pactl list sinks | awk '/^[ \t]*Volume:/{print substr($5, 1, length($5)-1); exit}')
 if [ "$volume" -le 5 ] || pactl list sinks | grep -q 'Mute: yes';then
     # printf 'M %s%%\n' "${volume}"
-    echo 婢
+    echo 󰖁
 else
     # dunstify -r 8899 -i audio-volume-high -h "int:value:$volume" "Volume" 
     printf '  %s%%\n' "${volume}" 
