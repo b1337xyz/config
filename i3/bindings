@@ -20,10 +20,10 @@ bindsym $mod+shift+8 move container to workspace $ws8
 bindsym $mod+shift+9 move container to workspace $ws9
 bindsym $mod+shift+0 move container to workspace $ws0
 
-bindsym Mod1+Tab focus left
+bindsym Mod1+Tab focus right
 bindsym Mod1+shift+Tab focus left
-bindsym $mod+Tab workspace next
-bindsym $mod+shift+Tab workspace prev
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+shift+Tab workspace prev_on_output
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -114,9 +114,8 @@ bindsym XF86AudioNext         exec mpvc.sh -s /tmp/mpvradio prev
 bindsym $mod+q kill
 # bindsym --release Caps_Lock           exec pkill -SIGRTMIN+12 i3blocks
 # bindsym --release Num_Lock            exec pkill -SIGRTMIN+12 i3blocks
-bindsym --release $mod+equal          exec sleep .3 && xset dpms force off
 bindsym --release $mod+ccedilla       exec lock.sh
-bindsym --release $mod+shift+ccedilla exec run_i3lock.sh off
+bindsym --release $mod+shift+ccedilla exec run_i3lock.sh
 # bindsym $mod+period        exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks 
 # bindsym $mod+shift+less    exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
 # bindsym $mod+shift+greater exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks

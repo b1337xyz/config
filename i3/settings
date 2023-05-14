@@ -4,6 +4,8 @@ default_border pixel 1
 default_floating_border pixel 1
 floating_maximum_size 1365 x 744
 floating_modifier $mod
+focus_wrapping workspace
+workspace_auto_back_and_forth yes
 
 # font pango: Hack Nerd Font 9
 font pango: Iosevka Nerd Font 11
