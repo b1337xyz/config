@@ -257,11 +257,11 @@ fixkbd() {
     # xmodmap -e "keycode 91 = asciitilde"  # KP_Delete
 }
 hxsj() {
-    setxkbmap us
+    setxkbmap -layout us -variant altgr-intl
+    xmodmap -e "keycode  24 = q Q NoSymbol NoSymbol slash"
     xmodmap -e "keycode  34 = backslash bar"
     xmodmap -e "keycode  35 = bracketleft braceleft"
-    xmodmap -e "keycode  47 = slash question"
+    xmodmap -e "keycode  47 = asciitilde question"
     xmodmap -e "keycode  51 = bracketright braceright"
     xmodmap -e "keycode  61 = semicolon colon"
-    xmodmap -e "keycode 105 = asciitilde"
 }
