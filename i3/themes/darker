@@ -10,21 +10,22 @@ bar {
     tray_output primary
     output primary
     workspace_min_width 25
-    set $bbg #202020
-    set $separator #90f0ff
-    set $bfg #ffffff
-    set $bifg #888888
+    set $bb0 #202020
+    set $bb1 #eeeeee
+    set $bf0 #000000
+    set $bf1 #888888
+    set $sep #79c9ef
     colors {
-        background $bbg
-        separator  $separator
-        statusline $bfg
+        background $bb0
+        separator  $sep
+        statusline $bf0
 
         # class              border bg fg 
-        focused_workspace    $bbg $bbg $bfg
-        inactive_workspace   $bbg $bbg $bifg
-        active_workspace     $bbg $bbg $bifg
-        urgent_workspace     $bbg $bbg $bifg
-        binding_mode         $bbg $bbg $bfg
+        focused_workspace    $bb1 $bb1 $bf0
+        inactive_workspace   $bb0 $bb0 $bf1
+        active_workspace     $bb0 $bb0 $bf1
+        urgent_workspace     $bb0 $bb0 $bf1
+        binding_mode         $bb1 $bb1 $bf0
     }
 }
 

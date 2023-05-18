@@ -22,21 +22,21 @@ window:
     lines: 28
 
   padding:
-    x: 8
-    y: 8
+    x: 2
+    y: 2
 
   dynamic_padding: true
   decorations: full
-  opacity: 1.0
+  opacity: 0.8
 
 font:
   normal:
     # family: Perfect DOS VGA 437 Win
-    family: Source Code Pro
+    # family: Source Code Pro
     # family: mononoki Nerd Font Mono
     # family: Iosevka Nerd Font Mono
-    # family: Comic Mono
-    # style: Normal
+    family: Comic Mono
+    style: Normal
 
   # bold:
   #   family: Comic Mono

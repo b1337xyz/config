@@ -22,8 +22,8 @@ hide_edge_borders none
 workspace_layout tabbed
 
 # gaps outer|horizontal|vertical|top|left|bottom|right <gap_size>[px]
-gaps inner 8
-gaps outer 8
+# gaps inner 8
+# gaps outer 8
 # gaps bottom 28
 
 # smart_gaps on|off|inverse_outer

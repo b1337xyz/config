@@ -1,7 +1,9 @@
 align=center
 # full_text="|"
-# separator=false
-# separator_block_width=1
+separator=false
+separator_block_width=1
+background=#eeeeee
+color=#000000
 
 # XP
 # background=#0899F3
@@ -26,7 +28,7 @@ align=center
 # interval=persist
 
 [scratchpad]
-background=#dddddd
+background=#cccccc
 color=#000000
 command=~/.config/i3blocks/scripts/scratchpad.sh
 signal=11
