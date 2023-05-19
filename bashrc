@@ -46,6 +46,13 @@ source ~/.scripts/shell/aria2.sh
 source ~/.scripts/shell/fzf.sh
 complete -F _man man apropos whatis fzman
 
+_devour() {
+    local cur
+    _get_comp_words_by_ref cur
+    COMPREPLY=( $( compgen -W "$(compgen -c)" -- "$cur" ) )
+}
+complete -F _devour devour dv
+
 umask 0077
 
 set -o vi
@@ -243,6 +250,8 @@ function bye {
 trap bye EXIT
 
 fixkbd() {
+    setxkbmap br
+
     # localectl list-x11-keymap-options
     # xmodmap -e "keycode 108 = Alt_L" # Alt_Gr
     xmodmap -e "keycode 97 = Alt_L" # backslash

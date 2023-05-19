@@ -35,7 +35,8 @@ font:
     # family: Source Code Pro
     # family: mononoki Nerd Font Mono
     # family: Iosevka Nerd Font Mono
-    family: Comic Mono
+    # family: Comic Mono
+    family: JetBrainsMono Nerd Font
     style: Normal
 
   # bold:

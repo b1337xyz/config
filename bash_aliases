@@ -37,7 +37,7 @@ alias mount='sudo mount' \
     gputop='sudo intel_gpu_top'
 
 ### devour
-alias dsx='devour sxiv'
+alias dv='devour' dsx='devour sxiv'
 
 ### exa
 alias exl='exa -l' \
