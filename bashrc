@@ -250,8 +250,6 @@ function bye {
 trap bye EXIT
 
 fixkbd() {
-    setxkbmap br
-
     # localectl list-x11-keymap-options
     # xmodmap -e "keycode 108 = Alt_L" # Alt_Gr
     xmodmap -e "keycode 97 = Alt_L" # backslash
@@ -264,14 +262,4 @@ fixkbd() {
     # xmodmap -e "keycode 15 = 6 backslash"  # dead_diaeresis
     # xmodmap -e "keycode 81 = bar backslash " # KP_Prior (9)
     # xmodmap -e "keycode 91 = asciitilde"  # KP_Delete
-}
-hxsj() {
-    setxkbmap -layout us -variant altgr-intl
-    xmodmap -e "keycode  24 = q Q NoSymbol NoSymbol slash"
-    xmodmap -e "keycode  25 = w W NoSymbol NoSymbol question"
-    xmodmap -e "keycode  34 = backslash bar"
-    xmodmap -e "keycode  35 = bracketleft braceleft"
-    xmodmap -e "keycode  47 = asciitilde asciicircum"
-    xmodmap -e "keycode  51 = bracketright braceright"
-    xmodmap -e "keycode  61 = semicolon colon"
 }

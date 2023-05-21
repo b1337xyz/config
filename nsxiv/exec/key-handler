@@ -1,4 +1,7 @@
 #!/bin/sh
+# https://saucenao.com/user.php?page=search-api
+API_KEY=$(cat ~/.config/.sauce)
+
 tmpfile=$(mktemp)
 end() { rm "$tmpfile"; }
 trap end EXIT
@@ -14,8 +17,23 @@ rotate() {
     done
 }
 
+sauce() {
+    r=$(curl -L -X POST -F file=@"$1" "https://saucenao.com/search.php?output_type=2&api_key=$API_KEY" |
+        jq -r '.results[0].data | if .ext_urls then .ext_urls[0] else .source end')
+
+    case "$r" in
+        http*) $BROWSER "$r" ;;
+        *)  printf '%s' "$r" | xclip -sel clip
+            notify-send 'Copied to clipboard' "$r" ;;
+    esac
+}
+
 case "$1" in
+    s) read -r f; sauce "$f" ;;
     d) while read -r i;do rm -v "$i" ;done ;;
+    # n) read -r f; rm -rfv "${f%/*}" ;; # dangerous!
+    n) read -r f; alacritty -e nnn "${f%/*}" & ;;
+    g) read -r f; gimp "$f" & ;;
     w) xargs -rI{} xwall.sh '{}' ;;
     f) xargs -rI{} xwall.sh --focus '{}' ;;
     t) xargs -rI{} xwall.sh --tile '{}' ;;
@@ -23,9 +41,6 @@ case "$1" in
     P) grep -oP '[^/]*\.(mkv|webm|mp4|avi)(?=\.\w+)' | mpv --playlist=- --really-quiet=yes >/dev/null 2>&1 ;;
     p) head -1 | tr \\n \\0 | xargs -0 realpath | tr -d \\n | xclip -sel clip ;;
     v) head -1 | tr \\n \\0 | xargs -r0 vbg.sh ;;
-    g) read -r f; gimp "$f" & ;;
-    n) read -r f; alacritty -e nnn "${f%/*}" & ;;
-    # n) read -r f; rm -rfv "${f%/*}" ;;
     x)
         read -r file
         if [ "${file##*.}" != "png" ];then
@@ -48,7 +63,7 @@ case "$1" in
     ;;
     u)
         head -1 | tr \\n \\0 | xargs -r0I{} curl -F'file=@{}' https://0x0.st | xclip -sel c
-        notify-send -i xfce4-clipman-plugin "Clipboard" "$(xclip -sel c -o)"
+        notify-send "Clipboard" "$(xclip -sel c -o)"
     ;;
     comma)  rotate 270 ;;
     period) rotate  90 ;;

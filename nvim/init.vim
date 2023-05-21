@@ -55,7 +55,8 @@ set nohlsearch
 noremap <F4> :set hlsearch! hlsearch?<CR>
 noremap gb :b#<CR>
 map Ee :FZF ~/.scripts<CR>
-map gp :read !gpick -o -s -c color_web_hex<CR>
+" map gp :read !gpick -o -s -c color_web_hex<CR>
+map gp :read !sxcs<CR>
 
 autocmd BufEnter * :syntax sync fromstart
 autocmd BufWritePost */glava/* !~/.config/glava/restart

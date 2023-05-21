@@ -18,7 +18,7 @@
     separator_height = 2
     padding = 8
     horizontal_padding = 4
-    text_icon_padding = 4
+    text_icon_padding = 10
     separator_color = frame
     sort = yes
     font = Iosevka Nerd Font 11
@@ -34,9 +34,10 @@
     hide_duplicate_count = false
     show_indicators = yes
     icon_position = left
-    min_icon_size = 0
-    max_icon_size = 168
-    icon_path = /home/anon/.local/share/icons/Chicago95/actions/32:/home/anon/.local/share/icons/Chicago95/animations/32:/home/anon/.local/share/icons/Chicago95/apps/32:/home/anon/.local/share/icons/Chicago95/categories/32:/home/anon/.local/share/icons/Chicago95/devices/32:/home/anon/.local/share/icons/Chicago95/emblems/32:/home/anon/.local/share/icons/Chicago95/emotes/32:/home/anon/.local/share/icons/Chicago95/mimes/32:/home/anon/.local/share/icons/Chicago95/notifications/32:/home/anon/.local/share/icons/Chicago95/panel/32:/home/anon/.local/share/icons/Chicago95/places/32:/home/anon/.local/share/icons/Chicago95/status/32:/home/anon/.local/share/icons/Chicago95/stock/32
+    enable_recursive_icon_lookup = true
+    icon_theme = "Chicago95, Adwaita"
+    min_icon_size = 32
+    max_icon_size = 128
     sticky_history = yes
     history_length = 20
     dmenu = /usr/bin/dmenu -p dunst:

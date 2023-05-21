@@ -66,7 +66,7 @@ bindsym $mod+shift+e exec i3-msg exit
 bindsym $mod+b exec toggle_bar.sh
 bindsym $mod+shift+b exec i3-msg border toggle 3
 bindsym $mod+minus move scratchpad ; exec pkill -SIGRTMIN+11 i3blocks
-bindsym $mod+equal exec i3-scratchpad-dmenu.py && pkill -SIGRTMIN+11 i3blocks
+bindsym $mod+shift+minus exec i3-scratchpad-dmenu.py && pkill -SIGRTMIN+11 i3blocks
 
 # 106 KP_Divide
 # 63  KP_Multiply
