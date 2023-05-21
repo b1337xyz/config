@@ -29,18 +29,23 @@ sauce() {
 }
 
 case "$1" in
-    s) read -r f; sauce "$f" ;;
+    comma)  rotate 270 ;;
+    period) rotate  90 ;;
+    slash)  rotate 180 ;;
     d) while read -r i;do rm -v "$i" ;done ;;
     # n) read -r f; rm -rfv "${f%/*}" ;; # dangerous!
     n) read -r f; alacritty -e nnn "${f%/*}" & ;;
     g) read -r f; gimp "$f" & ;;
-    w) xargs -rI{} xwall.sh '{}' ;;
-    f) xargs -rI{} xwall.sh --focus '{}' ;;
-    t) xargs -rI{} xwall.sh --tile '{}' ;;
-    T) xargs -rI{} trash.sh '{}' ;;
+    w) head -1 | xargs -I{} xwall.sh '{}' ;;
+    f) head -1 | xargs -I{} xwall.sh --focus '{}' ;;
+    t) head -1 | xargs -I{} xwall.sh --tile '{}' ;;
+    c) head -1 | xargs -I{} xwall.sh --center '{}' ;;
+    z) head -1 | xargs -I{} xwall.sh --zoom '{}' ;;
+    p) head -1 | tr \\n \\0 | xargs -0 realpath -- | tr -d \\n | xclip -sel clip ;;
+    v) head -1 | tr \\n \\0 | xargs -0 vbg.sh ;;
+    s) while read -r i;do sauce "$i" ;done ;;
+    T) tr \\n \\0 | xargs -0I{} trash.sh '{}' ;;
     P) grep -oP '[^/]*\.(mkv|webm|mp4|avi)(?=\.\w+)' | mpv --playlist=- --really-quiet=yes >/dev/null 2>&1 ;;
-    p) head -1 | tr \\n \\0 | xargs -0 realpath | tr -d \\n | xclip -sel clip ;;
-    v) head -1 | tr \\n \\0 | xargs -r0 vbg.sh ;;
     x)
         read -r file
         if [ "${file##*.}" != "png" ];then
@@ -51,7 +56,7 @@ case "$1" in
     ;;
     m|y)
         cat > "$tmpfile"
-        target=$(find ~/Pictures -xdev -type d \! -path '*/\.*' | dmenu -c -l 15 -i)
+        target=$(find ~/Pictures -xdev -type d | dmenu -c -l 15 -i)
         [ -z "$target" ] && exit 0
         while read -r i;do
             if [ "$1" = m ];then
@@ -65,7 +70,4 @@ case "$1" in
         head -1 | tr \\n \\0 | xargs -r0I{} curl -F'file=@{}' https://0x0.st | xclip -sel c
         notify-send "Clipboard" "$(xclip -sel c -o)"
     ;;
-    comma)  rotate 270 ;;
-    period) rotate  90 ;;
-    slash)  rotate 180 ;;
 esac
