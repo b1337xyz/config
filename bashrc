@@ -50,8 +50,7 @@ _devour() {
     local cur
     _get_comp_words_by_ref cur
     COMPREPLY=( $( compgen -W "$(compgen -c)" -- "$cur" ) )
-}
-complete -F _devour devour dv
+} && complete -F _devour devour dv
 
 umask 0077
 
@@ -237,8 +236,6 @@ if [ -n "$DISPLAY" ];then
     # printf '\e[1;31m'; cat ~/Documents/ASCII/Nerv; printf '\e[m\n'
     # shuf -n1 ~/.cache/quotes.csv | sed 's/|/\n\t- /'
     # random_color
-    # random_anime_quote
-    # bfetch
     # xmodmap -e "keycode 134 =" # disable SUPER_R
     # printf 'Microsoft Windows XP [Version 5.1.2600]\n(C) Copyright 1985-2004 Microsoft Corp.\n\n'
     todo ls 2>/dev/null

@@ -22,7 +22,7 @@ hide_edge_borders smart
 workspace_layout tabbed
 
 # gaps outer|horizontal|vertical|top|left|bottom|right <gap_size>[px]
-# gaps outer 5
+# gaps outer 10
 # gaps bottom 28
 
 # smart_gaps on|off|inverse_outer

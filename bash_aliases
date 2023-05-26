@@ -4,7 +4,7 @@ alias DIR='dir -lak --color=never'
 alias ls='ls -vNh --color' \
     dir='dir --color' \
     vdir='vdir --color' \
-    diff='diff --color' \
+    diff='diff --color --unified=0' \
     tree='tree -C' \
     ip='ip -c' \
     ln='ln -v' \

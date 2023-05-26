@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/Ashes.dark.yml
+  - ~/.config/alacritty/themes/catppuccin-macchiato.yml
 
 env:
   TERM: xterm-256color
@@ -27,7 +27,7 @@ window:
 
   dynamic_padding: true
   decorations: full
-  opacity: 1.0
+  opacity: 0.9
 
 font:
   normal:
