@@ -151,7 +151,7 @@ bindsym $mod+p mode "$print_mode"
 set $launch_mode [f]irefox [q]ute [t]elegram [p]ulsemixer [e]xplorer [r]adio
 mode "$launch_mode" {
     # bindsym c exec alacritty --class cmus --title cmus -e cmus ; mode "default"
-    bindsym e exec ts -- nnn; mode "default"
+    bindsym e exec ts -t nnn -- nnn; mode "default"
     bindsym a exec ts -- fzfanime.sh -q ; mode "default"
     bindsym p exec ts -n floating_terminal -- pulsemixer ; mode "default"
     bindsym k exec passc.sh ; mode "default"
