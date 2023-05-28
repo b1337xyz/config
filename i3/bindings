@@ -73,7 +73,6 @@ bindsym $mod+shift+minus exec i3-scratchpad-dmenu.py && pkill -SIGRTMIN+11 i3blo
 # 82  KP_Subtract
 # 86  KP_Add
 # 129 KP_Decimal
-bindcode 63 exec mpvc.sh -s /tmp/mpvradio toggle
 bindcode 86 exec volupdown.sh up
 bindcode 82 exec volupdown.sh down
 
@@ -103,9 +102,6 @@ bindsym XF86Calculator        exec brightnessctl s 2%-
 # bindsym XF86AudioPlay         exec cmus-remote -u && pkill -SIGRTMIN+20 i3blocks
 # bindsym XF86AudioNext         exec cmus-remote -n && pkill -SIGRTMIN+21 i3blocks
 # bindsym XF86AudioPrev         exec cmus-remote -r && pkill -SIGRTMIN+21 i3blocks
-bindsym XF86AudioPlay         exec mpvc.sh -s /tmp/mpvradio toggle
-bindsym XF86AudioPrev         exec mpvc.sh -s /tmp/mpvradio next
-bindsym XF86AudioNext         exec mpvc.sh -s /tmp/mpvradio prev
 # bindsym XF86AudioPlay         exec mpc toggle
 # bindsym XF86AudioNext         exec mpc next && exec pkill -SIGRTMIN+21 i3blocks
 # bindsym XF86AudioPrev         exec mpc prev && exec pkill -SIGRTMIN+21 i3blocks
@@ -119,9 +115,9 @@ bindsym --release $mod+shift+ccedilla exec run_i3lock.sh
 # bindsym $mod+period        exec cmus-remote -u && exec pkill -SIGRTMIN+20 i3blocks 
 # bindsym $mod+shift+less    exec cmus-remote -r && exec pkill -SIGRTMIN+21 i3blocks
 # bindsym $mod+shift+greater exec cmus-remote -n && exec pkill -SIGRTMIN+21 i3blocks
-bindsym $mod+period        exec mpvc.sh -s /tmp/mpvradio toggle 
-bindsym $mod+shift+greater exec mpvc.sh -s /tmp/mpvradio next
-bindsym $mod+shift+less    exec mpvc.sh -s /tmp/mpvradio prev
+bindsym $mod+period        exec mpvc.sh /tmp/mpvradio toggle 
+bindsym $mod+shift+greater exec mpvc.sh /tmp/mpvradio next
+bindsym $mod+shift+less    exec mpvc.sh /tmp/mpvradio prev
 bindsym $mod+Return        exec alacritty -e tmux
 bindsym $mod+shift+Return  exec alacritty --class floating_terminal -e tmux
 bindsym $mod+d             exec drun.sh

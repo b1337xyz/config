@@ -43,9 +43,10 @@ assign [instance="irssi"] $ws0
 # for_window [class="Alacritty"] border none
 # for_window [class="discord"] floating enable
 # for_window [instance="ncspot"] floating enable
-# for_window [instance="newsboat"] floating enable
+for_window [instance="newsboat"] floating enable
 # for_window [title="Wine"] floating enable
 # for_window [all] floating enable
+
 
 for_window [class="PPSSPPQt"] floating enable
 for_window [class="PPSSPPSDL"] floating enable

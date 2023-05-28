@@ -99,9 +99,9 @@ undomv() {
 }
 fzcd() {
     local p
-    p=$(find . -mindepth 2 -maxdepth 4 -type d \! -name '\.*'  | sort -rV | fzf \
+    p=$(find . -xdev -mindepth 2 -maxdepth 4 -type d \! -path '*/\.*' | fzf \
         --info=hidden --layout=reverse --height 20 --bind 'tab:accept')
-    [ -e "$p" ] && cd "$p"
+    [ -e "$p" ] && { cd "$p"; pwd; }
 }
 
 if ! [[ "$TERM" =~ xterm* ]];then

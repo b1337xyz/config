@@ -5,8 +5,8 @@ Xcursor.size: 21
 XTerm*metaSendsEscape:  true
 XTerm*geometry: 95x24
 XTerm*selectToClipboard: true
-XTerm.vt100.faceName: Source Code Pro:antialias=true:autohint=true
-XTerm.vt100.faceSize: 12
+XTerm.vt100.faceName: DejaVu Sans Mono:antialias=true:autohint=true
+XTerm.vt100.faceSize: 11
 XTerm*termName: xterm-256color
 XTerm*iconName: terminal
 XTerm*internalBorder: 2
