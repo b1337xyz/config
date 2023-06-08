@@ -10,7 +10,7 @@ bar {
     tray_output primary
     output primary
     workspace_min_width 25
-    set $bb0 #333333
+    set $bb0 #000000
     set $bb1 #eeeeee
     set $bf0 #000000
     set $bf1 #cccccc
