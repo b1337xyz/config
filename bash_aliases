@@ -90,7 +90,6 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     edi3='vim ~/.config/i3/config' \
     mdlnad='/sbin/minidlnad -f ~/.config/minidlna/minidlna.conf' \
     za='zathura' \
-    erai='eraisubs.py -C ~/.local/share/qutebrowser/webengine/Cookies' \
     py='python3' \
     mi='mediainfo' \
     fe='find . -maxdepth 1 -empty' \

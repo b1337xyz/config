@@ -1,8 +1,9 @@
 #!/bin/sh
+set -e
 
 case "$1" in
-    *.zip) unzip "$1" -d "${1%.*}" && rm -fi "$1";;
-    *.rar) unrar x "$1" "${1%.*}/" && rm -fi "$1";;
+    *.zip) unzip "$1" -d "${1%.*}" ;;
+    *.rar) unrar x "$1" "${1%.*}/" ;;
     *.tar.*) tar xaf "$1" ;;
     *.bz2) bunzip2 "$1" ;;
     *.gz) gunzip "$1" ;;
@@ -11,7 +12,7 @@ case "$1" in
     *.tgz) tar xvzf "$1" ;;
     *.Z) uncompress "$1" ;;
     *.7z) 7z x "$1" ;;
-    *) printf "'%s' cannot be extracted\n" "$1" ; read ;;
+    *) printf "'%s' cannot be extracted\n" "$1" ; read -r ;;
 esac
 
-
+rm -vi "$1"
