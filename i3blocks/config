@@ -1,9 +1,9 @@
 align=center
 # full_text="|"
-separator=false
-separator_block_width=1
-background=#eeeeee
-color=#000000
+# separator=false
+# separator_block_width=1
+# background=#000000
+# color=#ffffff
 
 # XP
 # background=#0899F3

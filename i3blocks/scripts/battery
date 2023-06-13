@@ -4,9 +4,12 @@ status=$(< /sys/class/power_supply/BAT?/status)
 
 case "$status" in
     Disc*)
-        [ "$capacity" -lt 20 ] &&
+        if [ "$capacity" -lt 20 ]; then
             notify-send -r 3939 -u critical -i battery-low "Battery low!!!" "$(acpi)"
-        printf '󰁾 %s%%\n' "$capacity"
+            printf '<span background="#900000"> 󰁾 %s%% </span>\n' "$capacity"
+        else
+            printf '󰁾 %s%%\n' "$capacity"
+        fi
     ;;
     Char*) printf '󰂄 %s%%\n' "$capacity" ;;
     *) printf '󰂑 %s%%\n' "$capacity" ;;
