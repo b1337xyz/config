@@ -10,8 +10,8 @@ bar {
     tray_output primary
     output primary
     workspace_min_width 25
-    set $bb0 #999999
-    set $bb1 #888888
+    set $bb0 #aaaaaa
+    set $bb1 #999999
     set $bf0 #333333
     set $bf1 #666666
     set $sep #777777
@@ -29,9 +29,9 @@ bar {
     }
 }
 
-set $wb0 #888888
+set $wb0 #aaaaaa
 set $wb1 #999999
-set $wf0 #333333
+set $wf0 #222222
 set $wf1 #666666
 
 # class                 border bg fg indicator child_border

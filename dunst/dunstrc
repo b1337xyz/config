@@ -1,11 +1,11 @@
 [global]
-    monitor = 1
+    monitor = 0
     follow = none
     width = 420
     height = 280
     gap_size = 0
     origin = bottom-right
-    offset = 2x2
+    offset = 2x22
     scale = 0
     notification_limit = 0
     progress_bar = true
@@ -61,18 +61,18 @@
 
 [urgency_low]
     # background = "#424B50"
-    background = "#202020"
-    foreground = "#ffffff"
+    background = "#cccccc"
+    foreground = "#000000"
     timeout = 5
 
 [urgency_normal]
-    background = "#202020"
-    foreground = "#ffffff"
+    background = "#cccccc"
+    foreground = "#000000"
     timeout = 5
 
 [urgency_critical]
-    background = "#202020"
-    foreground = "#ffffff"
+    background = "#cccccc"
+    foreground = "#000000"
     frame_color = "#CD4533"
     timeout = 0
 
