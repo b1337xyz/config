@@ -1,6 +1,6 @@
 ipc-socket /run/user/1000/i3/ipc.sock
 title_align center
-default_border pixel 2
+default_border pixel 1
 default_floating_border pixel 1
 floating_maximum_size 1365 x 744
 floating_modifier $mod

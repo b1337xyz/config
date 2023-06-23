@@ -1,7 +1,12 @@
 align=center
+border=#ff80ff
+color=#80ffff
+border_top=0
+border_right=0
+border_left=0
 # full_text="|"
 # separator=false
-# separator_block_width=1
+# separator_block_width=8
 # background=#000000
 # color=#ffffff
 
@@ -23,16 +28,15 @@ align=center
 # full_text=" "
 # interval=once
 
-# [title]
-# command=~/.config/i3blocks/scripts/title
-# interval=persist
-
 [scratchpad]
-background=#cccccc
-color=#000000
+background=#222222
 command=~/.config/i3blocks/scripts/scratchpad.sh
 signal=11
 interval=once
+
+# [title]
+# command=~/.config/i3blocks/scripts/title.py
+# interval=persist
 
 # [numlock]
 # command=~/.config/i3blocks/scripts/numlock
@@ -66,23 +70,22 @@ interval=once
 # min_width=" DL 000K UP 000K "
 # interval=5
 
-[battery]
-markup=pango
-command=~/.config/i3blocks/scripts/battery
-interval=60
-min_width=" B 00% "
+# [battery]
+# markup=pango
+# command=~/.config/i3blocks/scripts/battery
+# interval=60
+# min_width=" B 00% "
 
-[volume]
-markup=pango
-command=~/.config/i3blocks/scripts/volume
-min_width="  V 00% "
-signal=10
-interval=once
+# [volume]
+# markup=pango
+# command=~/.config/i3blocks/scripts/volume
+# min_width="  V 00% "
+# signal=10
+# interval=once
 
 [time]
 markup=pango
 command=~/.config/i3blocks/scripts/time
-align=center
 interval=15
 
 # [pacman]

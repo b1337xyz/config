@@ -17,7 +17,7 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'ellisonleao/gruvbox.nvim'
 call plug#end()
 
-colorscheme catppuccin-mocha
+colorscheme tokyonight-night
 
 syntax on
 filetype indent plugin on
@@ -79,7 +79,7 @@ autocmd BufNewFile *.html 0r   $XDG_CONFIG_HOME/nvim/templates/skeleton.html
 autocmd BufNewFile *.css 0r    $XDG_CONFIG_HOME/nvim/templates/skeleton.css
 
 
-" hi Normal guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
 " hi ColorColumn ctermbg=236
 " hi LineNr ctermfg=7 ctermbg=NONE
 " hi CursorLine cterm=NONE ctermbg=233
