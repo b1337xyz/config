@@ -3,5 +3,6 @@ exec --no-startup-id qbittorrent
 exec --no-startup-id set_screen.sh
 exec --no-startup-id unclutter --idle 1 --jitter 2 --root
 exec --no-startup-id ~/.cache/xwallpaper
+exec --no-startup-id st -n Cava -g 40x10+15-15 cava
 
 # vim: ft=i3config

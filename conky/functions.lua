@@ -6,12 +6,12 @@ function conky_ljust(n, s)
     local s = conky_parse(s)
     return string.format('%-' .. n .. 's' , s)
 end
-function conky_power_draw()
-    local f = io.open("/sys/class/power_supply/BAT0/power_now", "r")
-    local v = tonumber(f:read())
-    f:close()
-    return string.format("%.2f W", v * 10^-6)
-end
+-- function conky_power_draw()
+--     local f = io.open("/sys/class/power_supply/BAT0/power_now", "r")
+--     local v = tonumber(f:read())
+--     f:close()
+--     return string.format("%.2f W", v * 10^-6)
+-- end
 -- function file_exists(name)
 --    local f=io.open(name, "r")
 --    if f ~= nil then io.close(f) return true else return false end

@@ -1,4 +1,5 @@
 assign [class="Conky"] $ws1
+assign [instance="Cava"] $ws1
 assign [instance="clock"] $ws1
 assign [class="GLava"] $ws1
 
@@ -38,6 +39,7 @@ assign [instance="download"] $ws0
 assign [instance="irssi"] $ws0
 
 # for_window [class="GLava"] sticky enable
+for_window [instance="Cava"] floating enable
 # for_window [class="TelegramDesktop"] floating enable
 # for_window [class="mpv"] floating enable
 # for_window [class="Alacritty"] border none
