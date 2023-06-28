@@ -81,8 +81,8 @@ expand_files() {
 fzfhist() {
     cmd=$(
         history | sed 's/^ *\?[0-9]* *//' | awk 'length($0) > 2' |
-        fzf --info=hidden --layout=reverse \
-            --height 20 --no-sort --tac --bind 'tab:accept'
+        fzf --info=hidden --layout=reverse --scheme=history \
+            --height 20 --tac --bind 'tab:accept'
     )
     READLINE_LINE="$cmd"
     READLINE_POINT=${#cmd}
