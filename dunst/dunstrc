@@ -55,9 +55,8 @@
     frame_width = 2
     frame_color = "#af80cf"
 
-# [fullscreen_normal]
-#     msg_urgency = normal
-#     fullscreen = pushback
+[fullscreen]
+    fullscreen = pushback
 
 [urgency_low]
     # background = "#424B50"

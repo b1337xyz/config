@@ -17,7 +17,7 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'ellisonleao/gruvbox.nvim'
 call plug#end()
 
-colorscheme tokyonight-night
+colorscheme nightfox
 
 syntax on
 filetype indent plugin on

@@ -1,9 +1,9 @@
 align=center
-border=#ff80ff
-color=#80ffff
 border_top=0
 border_right=0
 border_left=0
+border_bottom=2
+border=#3090ff
 # full_text="|"
 # separator=false
 # separator_block_width=8
@@ -14,15 +14,24 @@ border_left=0
 # background=#0899F3
 # color=#FFFFFF
 
-# denim
+# Neon
+# border=#ff80ff
+# color=#80ffff
+
+# Denim
 # background=#4F6D91
 
-# dark
+# Dark
 # background=#42515B
 
-# zero
+# Zero
 # background=#1B5BF9
 # background=#1442FE
+
+# Green
+# background=#B3D39B
+# color=#253525
+# border=#253525
 
 # [blank]
 # full_text=" "
