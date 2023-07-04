@@ -41,6 +41,7 @@ case "$1" in
     c) head -1 | xargs -I{} xwall.sh --center '{}' ;;
     z) head -1 | xargs -I{} xwall.sh --zoom '{}' ;;
     p) head -1 | tr \\n \\0 | xargs -0 realpath -- | tr -d \\n | xclip -sel clip ;;
+    b) head -1 | tr \\n \\0 | xargs -0 basename -- | tr -d \\n | xclip -sel clip ;;
     v) head -1 | tr \\n \\0 | xargs -0 vbg.sh ;;
     s) while read -r i;do sauce "$i" ;done ;;
     T) tr \\n \\0 | xargs -0I{} trash.sh '{}' ;;

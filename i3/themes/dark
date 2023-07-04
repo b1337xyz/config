@@ -5,7 +5,7 @@ bar {
     strip_workspace_numbers yes
     binding_mode_indicator yes
     workspace_buttons yes
-    position bottom
+    position top
     mode dock
     tray_output primary
     output primary
@@ -29,18 +29,13 @@ bar {
 }
 
 set $fbg #32414B
-set $fborder #32414B
 set $ffg #ffffff
-set $indicator #90f0ff
 set $ubg #19232D
-set $uborder #32414B
 set $ufg #888888
-set $ibg #eeeeee
-set $ifg #888888
 
 # class                 border bg fg indicator child_border
-client.focused          $fborder $fbg $ffg $findicator $indicator
-client.focused_inactive $ibg $ibg $ifg $ibg $ibg
+client.focused          $fbg $fbg $ffg $fbg $fbg
+client.focused_inactive $ubg $ubg $ufg $ubg $ubg
 client.unfocused        $ubg $ubg $ufg $ubg $ubg
 client.urgent           $ubg $ubg $ufg $ubg $ubg
 

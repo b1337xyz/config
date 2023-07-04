@@ -123,7 +123,6 @@ cd() {
     fi || return $?
     timeout 1 ls --color=always -Nhltr 2>/dev/null || true
 }
-gb() { cd - ; }
 n() {
     if [ -n "$NNNLVL" ] && [ "${NNNLVL:-0}" -ge 1 ]; then
         echo "nnn is already running"; return
@@ -215,12 +214,12 @@ prompt() {
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
     if test "${out:-0}" -eq 0;then
-        PS1+="${grn}>${rst} "  # λ π β ω μ
+        PS1+="${grn}( •_•)${rst} "  # λ π β ω μ
     else
         # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
         # [ -f "$beep" ] && mpv --no-config --no-video --really-quiet "$beep" &
         # [ -f "$beep" ] && aplay -q "$beep" &
-        PS1+="${red}${out}!$rst "
+        PS1+="${red}(；☉_☉) ${out}!$rst "
     fi
 
     # set title
@@ -232,14 +231,6 @@ ms_prompt() {
 }
 PROMPT_COMMAND="prompt; timer_stop"
 
-if [ -n "$DISPLAY" ];then
-    # printf '\e[1;31m'; cat ~/Documents/ASCII/Nerv; printf '\e[m\n'
-    # shuf -n1 ~/.cache/quotes.csv | sed 's/|/\n\t- /'
-    # random_color
-    # xmodmap -e "keycode 134 =" # disable SUPER_R
-    # printf 'Microsoft Windows XP [Version 5.1.2600]\n(C) Copyright 1985-2004 Microsoft Corp.\n\n'
-    todo ls 2>/dev/null
-fi
 function bye {
     echo "bye ^-^"
     [ -n "$SSH_CLIENT" ] && cat ~/.local/src/seeyouspacecowboy.txt
@@ -260,3 +251,11 @@ fixkbd() {
     # xmodmap -e "keycode 81 = bar backslash " # KP_Prior (9)
     # xmodmap -e "keycode 91 = asciitilde"  # KP_Delete
 }
+
+# if [ -n "$DISPLAY" ];then
+#     random_color
+# fi
+# printf '\e[1;31m'; cat ~/Documents/ASCII/Nerv; printf '\e[m\n'
+# shuf -n1 ~/.cache/quotes.csv | sed 's/|/\n\t- /'
+# printf 'Microsoft Windows XP [Version 5.1.2600]\n(C) Copyright 1985-2004 Microsoft Corp.\n\n'
+todo ls 2>/dev/null
