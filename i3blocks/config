@@ -77,6 +77,12 @@ interval=15
 # min_width=" DL 000K UP 000K "
 # interval=5
 
+[bluetooth]
+markup=pango
+command=~/.config/i3blocks/scripts/blue
+interval=60
+min_width=" B 00% "
+
 [battery]
 markup=pango
 command=~/.config/i3blocks/scripts/battery

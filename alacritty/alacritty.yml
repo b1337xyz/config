@@ -20,8 +20,8 @@ window:
     lines: 28
 
   padding:
-    x: 2
-    y: 2
+    x: 5
+    y: 5
 
   dynamic_padding: true
   decorations: full

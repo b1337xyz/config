@@ -17,8 +17,8 @@ bar {
     output primary
     workspace_min_width 25
 
-    set $b0 #eeeeee
-    set $b2 #999999
+    set $b0 #bbbbbb
+    set $b2 #888888
     set $b3 #000000
     set $b4 #900000
 

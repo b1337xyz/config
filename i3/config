@@ -12,16 +12,16 @@ set $mod Mod4
 # set $ws9 "9:9"
 # set $ws0 "10:0"
 
-# set $ws1 "1: 一 "
-# set $ws2 "2: 二 "
-# set $ws3 "3: 三 "
-# set $ws4 "4: 四 "
-# set $ws5 "5: 五 "
-# set $ws6 "6: 六 "
-# set $ws7 "7: 七 "
-# set $ws8 "8: 八 "
-# set $ws9 "9: 九 "
-# set $ws0 "10: 零 "
+set $ws1 "1: 一 "
+set $ws2 "2: 二 "
+set $ws3 "3: 三 "
+set $ws4 "4: 四 "
+set $ws5 "5: 五 "
+set $ws6 "6: 六 "
+set $ws7 "7: 七 "
+set $ws8 "8: 八 "
+set $ws9 "9: 九 "
+set $ws0 "10: 零 "
 # set $ws0 "10: 十 "
 
 # set $ws1 "1: I "
@@ -35,16 +35,16 @@ set $mod Mod4
 # set $ws9 "9: IX "
 # set $ws0 "10: X "
 
-set $ws1 "1: cmd "
-set $ws2 "2: sys "
-set $ws3 "3: web "
-set $ws4 "4: rss "
-set $ws5 "5: tmp "
-set $ws6 "6: tmp "
-set $ws7 "7: cfg "
-set $ws8 "8: exe "
-set $ws9 "9: snd "
-set $ws0 "10: bit "
+# set $ws1 "1: cmd "
+# set $ws2 "2: sys "
+# set $ws3 "3: web "
+# set $ws4 "4: rss "
+# set $ws5 "5: tmp "
+# set $ws6 "6: tmp "
+# set $ws7 "7: cfg "
+# set $ws8 "8: exe "
+# set $ws9 "9: snd "
+# set $ws0 "10: bit "
 
 workspace $ws1 output nonprimary
 workspace $ws2 output primary
@@ -58,3 +58,5 @@ include bindings
 include rules
 include autostart
 include themes/blind
+
+# vim: ft=i3config

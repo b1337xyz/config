@@ -111,7 +111,7 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     update_gdl='python3 -m pip install --user -U -I --no-deps --no-cache-dir https://github.com/mikf/gallery-dl/archive/master.tar.gz' \
     update_ytdl='python3 -m pip install --user --force-reinstall https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz' \
     tsxiv='find . -maxdepth 3 -type f -iregex ".*\.\(jpe?g\|png\)" -printf "%C@ %p\n" | sort -rn | cut -d" " -f2- | sxiv -qi' \
-    tmpv='find . -maxdepth 3 -type f -iregex ".*\.\(mkv\|mp4\|webm\|avi\|m4v\|gif\)" -printf "%C@ %p\n" | sort -n | cut -d" " -f2- | mpv --playlist=-'
+    tmpv='find . -maxdepth 3 -type f -iregex ".*\.\(mkv\|mp4\|webm\|avi\|m4v\|gif\)" -printf "%C@ %p\n" | sort -rn | cut -d" " -f2- | mpv --playlist=-'
     
 
 ### pacman
