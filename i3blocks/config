@@ -1,14 +1,12 @@
 align=center
 border_top=0
-border_right=0
-border_left=0
-border_bottom=2
-border=#3090ff
+# border_right=0
+# border_left=0
+# border_bottom=2
+# border=#80cfff
 # full_text="|"
 # separator=false
-# separator_block_width=8
-# background=#000000
-# color=#ffffff
+# separator_block_width=1
 
 # XP
 # background=#0899F3
@@ -69,9 +67,9 @@ interval=once
 # command=~/.config/i3blocks/scripts/mpvplaying.sh
 # interval=15
 
-# [disks]
-# command=~/.config/i3blocks/scripts/disks
-# interval=15
+[disks]
+command=~/.config/i3blocks/scripts/disks
+interval=15
 
 # [bandwidth]
 # markup=pango
@@ -79,11 +77,11 @@ interval=once
 # min_width=" DL 000K UP 000K "
 # interval=5
 
-# [battery]
-# markup=pango
-# command=~/.config/i3blocks/scripts/battery
-# interval=60
-# min_width=" B 00% "
+[battery]
+markup=pango
+command=~/.config/i3blocks/scripts/battery
+interval=60
+min_width=" B 00% "
 
 # [volume]
 # markup=pango

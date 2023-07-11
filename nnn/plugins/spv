@@ -20,13 +20,13 @@ fifo_pager() {
     tmpfifopath=$(mktemp --dry-run)
     mkfifo "$tmpfifopath" || return
 
-    less -P?n --mouse -R < "$tmpfifopath" &
+    less -P?n -R -C --mouse < "$tmpfifopath" &
     printf "%s" "$!" > "$PREVIEW_PID"
 
     (
         exec > "$tmpfifopath"
         if [ "$cmd" = "bat" ];then
-            bat --color=always --paging=never \
+            bat --terminal-width="$cols" --color=always --paging=never \
                 --style="$BAT_STYLE" --theme="$BAT_THEME" "$@"
         else
             "$cmd" "$@"
@@ -82,6 +82,8 @@ handle_ext() {
 }
 preview() {
     clear
+    # lines=$(tput lines)
+    cols=$(tput cols)
     [ -e "$UEBERZUG_FIFO" ] &&
         printf '{"action": "remove", "identifier": "test"}\n' > "$UEBERZUG_FIFO"
 

@@ -1,11 +1,11 @@
 [global]
-    monitor = 0
+    monitor = 1
     follow = none
     width = 350
     height = 280
     gap_size = 0
     origin = bottom-right
-    offset = 5x25
+    offset = 5x5
     scale = 0
     notification_limit = 0
     progress_bar = true
@@ -21,7 +21,7 @@
     text_icon_padding = 10
     separator_color = frame
     sort = yes
-    font = Iosevka Nerd Font 10
+    font = Iosevka Nerd Font 12
     line_height = 0
     markup = full
     format = "<b>%s %p</b>\n%b"
@@ -55,23 +55,23 @@
     frame_width = 2
     frame_color = "#af80cf"
 
-[fullscreen]
-    fullscreen = pushback
+# [fullscreen]
+#     fullscreen = pushback
 
 [urgency_low]
     # background = "#424B50"
-    background = "#111111"
-    foreground = "#cccccc"
+    background = "#eeeeee"
+    foreground = "#000000"
     timeout = 5
 
 [urgency_normal]
-    background = "#111111"
-    foreground = "#ffffff"
+    background = "#eeeeee"
+    foreground = "#000000"
     timeout = 5
 
 [urgency_critical]
-    background = "#111111"
-    foreground = "#ffffff"
+    background = "#eeeeee"
+    foreground = "#000000"
     frame_color = "#CD4533"
     timeout = 0
 

@@ -42,10 +42,11 @@ case "$1" in
     z) head -1 | xargs -I{} xwall.sh --zoom '{}' ;;
     p) head -1 | tr \\n \\0 | xargs -0 realpath -- | tr -d \\n | xclip -sel clip ;;
     b) head -1 | tr \\n \\0 | xargs -0 basename -- | tr -d \\n | xclip -sel clip ;;
-    v) head -1 | tr \\n \\0 | xargs -0 vbg.sh ;;
+    v) head -1 | tr \\n \\0 | xargs -0 dirname -z | xargs -0 nsxiv -s w -bqr & ;;
+    # v) head -1 | tr \\n \\0 | xargs -0 vbg.sh ;;
     s) while read -r i;do sauce "$i" ;done ;;
     T) tr \\n \\0 | xargs -0I{} trash.sh '{}' ;;
-    P) grep -oP '[^/]*\.(mkv|webm|mp4|avi)(?=\.\w+)' | mpv --playlist=- --really-quiet=yes >/dev/null 2>&1 ;;
+    P) grep -oP '[^/]*\.(mkv|webm|mp4|avi|m4v)(?=\.\w+)' | mpv --playlist=- --really-quiet=yes >/dev/null 2>&1 ;;
     x)
         read -r file
         if [ "${file##*.}" != "png" ];then

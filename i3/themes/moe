@@ -17,9 +17,17 @@ bar {
     output primary
     workspace_min_width 25
 
-    set $b0 #eeeeee
-    set $b2 #999999
-    set $b3 #000000
+# hex:	#FFCCFF	rgb:	255 204 255	hsl:	300 100 90	
+# hex:	#FFB3FA	rgb:	255 179 250	hsl:	304 100 85	
+# hex:	#F1A1F0	rgb:	241 161 240	hsl:	301 74 79	
+# hex:	#F470FF	rgb:	244 112 255	hsl:	295 100 72	
+# hex:	#C37B89	rgb:	195 123 137	hsl:	348 37 62	
+# hex:	#7C7CA4	rgb:	124 124 164	hsl:	240 18 56	
+# hex:	#FFAFFA	rgb:	255 175 250	hsl:	304 100 84	
+
+    set $b0 #FFB3FA
+    set $b2 #F470FF
+    set $b3 #FF00FF
     set $b4 #900000
 
     colors {
@@ -36,10 +44,10 @@ bar {
     }
 }
 
-set $fbg #285577
-set $ffg #ffffff
-set $ubg #333333
-set $ufg #888888
+set $fbg #FFB3FA
+set $ffg #FF00FF
+set $ubg #F470FF
+set $ufg #FFB3FA
 
 # class                 border bg fg indicator child_border
 client.focused          $fbg $fbg $ffg $fbg $fbg

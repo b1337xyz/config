@@ -2,13 +2,15 @@
 [ "$BLOCK_BUTTON" -eq 1 ] && xterm -name floating_terminal -e \
     bash -c 'df -hT -x tmpfs -x devtmpfs; read -sn1'
 
-df -h -x tmpfs -x devtmpfs | awk '!/^Filesystem|\/boot$/{
-    if ($6 != "/") {
-        split($6, a, "/")
-        mp = a[length(a)]
-    } else {
-        mp = $6
-    }
-    printf("[%s %s] ", mp, $4)}
-' | sed 's/^/ /;'
-echo
+df -hH / /home | awk 'NR>1 {printf(" %s %s", $6, $4)} END { print " " }'
+
+# All
+# df -h -x tmpfs -x devtmpfs | awk '!/^Filesystem|\/boot$/{
+#     if ($6 != "/") {
+#         split($6, a, "/")
+#         mp = a[length(a)]
+#     } else {
+#         mp = $6
+#     }
+#     printf("[%s %s] ", mp, $4)}
+# ' | sed 's/^/ /;'

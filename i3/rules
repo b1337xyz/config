@@ -1,45 +1,31 @@
 assign [class="Conky"] $ws1
-assign [instance="Cava"] $ws1
-assign [instance="clock"] $ws1
 assign [class="GLava"] $ws1
+assign [instance="Cava"] $ws1
 
 assign [class="Brave-browser"] $ws3
 assign [class="Chromium"] $ws3
-assign [class="Firefox-esr"] $ws3
-assign [class="FreeTube"] $ws3
 assign [class="Google-chrome"] $ws3
-assign [class="Hexchat"] $ws3
-assign [class="JDownloader 2"] $ws3
-assign [class="Pea"] $ws3
 assign [class="TelegramDesktop"] $ws3
 assign [class="Tor Browser"] $ws3
 assign [class="discord"] $ws3
 assign [class="firefox"] $ws3
 assign [class="qutebrowser"] $ws3
 
-assign [instance="newsboat"] $ws4
-
 assign [class="Qemu-system-x86_64"] $ws8
+assign [title="Steam"] $ws8
 assign [class="Steam"] $ws8
 assign [instance="Steam"] $ws8
-assign [title="Steam"] $ws8
 
-assign [class="Jellyfin Media Player"] $ws9
-assign [class="Spotify"] $ws9
-assign [instance="Spotify"] $ws9
 assign [instance="cmus"] $ws9
 assign [instance="ncmpcpp"] $ws9
-assign [instance="ncspot"] $ws9
-assign [title="radio"] $ws9
 
 assign [class="Amule"] $ws0
-assign [class="Deluge-gtk"] $ws0
 assign [class="qBittorrent"] $ws0
-assign [instance="download"] $ws0
-assign [instance="irssi"] $ws0
 
 # for_window [class="GLava"] sticky enable
 for_window [instance="Cava"] floating enable
+for_window [instance="tabbed"] floating enable
+for_window [instance="tabbed"] border pixel 1
 # for_window [class="TelegramDesktop"] floating enable
 # for_window [class="mpv"] floating enable
 # for_window [class="Alacritty"] border none

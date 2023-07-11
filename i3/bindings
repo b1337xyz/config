@@ -57,6 +57,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
+bindsym $mod+shift+g gaps outer current toggle 10 ; gaps inner current toggle 10
 bindsym $mod+y sticky toggle
 bindsym $mod+shift+c reload
 bindsym $mod+shift+r restart
