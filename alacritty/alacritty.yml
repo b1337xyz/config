@@ -16,8 +16,8 @@ env:
 
 window:
   dimensions:
-    columns: 100
-    lines: 28
+    columns: 110
+    lines: 30
 
   padding:
     x: 5
@@ -25,7 +25,7 @@ window:
 
   dynamic_padding: true
   decorations: full
-  opacity: 1.0
+  opacity: 0.9
 
 font:
   normal:

@@ -22,6 +22,7 @@ assign [instance="ncmpcpp"] $ws9
 assign [class="Amule"] $ws0
 assign [class="qBittorrent"] $ws0
 
+for_window [all] floating enable
 # for_window [class="GLava"] sticky enable
 for_window [instance="Cava"] floating enable
 for_window [instance="tabbed"] floating enable
@@ -33,7 +34,6 @@ for_window [instance="tabbed"] border pixel 1
 # for_window [instance="ncspot"] floating enable
 for_window [instance="newsboat"] floating enable
 # for_window [title="Wine"] floating enable
-# for_window [all] floating enable
 
 
 for_window [class="PPSSPPQt"] floating enable

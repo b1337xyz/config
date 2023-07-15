@@ -36,7 +36,6 @@ border_top=0
 # interval=once
 
 [scratchpad]
-background=#222222
 command=~/.config/i3blocks/scripts/scratchpad.sh
 signal=11
 interval=once
