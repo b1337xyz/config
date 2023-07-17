@@ -1,4 +1,4 @@
 #!/bin/sh
 test -n "$BLOCK_BUTTON" && cmus-remote -n
-echo '<span size="18pt"><tt>怜</tt></span>'
+echo ' 󰒭 '
 

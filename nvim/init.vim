@@ -8,6 +8,7 @@ Plug 'nvie/vim-flake8'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'sheerun/vim-polyglot'
+Plug 'mbbill/undotree'
 
 " Colorschemes
 Plug 'Mofiqul/dracula.nvim'

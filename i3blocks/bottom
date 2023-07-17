@@ -1,30 +1,32 @@
 align=center
-separator=true
+separator=false
 separator_block_width=1
-# blue
-# background=#0E99EE
-# color=#E9E8F0
-background=#eeeeee
+background=#dddddd
 color=#000000
 
 [scratchpad]
-background=#dddddd
 command=~/.config/i3blocks/scripts/scratchpad.sh
-signal=11
+signal=10
+
+[cmus]
+background=#aaaaaa
+command=~/.config/i3blocks/scripts/cmus
 interval=once
+signal=20
 
-[mpc]
-command=~/.config/i3blocks/scripts/mpc
-signal=21
-interval=once
+# [prev]
+# full_text=" 󰒮 "
+# command=cmus-remote -r
 
-# [mpc_bar]
-# command=~/.config/i3blocks/scripts/mpc_bar
-# interval=persist
+# [playpause]
+# markup=pango
+# command=~/.config/i3blocks/scripts/playpause
+# interval=once
+# signal=20
 
-# [disks]
-# command=~/.config/i3blocks/scripts/disks
-# interval=10
+# [next]
+# full_text=" 󰒭 "
+# command=cmus-remotoe -n
 
 # [memory]
 # command=~/.config/i3blocks/scripts/memory

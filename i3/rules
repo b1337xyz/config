@@ -1,13 +1,13 @@
 assign [class="Conky"] $ws1
 assign [class="GLava"] $ws1
 assign [instance="Cava"] $ws1
+assign [instance="btm"] $ws1
 
 assign [class="Brave-browser"] $ws3
 assign [class="Chromium"] $ws3
 assign [class="Google-chrome"] $ws3
 assign [class="TelegramDesktop"] $ws3
 assign [class="Tor Browser"] $ws3
-assign [class="discord"] $ws3
 assign [class="firefox"] $ws3
 assign [class="qutebrowser"] $ws3
 
@@ -22,18 +22,20 @@ assign [instance="ncmpcpp"] $ws9
 assign [class="Amule"] $ws0
 assign [class="qBittorrent"] $ws0
 
-for_window [all] floating enable
-# for_window [class="GLava"] sticky enable
-for_window [instance="Cava"] floating enable
-for_window [instance="tabbed"] floating enable
-for_window [instance="tabbed"] border pixel 1
-# for_window [class="TelegramDesktop"] floating enable
-# for_window [class="mpv"] floating enable
+# for_window [all] floating enable
 # for_window [class="Alacritty"] border none
+# for_window [class="GLava"] sticky enable
+# for_window [class="TelegramDesktop"] floating enable
 # for_window [class="discord"] floating enable
+# for_window [class="mpv"] floating enable
 # for_window [instance="ncspot"] floating enable
-for_window [instance="newsboat"] floating enable
 # for_window [title="Wine"] floating enable
+for_window [instance="Cava"] floating enable
+for_window [instance="newsboat"] floating enable
+for_window [instance="tabbed"] border pixel 1
+for_window [instance="tabbed"] floating enable
+for_window [instance="cal"] border pixel 1
+for_window [instance="cal"] floating enable
 
 
 for_window [class="PPSSPPQt"] floating enable

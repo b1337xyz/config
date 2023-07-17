@@ -66,8 +66,8 @@ bindsym $mod+shift+e exec i3-msg exit
 # bindsym $mod+b exec polybar-msg cmd toggle
 bindsym $mod+b exec toggle_bar.sh
 bindsym $mod+shift+b exec i3-msg border toggle 3
-bindsym $mod+minus move scratchpad ; exec pkill -SIGRTMIN+11 i3blocks
-bindsym $mod+shift+minus exec i3-scratchpad-dmenu.py && pkill -SIGRTMIN+11 i3blocks
+bindsym $mod+minus move scratchpad ; exec pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+shift+minus exec i3-scratchpad-dmenu.py && pkill -SIGRTMIN+10 i3blocks
 
 # 106 KP_Divide
 # 63  KP_Multiply
@@ -93,19 +93,19 @@ bindcode $mod+80 exec i3_edge.py -r up
 bindcode $mod+88 exec i3_edge.py -r down
 
 bindsym Print exec print.sh
-bindsym XF86AudioRaiseVolume  exec volupdown.sh up
-bindsym XF86AudioLowerVolume  exec volupdown.sh down
-bindsym XF86AudioMute         exec volupdown.sh toggle
-bindsym XF86MonBrightnessUp   exec brightnessctl s +2%
+bindsym XF86AudioRaiseVolume exec volupdown.sh up
+bindsym XF86AudioLowerVolume exec volupdown.sh down
+bindsym XF86AudioMute exec volupdown.sh toggle
+bindsym XF86MonBrightnessUp  exec brightnessctl s +2%
 bindsym XF86MonBrightnessDown exec brightnessctl s 2%-
-bindsym XF86Search            exec brightnessctl s +2%
-bindsym XF86Calculator        exec brightnessctl s 2%-
-bindsym XF86AudioPlay         exec cmus-remote -u # && pkill -SIGRTMIN+20 i3blocks
-bindsym XF86AudioNext         exec cmus-remote -n # && pkill -SIGRTMIN+21 i3blocks
-bindsym XF86AudioPrev         exec cmus-remote -r # && pkill -SIGRTMIN+21 i3blocks
+bindsym XF86Search exec brightnessctl s +2%
+bindsym XF86Calculator exec brightnessctl s 2%-
+bindsym XF86AudioPlay exec cmus-remote -u
+bindsym XF86AudioNext exec cmus-remote -n
+bindsym XF86AudioPrev exec cmus-remote -r
 # bindsym XF86AudioPlay         exec mpc toggle
-# bindsym XF86AudioNext         exec mpc next && exec pkill -SIGRTMIN+21 i3blocks
-# bindsym XF86AudioPrev         exec mpc prev && exec pkill -SIGRTMIN+21 i3blocks
+# bindsym XF86AudioNext         exec mpc next
+# bindsym XF86AudioPrev         exec mpc prev
 
 
 bindsym $mod+q kill
@@ -144,18 +144,17 @@ bindsym $mod+p mode "$print_mode"
 
 set $launch_mode [f]irefox [q]ute [t]elegram [p]ulsemixer [e]xplorer [r]adio
 mode "$launch_mode" {
-    # bindsym c exec alacritty --class cmus --title cmus -e cmus ; mode "default"
-    bindsym e exec ts -t nnn -- nnn; mode "default"
     bindsym a exec ts -- fzfanime.sh -q ; mode "default"
-    bindsym p exec ts -n floating_terminal -- pulsemixer ; mode "default"
-    bindsym k exec passc.sh ; mode "default"
+    bindsym d exec discord ; mode "default"
+    bindsym e exec ts -t nnn -- nnn; mode "default"
     bindsym f exec firefox ; mode "default"
+    bindsym k exec passc.sh ; mode "default"
+    bindsym p exec ts -n floating_terminal -- pulsemixer ; mode "default"
     bindsym q exec qutebrowser ; mode "default"
     bindsym r exec radio.sh ; mode "default"
     bindsym s exec srun.sh ; mode "default"
-    bindsym w exec wrun.sh ; mode "default"
-    bindsym y exec ytcli.py --history --dmenu ; mode "default"
     bindsym t exec telegram ; mode "default"
+    bindsym y exec ytcli.py --history --dmenu ; mode "default"
 
     bindsym q      mode "default"
     bindsym Escape mode "default"

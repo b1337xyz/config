@@ -1,7 +1,10 @@
-exec --no-startup-id cmus.sh
-exec --no-startup-id qbittorrent
-exec --no-startup-id set_screen.sh
-exec --no-startup-id unclutter --idle 1 --jitter 2 --root
-exec --no-startup-id ~/.cache/xwallpaper
+set $exec exec --no-startup-id
+$exec cmus.sh
+$exec qbittorrent
+$exec set_screen.sh
+$exec unclutter --idle 1 --jitter 2 --root
+$exec ~/.cache/xwallpaper
+$exec ts -t btm -n btm -- btm -C ~/.config/bottom/config.toml
+$exec discord
 
 # vim: ft=i3config

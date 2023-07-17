@@ -2,6 +2,7 @@
 alias DIR='dir -lak --color=never'
 
 alias ls='ls -vNh --color' \
+    btm='btm -C ~/.config/bottom/config.toml' \
     dir='dir --color' \
     vdir='vdir --color' \
     diff='diff --color --unified=0' \

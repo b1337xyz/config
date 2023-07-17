@@ -5,8 +5,18 @@ border_top=0
 # border_bottom=2
 # border=#80cfff
 # full_text="|"
-# separator=false
-# separator_block_width=1
+separator=false
+separator_block_width=1
+background=#cccccc
+color=#000000
+
+[time]
+markup=pango
+background=#aaaaaa
+command=~/.config/i3blocks/scripts/time
+interval=15
+align=center
+separator_block_width=584
 
 # XP
 # background=#0899F3
@@ -35,10 +45,10 @@ border_top=0
 # full_text=" "
 # interval=once
 
-[scratchpad]
-command=~/.config/i3blocks/scripts/scratchpad.sh
-signal=11
-interval=once
+# [scratchpad]
+# command=~/.config/i3blocks/scripts/scratchpad.sh
+# signal=11
+# interval=once
 
 # [title]
 # command=~/.config/i3blocks/scripts/title.py
@@ -66,9 +76,9 @@ interval=once
 # command=~/.config/i3blocks/scripts/mpvplaying.sh
 # interval=15
 
-[disks]
-command=~/.config/i3blocks/scripts/disks
-interval=15
+# [disks]
+# command=~/.config/i3blocks/scripts/disks
+# interval=15
 
 # [bandwidth]
 # markup=pango
@@ -88,11 +98,6 @@ min_width=" B 00% "
 # min_width="  V 00% "
 # signal=10
 # interval=once
-
-[time]
-markup=pango
-command=~/.config/i3blocks/scripts/time
-interval=15
 
 # [pacman]
 # markup=pango

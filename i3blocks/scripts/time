@@ -1,9 +1,9 @@
 #!/bin/sh
 case "$BLOCK_BUTTON" in
-    1|2) xterm -geometry 20x9-5+20  -name floating_terminal -e 'cal; read -N 1 -s'    ;;
-    3)   xterm -geometry 69x35-5+20 -name floating_terminal -e 'cal -y; read -N 1 -s' ;;
+    1|2) xterm -geometry 20x9-4+22  -name cal -e 'cal; read -t 5 -N 1 -s'    ;;
+    3)   xterm -geometry 69x35-4+22 -name cal -e 'cal -y; read -t 5 -N 1 -s' ;;
 esac
 
-# date +' %b %d %H:%M ' # Jun 21 22:10
+date +'<span size="11pt"> %b %d %H:%M </span>' # Jun 21 22:10
 # date +' %H:%M %d/%m/%Y '
-date +' %H:%M '
+# date +' %H:%M '

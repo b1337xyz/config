@@ -1,3 +1,3 @@
 #!/bin/sh
 test -n "$BLOCK_BUTTON" && cmus-remote -r
-echo '<span size="18pt"><tt>玲</tt></span>'
+echo ' 󰒮 '
