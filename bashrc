@@ -103,11 +103,17 @@ fzcd() {
         --info=hidden --layout=reverse --height 20 --bind 'tab:accept')
     [ -e "$p" ] && { cd "$p"; pwd; }
 }
+bpwd() { pwd | tee -a ~/.cache/.bpwd; }
+cb() {
+    d=$(awk '!s[$0]++' ~/.cache/.bpwd | fzf -0 --info=hidden --reverse --height 20 --bind tab:accept);
+    [ -d "$d" ] && cd "$d" || return 1
+}
 
 if ! [[ "$TERM" =~ xterm* ]];then
     # Ctrl-V + key  to find any keycode
     # https://sparky.rice.edu//~hartigan/del.html
     bind -x '"\em": undomv'
+    bind -x '"\eb": bpwd'
     bind -x '"\C-x": expand_files'
     bind -x '"\C-h": fzfhist'
     bind -x '"\C-g": fzfgov' 
