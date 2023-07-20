@@ -74,10 +74,10 @@ autocmd BufNewFile,BufRead .bashrc,.bash_aliases,.profile set filetype=bash
 autocmd BufNewFile,BufRead lfrc set syntax=config
 autocmd BufNewFile,BufRead ~/.config/i3/* set syntax=i3config
 autocmd BufNewFile,BufRead ~/.config/X11/themes/* set syntax=xdefaults
-autocmd BufNewFile *.sh 0r     $XDG_CONFIG_HOME/nvim/templates/skeleton.sh
-autocmd BufNewFile *.py 0r     $XDG_CONFIG_HOME/nvim/templates/skeleton.py
-autocmd BufNewFile *.html 0r   $XDG_CONFIG_HOME/nvim/templates/skeleton.html
-autocmd BufNewFile *.css 0r    $XDG_CONFIG_HOME/nvim/templates/skeleton.css
+autocmd BufNewFile *.sh 0r   $XDG_CONFIG_HOME/nvim/templates/skeleton.sh
+autocmd BufNewFile *.py 0r   $XDG_CONFIG_HOME/nvim/templates/skeleton.py
+autocmd BufNewFile *.html 0r $XDG_CONFIG_HOME/nvim/templates/skeleton.html
+autocmd BufNewFile *.css 0r  $XDG_CONFIG_HOME/nvim/templates/skeleton.css
 
 
 hi Normal guibg=NONE ctermbg=NONE
@@ -134,4 +134,17 @@ endfunction
 augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
+augroup END
+
+function DeleteHiddenBuffers()
+    let tpbl=[]
+    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+    for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+        silent execute 'bwipeout' buf
+    endfor
+endfunction
+
+augroup delHidden
+  autocmd!
+  autocmd BufWinEnter * call DeleteHiddenBuffers()
 augroup END
