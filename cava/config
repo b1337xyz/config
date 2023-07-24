@@ -160,10 +160,16 @@ source = auto
 # You can define as many as 8 different colors. They range from bottom to top of screen
 gradient = 1
 gradient_count = 4
-gradient_color_1 = '#4F2362'
-gradient_color_2 = '#5A2B96'
-gradient_color_3 = '#4850A0'
-gradient_color_4 = '#433D54'
+gradient_color_1 = '#073642'
+gradient_color_2 = '#268BD2'
+gradient_color_3 = '#AAAAAA'
+gradient_color_4 = '#CCCCCC'
+
+# Neon
+# gradient_color_1 = '#4F2362'
+# gradient_color_2 = '#5A2B96'
+# gradient_color_3 = '#4850A0'
+# gradient_color_4 = '#433D54'
 
 [smoothing]
 

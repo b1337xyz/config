@@ -65,6 +65,7 @@ nmap <M-5> :buffer 5<CR>
 nmap <M-6> :buffer 6<CR>
 nmap <M-7> :buffer 7<CR>
 nmap <M-8> :buffer 8<CR>
+nmap <M-9> :buffer 9<CR>
 
 noremap <F4> :set hlsearch! hlsearch?<CR>
 noremap gb :b#<CR>

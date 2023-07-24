@@ -1,6 +1,6 @@
 align=center
-separator=false
-separator_block_width=1
+# separator=false
+# separator_block_width=1
 color=#000000
 
 [scratchpad]
@@ -53,5 +53,9 @@ interval=once
 # command=~/.config/i3blocks/scripts/load_average
 # min_width=" 0.00 0.00 0.00 "
 # interval=5
+
+[separator]
+full_text=""
+interval=once
 
 # vim: ft=cfg

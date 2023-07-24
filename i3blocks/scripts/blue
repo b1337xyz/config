@@ -1,3 +1,0 @@
-#!/bin/sh
-
-bluetoothctl info 2>/dev/null | sed -n 's/.*Battery.*(\([0-9]\+\)).*/󰂯 \1%/p'
