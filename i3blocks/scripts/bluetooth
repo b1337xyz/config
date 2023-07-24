@@ -1,0 +1,14 @@
+#!/bin/sh
+status=$(bluetoothctl show 2>/dev/null | grep -oP '(?<=PowerState: )(on|off)')
+case "$BLOCK_BUTTON" in
+    1|2)
+        [ "$status" = on ] && status=off || status=on
+        bluetoothctl power "$status" >/dev/null 2>&1 ;;
+esac
+
+if [ "$status" = on ]; then
+    echo '<span size="12pt" foreground="#007FF5">  </span>'
+else
+    echo '<span size="12pt" foreground="#666666">  </span>'
+fi
+

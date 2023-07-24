@@ -9,6 +9,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'sheerun/vim-polyglot'
 Plug 'mbbill/undotree'
+Plug 'bling/vim-bufferline'
 
 " Colorschemes
 Plug 'Mofiqul/dracula.nvim'
@@ -52,6 +53,18 @@ set undofile
 set scrolloff=8
 set incsearch
 set nohlsearch
+
+let g:bufferline_echo = 0
+autocmd VimEnter * let &statusline='%{bufferline#refresh_status()}'.bufferline#get_status_string()
+
+nmap <M-1> :buffer 1<CR>
+nmap <M-2> :buffer 2<CR>
+nmap <M-3> :buffer 3<CR>
+nmap <M-4> :buffer 4<CR>
+nmap <M-5> :buffer 5<CR>
+nmap <M-6> :buffer 6<CR>
+nmap <M-7> :buffer 7<CR>
+nmap <M-8> :buffer 8<CR>
 
 noremap <F4> :set hlsearch! hlsearch?<CR>
 noremap gb :b#<CR>
@@ -134,17 +147,4 @@ endfunction
 augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
-augroup END
-
-function DeleteHiddenBuffers()
-    let tpbl=[]
-    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
-    for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
-        silent execute 'bwipeout' buf
-    endfor
-endfunction
-
-augroup delHidden
-  autocmd!
-  autocmd BufWinEnter * call DeleteHiddenBuffers()
 augroup END

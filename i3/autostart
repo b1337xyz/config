@@ -3,5 +3,6 @@ $exec cmus.sh
 $exec set_screen.sh
 $exec unclutter --idle 1 --jitter 2 --root
 $exec ~/.cache/xwallpaper
+$exec qbittorrent
 
 # vim: ft=i3config

@@ -38,6 +38,7 @@ for_window [instance="cal"] border pixel 1
 for_window [instance="cal"] floating enable
 
 
+for_window [class="Blueman-manager"] floating enable
 for_window [class="PPSSPPQt"] floating enable
 for_window [class="PPSSPPSDL"] floating enable
 for_window [class="Anydesk"] floating enable

@@ -220,12 +220,14 @@ prompt() {
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
     if test "${out:-0}" -eq 0;then
-        PS1+="${grn}( •_•)${rst} "  # λ π β ω μ
+        # PS1+="${grn}( •_•)${rst} "  # λ π β ω μ
+        PS1+="[${grn}${out}${rst}] "
     else
         # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
         # [ -f "$beep" ] && mpv --no-config --no-video --really-quiet "$beep" &
         # [ -f "$beep" ] && aplay -q "$beep" &
-        PS1+="${red}(；☉_☉) ${out}!$rst "
+        # PS1+="${red}(；☉_☉) ${out}!$rst "
+        PS1+="[${red}${out}${rst}] "
     fi
 
     # set title
@@ -265,3 +267,10 @@ fi
 # printf '\e[1;31m'; cat ~/Documents/ASCII/Nerv; printf '\e[m\n'
 # shuf -n1 ~/.cache/quotes.csv | sed 's/|/\n\t- /'
 # printf 'Microsoft Windows XP [Version 5.1.2600]\n(C) Copyright 1985-2004 Microsoft Corp.\n\n'
+
+
+start_nvm() {
+    export NVM_DIR="$HOME/.config/nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
