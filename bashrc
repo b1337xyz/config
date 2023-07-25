@@ -201,10 +201,12 @@ prompt() {
     # local cpu_usage=$(ps axch -o %cpu | awk '{x+=$1}END{ printf("%.1f%%\n", x)}')
     # local ram_usage=$(command free -m | awk '/Mem:/{printf("%s\n", $2 - $7)}')
     # local fsize=$(command ls -lhA | awk 'NR == 1 {print $2}')
-    # local last_mod=$(last_modified)
+    local last_mod=$(last_modified)
     # local perm=$(stat -c '%a' .)
     local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1) /')
     
+    test "${out:-0}" -eq 0 && PS1+="${bar}[${grn}" || PS1+="${bar}[${red}"
+    PS1+="${out}${bar}]"
     # PS1="${bar}[${red}\V${bar}]"
     # PS1+="${bar}[${cyn}${ram_usage}${bar}]"
     # PS1+="${bar}[${grn}${perm}${bar}]"
@@ -213,21 +215,21 @@ prompt() {
     # PS1+="${hidden_count:-0} ., "
     # PS1+="${files:-0}${bar})-"
     # test -n "$exts"      && PS1+="-(${rst}${exts::-2}${rst}${bar})$rst"
-    # test -n "$last_mod"  && PS1+="${bar}[$rst$last_mod${bar}]"
+    test -n "$last_mod"  && PS1+="${bar}[$rst$last_mod${bar}]"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
-    PS1+="${blu}\w${rst}\n"
+    PS1+="${bar}[${blu}\w${bar}]${rst}\n"
     PS1+="\${timer_show}"
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
     if test "${out:-0}" -eq 0;then
-        # PS1+="${grn}( •_•)${rst} "  # λ π β ω μ
-        PS1+="[${grn}${out}${rst}] "
+        PS1+="${grn}( •_•)${rst} "  # λ π β ω μ
+        # PS1+="[${grn}${out}${rst}] "
     else
         # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
         # [ -f "$beep" ] && mpv --no-config --no-video --really-quiet "$beep" &
         # [ -f "$beep" ] && aplay -q "$beep" &
-        # PS1+="${red}(；☉_☉) ${out}!$rst "
-        PS1+="[${red}${out}${rst}] "
+        PS1+="${red}(；☉_☉)${rst} "
+        # PS1+="[${red}${out}${rst}] "
     fi
 
     # set title
@@ -268,9 +270,5 @@ fi
 # shuf -n1 ~/.cache/quotes.csv | sed 's/|/\n\t- /'
 # printf 'Microsoft Windows XP [Version 5.1.2600]\n(C) Copyright 1985-2004 Microsoft Corp.\n\n'
 
-
-start_nvm() {
-    export NVM_DIR="$HOME/.config/nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-}
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -7,9 +7,12 @@ Plug 'ap/vim-css-color'
 Plug 'nvie/vim-flake8'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'} 
 Plug 'sheerun/vim-polyglot'
 Plug 'mbbill/undotree'
 Plug 'bling/vim-bufferline'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Colorschemes
 Plug 'Mofiqul/dracula.nvim'
@@ -103,6 +106,18 @@ hi Normal guibg=NONE ctermbg=NONE
 
 autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 
+call deoplete#custom#option('num_processes', 4)
+
+let g:deoplete#sources#ternjs#tern_bin = '/usr/bin/tern'
+let g:deoplete#sources#ternjs#timeout = 1
+let g:deoplete#sources#ternjs#filetypes = ['js', 'jsx', 'vue']
+let g:deoplete#sources#ternjs#types = 1
+let g:deoplete#sources#ternjs#depths = 0
+let g:deoplete#sources#ternjs#docs = 0
+let g:deoplete#sources#ternjs#include_keywords = 1
+let g:deoplete#sources#ternjs#omit_object_prototype = 0
+let g:tern#command = ['tern']
+let g:tern#arguments = ["--persistent"]
 
 let g:python_highlight_all = 1
 let g:deoplete#enable_at_startup = 1
@@ -149,3 +164,19 @@ augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
 augroup END
+
+" function! TreeSitterConfig()
+" lua << EOF
+" require'nvim-treesitter.configs'.setup {
+"     ensure_installed = { "javascript", "c" },
+"     sync_install = false,
+"     auto_install = false,
+"     ignore_install = { "all" },
+"     highlight = {
+"         enable = true,
+"         -- disable = { "python", "c" },
+"         additional_vim_regex_highlighting = false,
+"     },
+" }
+" EOF
+" endfunction
