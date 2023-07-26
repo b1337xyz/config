@@ -107,7 +107,6 @@ hi Normal guibg=NONE ctermbg=NONE
 autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 
 call deoplete#custom#option('num_processes', 4)
-
 let g:deoplete#sources#ternjs#tern_bin = '/usr/bin/tern'
 let g:deoplete#sources#ternjs#timeout = 1
 let g:deoplete#sources#ternjs#filetypes = ['js', 'jsx', 'vue']

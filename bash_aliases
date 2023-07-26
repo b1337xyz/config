@@ -76,9 +76,8 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     +x='chmod u+x' \
     -x='chmod a-x' \
     so='source' \
-    v='nvim' \
-    vi='nvim' \
-    vim='nvim' \
+    v='vim' \
+    vi='vim' \
     :q=exit \
     :x=exit \
     linuxlogo='linux_logo -c -u -y -L 13' \
