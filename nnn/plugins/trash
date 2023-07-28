@@ -3,9 +3,9 @@
 
 SEL=~/.config/nnn/.selection
 if [ -s "$SEL" ];then
-    xargs -r0 trash.sh < "$SEL"
+    xargs -r0 trash < "$SEL"
 elif [ -f "$1" ];then
-    trash.sh "$1"
+    trash "$1"
 fi
 printf 'press ENTER'
 read 

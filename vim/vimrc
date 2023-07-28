@@ -1,0 +1,127 @@
+syntax on
+filetype indent plugin on
+set runtimepath^=$XDG_CONFIG_HOME/vim
+set runtimepath+=$XDG_CONFIG_HOME/vim/after
+set runtimepath+=$XDG_DATA_HOME/vim
+set backupdir=$XDG_STATE_HOME/vim/backup
+set directory=$XDG_STATE_HOME/vim/swap
+set viminfofile=$XDG_STATE_HOME/vim/viminfo
+set undodir=$XDG_STATE_HOME/vim/undo
+set viewdir=$XDG_STATE_HOME/vim/view
+
+" Plugins {{{
+call plug#begin()
+Plug 'pangloss/vim-javascript'
+Plug 'vim-python/python-syntax'
+Plug 'vim-syntastic/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'ap/vim-css-color'
+Plug 'nvie/vim-flake8'
+Plug 'bling/vim-bufferline'
+call plug#end()
+
+let g:netrw_home = $XDG_DATA_HOME . "/vim"
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+
+" Plug 'vim-python/python-syntax'
+let g:python_highlight_all = 1
+
+" Plug 'vim-syntastic/syntastic'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+
+" Plug 'nvie/vim-flake8'
+let g:flake8_quickfix_height = 8
+autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
+" }}}
+
+" Settings {{{
+set tags=./.tags,./tags
+set path+=**
+set foldmethod=marker
+set statusline=%<%f\ %m%h%r%=%-8.(%y\ %l,%c,%L%)\ %P\ %#warningmsg#
+set switchbuf=usetab
+set nocompatible
+set hidden
+set wildmenu
+set showcmd
+set ignorecase
+set smartcase
+set backspace=indent,eol,start
+set autoindent 
+set nostartofline
+set autochdir
+set ruler
+set laststatus=2
+set visualbell
+set mouse=a
+set cmdheight=1
+set number
+set relativenumber
+set background=dark
+set notimeout ttimeout ttimeoutlen=200
+set pastetoggle=<F11>
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set cursorline
+set undofile
+set scrolloff=8
+set incsearch
+set nohlsearch
+"}}}
+
+" Mappings {{{
+nmap <F4> :set hlsearch! hlsearch?<CR>
+map gb :b#<CR>
+" }}}
+
+" Actions {{{
+autocmd BufEnter * :syntax sync fromstart
+autocmd BufWritePost */glava/* !~/.config/glava/restart
+autocmd BufWritePost *tmux.conf !tmux source-file % \; display "Reloaded"
+autocmd BufWritePost Xresources !xrdb load %
+autocmd BufWritePost dunstrc !~/.scripts/shell/dunst/reload.sh
+autocmd BufWritePost ~/.config/i3/* !i3-msg reload
+autocmd BufWritePost */i3blocks/config !i3-msg restart
+autocmd BufWritePost */X11/themes/* !xrdb load ~/.config/X11/Xresources
+autocmd BufWritePost */alacritty/themes/*.yml !touch -m ~/.config/alacritty/*.yml
+autocmd BufWritePost */polybar/config.ini !~/.config/polybar/launch
+autocmd BufNewFile,BufRead *.py set colorcolumn=80
+autocmd BufNewFile,BufRead .bashrc,.bash_aliases,.profile set filetype=bash
+autocmd BufNewFile,BufRead lfrc set syntax=config
+autocmd BufNewFile,BufRead ~/.config/i3/* set syntax=i3config | setlocal foldmethod=indent
+autocmd BufNewFile,BufRead ~/.config/X11/themes/* set syntax=xdefaults
+autocmd BufNewFile *.sh 0r   $XDG_CONFIG_HOME/nvim/templates/skeleton.sh
+autocmd BufNewFile *.py 0r   $XDG_CONFIG_HOME/nvim/templates/skeleton.py
+autocmd BufNewFile *.html 0r $XDG_CONFIG_HOME/nvim/templates/skeleton.html
+autocmd BufNewFile *.css 0r  $XDG_CONFIG_HOME/nvim/templates/skeleton.css
+" autocmd BufWritePost *.cpp,*.c,*.h silent! !ctags -R -o ./.tags . &
+" autocmd FileType i3config setlocal foldmethod=indent
+
+
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
+" }}}
+
+colorscheme habamax
+hi Normal guibg=NONE ctermbg=NONE
+" hi ColorColumn ctermbg=236
+" hi LineNr ctermfg=7 ctermbg=NONE
+" hi CursorLine cterm=NONE ctermbg=233
+" hi CursorLine term=underline
+" hi Visual ctermfg=1 ctermbg=233

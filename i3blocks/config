@@ -9,15 +9,6 @@ separator=false
 separator_block_width=1
 background=#cccccc
 color=#000000
-
-[time]
-markup=pango
-background=#aaaaaa
-command=~/.config/i3blocks/scripts/time
-interval=15
-align=center
-separator_block_width=584
-
 # XP
 # background=#0899F3
 # color=#FFFFFF
@@ -41,13 +32,37 @@ separator_block_width=584
 # color=#253525
 # border=#253525
 
+[cmus]
+background=#aaaaaa
+command=~/.config/i3blocks/scripts/cmus
+interval=once
+signal=20
+
+[scratchpad]
+background=#dddddd
+command=~/.config/i3blocks/scripts/scratchpad.sh
+signal=10
+
+[bluetooth]
+markup=pango
+command=~/.config/i3blocks/scripts/bluetooth
+interval=once
+
+[battery]
+markup=pango
+command=~/.config/i3blocks/scripts/battery
+interval=60
+min_width=" B 00% "
+
+[time]
+markup=pango
+command=~/.config/i3blocks/scripts/time
+interval=15
+align=center
+# separator_block_width=584
+
 # [blank]
 # full_text=" "
-# interval=once
-
-# [scratchpad]
-# command=~/.config/i3blocks/scripts/scratchpad.sh
-# signal=11
 # interval=once
 
 # [title]
@@ -85,12 +100,6 @@ separator_block_width=584
 # command=~/.config/i3blocks/scripts/bandwidth
 # min_width=" DL 000K UP 000K "
 # interval=5
-
-[battery]
-markup=pango
-command=~/.config/i3blocks/scripts/battery
-interval=60
-min_width=" B 00% "
 
 # [volume]
 # markup=pango

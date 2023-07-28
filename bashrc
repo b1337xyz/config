@@ -103,10 +103,17 @@ fzcd() {
         --info=hidden --layout=reverse --height 20 --bind 'tab:accept')
     [ -e "$p" ] && { cd "$p"; pwd; }
 }
-bpwd() { pwd | tee -a ~/.cache/.bpwd; }
+bpwd() {
+    # bookmark current path
+    pwd | tee -a ~/.cache/.bpwd;
+}
 cb() {
     d=$(awk '!s[$0]++' ~/.cache/.bpwd | fzf -0 --info=hidden --reverse --height 20 --bind tab:accept);
     [ -d "$d" ] && cd "$d" || return 1
+}
+goback() {
+    d=$(awk '!s[$0]++' ~/.cache/goback | fzf --info=hidden --layout=reverse --height 20 --tac --bind 'tab:accept')
+    [ -d "$d" ] && cd "$d";
 }
 
 if ! [[ "$TERM" =~ xterm* ]];then
@@ -118,6 +125,7 @@ if ! [[ "$TERM" =~ xterm* ]];then
     bind -x '"\C-h": fzfhist'
     bind -x '"\C-g": fzfgov' 
     bind -x '"\C-f": fzcd'
+    bind -x '"\C-t": goback'
 fi
 
 cd() {
@@ -203,10 +211,10 @@ prompt() {
     # local fsize=$(command ls -lhA | awk 'NR == 1 {print $2}')
     local last_mod=$(last_modified)
     # local perm=$(stat -c '%a' .)
-    local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1) /')
+    local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /')
     
-    test "${out:-0}" -eq 0 && PS1+="${bar}[${grn}" || PS1+="${bar}[${red}"
-    PS1+="${out}${bar}]"
+    # test "${out:-0}" -eq 0 && PS1+="${bar}[${grn}" || PS1+="${bar}[${red}"
+    # PS1+="${out}${bar}]"
     # PS1="${bar}[${red}\V${bar}]"
     # PS1+="${bar}[${cyn}${ram_usage}${bar}]"
     # PS1+="${bar}[${grn}${perm}${bar}]"
@@ -217,23 +225,24 @@ prompt() {
     # test -n "$exts"      && PS1+="-(${rst}${exts::-2}${rst}${bar})$rst"
     test -n "$last_mod"  && PS1+="${bar}[$rst$last_mod${bar}]"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
-    PS1+="${bar}[${blu}\w${bar}]${rst}\n"
+    PS1+="[${blu}\w${bar}]${rst}\n"
     PS1+="\${timer_show}"
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
     if test "${out:-0}" -eq 0;then
-        PS1+="${grn}( •_•)${rst} "  # λ π β ω μ
-        # PS1+="[${grn}${out}${rst}] "
+        # PS1+="${grn}( •_•)${rst} "  # λ π β ω μ
+        PS1+="${grn}:${rst} "
     else
         # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
         # [ -f "$beep" ] && mpv --no-config --no-video --really-quiet "$beep" &
         # [ -f "$beep" ] && aplay -q "$beep" &
-        PS1+="${red}(；☉_☉)${rst} "
-        # PS1+="[${red}${out}${rst}] "
+        # PS1+="${red}(；☉_☉)${rst} "
+        PS1+="${red}${out}!${rst} "
     fi
 
     # set title
     echo -ne "\033]0;${PWD/$HOME/\~}\007"
+    [[ "${PWD//[^\/]/}" = ////* ]] && pwd >> ~/.cache/goback
 }
 ms_prompt() {
     msdos_pwd() { pwd | tr '/' '\\'; }

@@ -3,21 +3,11 @@ align=center
 # separator_block_width=1
 color=#000000
 
-[scratchpad]
-background=#dddddd
-command=~/.config/i3blocks/scripts/scratchpad.sh
-signal=10
-
 [cmus]
 background=#aaaaaa
 command=~/.config/i3blocks/scripts/cmus
 interval=once
 signal=20
-
-[bluetooth]
-markup=pango
-command=~/.config/i3blocks/scripts/bluetooth
-interval=once
 
 # [prev]
 # full_text=" 󰒮 "

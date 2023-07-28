@@ -1,5 +1,6 @@
 set $exec exec --no-startup-id
-$exec cmus.sh
+
+$exec tmux new-session -d -s cmus cmus
 $exec set_screen.sh
 $exec unclutter --idle 1 --jitter 2 --root
 $exec ~/.cache/xwallpaper
