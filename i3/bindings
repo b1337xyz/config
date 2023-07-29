@@ -152,7 +152,7 @@ mode "$launch_mode" {
     bindsym p exec ts -n floating_terminal -- pulsemixer ; mode "default"
     bindsym q exec qutebrowser ; mode "default"
     bindsym r exec radio.sh ; mode "default"
-    bindsym s exec srun.sh ; mode "default"
+    bindsym s exec wrun.sh ; mode "default"
     bindsym t exec telegram ; mode "default"
     bindsym y exec ytcli.py --history --dmenu ; mode "default"
 

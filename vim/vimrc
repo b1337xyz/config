@@ -3,11 +3,13 @@ filetype indent plugin on
 set runtimepath^=$XDG_CONFIG_HOME/vim
 set runtimepath+=$XDG_CONFIG_HOME/vim/after
 set runtimepath+=$XDG_DATA_HOME/vim
-set backupdir=$XDG_STATE_HOME/vim/backup
-set directory=$XDG_STATE_HOME/vim/swap
+set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
+set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
+set backupdir=$XDG_STATE_HOME/vim/backup | call mkdir(&backupdir, 'p')
+set directory=$XDG_STATE_HOME/vim/swap | call mkdir(&directory, 'p')
+set undodir=$XDG_STATE_HOME/vim/undo | call mkdir(&undodir, 'p')
+set viewdir=$XDG_STATE_HOME/vim/view | call mkdir(&viewdir, 'p')
 set viminfofile=$XDG_STATE_HOME/vim/viminfo
-set undodir=$XDG_STATE_HOME/vim/undo
-set viewdir=$XDG_STATE_HOME/vim/view
 
 " Plugins {{{
 call plug#begin()
@@ -17,7 +19,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'nvie/vim-flake8'
-Plug 'bling/vim-bufferline'
+" Plug 'bling/vim-bufferline'
 call plug#end()
 
 let g:netrw_home = $XDG_DATA_HOME . "/vim"
@@ -45,7 +47,7 @@ set tags=./.tags,./tags
 set path+=**
 set foldmethod=marker
 set statusline=%<%f\ %m%h%r%=%-8.(%y\ %l,%c,%L%)\ %P\ %#warningmsg#
-set switchbuf=usetab
+set switchbuf=usetab,newtab
 set nocompatible
 set hidden
 set wildmenu
@@ -95,7 +97,7 @@ autocmd BufWritePost */polybar/config.ini !~/.config/polybar/launch
 autocmd BufNewFile,BufRead *.py set colorcolumn=80
 autocmd BufNewFile,BufRead .bashrc,.bash_aliases,.profile set filetype=bash
 autocmd BufNewFile,BufRead lfrc set syntax=config
-autocmd BufNewFile,BufRead ~/.config/i3/* set syntax=i3config | setlocal foldmethod=indent
+autocmd BufNewFile,BufRead ~/.config/i3/* set syntax=i3config
 autocmd BufNewFile,BufRead ~/.config/X11/themes/* set syntax=xdefaults
 autocmd BufNewFile *.sh 0r   $XDG_CONFIG_HOME/nvim/templates/skeleton.sh
 autocmd BufNewFile *.py 0r   $XDG_CONFIG_HOME/nvim/templates/skeleton.py
@@ -103,7 +105,6 @@ autocmd BufNewFile *.html 0r $XDG_CONFIG_HOME/nvim/templates/skeleton.html
 autocmd BufNewFile *.css 0r  $XDG_CONFIG_HOME/nvim/templates/skeleton.css
 " autocmd BufWritePost *.cpp,*.c,*.h silent! !ctags -R -o ./.tags . &
 " autocmd FileType i3config setlocal foldmethod=indent
-
 
 function! ResCur()
   if line("'\"") <= line("$")

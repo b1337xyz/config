@@ -39,7 +39,6 @@ interval=once
 signal=20
 
 [scratchpad]
-background=#dddddd
 command=~/.config/i3blocks/scripts/scratchpad.sh
 signal=10
 
