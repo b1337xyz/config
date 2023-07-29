@@ -36,7 +36,7 @@ export COLORTERM=truecolor
 
 source /usr/share/bash-completion/bash_completion
 source /usr/share/bash-completion/completions/man
-source ~/.config/dircolors
+source ~/.config/dircolors 2>/dev/null || eval "$(dircolors -b ~/.config/dircolors)"
 source ~/.config/bash_aliases
 source ~/.scripts/python/a2cli/completion/*
 source ~/.scripts/python/mal_completion
@@ -192,7 +192,8 @@ prompt() {
     local cyn="\[\033[1;36m\]"
     local whi="\[\033[1;37m\]"
     local rst="\[\033[00m\]"
-    local bar="$cyn"
+    local bar="$cyn[${rst}"
+    local end="$cyn]${rst}"
     # local file_count=$(find -L . -xdev -mindepth 1 -maxdepth 1 -printf '%y\n' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ') 
     # local hidden_count=$(find . -mindepth 1 -maxdepth 1 -name '.*' | wc -l)
     # local hidden_count=$(ls --color=none -N1A | grep -c '^\.')
@@ -213,19 +214,19 @@ prompt() {
     # local perm=$(stat -c '%a' .)
     local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /')
     
-    # test "${out:-0}" -eq 0 && PS1+="${bar}[${grn}" || PS1+="${bar}[${red}"
-    # PS1+="${out}${bar}]"
-    # PS1="${bar}[${red}\V${bar}]"
-    # PS1+="${bar}[${cyn}${ram_usage}${bar}]"
-    # PS1+="${bar}[${grn}${perm}${bar}]"
-    # test -n "$fsize" && PS1+="[${red}${fsize}${rst}${bar}]"
+    # test "${out:-0}" -eq 0 && PS1+="${bar}${grn}" || PS1+="${bar}[${red}"
+    # PS1+="${out}${end}"
+    # PS1="${bar}${red}\V${end}"
+    # PS1+="${bar}${cyn}${ram_usage}${end}"
+    # PS1+="${bar}${grn}${perm}${end}"
+    # test -n "$fsize" && PS1+="${bar}${red}${fsize}${end}"
     # PS1+="(${file_count::-2}, "
     # PS1+="${hidden_count:-0} ., "
-    # PS1+="${files:-0}${bar})-"
-    # test -n "$exts"      && PS1+="-(${rst}${exts::-2}${rst}${bar})$rst"
-    test -n "$last_mod"  && PS1+="${bar}[$rst$last_mod${bar}]"
+    # PS1+="${files:-0}${end}"
+    # test -n "$exts"      && PS1+="${bar}${exts::-2}${rst}${bar}"
+    test -n "$last_mod"  && PS1+="${bar}$rst$last_mod${end}"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
-    PS1+="[${blu}\w${bar}]${rst}\n"
+    PS1+="[${blu}\w${end}\n"
     PS1+="\${timer_show}"
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
