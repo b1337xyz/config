@@ -22,9 +22,9 @@ Plug 'ap/vim-css-color'
 Plug 'nvie/vim-flake8'
 call plug#end()
 
-" https://github.com/mattn/jscomplete-vim/tree/master 
-" autocmd FileType javascript :setl omnifunc=jscomplete#CompleteJS
-let g:jscomplete_use = ['dom']
+" https://bitbucket.org/teramako/jscomplete-vim/src/master/
+let g:jscomplete_use = ['dom', 'es6th']
+autocmd FileType javascript :setlocal omnifunc=jscomplete#CompleteJS
 
 let g:netrw_home = $XDG_DATA_HOME . "/vim"
 let g:netrw_banner=0
