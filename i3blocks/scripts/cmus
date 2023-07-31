@@ -1,5 +1,5 @@
-#!/bin/sh
-ICON=/usr/share/icons/Chicago95/apps/32/xfce4-clipman-plugin.png
+#!/usr/bin/env bash
+ICON=xfce4-clipman-plugin
 song=$(cat /tmp/.cmus-status)
 case "$BLOCK_BUTTON" in
     1|2)
@@ -7,4 +7,5 @@ case "$BLOCK_BUTTON" in
         printf '%s' "$song" | xclip -sel clip >/dev/null 2>&1
     ;;
 esac
+[ ${#song} -gt 80 ] && song=${song::80}...
 [ -n "$song" ] && echo " ♪ $song "
