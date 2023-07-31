@@ -226,7 +226,7 @@ prompt() {
     # test -n "$exts"      && PS1+="${bar}${exts::-2}${rst}${bar}"
     test -n "$last_mod"  && PS1+="${bar}$rst$last_mod${end}"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
-    PS1+="[${blu}\w${end}\n"
+    PS1+="${bar}${blu}\w${end}\n"
     PS1+="\${timer_show}"
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"

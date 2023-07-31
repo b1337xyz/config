@@ -2,6 +2,7 @@ assign [class="Conky"] $ws1
 assign [class="GLava"] $ws1
 assign [instance="Cava"] $ws1
 assign [instance="btm"] $ws1
+assign [instance="ws1"] $ws1
 
 assign [class="Brave-browser"] $ws3
 assign [class="Chromium"] $ws3
