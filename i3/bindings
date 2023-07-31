@@ -142,13 +142,14 @@ mode "$print_mode" {
 }
 bindsym $mod+p mode "$print_mode"
 
-set $launch_mode [f]irefox [q]ute [t]elegram [p]ulsemixer [e]xplorer [r]adio
+set $launch_mode [f]irefox [q]ute [t]elegram [p]ulsemixer [e]xplorer [r]adio [m]pv
 mode "$launch_mode" {
     bindsym a exec ts -- fzfanime.sh -q ; mode "default"
     bindsym d exec discord ; mode "default"
     bindsym e exec ts -t nnn -- nnn; mode "default"
     bindsym f exec firefox ; mode "default"
     bindsym k exec passc.sh ; mode "default"
+    bindsym m exec mpv --profile=dragon; mode "default"
     bindsym p exec ts -n floating_terminal -- pulsemixer ; mode "default"
     bindsym q exec qutebrowser ; mode "default"
     bindsym r exec radio.sh ; mode "default"
