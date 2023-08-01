@@ -17,7 +17,6 @@ assign [title="Steam"] $ws8
 assign [class="Steam"] $ws8
 assign [instance="Steam"] $ws8
 
-assign [instance="cmus"] $ws9
 assign [instance="ncmpcpp"] $ws9
 
 assign [class="Amule"] $ws0
