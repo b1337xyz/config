@@ -102,7 +102,7 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     gpuinfo='lspci -nnk | grep -i VGA -A2' \
     soundcardinfo='lspci -nnk | grep -i audio -A2' \
     enabledservices='systemctl list-unit-files --state=enabled --no-pager' \
-    yta='yt-dlp -x -f ba' \
+    yta='yt-dlp -x -f ba --embed-metadata --embed-thumbnail' \
     scrk='screenkey -t 0.4 -s medium -g 500x400-20-20' \
     nld='nload -i 192000 -o 80000 -u K wlan0' \
     fumnt='fusermount3 -u' \

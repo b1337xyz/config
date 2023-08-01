@@ -113,7 +113,7 @@ cb() {
 }
 goback() {
     d=$(awk '!s[$0]++' ~/.cache/goback | fzf --info=hidden --layout=reverse --height 20 --tac --bind 'tab:accept')
-    [ -d "$d" ] && cd "$d";
+    [ -d "$d" ] && cd "$d"
 }
 
 if ! [[ "$TERM" =~ xterm* ]];then
