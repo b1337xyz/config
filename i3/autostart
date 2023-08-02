@@ -1,7 +1,6 @@
 set $exec exec --no-startup-id
 
-$exec alacritty --option font.size=14 --class ws1 -e tmux
-# $exec qbittorrent
+$exec qbittorrent
 $exec tmux new-session -d -s cmus cmus
 $exec unclutter --idle 1 --jitter 2 --root
 $exec ~/.cache/xwallpaper
