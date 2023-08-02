@@ -1,7 +1,7 @@
 config.load_autoconfig(False)
 config.source('themes/custom.py')
 config.source('searchengines.py')
-# config.source('qbfetch.py')
+config.source('qbfetch.py')
 
 # Keymaps {{{
 nmap = lambda key, cmd: config.bind(key, cmd, mode='normal')

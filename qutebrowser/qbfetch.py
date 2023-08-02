@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from qutebrowser.api import cmdutils, message
+from qutebrowser.browser.qutescheme import add_handler
 from qutebrowser.utils import objreg, version as vs
 # from qutebrowser import __file__ as qtfile
 from qutebrowser import __version__ as qtver
@@ -40,9 +41,10 @@ html_head = '''<!DOCTYPE html>
 html_tail = '</div></body></html>'
 
 
-@cmdutils.register()
-@cmdutils.argument('win_id', value=cmdutils.Value.win_id)
-def qbfetch(win_id: int) -> None:
+# @cmdutils.register()
+# @cmdutils.argument('win_id', value=cmdutils.Value.win_id)
+@add_handler('qbfetch')
+def qbfetch(_url: QUrl) -> None:
     """
         Display information from qute://version in a "pleasant" way
     """
@@ -74,13 +76,12 @@ def qbfetch(win_id: int) -> None:
             # lines.append(('Platform plugin', vs.objects.qapp.platformName()))
             lines.append(('OpenGL', vs.opengl_info()))
 
-        lines.append(('Platform', '{}, {}'.format(
-            vs.platform.platform(),
-            vs.platform.architecture()[0])))
+        lines += [('Platform', '{}, {}'.format(vs.platform.platform(),
+                                               vs.platform.architecture()[0]))]
+
         dist = vs.distribution()
         if dist is not None:
-            lines.append(('Linux distribution',
-                          '{} ({})'.format(dist.pretty, dist.parsed.name)))
+            lines += [('OS', f'{dist.pretty} ({dist.parsed.name})')]
 
         # importpath = os.path.dirname(os.path.abspath(qtfile))
         # lines.append(('Frozen', hasattr(sys, 'frozen')))
@@ -99,14 +100,16 @@ def qbfetch(win_id: int) -> None:
         for k, v in lines:
             out += f'<div><span>{k}</span><span>:</span> <span>{v}</span></div>\n'  # noqa: E501
 
-        with open(HTML, 'w') as f:
-            f.write(html_head + out + html_tail)
+        return 'text/html', html_head + out + html_tail
 
-        url = QUrl(f'file://{HTML}')
-        tabbed_browser = objreg.get('tabbed-browser',
-                                    scope='window',
-                                    window=win_id)
-        tabbed_browser.load_url(url, newtab=False)
+        # with open(HTML, 'w') as f:
+        #     f.write(html_head + out + html_tail)
+
+        # url = QUrl(f'file://{HTML}')
+        # tabbed_browser = objreg.get('tabbed-browser',
+        #                             scope='window',
+        #                             window=win_id)
+        # tabbed_browser.load_url(url, newtab=False)
     except Exception:
         # with open('qterr', 'w') as f:
         #     traceback.print_exc(file=f)

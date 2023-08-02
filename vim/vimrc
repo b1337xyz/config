@@ -48,7 +48,10 @@ autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 
 " Settings {{{
 set omnifunc=syntaxcomplete#Complete
-set tags=./.tags,./tags
+set completeopt+=menuone
+" set splitbelow
+" set previewheight=20
+set tags+=./.tags
 set path+=**
 set foldmethod=marker
 set statusline=%<%f\ %m%h%r%=%-8.(%y\ %l,%c,%L%)\ %P\ %#warningmsg#

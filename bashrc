@@ -101,7 +101,7 @@ fzcd() {
     local p
     p=$(find . -xdev -mindepth 2 -maxdepth 4 -type d \! -path '*/\.*' | fzf \
         --info=hidden --layout=reverse --height 20 --bind 'tab:accept')
-    [ -e "$p" ] && { cd "$p"; pwd; }
+    [ -e "$p" ] && cd "$p"
 }
 bpwd() {
     # bookmark current path
