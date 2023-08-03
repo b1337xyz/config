@@ -4,6 +4,7 @@ from qutebrowser.browser.qutescheme import add_handler
 from qutebrowser.utils import objreg, version as vs
 # from qutebrowser import __file__ as qtfile
 from qutebrowser import __version__ as qtver
+from typing import Union, Tuple
 try:
     from qutebrowser.qt.core import QUrl
 except ImportError:
@@ -45,7 +46,7 @@ html_tail = '</div></body></html>'
 
 
 @add_handler('qbfetch')
-def qbfetch_handler(_url: QUrl) -> None:
+def qbfetch_handler(_url: QUrl) -> Tuple[str, Union[str, bytes]]:
     """ Handler for qute://qbfetch. """
     lines = [('qutebrowser v', qtver)]
     gitver = vs._git_str()
@@ -102,7 +103,7 @@ def qbfetch_handler(_url: QUrl) -> None:
 
 @cmdutils.register()
 @cmdutils.argument('win_id', value=cmdutils.Value.win_id)
-def qbfetch(win_id: int):
+def qbfetch(win_id: int) -> None:
     """ Show version information in a "pleasant" way. """
     url = QUrl('qute://qbfetch')
     tabbed_browser = objreg.get('tabbed-browser',
