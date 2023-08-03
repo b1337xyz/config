@@ -98,7 +98,7 @@ def qbfetch(_url: QUrl) -> None:
 
 @cmdutils.register()
 @cmdutils.argument('win_id', value=cmdutils.Value.win_id)
-def qbfetch(win_id: int):
+def qbfetch_handler(win_id: int):
     """ Show version information in a "pleasant" way. """
     url = QUrl('qute://qbfetch')
     tabbed_browser = objreg.get('tabbed-browser',

@@ -20,6 +20,8 @@ Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'nvie/vim-flake8'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
 " https://bitbucket.org/teramako/jscomplete-vim/src/master/
@@ -87,6 +89,11 @@ set nohlsearch
 "}}}
 
 " Mappings {{{
+
+" INSERT <tag and press Ctrl+s the result is <tag></tag>
+" won't work with <tag src="example"... 
+inoremap <C-s> <esc>F<yeea ><esc>pa><esc>F<a/<esc>F>i
+
 nnoremap <C-c> :silent .w !xclip -sel c<CR>
 vnoremap <C-c> :silent w !xclip -sel c<CR>
 nnoremap cn :cnext<CR>
@@ -142,3 +149,55 @@ hi Normal guibg=NONE ctermbg=NONE
 " hi CursorLine cterm=NONE ctermbg=233
 " hi CursorLine term=underline
 " hi Visual ctermfg=1 ctermbg=233
+
+
+set tabline=%!MyTabLine()
+function! MyTabLine()
+    let s = ''
+    for i in range(tabpagenr('$'))
+        " select the highlighting
+        let s .= i + 1 == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#'
+        let s .= ' %{MyTabLabel(' .. (i + 1) .. ')} '
+    endfor
+    " after the last tab fill with TabLineFill and reset tab page nr
+    let s .= '%#TabLineFill#%T'
+    return s
+endfunction
+
+function! MyTabLabel(n)
+    let buflist = tabpagebuflist(a:n)
+    let winnr = tabpagewinnr(a:n)
+    let b = buflist[winnr - 1]
+    let bname = bufname(b)
+    " let pname = pathshorten(bname, 3)
+    let basename = fnamemodify(bname, ':t')  " :t  pat htail
+    let n = strlen(basename)
+    " let start = strridx(pname, "/") " like stridx but returns the last ocurrence
+    " let s = n > 15 ? strcharpart(pname, start) : pname 
+    let s = n > 15 ? strcharpart(basename, 0, 12) . ".." : basename
+    let m = getbufvar(b, "&modified") ? "[M]" : "   "
+    return printf(' %d: %-15s %s', a:n, s, m)
+endfunction
+
+function! ListBuffersWithFzf()
+    redir => buffer_list
+        silent buffers
+    redir END
+    let lines = split(buffer_list, "\n")
+    if len(lines) < 2
+        return
+    endif
+    let selected_buffer = fzf#run({
+                \ 'source': lines,
+                \ 'sink': function('SelectBuffer'),
+                \ 'down': '40%',
+                \ 'options': '-1 --ansi',
+                \ })
+endfunction
+
+function! SelectBuffer(selected)
+    let buffer_num = substitute(a:selected, '^\s*\(\d\+\)\s.*', '\1', '')
+    execute 'buffer ' . buffer_num
+endfunction
+
+command! FBuf call ListBuffersWithFzf()
