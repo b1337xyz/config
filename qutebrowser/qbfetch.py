@@ -4,7 +4,11 @@ from qutebrowser.browser.qutescheme import add_handler
 from qutebrowser.utils import objreg, version as vs
 # from qutebrowser import __file__ as qtfile
 from qutebrowser import __version__ as qtver
-from qutebrowser.qt.core import QUrl
+try:
+    from qutebrowser.qt.core import QUrl
+except ImportError:
+    from PyQt5.QtCore import QUrl
+
 # import traceback
 # import os
 
