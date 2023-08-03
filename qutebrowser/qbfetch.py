@@ -45,7 +45,7 @@ html_tail = '</div></body></html>'
 
 
 @add_handler('qbfetch')
-def qbfetch(_url: QUrl) -> None:
+def qbfetch_handler(_url: QUrl) -> None:
     """ Handler for qute://qbfetch. """
     lines = [('qutebrowser v', qtver)]
     gitver = vs._git_str()
@@ -102,7 +102,7 @@ def qbfetch(_url: QUrl) -> None:
 
 @cmdutils.register()
 @cmdutils.argument('win_id', value=cmdutils.Value.win_id)
-def qbfetch_handler(win_id: int):
+def qbfetch(win_id: int):
     """ Show version information in a "pleasant" way. """
     url = QUrl('qute://qbfetch')
     tabbed_browser = objreg.get('tabbed-browser',
