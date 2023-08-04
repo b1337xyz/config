@@ -57,6 +57,25 @@ html_head = '''<!DOCTYPE html>
 html_tail = f'</div><script src="file://{js}"></script></body></html>'
 
 
+
+def memory_info():
+    # KB -> MB
+    memtotal, memavail = None, None
+    with open('/proc/meminfo') as f:
+        for line in f:
+            if line.startswith('MemTotal:'):
+                memtotal = int(line.split()[1]) // 1024
+            elif line.startswith('MemAvailable:'):
+                memavail = int(line.split()[1]) // 1024
+
+            if memavail is not None and memtotal is not None:
+                break
+        else:
+            return
+    return f'{(memtotal - memavail)} MiB / {memtotal} MiB'
+
+
+
 @add_handler('qbfetch')
 def qbfetch_handler(_url: QUrl) -> Tuple[str, Union[str, bytes]]:
     """ Handler for qute://qbfetch. """
@@ -66,14 +85,11 @@ def qbfetch_handler(_url: QUrl) -> Tuple[str, Union[str, bytes]]:
         lines += [('OS', f'{dist.pretty} ({dist.parsed.name})')]
 
     lines += [('Kernel', '{}, {}'.format(vs.platform.platform(),
-                                         vs.platform.architecture()[0]))]
+                                         vs.platform.architecture()[0]
+                                         ))]
 
-    # TODO:
-    #  Add memory usage
-    #  CPU info
-    #  Host
-
-    lines += [('---' * 30, None)]
+    lines += [('Memory', memory_info())]
+    lines += [('---' * 20, None)]
 
     lines += [('qutebrowser v', qtver)]
     gitver = vs._git_str()
