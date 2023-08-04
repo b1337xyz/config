@@ -22,12 +22,26 @@ Plug 'ap/vim-css-color'
 Plug 'nvie/vim-flake8'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
 call plug#end()
+
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+let g:fzf_layout = { 'down': '40%', }
+let g:fzf_preview_window = ['hidden', 'ctrl-/']
+nnoremap <leader>b <cmd>Buffers<CR>
+nnoremap <leader>f <cmd>Files %:h<CR>
 
 " https://bitbucket.org/teramako/jscomplete-vim/src/master/
 let g:jscomplete_use = ['dom', 'es6th']
 autocmd FileType javascript :setlocal omnifunc=jscomplete#CompleteJS
 
+nnoremap <leader>n :NERDTreeFocus<CR>
 let g:netrw_home = $XDG_DATA_HOME . "/vim"
 let g:netrw_banner=0
 let g:netrw_liststyle=3
@@ -51,16 +65,17 @@ autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 " Settings {{{
 set omnifunc=syntaxcomplete#Complete
 set completeopt+=menuone
+set wildmenu
+set wildoptions=pum,fuzzy
+set autowriteall
 " set splitbelow
-" set previewheight=20
+set previewheight=20
 set tags+=./.tags
 set path+=**
 set foldmethod=marker
 set statusline=%<%f\ %m%h%r%=%-8.(%y\ %l,%c,%L%)\ %P\ %#warningmsg#
-set switchbuf=usetab,newtab
+set switchbuf=usetab
 set nocompatible
-set hidden
-set wildmenu
 set showcmd
 set ignorecase
 set smartcase
@@ -72,7 +87,7 @@ set ruler
 set laststatus=2
 set t_vb=
 set mouse=a
-set cmdheight=1
+set shortmess+=I
 set number
 set relativenumber
 set background=dark
@@ -92,8 +107,7 @@ set nohlsearch
 
 " INSERT <tag and press Ctrl+s the result is <tag></tag>
 " won't work with <tag src="example"... 
-inoremap <C-s> <esc>F<yeea ><esc>pa><esc>F<a/<esc>F>i
-
+inoremap <C-s> <esc>F<yeea><esc>pa><esc>F<a/<esc>F>a
 nnoremap <C-c> :silent .w !xclip -sel c<CR>
 vnoremap <C-c> :silent w !xclip -sel c<CR>
 nnoremap cn :cnext<CR>
@@ -104,11 +118,12 @@ inoremap <C-s-j> <Esc>:m .+1<CR>==gi
 inoremap <C-s-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-s-j> :m '>+1<CR>gv=gv
 vnoremap <C-s-k> :m '<-2<CR>gv=gv
-nmap <F4> :set hlsearch! hlsearch?<CR>
-map gb :b#<CR>
+nnoremap <F4> :set hlsearch! hlsearch?<CR>
+nnoremap gb :b#<CR>
+
 " }}}
 
-" Actions {{{
+" Auto {{{
 autocmd BufEnter * :syntax sync fromstart
 autocmd BufWritePost */glava/* !~/.config/glava/restart
 autocmd BufWritePost *tmux.conf !tmux source-file % \; display "Reloaded"
@@ -124,10 +139,17 @@ autocmd BufNewFile,BufRead .bashrc,.bash_aliases,.profile set filetype=bash
 autocmd BufNewFile,BufRead lfrc set syntax=config
 autocmd BufNewFile,BufRead ~/.config/i3/* set syntax=i3config
 autocmd BufNewFile,BufRead ~/.config/X11/themes/* set syntax=xdefaults
-autocmd BufNewFile *.* silent! execute '0r $XDG_CONFIG_HOME/vim/templates/skeleton.'.expand("<afile>:e")
 autocmd CompleteDone * pclose
 " autocmd BufWritePost *.cpp,*.c,*.h silent! !ctags -R -o ./.tags . &
 " autocmd FileType i3config setlocal foldmethod=indent
+
+" }}}
+
+" Fun {{{
+
+command! -nargs=+ Mkdir silent execute '!mkdir -p "<args>"' | execute ':redraw!'
+command! -nargs=+ Grep silent execute 'grep! -RIn "<args>" .' | execute ':redraw!' | copen 12
+nnoremap <leader>g :Grep<Space>
 
 function! ResCur()
   if line("'\"") <= line("$")
@@ -140,16 +162,16 @@ augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
 augroup END
-" }}}
 
-colorscheme habamax
-hi Normal guibg=NONE ctermbg=NONE
-" hi ColorColumn ctermbg=236
-" hi LineNr ctermfg=7 ctermbg=NONE
-" hi CursorLine cterm=NONE ctermbg=233
-" hi CursorLine term=underline
-" hi Visual ctermfg=1 ctermbg=233
-
+function! LoadTemplate()
+    silent! execute '0r $XDG_CONFIG_HOME/vim/templates/skeleton.'.expand("<afile>:e")
+    for _b in range(1, bufnr('$'))
+        if bufname(_b) =~ "/templates/skeleton"
+            silent execute 'bwipeout ' . _b
+        endif
+    endfor
+endfunction
+autocmd BufNewFile *.* call LoadTemplate()
 
 set tabline=%!MyTabLine()
 function! MyTabLine()
@@ -178,26 +200,20 @@ function! MyTabLabel(n)
     let m = getbufvar(b, "&modified") ? "[M]" : "   "
     return printf(' %d: %-15s %s', a:n, s, m)
 endfunction
+" }}}
 
-function! ListBuffersWithFzf()
-    redir => buffer_list
-        silent buffers
-    redir END
-    let lines = split(buffer_list, "\n")
-    if len(lines) < 2
-        return
-    endif
-    let selected_buffer = fzf#run({
-                \ 'source': lines,
-                \ 'sink': function('SelectBuffer'),
-                \ 'down': '40%',
-                \ 'options': '-1 --ansi',
-                \ })
-endfunction
+" Theme {{{
 
-function! SelectBuffer(selected)
-    let buffer_num = substitute(a:selected, '^\s*\(\d\+\)\s.*', '\1', '')
-    execute 'buffer ' . buffer_num
-endfunction
+colorscheme habamax
+hi Normal guibg=NONE ctermbg=NONE cterm=NONE
+" hi ColorColumn ctermbg=236
+" hi LineNr ctermfg=7 ctermbg=NONE
+" hi CursorLine cterm=NONE ctermbg=233
+" hi CursorLine term=underline
+" hi Visual ctermfg=1 ctermbg=233
 
-command! FBuf call ListBuffersWithFzf()
+" }}}
+
+
+
+

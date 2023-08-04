@@ -11,7 +11,40 @@ except ImportError:
     from PyQt5.QtCore import QUrl
 
 # import traceback
-# import os
+import os
+# import sys
+
+root = os.path.dirname(os.path.realpath(__file__))
+js = os.path.join(root, 'qbfetch.js')
+# if not os.path.exists(js):
+#     open(js, 'w').close()
+
+css = os.path.join(root, 'qbfetch.css')
+if not os.path.exists(css):
+    _css = '''
+body {
+  background: #1a1b26;
+  color: #a9b1d6;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: start;
+  margin: 0px;
+}
+body > * {
+  margin: 15px;
+}
+#info div span:nth-child(1) {
+    color: #9ece6a
+}
+#info div span:nth-child(2) {
+    color: #f7768e
+}
+    '''
+
+    with open(css, 'w') as f:
+        f.write(_css.strip())
+
 
 html_head = '''<!DOCTYPE html>
 <html lang="en">
@@ -19,30 +52,13 @@ html_head = '''<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>qbfetch</title>
-  <style>
-    body {
-      background: #1a1b26;
-      color: #a9b1d6;
-      font-family: Arial, sans-serif;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0px;
-    }
-    body > * {
-      margin: 15px;
-    }
-    #sysinfo div span:nth-child(1) {
-        color: #9ece6a
-    }
-    #sysinfo div span:nth-child(2) {
-        color: #f7768e
-    }
-  </style>
+  <link rel="stylesheet" href="file://{}">
 </head>
-<body><pre>''' + vs._LOGO + '</pre><div id="sysinfo" style="float: right">'
-html_tail = '</div></body></html>'
+<body>
+<pre id="logo">{}</pre>
+<div id="info" style="float: right">
+'''.format(css, vs._LOGO)
+html_tail = f'</div><script src="file://{js}"></script></body></html>'
 
 
 @add_handler('qbfetch')
@@ -54,13 +70,15 @@ def qbfetch_handler(_url: QUrl) -> Tuple[str, Union[str, bytes]]:
         lines.append(("Git commit", gitver))
 
     lines.append(('Backend', vs._backend()))
-    # lines.append(('Qt', vs.earlyinit.qt_version()))
+    lines.append(('Qt', vs.earlyinit.qt_version()))
     lines.append((vs.platform.python_implementation(),
                   vs.platform.python_version()))
-    # lines.append(('PyQt', vs.PYQT_VERSION_STR))
+    lines.append(('PyQt', vs.PYQT_VERSION_STR))
+
     # m = str(vs.machinery.INFO).split('\n')
     # lines += [(m[0].replace(':', ''), '<br>'.join(m[1:]))]
-    lines += [s.split(': ') for s in vs._module_versions()]
+    # lines += [s.split(': ') for s in vs._module_versions()]
+
     lines.append(('pdf.js', vs._pdfjs_version()))
     lines.append(('sqlite', vs.sql.version()))
     lines.append(('QtNetwork SSL', vs.QSslSocket.sslLibraryVersionString()
@@ -71,7 +89,7 @@ def qbfetch_handler(_url: QUrl) -> Tuple[str, Union[str, bytes]]:
         metaobj = style.metaObject()
         if metaobj:
             lines.append(('Style', metaobj.className()))
-        # lines.append(('Platform plugin', vs.objects.qapp.platformName()))
+        lines.append(('Platform plugin', vs.objects.qapp.platformName()))
         lines.append(('OpenGL', vs.opengl_info()))
 
     lines += [('Platform', '{}, {}'.format(vs.platform.platform(),
