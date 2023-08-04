@@ -69,11 +69,7 @@ def memory_info():
                 memavail = int(line.split()[1]) // 1024
 
             if memavail is not None and memtotal is not None:
-                break
-        else:
-            return
-    return f'{(memtotal - memavail)} MiB / {memtotal} MiB'
-
+                return f'{(memtotal - memavail)} MiB / {memtotal} MiB'
 
 
 @add_handler('qbfetch')
