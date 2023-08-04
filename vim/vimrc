@@ -27,8 +27,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 call plug#end()
 
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <leader>t :NERDTree<CR>
+" nnoremap <leader>f :NERDTreeFind<CR>
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
@@ -66,7 +66,7 @@ autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 set omnifunc=syntaxcomplete#Complete
 set completeopt+=menuone
 set wildmenu
-set wildoptions=pum,fuzzy
+set wildoptions=pum
 set autowriteall
 " set splitbelow
 set previewheight=20
@@ -119,7 +119,6 @@ inoremap <C-s-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-s-j> :m '>+1<CR>gv=gv
 vnoremap <C-s-k> :m '<-2<CR>gv=gv
 nnoremap <F4> :set hlsearch! hlsearch?<CR>
-nnoremap gb :b#<CR>
 
 " }}}
 
@@ -147,7 +146,7 @@ autocmd CompleteDone * pclose
 
 " Fun {{{
 
-command! -nargs=+ Mkdir silent execute '!mkdir -p "<args>"' | execute ':redraw!'
+command! -nargs=+ -complete=file Mkdir silent execute '!mkdir -p "<args>"' | execute ':redraw!'
 command! -nargs=+ Grep silent execute 'grep! -RIn "<args>" .' | execute ':redraw!' | copen 12
 nnoremap <leader>g :Grep<Space>
 
@@ -163,15 +162,25 @@ augroup resCur
   autocmd BufWinEnter * call ResCur()
 augroup END
 
-function! LoadTemplate()
-    silent! execute '0r $XDG_CONFIG_HOME/vim/templates/skeleton.'.expand("<afile>:e")
+function! s:LoadTemplates()
+    silent execute '0r $XDG_CONFIG_HOME/vim/templates/skeleton.'.expand("%:e")
     for _b in range(1, bufnr('$'))
         if bufname(_b) =~ "/templates/skeleton"
-            silent execute 'bwipeout ' . _b
+            silent! execute 'bwipeout ' . _b
         endif
     endfor
 endfunction
-autocmd BufNewFile *.* call LoadTemplate()
+autocmd BufNewFile *.* call s:LoadTemplates()
+" command! LoadTemplate call s:LoadTemplates()
+
+function! s:GoBack()
+    try
+        execute "b#"
+    catch
+        execute "bn"
+    endtry
+endfunction
+nnoremap gb :call s:GoBack()<CR>
 
 set tabline=%!MyTabLine()
 function! MyTabLine()
@@ -200,6 +209,18 @@ function! MyTabLabel(n)
     let m = getbufvar(b, "&modified") ? "[M]" : "   "
     return printf(' %d: %-15s %s', a:n, s, m)
 endfunction
+
+" https://stackoverflow.com/questions/8845400/vim-wiping-out-buffers-editing-nonexistent-files
+function s:WipeBuffersWithoutFiles()
+    let bufs=filter(range(1, bufnr('$')), 'bufexists(v:val) && '.
+                                          \'empty(getbufvar(v:val, "&buftype")) && '.
+                                          \'!filereadable(bufname(v:val))')
+
+    if !empty(bufs)
+        execute 'bdelete' join(bufs)
+    endif
+endfunction
+command! BWnex call s:WipeBuffersWithoutFiles()
 " }}}
 
 " Theme {{{

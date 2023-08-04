@@ -2,7 +2,7 @@
 from qutebrowser.api import cmdutils
 from qutebrowser.browser.qutescheme import add_handler
 from qutebrowser.utils import objreg, version as vs
-# from qutebrowser import __file__ as qtfile
+from qutebrowser import __file__ as qtfile
 from qutebrowser import __version__ as qtver
 from typing import Union, Tuple
 try:
@@ -10,9 +10,8 @@ try:
 except ImportError:
     from PyQt5.QtCore import QUrl
 
-# import traceback
 import os
-# import sys
+import sys
 
 root = os.path.dirname(os.path.realpath(__file__))
 js = os.path.join(root, 'qbfetch.js')
@@ -21,7 +20,8 @@ js = os.path.join(root, 'qbfetch.js')
 
 css = os.path.join(root, 'qbfetch.css')
 if not os.path.exists(css):
-    _css = '''
+    with open(css, 'w') as f:
+        f.write('''
 body {
   background: #1a1b26;
   color: #a9b1d6;
@@ -39,11 +39,7 @@ body > * {
 }
 #info div span:nth-child(2) {
     color: #f7768e
-}
-    '''
-
-    with open(css, 'w') as f:
-        f.write(_css.strip())
+}'''.strip())
 
 
 html_head = '''<!DOCTYPE html>
@@ -64,7 +60,22 @@ html_tail = f'</div><script src="file://{js}"></script></body></html>'
 @add_handler('qbfetch')
 def qbfetch_handler(_url: QUrl) -> Tuple[str, Union[str, bytes]]:
     """ Handler for qute://qbfetch. """
-    lines = [('qutebrowser v', qtver)]
+    lines = []
+    dist = vs.distribution()
+    if dist is not None:
+        lines += [('OS', f'{dist.pretty} ({dist.parsed.name})')]
+
+    lines += [('Kernel', '{}, {}'.format(vs.platform.platform(),
+                                         vs.platform.architecture()[0]))]
+
+    # TODO:
+    #  Add memory usage
+    #  CPU info
+    #  Host
+
+    lines += [('---' * 30, None)]
+
+    lines += [('qutebrowser v', qtver)]
     gitver = vs._git_str()
     if gitver is not None:
         lines.append(("Git commit", gitver))
@@ -89,31 +100,28 @@ def qbfetch_handler(_url: QUrl) -> Tuple[str, Union[str, bytes]]:
         metaobj = style.metaObject()
         if metaobj:
             lines.append(('Style', metaobj.className()))
-        lines.append(('Platform plugin', vs.objects.qapp.platformName()))
-        lines.append(('OpenGL', vs.opengl_info()))
 
-    lines += [('Platform', '{}, {}'.format(vs.platform.platform(),
-                                           vs.platform.architecture()[0]))]
+    lines.append(('Platform plugin', vs.objects.qapp.platformName()))
+    lines.append(('OpenGL', vs.opengl_info()))
 
-    dist = vs.distribution()
-    if dist is not None:
-        lines += [('OS', f'{dist.pretty} ({dist.parsed.name})')]
-
-    # importpath = os.path.dirname(os.path.abspath(qtfile))
+    importpath = os.path.dirname(os.path.abspath(qtfile))
     # lines.append(('Frozen', hasattr(sys, 'frozen')))
-    # lines.append(("Imported from", importpath))
-    # lines.append(("Using Python from", sys.executable))
-    # lines += [(name, path)
-    #           for name, path in sorted(vs._path_info().items())]
+    lines.append(("Imported from", importpath))
+    lines.append(("Using Python from", sys.executable))
+    lines += [(name, path)
+              for name, path in sorted(vs._path_info().items())]
 
     lines += [
         ('Autoconfig loaded', vs._autoconfig_loaded()),
-        ('Config.py', vs._config_py_loaded()),
+        # ('Config.py', vs._config_py_loaded()),
         ('Uptime', vs._uptime())
     ]
 
     out = ''
     for k, v in lines:
+        if v is None:
+            out += f'{k}\n'
+            continue
         out += f'<div><span>{k}</span><span>:</span> <span>{v}</span></div>\n'
 
     return 'text/html', html_head + out + html_tail
