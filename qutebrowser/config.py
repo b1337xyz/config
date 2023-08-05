@@ -5,7 +5,7 @@ config.source('qbfetch.py')
 
 # Keymaps {{{
 nmap = lambda key, cmd: config.bind(key, cmd, mode='normal')
-# nmap('<Ctrl-h>', 'qbfetch')
+nmap('<Ctrl-v>', 'qbfetch')
 nmap('ab', 'bookmark-add')
 nmap('tb', 'config-cycle -p -t statusbar.show in-mode always ')
 nmap('tt', 'config-cycle -p -t tabs.show switching multiple')

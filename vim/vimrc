@@ -163,7 +163,7 @@ augroup resCur
 augroup END
 
 function! s:LoadTemplates()
-    silent execute '0r $XDG_CONFIG_HOME/vim/templates/skeleton.'.expand("%:e")
+    silent! execute '0r $XDG_CONFIG_HOME/vim/templates/skeleton.'.expand("%:e")
     for _b in range(1, bufnr('$'))
         if bufname(_b) =~ "/templates/skeleton"
             silent! execute 'bwipeout ' . _b
@@ -173,14 +173,14 @@ endfunction
 autocmd BufNewFile *.* call s:LoadTemplates()
 " command! LoadTemplate call s:LoadTemplates()
 
-function! s:GoBack()
+function! GoBack()
     try
         execute "b#"
     catch
         execute "bn"
     endtry
 endfunction
-nnoremap gb :call s:GoBack()<CR>
+nnoremap gb :call GoBack()<CR>
 
 set tabline=%!MyTabLine()
 function! MyTabLine()

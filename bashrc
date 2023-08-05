@@ -10,7 +10,7 @@ export BAT_THEME="OneHalfDark"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export HISTIGNORE='?:??:???:neofetch:history:sensors:uptime:uptime -?:uname:uname -?'
 export HISTCONTROL='ignoreboth:erasedups'
-export HISTSIZE=9999
+export HISTSIZE=99999
 export LESS=-Ri
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
 export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
@@ -56,10 +56,14 @@ umask 0077
 
 set -o vi
 set -o noclobber
-shopt -s autocd
 shopt -s checkwinsize
 shopt -s no_empty_cmd_completion
 shopt -s histappend
+shopt -s autocd
+shopt -s dirspell
+shopt -s cdspell
+shopt -s cmdhist
+shopt -s globstar
 
 [ -f ~/.python_history ] && command rm ~/.python_history
 
