@@ -57,19 +57,20 @@ html_head = '''<!DOCTYPE html>
 html_tail = f'</div><script src="file://{js}"></script></body></html>'
 
 
-
-def memory_info():
-    # KB -> MB
+def memory_info() -> str:
     memtotal, memavail = None, None
-    with open('/proc/meminfo') as f:
-        for line in f:
-            if line.startswith('MemTotal:'):
-                memtotal = int(line.split()[1]) // 1024
-            elif line.startswith('MemAvailable:'):
-                memavail = int(line.split()[1]) // 1024
+    try:
+        with open('/proc/meminfo', 'r') as f:
+            for line in f:
+                if line.startswith('MemTotal:'):
+                    memtotal = int(line.split()[1]) // 1024
+                elif line.startswith('MemAvailable:'):
+                    memavail = int(line.split()[1]) // 1024
 
-            if memavail is not None and memtotal is not None:
-                return f'{(memtotal - memavail)} MiB / {memtotal} MiB'
+                if memavail is not None and memtotal is not None:
+                    return f'{(memtotal - memavail)} MiB / {memtotal} MiB'
+    except Exception as err:
+        return str(err)
 
 
 @add_handler('qbfetch')
@@ -78,16 +79,16 @@ def qbfetch_handler(_url: QUrl) -> Tuple[str, Union[str, bytes]]:
     lines = []
     dist = vs.distribution()
     if dist is not None:
-        lines += [('OS', f'{dist.pretty} ({dist.parsed.name})')]
+        lines.append(('OS', f'{dist.pretty} ({dist.parsed.name})'))
 
     lines += [('Kernel', '{}, {}'.format(vs.platform.platform(),
                                          vs.platform.architecture()[0]
                                          ))]
 
-    lines += [('Memory', memory_info())]
-    lines += [('---' * 20, None)]
+    lines.append(('Memory', memory_info()))
+    lines.append(('---' * 20, None))
 
-    lines += [('qutebrowser v', qtver)]
+    lines.append(('qutebrowser v', qtver))
     gitver = vs._git_str()
     if gitver is not None:
         lines.append(("Git commit", gitver))
@@ -125,14 +126,14 @@ def qbfetch_handler(_url: QUrl) -> Tuple[str, Union[str, bytes]]:
 
     lines += [
         ('Autoconfig loaded', vs._autoconfig_loaded()),
-        # ('Config.py', vs._config_py_loaded()),
+        ('Config.py', vs._config_py_loaded()),
         ('Uptime', vs._uptime())
     ]
 
     out = ''
     for k, v in lines:
         if v is None:
-            out += f'{k}\n'
+            out += f'<div><pre>{k}</pre></div>\n'
             continue
         out += f'<div><span>{k}</span><span>:</span> <span>{v}</span></div>\n'
 
@@ -147,4 +148,4 @@ def qbfetch(win_id: int) -> None:
     tabbed_browser = objreg.get('tabbed-browser',
                                 scope='window',
                                 window=win_id)
-    tabbed_browser.load_url(url, newtab=False)
+    tabbed_browser.load_url(url, newtab=True)

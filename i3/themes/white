@@ -18,7 +18,7 @@ bar {
     # separator_symbol "│"
     # separator_symbol "⁝"
     output primary
-    position top
+    position bottom
     mode dock
     workspace_min_width 30
     tray_output primary

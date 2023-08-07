@@ -39,7 +39,7 @@ interval=once
 signal=20
 
 [scratchpad]
-command=~/.config/i3blocks/scripts/scratchpad.sh
+command=~/.config/i3blocks/scripts/scratchpad.py
 signal=10
 
 [bluetooth]
