@@ -1,6 +1,7 @@
 [[ $- != *i* ]] && return
 
-if grep -q pinentry-curses ~/.config/gnupg/gpg-agent.conf; then
+if grep -q pinentry-curses ~/.config/gnupg/gpg-agent.conf 2>/dev/null
+then
     export GPG_TTY=$(tty)
 fi
 
