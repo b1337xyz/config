@@ -199,7 +199,7 @@ prompt() {
     local rst="\[\033[00m\]"
     local bar="$cyn[${rst}"
     local end="$cyn]${rst}"
-    local ip=$(command ip route get 1 | awk 'NR==1{print $7}')
+    # local ip=$(command ip route get 1 | awk 'NR==1{print $7}')
     # local file_count=$(find -L . -xdev -mindepth 1 -maxdepth 1 -printf '%y\n' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ') 
     # local hidden_count=$(find . -mindepth 1 -maxdepth 1 -name '.*' | wc -l)
     # local hidden_count=$(ls --color=none -N1A | grep -c '^\.')
@@ -237,6 +237,8 @@ prompt() {
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
 
+    [ -n "$WSLENV" ] && PS1+="(wsl)"
+
     if test "${out:-0}" -eq 0;then
         # PS1+="${grn}( •_•)${rst} "  # λ π β ω μ
         PS1+="${grn}:${rst} "
@@ -250,7 +252,7 @@ prompt() {
 
     if [ $COLUMNS -ge 100 ];then
         # https://wiki.archlinux.org/title/Bash/Prompt_customization#Right-justified_text
-        PS1=$(printf "%*s\r%s" $(( COLUMNS-1 )) "$USER@$ip" "$PS1")
+        PS1=$(printf "%*s\r%s" $(( COLUMNS-1 )) "$(date '+%d/%m %H:%M')" "$PS1")
     fi
 
     # set title
