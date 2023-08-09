@@ -27,10 +27,11 @@ nmap('cn', 'spawn -u nyarss.sh')
 nmap('xc', 'spawn -u proxyopen.sh')
 nmap('ts', 'spawn -u translate.sh')
 nmap(';x', 'spawn -u xdg_open.sh')
+nmap('gl', 'spawn gdl {url}')
 # }}}
 
 # Configuration {{{ 
-homepage = 'file:///home/anon/Documents/homepage/index.html'
+homepage = 'file:///home/anon/.scripts/homepage/index.html'
 c.url.default_page = homepage
 c.url.start_pages  = [homepage]
 c.hints.selectors['buttons'] = ['label', 'button', '.button', '[role="button"]']

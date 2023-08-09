@@ -55,10 +55,11 @@ alias lx='ls -X' \
     lc='ls -ltcr' \
     lu='ls -ltur' \
     la='ls -A' \
-    l='command ls -vN1hl' \
+    l='ls -vN1h' \
     ll='ls -ltr --time-style "+%Y.%m.%d %H:%M"' \
-    lm='ll |less' \
+    lm='ll | less' \
     lr='ll -R' \
+    ld='ls --group-directories-first' \
     sl='ls' \
     loh='ls -d .[A-z]*'
 

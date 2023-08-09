@@ -7,8 +7,8 @@ case "$BLOCK_BUTTON" in
 esac
 
 if [ "$status" = on ]; then
-    echo '<span size="12pt" foreground="#007FF5">  </span>'
+    echo '<span size="11pt" foreground="#007FF5">  </span>'
 else
-    echo '<span size="12pt" foreground="#666666">  </span>'
+    echo '<span size="11pt" foreground="#333333">  </span>'
 fi
 

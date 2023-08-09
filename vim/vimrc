@@ -56,6 +56,9 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+let g:syntastic_javascript_eslint_exec = '/usr/bin/eslint'
+let g:syntastic_javascript_checkers = ['eslint']
+
 
 " Plug 'nvie/vim-flake8'
 let g:flake8_quickfix_height = 8
@@ -100,7 +103,7 @@ set cursorline
 set undofile
 set scrolloff=8
 set incsearch
-set nohlsearch
+set hlsearch
 "}}}
 
 " Mappings {{{
@@ -147,7 +150,8 @@ autocmd CompleteDone * pclose
 " Fun {{{
 
 command! -nargs=+ -complete=file Mkdir silent execute '!mkdir -p "<args>"' | execute ':redraw!'
-command! -nargs=+ Grep silent execute 'grep! -RIn "<args>" .' | execute ':redraw!' | copen 12
+command! -nargs=+ Grep silent execute 'grep! -RI -- "<args>" .' | execute ':redraw!' | copen 12
+command! -nargs=+ RG cgetexpr system('rg --vimgrep "<args>" .') | copen 12
 nnoremap <leader>g :Grep<Space>
 
 function! ResCur()

@@ -7,8 +7,14 @@ align=center
 # full_text="|"
 separator=false
 separator_block_width=1
-background=#cccccc
+
+background=#A4A6D9
 color=#000000
+
+# White
+# background=#cccccc
+# color=#000000
+
 # XP
 # background=#0899F3
 # color=#FFFFFF
@@ -33,7 +39,7 @@ color=#000000
 # border=#253525
 
 [cmus]
-background=#aaaaaa
+background=#C4C6F9
 command=~/.config/i3blocks/scripts/cmus
 interval=once
 signal=20
