@@ -198,6 +198,7 @@ prompt() {
     local rst="\[\033[00m\]"
     local bar="$cyn[${rst}"
     local end="$cyn]${rst}"
+    local ip=$(command ip route get 1 | awk 'NR==1{print $7}')
     # local file_count=$(find -L . -xdev -mindepth 1 -maxdepth 1 -printf '%y\n' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ') 
     # local hidden_count=$(find . -mindepth 1 -maxdepth 1 -name '.*' | wc -l)
     # local hidden_count=$(ls --color=none -N1A | grep -c '^\.')
@@ -214,7 +215,7 @@ prompt() {
     # local cpu_usage=$(ps axch -o %cpu | awk '{x+=$1}END{ printf("%.1f%%\n", x)}')
     # local ram_usage=$(command free -m | awk '/Mem:/{printf("%s\n", $2 - $7)}')
     # local fsize=$(command ls -lhA | awk 'NR == 1 {print $2}')
-    local last_mod=$(last_modified)
+    # local last_mod=$(last_modified)
     # local perm=$(stat -c '%a' .)
     local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /')
     
@@ -228,12 +229,13 @@ prompt() {
     # PS1+="${hidden_count:-0} ., "
     # PS1+="${files:-0}${end}"
     # test -n "$exts"      && PS1+="${bar}${exts::-2}${rst}${bar}"
-    test -n "$last_mod"  && PS1+="${bar}$rst$last_mod${end}"
+    # test -n "$last_mod"  && PS1+="${bar}$rst$last_mod${end}"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
     PS1+="${bar}${blu}\w${end}\n"
     PS1+="\${timer_show}"
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
+
     if test "${out:-0}" -eq 0;then
         # PS1+="${grn}( •_•)${rst} "  # λ π β ω μ
         PS1+="${grn}:${rst} "
@@ -243,6 +245,11 @@ prompt() {
         # [ -f "$beep" ] && aplay -q "$beep" &
         # PS1+="${red}(；☉_☉)${rst} "
         PS1+="${red}${out}!${rst} "
+    fi
+
+    if [ $COLUMNS -ge 100 ];then
+        # https://wiki.archlinux.org/title/Bash/Prompt_customization#Right-justified_text
+        PS1=$(printf "%*s\r%s" $(( COLUMNS-1 )) "$USER@$ip" "$PS1")
     fi
 
     # set title
