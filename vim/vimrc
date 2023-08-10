@@ -56,8 +56,8 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
-let g:syntastic_javascript_eslint_exec = '/usr/bin/eslint'
-let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_eslint_exec = '/usr/bin/eslint'
+" let g:syntastic_javascript_checkers = ['eslint']
 
 
 " Plug 'nvie/vim-flake8'
@@ -121,7 +121,8 @@ inoremap <C-s-j> <Esc>:m .+1<CR>==gi
 inoremap <C-s-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-s-j> :m '>+1<CR>gv=gv
 vnoremap <C-s-k> :m '<-2<CR>gv=gv
-nnoremap <F4> :set hlsearch! hlsearch?<CR>
+" nnoremap <F4> :set hlsearch! hlsearch?<CR>
+nnoremap <F4> :noh<CR>
 
 " }}}
 

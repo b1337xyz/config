@@ -1,12 +1,3 @@
-set $a #A4A6D9
-set $b #C53849
-set $c #C6A9EC
-set $d #B68FE8
-set $e #A0A9EE
-set $f #413C72
-set $g #224096
-set $h #5351BD
-
 set $bar_font Iosevka Nerd Font 10
 set $bg #5351BD
 set $b0 #000000

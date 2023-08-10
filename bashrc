@@ -218,7 +218,7 @@ prompt() {
     # local fsize=$(command ls -lhA | awk 'NR == 1 {print $2}')
     # local last_mod=$(last_modified)
     # local perm=$(stat -c '%a' .)
-    local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /')
+    local git_branch="$(git branch --show-current 2>/dev/null | sed 's/\(.*\)/(\1) /')"
     
     # test "${out:-0}" -eq 0 && PS1+="${bar}${grn}" || PS1+="${bar}[${red}"
     # PS1+="${out}${end}"
@@ -237,11 +237,11 @@ prompt() {
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
 
-    [ -n "$WSLENV" ] && PS1+="(wsl)"
+    [ -n "$WSLENV" ] && PS1+="(wsl) "
 
     if test "${out:-0}" -eq 0;then
         # PS1+="${grn}( •_•)${rst} "  # λ π β ω μ
-        PS1+="${grn}:${rst} "
+        PS1+="\$ "
     else
         # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
         # [ -f "$beep" ] && mpv --no-config --no-video --really-quiet "$beep" &
@@ -252,7 +252,7 @@ prompt() {
 
     if [ $COLUMNS -ge 100 ];then
         # https://wiki.archlinux.org/title/Bash/Prompt_customization#Right-justified_text
-        PS1=$(printf "%*s\r%s" $(( COLUMNS-1 )) "$(date '+%d/%m %H:%M')" "$PS1")
+        PS1=$(printf "%*s\r%s" $(( COLUMNS-1 )) "$(uname -r)" "$PS1")
     fi
 
     # set title
