@@ -59,6 +59,13 @@ command=~/.config/i3blocks/scripts/battery
 interval=60
 min_width=" B 00% "
 
+[volume]
+markup=pango
+command=~/.config/i3blocks/scripts/volume
+min_width="  V 00% "
+signal=10
+interval=once
+
 [time]
 markup=pango
 command=~/.config/i3blocks/scripts/time
@@ -105,13 +112,6 @@ align=center
 # command=~/.config/i3blocks/scripts/bandwidth
 # min_width=" DL 000K UP 000K "
 # interval=5
-
-# [volume]
-# markup=pango
-# command=~/.config/i3blocks/scripts/volume
-# min_width="  V 00% "
-# signal=10
-# interval=once
 
 # [pacman]
 # markup=pango

@@ -104,7 +104,7 @@ undomv() {
 }
 fzcd() {
     local p
-    p=$(find . -xdev -mindepth 2 -maxdepth 4 -type d \! -path '*/\.*' | fzf \
+    p=$(find . -xdev -mindepth 1 -maxdepth 4 -type d \! -path './\.*' | fzf \
         --info=hidden --layout=reverse --height 20 --bind 'tab:accept')
     [ -e "$p" ] && cd "$p"
 }
@@ -286,10 +286,6 @@ fixkbd() {
     # xmodmap -e "keycode 91 = asciitilde"  # KP_Delete
 }
 
-if [ -n "$DISPLAY" ];then
-    # random_color
-    todo ls 2>/dev/null
-fi
 # printf '\e[1;31m'; cat ~/Documents/ASCII/Nerv; printf '\e[m\n'
 # shuf -n1 ~/.cache/quotes.csv | sed 's/|/\n\t- /'
 # printf 'Microsoft Windows XP [Version 5.1.2600]\n(C) Copyright 1985-2004 Microsoft Corp.\n\n'
