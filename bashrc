@@ -53,6 +53,27 @@ _devour() {
     COMPREPLY=( $( compgen -W "$(compgen -c)" -- "$cur" ) )
 } && complete -F _devour devour dv
 
+_nyaarss() {
+    local opts cur prev split=false
+    COMPREPLY=()
+    _get_comp_words_by_ref cur prev
+    opts='-h --help -d --dir -f --file --download --delete --show --update --quiet'
+    case $prev in
+        -d|--dir|-f|--file) _filedir ;;
+    esac
+    case $cur in
+        -*) COMPREPLY=( $( compgen -W "$opts" -- "$cur" ) ) ;;
+        *) 
+            if [ -n "$DISPLAY" ];then
+                xclip -o -sel c 2>/dev/null
+            else
+                tmux show-buffer
+            fi | grep -oP 'https://nyaa.*[\?&]page=rss[^ $]+' | head -1 | sed -E "s/$/'/; s/^/'/; s/^'+/'/; s/'+$/'/"  | tr -d \\n
+        ;;
+    esac
+}
+complete -F _nyaarss nyarss.py
+
 umask 0077
 
 set -o vi
