@@ -21,7 +21,7 @@ js = os.path.join(root, 'qbfetch.js')
 css = os.path.join(root, 'qbfetch.css')
 if not os.path.exists(css):
     with open(css, 'w') as f:
-        f.write('''
+        f.write('''\
 body {
   background: #1a1b26;
   color: #a9b1d6;
@@ -39,7 +39,7 @@ body > * {
 }
 #info div span:nth-child(2) {
     color: #f7768e
-}'''.strip())
+}''')
 
 
 html_head = '''<!DOCTYPE html>

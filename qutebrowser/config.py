@@ -39,11 +39,13 @@ c.hints.selectors['buttons'] = ['label', 'button', '.button', '[role="button"]']
 # c.fileselect.multiple_files.command = ['ts', '-n', 'floating_terminal', '--', 'ranger', '--choosefiles', '{}']
 # c.fileselect.single_file.command = ['ts', '-n', 'floating_terminal', '--', 'ranger', '--choosefile', '{}']
 c.auto_save.session = True
-c.colors.webpage.bg = '#eeeeee'
-c.colors.webpage.darkmode.enabled = False
-c.colors.webpage.darkmode.policy.images = 'never'
+c.colors.webpage.bg = '#cccccc'
 c.colors.webpage.preferred_color_scheme = 'dark'
-c.completion.height = '50%'
+c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.policy.images = 'never'
+c.colors.webpage.darkmode.threshold.background = 205
+c.colors.webpage.darkmode.threshold.text = 20
+c.completion.height = '42%'
 c.completion.scrollbar.padding = 5
 c.completion.scrollbar.width = 10
 c.content.autoplay = False
