@@ -71,8 +71,8 @@ set completeopt+=menuone
 set wildmenu
 set wildoptions=pum
 set autowriteall
-" set splitbelow
-set previewheight=20
+set splitbelow
+set previewheight=14
 set tags+=./.tags
 set path+=**
 set foldmethod=marker
@@ -145,6 +145,7 @@ autocmd BufNewFile,BufRead ~/.config/X11/themes/* set syntax=xdefaults
 autocmd CompleteDone * pclose
 " autocmd BufWritePost *.cpp,*.c,*.h silent! !ctags -R -o ./.tags . &
 " autocmd FileType i3config setlocal foldmethod=indent
+
 
 " }}}
 
