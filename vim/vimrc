@@ -63,18 +63,19 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 " Plug 'nvie/vim-flake8'
 let g:flake8_quickfix_height = 8
 autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
+
 " }}}
 
 " Settings {{{
 set omnifunc=syntaxcomplete#Complete
-set completeopt+=menuone
+set completeopt=menu,popup
 set wildmenu
 set wildoptions=pum
 set autowriteall
 set splitbelow
 set previewheight=14
 set tags+=./.tags
-set path+=**
+set path+=**5
 set foldmethod=marker
 set statusline=%<%f\ %m%h%r%=%-8.(%y\ %l,%c,%L%)\ %P\ %#warningmsg#
 set switchbuf=usetab
@@ -99,7 +100,8 @@ set pastetoggle=<F11>
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set cursorline
+" set cursorline " slow AF
+" set cursorlineopt=screenline
 set undofile
 set scrolloff=8
 set incsearch
@@ -217,16 +219,15 @@ function! MyTabLabel(n)
 endfunction
 
 " https://stackoverflow.com/questions/8845400/vim-wiping-out-buffers-editing-nonexistent-files
-function s:WipeBuffersWithoutFiles()
-    let bufs=filter(range(1, bufnr('$')), 'bufexists(v:val) && '.
-                                          \'empty(getbufvar(v:val, "&buftype")) && '.
-                                          \'!filereadable(bufname(v:val))')
-
-    if !empty(bufs)
-        execute 'bdelete' join(bufs)
-    endif
-endfunction
-command! BWnex call s:WipeBuffersWithoutFiles()
+" function s:WipeBuffersWithoutFiles()
+"     let bufs=filter(range(1, bufnr('$')), 'bufexists(v:val) && '.
+"                                           \'empty(getbufvar(v:val, "&buftype")) && '.
+"                                           \'!filereadable(bufname(v:val))')
+"     if !empty(bufs)
+"         execute 'bdelete' join(bufs)
+"     endif
+" endfunction
+" command! BWnex call s:WipeBuffersWithoutFiles()
 " }}}
 
 " Theme {{{
@@ -240,7 +241,3 @@ hi Normal guibg=NONE ctermbg=NONE cterm=NONE
 " hi Visual ctermfg=1 ctermbg=233
 
 " }}}
-
-
-
-
