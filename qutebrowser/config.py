@@ -39,9 +39,9 @@ c.hints.selectors['buttons'] = ['label', 'button', '.button', '[role="button"]']
 # c.fileselect.multiple_files.command = ['ts', '-n', 'floating_terminal', '--', 'ranger', '--choosefiles', '{}']
 # c.fileselect.single_file.command = ['ts', '-n', 'floating_terminal', '--', 'ranger', '--choosefile', '{}']
 c.auto_save.session = True
-c.colors.webpage.bg = '#cccccc'
+c.colors.webpage.bg = '#ccccac'
 c.colors.webpage.preferred_color_scheme = 'dark'
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 c.colors.webpage.darkmode.policy.images = 'never'
 c.colors.webpage.darkmode.threshold.background = 205
 c.colors.webpage.darkmode.threshold.text = 20
