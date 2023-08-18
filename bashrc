@@ -36,43 +36,13 @@ export PROMPT_DIRTRIM=2
 export COLORTERM=truecolor
 
 source /usr/share/bash-completion/bash_completion
-source /usr/share/bash-completion/completions/man
 source ~/.config/dircolors 2>/dev/null || eval "$(dircolors -b ~/.config/dircolors)"
 source ~/.config/bash_aliases
-source ~/.scripts/python/a2cli/completion/*
-source ~/.scripts/python/mal_completion
 source ~/.scripts/shell/functions.sh
 source ~/.scripts/shell/mediainfo.sh
 source ~/.scripts/shell/aria2.sh
 source ~/.scripts/shell/fzf.sh
-complete -F _man man apropos whatis fzman
-
-_devour() {
-    local cur
-    _get_comp_words_by_ref cur
-    COMPREPLY=( $( compgen -W "$(compgen -c)" -- "$cur" ) )
-} && complete -F _devour devour dv
-
-_nyaarss() {
-    local opts cur prev split=false
-    COMPREPLY=()
-    _get_comp_words_by_ref cur prev
-    opts='-h --help -d --dir -f --file --download --delete --show --update --quiet'
-    case $prev in
-        -d|--dir|-f|--file) _filedir ;;
-    esac
-    case $cur in
-        -*) COMPREPLY=( $( compgen -W "$opts" -- "$cur" ) ) ;;
-        *) 
-            if [ -n "$DISPLAY" ];then
-                xclip -o -sel c 2>/dev/null
-            else
-                tmux show-buffer
-            fi | grep -oP 'https://nyaa.*[\?&]page=rss[^ $]+' | head -1 | sed -E "s/$/'/; s/^/'/; s/^'+/'/; s/'+$/'/"  | tr -d \\n
-        ;;
-    esac
-}
-complete -F _nyaarss nyarss.py
+source ~/.scripts/shell/completions
 
 umask 0077
 
@@ -86,8 +56,6 @@ shopt -s dirspell
 shopt -s cdspell
 shopt -s cmdhist
 shopt -s globstar
-
-[ -f ~/.python_history ] && command rm ~/.python_history
 
 expand_files() {
     # Example:
@@ -108,7 +76,7 @@ fzfhist() {
     cmd=$(
         history | sed 's/^ *\?[0-9]* *//' | awk 'length($0) > 2' |
         fzf --info=hidden --layout=reverse --scheme=history \
-            --height 20 --tac --bind 'tab:accept'
+            --query "$READLINE_LINE" --height 20 --tac --bind 'tab:accept'
     )
     READLINE_LINE="$cmd"
     READLINE_POINT=${#cmd}
@@ -142,11 +110,13 @@ goback() {
     [ -d "$d" ] && cd "$d"
 }
 
-if ! [[ "$TERM" =~ xterm* ]];then
+if ! [[ "$TERM" = xterm* ]];then
     # Ctrl-V + key  to find any keycode
     # https://sparky.rice.edu//~hartigan/del.html
     bind -x '"\em": undomv'
     bind -x '"\eb": bpwd'
+    bind -x '"\es": s'  # scripts
+    bind -x '"\ec": c'  # config
     bind -x '"\C-x": expand_files'
     bind -x '"\C-h": fzfhist'
     bind -x '"\C-g": fzfgov' 

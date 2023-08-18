@@ -68,7 +68,7 @@ autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 
 " Settings {{{
 set omnifunc=syntaxcomplete#Complete
-set completeopt=menu,popup
+set completeopt=menu,popup,noinsert
 set wildmenu
 set wildoptions=pum
 set autowriteall
@@ -114,7 +114,7 @@ set hlsearch
 " won't work with <tag src="example"... 
 inoremap <C-s> <esc>F<yeea><esc>pa><esc>F<a/<esc>F>a
 nnoremap <C-c> :silent .w !xclip -sel c<CR>
-vnoremap <C-c> :silent w !xclip -sel c<CR>
+vnoremap <C-c> "cy <bar> :call system('xclip -sel c', @c)<CR>
 nnoremap cn :cnext<CR>
 nnoremap cp :cprevious<CR>
 nnoremap <C-s-j> :m .+1<CR>==
