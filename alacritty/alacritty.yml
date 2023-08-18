@@ -17,7 +17,7 @@ env:
 window:
   dimensions:
     columns: 110
-    lines: 30
+    lines: 28
 
   padding:
     x: 5

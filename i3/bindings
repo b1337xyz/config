@@ -1,3 +1,5 @@
+set $term alacritty
+
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -116,8 +118,8 @@ bindsym --release $mod+shift+ccedilla exec run_i3lock.sh
 bindsym $mod+period        exec mpvc.sh /tmp/mpvradio toggle 
 bindsym $mod+shift+greater exec mpvc.sh /tmp/mpvradio next
 bindsym $mod+shift+less    exec mpvc.sh /tmp/mpvradio prev
-bindsym $mod+Return        exec alacritty -e tmux
-bindsym $mod+shift+Return  exec alacritty --class floating_terminal -e tmux
+bindsym $mod+Return        exec $term -e tmux
+bindsym $mod+shift+Return  exec $term --class floating_terminal
 bindsym $mod+d             exec drun.sh
 bindsym $mod+F5            exec chscreen.sh
 bindsym $mod+t             exec toggle_transparency.sh
