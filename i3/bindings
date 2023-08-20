@@ -124,8 +124,6 @@ bindsym $mod+d             exec drun.sh
 bindsym $mod+F5            exec chscreen.sh
 bindsym $mod+t             exec toggle_transparency.sh
 bindsym $mod+c             exec i3cloneterm.py
-bindsym $mod+x             exec xwall.sh --current
-bindsym $mod+shift+x       exec xwall.sh --sxiv
 bindsym $mod+shift+s       exec print.sh cops
 bindsym ctrl+shift+space   exec dunstctl close
 
@@ -166,6 +164,21 @@ mode "$launch_mode" {
     bindsym Return mode "default"
 }
 bindsym $mod+o mode "$launch_mode"
+
+set $xwall [p]rev [n]ext [d]menu [s]xiv [r]andom [c]urrent
+mode "$xwall" {
+    bindsym p exec xwall.sh --prev
+    bindsym n exec xwall.sh --next
+    bindsym d exec xwall.sh --dmenu
+    bindsym s exec xwall.sh --sxiv
+    bindsym c exec xwall.sh --current
+    bindsym r exec xwall.sh
+
+    bindsym q      mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+bindsym $mod+x mode "$xwall"
 
 mode "resize" {
     bindsym backslash resize shrink left 20 px
