@@ -243,7 +243,7 @@ prompt() {
 
     if [ $COLUMNS -ge 100 ];then
         # https://wiki.archlinux.org/title/Bash/Prompt_customization#Right-justified_text
-        PS1=$(printf "%*s\r%s" $(( COLUMNS-1 )) "$(uname -r)" "$PS1")
+        PS1=$(printf "\n%*s\r%s" $(( COLUMNS-1 )) "< $(uname -r)" "$PS1")
     fi
 
     # set title

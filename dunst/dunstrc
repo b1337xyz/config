@@ -4,7 +4,7 @@
     width = 380
     height = 280
     gap_size = 0
-    origin = bottom-right
+    origin = top-right
     offset = 5x5
     scale = 0
     notification_limit = 0

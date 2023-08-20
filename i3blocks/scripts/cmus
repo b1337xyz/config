@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 ICON=xfce4-clipman-plugin
-song=$(cat /tmp/.cmus-status)
+song=$(</tmp/.cmus-status)
+[ -z "$song" ] && exit 0
 case "$BLOCK_BUTTON" in
     1|2)
         notify-send -i "$ICON"  "Clipboard" "$song"
@@ -8,4 +9,4 @@ case "$BLOCK_BUTTON" in
     ;;
 esac
 [ ${#song} -gt 80 ] && song=${song::80}...
-[ -n "$song" ] && echo " ♪ $song "
+echo " ♪ $song "

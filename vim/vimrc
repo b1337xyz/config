@@ -68,7 +68,7 @@ autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 
 " Settings {{{
 set omnifunc=syntaxcomplete#Complete
-set completeopt=menu,popup,noinsert
+set completeopt=menuone,popup,noinsert
 set wildmenu
 set wildoptions=pum
 set autowriteall

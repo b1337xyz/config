@@ -21,7 +21,7 @@ window:
 
   padding:
     x: 5
-    y: 5
+    y: 1
 
   dynamic_padding: true
   decorations: full

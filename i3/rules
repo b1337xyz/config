@@ -36,6 +36,7 @@ for_window [instance="tabbed"] border pixel 1
 for_window [instance="tabbed"] floating enable
 for_window [instance="cal"] border pixel 1
 for_window [instance="cal"] floating enable
+for_window [class="dhewm3"] floating disable
 
 
 for_window [class="Blueman-manager"] floating enable
