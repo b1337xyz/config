@@ -172,7 +172,7 @@ mode "$xwall" {
     bindsym d exec xwall.sh --dmenu
     bindsym s exec xwall.sh --sxiv
     bindsym c exec xwall.sh --current
-    bindsym r exec xwall.sh
+    bindsym x exec xwall.sh
 
     bindsym q      mode "default"
     bindsym Escape mode "default"

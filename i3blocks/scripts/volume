@@ -7,7 +7,7 @@ case "$BLOCK_BUTTON" in
 esac
 
 volume=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '/^[ \t]*Volume:/{print substr($5, 1, length($5)-1); exit}')
-if [ "$volume" -le 5 ] || pactl list sinks | grep -q 'Mute: yes';then
+if [ "$volume" -lt 5 ] || pactl list sinks | grep -q 'Mute: yes';then
     # printf 'M %s%%\n' "${volume}"
     echo 󰖁
 else
