@@ -34,7 +34,7 @@ c.url.searchengines = {
     'mmnt': 'https://www.mmnt.ru/int/get?st={}',
     'mon': 'https://monova.org/search?term={}',
     'mx': 'https://yts.mx/browse-movies/{}',
-    'ny': 'https://nyaa.si/?q={}',
+    'nya': 'https://nyaa.si/?q={}',
     'odc': 'https://odcrawler.xyz/search/{}',
     'os': 'https://www.opensubtitles.org/en/search/sublanguageid-pob/moviename-{}',
     'pacman': 'https://archlinux.org/packages/?q={}',

@@ -23,6 +23,6 @@ function wait_for(target) {
         });
     });
 }
-wait_for(".isLoaded").then((e) => {
-    window.open(e.src, "_self");
-});
+// wait_for(".isLoaded").then((e) => {
+//     window.open(e.src, "_self");
+// });
