@@ -115,7 +115,8 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     tmpv='find . -maxdepth 3 -type f -iregex ".*\.\(mkv\|mp4\|webm\|avi\|m4v\|gif\)" -printf "%C@ %p\n" | sort -rn | cut -d" " -f2- | mpv --playlist=-' \
     pfa='pgrep -fa' \
     stopDocker='sudo systemctl stop docker.service docker.socket' \
-    mpvradio='systemctl --user start mpvradio.service'
+    mpvradio='systemctl --user start mpvradio.service' \
+    clone='git clone --depth=1'
     
 
 ### pacman

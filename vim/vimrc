@@ -25,6 +25,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
+" Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 nnoremap <leader>t :NERDTree<CR>
