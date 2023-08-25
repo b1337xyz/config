@@ -11,6 +11,7 @@ set directory=$XDG_STATE_HOME/vim/swap | call mkdir(&directory, 'p')
 set undodir=$XDG_STATE_HOME/vim/undo | call mkdir(&undodir, 'p')
 set viewdir=$XDG_STATE_HOME/vim/view | call mkdir(&viewdir, 'p')
 set viminfofile=$XDG_STATE_HOME/vim/viminfo
+let g:netrw_home = $XDG_DATA_HOME . "/vim"
 
 " Plugins {{{
 call plug#begin()
@@ -25,9 +26,14 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
-" Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'mbbill/undotree'
 call plug#end()
 
+" Plug 'mbbill/undotree' 
+nnoremap <F2> :UndotreeToggle<CR>
+
+nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>t :NERDTree<CR>
 " nnoremap <leader>f :NERDTreeFind<CR>
 " Close the tab if NERDTree is the only window remaining in it.
@@ -42,11 +48,6 @@ nnoremap <leader>f <cmd>Files %:h<CR>
 let g:jscomplete_use = ['dom', 'es6th']
 autocmd FileType javascript :setlocal omnifunc=jscomplete#CompleteJS
 
-nnoremap <leader>n :NERDTreeFocus<CR>
-let g:netrw_home = $XDG_DATA_HOME . "/vim"
-let g:netrw_banner=0
-let g:netrw_liststyle=3
-
 " Plug 'vim-python/python-syntax'
 let g:python_highlight_all = 1
 
@@ -59,7 +60,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 " let g:syntastic_javascript_eslint_exec = '/usr/bin/eslint'
 " let g:syntastic_javascript_checkers = ['eslint']
-
 
 " Plug 'nvie/vim-flake8'
 let g:flake8_quickfix_height = 8
@@ -107,6 +107,8 @@ set undofile
 set scrolloff=8
 set incsearch
 set hlsearch
+let g:netrw_banner=0
+let g:netrw_liststyle=3
 "}}}
 
 " Mappings {{{

@@ -42,7 +42,6 @@ source ~/.scripts/shell/functions.sh
 source ~/.scripts/shell/mediainfo.sh
 source ~/.scripts/shell/aria2.sh
 source ~/.scripts/shell/fzf.sh
-source ~/.scripts/shell/completions
 
 umask 0077
 
@@ -178,6 +177,13 @@ trap 'timer_start' DEBUG
 
 prompt() {
     out=$?
+
+    if [ -z "$VIRTUAL_ENV" ] && [ -f ./venv/bin/activate ]; then
+        source ./venv/bin/activate
+    elif [ -n "$VIRTUAL_ENV" ] && [ "${PWD#${VIRTUAL_ENV%/*}}" = "$PWD" ]; then
+        deactivate
+    fi
+
     PS1=""
     local blk="\[\033[1;30m\]"
     local red="\[\033[1;31m\]"
@@ -203,25 +209,27 @@ prompt() {
     # }' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ')
     # local fsize=$(find . -maxdepth 1 -type f -print0 | xargs -r0 du -ch | awk '/\ttotal$/{print $1}')
     # local last_mod=$(stat -c '%Z' "$PWD" | xargs -rI{} date --date='@{}' '+%b %d %H:%M')
+    local last_mod=$(last_modified)
     # local lavg=$(uptime | grep -oP '(?<=load average: ).*')
     # local cpu_usage=$(ps axch -o %cpu | awk '{x+=$1}END{ printf("%.1f%%\n", x)}')
     # local ram_usage=$(command free -m | awk '/Mem:/{printf("%s\n", $2 - $7)}')
     # local fsize=$(command ls -lhA | awk 'NR == 1 {print $2}')
-    # local last_mod=$(last_modified)
-    # local perm=$(stat -c '%a' .)
+    # local perm=$(stat -c '%A' . | awk '{printf("\033[1;35m%s\033[1;31m%s\033[1;32m%s\033[m",
+    #                                            substr($0, 2, 1), substr($0, 3, 1), substr($0, 4, 1))}')
+    local perm=$(stat -c '%a' .)
     local git_branch="$(git branch --show-current 2>/dev/null | sed 's/\(.*\)/(\1) /')"
     
     # test "${out:-0}" -eq 0 && PS1+="${bar}${grn}" || PS1+="${bar}[${red}"
     # PS1+="${out}${end}"
     # PS1="${bar}${red}\V${end}"
     # PS1+="${bar}${cyn}${ram_usage}${end}"
-    # PS1+="${bar}${grn}${perm}${end}"
     # test -n "$fsize" && PS1+="${bar}${red}${fsize}${end}"
     # PS1+="(${file_count::-2}, "
     # PS1+="${hidden_count:-0} ., "
     # PS1+="${files:-0}${end}"
     # test -n "$exts"      && PS1+="${bar}${exts::-2}${rst}${bar}"
-    # test -n "$last_mod"  && PS1+="${bar}$rst$last_mod${end}"
+    test -n "$last_mod"  && PS1+="${bar}$rst$last_mod${end}"
+    PS1+="${bar}${grn}${perm}${end}"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
     PS1+="${bar}${blu}\w${end}\n"
     PS1+="\${timer_show}"
