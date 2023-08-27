@@ -165,13 +165,14 @@ mode "$launch_mode" {
 }
 bindsym $mod+o mode "$launch_mode"
 
-set $xwall [p]rev [n]ext [d]menu [s]xiv [r]andom [c]urrent
+set $xwall [p]rev [n]ext [d]menu [s]xiv [c]urrent [r]andom
 mode "$xwall" {
     bindsym p exec xwall.sh --prev
     bindsym n exec xwall.sh --next
     bindsym d exec xwall.sh --dmenu
     bindsym s exec xwall.sh --sxiv
     bindsym c exec xwall.sh --current
+    bindsym r exec xwall.sh
     bindsym x exec xwall.sh
 
     bindsym q      mode "default"

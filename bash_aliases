@@ -67,7 +67,7 @@ alias lx='ls -X' \
 alias cdg='cd ~/.local/src/b1337xyz'
 
 ### shortcuts
-alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
+alias :w=':' clock='tty-clock -cC 7 -f %d.%m.%y' \
     doit='git add -Av --chmod=-x && git commit -m "$(date +%Y.%m.%d)" && git push' \
     update_readme='git add README.md ; git commit -m "Update README.md"; git push' \
     reloadagent='gpg-connect-agent reloadagent /bye' \
@@ -116,7 +116,8 @@ alias :w='echo ?' clock='tty-clock -cC 7 -f %d.%m.%y' \
     pfa='pgrep -fa' \
     stopDocker='sudo systemctl stop docker.service docker.socket' \
     mpvradio='systemctl --user start mpvradio.service' \
-    clone='git clone --depth=1'
+    clone='git clone --depth=1' \
+    sxiv='nsxiv'
     
 
 ### pacman
