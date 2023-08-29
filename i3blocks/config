@@ -48,10 +48,10 @@ signal=20
 command=~/.config/i3blocks/scripts/scratchpad.py
 signal=10
 
-[bluetooth]
-markup=pango
-command=~/.config/i3blocks/scripts/bluetooth
-interval=once
+# [bluetooth]
+# markup=pango
+# command=~/.config/i3blocks/scripts/bluetooth
+# interval=once
 
 [battery]
 markup=pango

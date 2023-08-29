@@ -61,30 +61,22 @@ alias lx='ls -X' \
     lr='ll -R' \
     ld='ls --group-directories-first' \
     sl='ls' \
-    loh='ls -d .[A-z]*'
-
-### cd
-alias cdg='cd ~/.local/src/b1337xyz'
+    loh='ls -d .*'
 
 ### shortcuts
-alias :w=':' clock='tty-clock -cC 7 -f %d.%m.%y' \
+alias ...='cd ../..' gb='cd -' \
+    clock='tty-clock -cC 7 -f %d.%m.%y' \
     doit='git add -Av --chmod=-x && git commit -m "$(date +%Y.%m.%d)" && git push' \
     update_readme='git add README.md ; git commit -m "Update README.md"; git push' \
     reloadagent='gpg-connect-agent reloadagent /bye' \
-    gb='cd -' \
     F='less +F' \
     cmd='command' \
-    +x='chmod u+x' \
-    -x='chmod a-x' \
+    +x='chmod u+x' -x='chmod a-x' \
     so='source' \
-    v='vim' \
-    vi='vim' \
-    :q=exit \
-    :x=exit \
+    v='vim' vi='vim' \
+    :q=exit :x=exit \
     linuxlogo='linux_logo -c -u -y -L 13' \
     mpipe='mpv --playlist=- --no-resume-playback' \
-    h='history | tail -n ' \
-    atom='mount -o rw,async,noatime,noacl 192.168.1.10:/home/atom /mnt/anon/atom' \
     termux='sshfs termux:/data/data/com.termux/files/home ~/mnt/termux -o port=8022,allow_other,no_check_root,follow_symlinks,reconnect' \
     kcat='kitty icat' \
     jmtp='jmtpfs -o allow_other,noatime' \
@@ -99,7 +91,7 @@ alias :w=':' clock='tty-clock -cC 7 -f %d.%m.%y' \
     syncdir='rsync -a -f"+ */" -f"- *"' \
     psmem='ps axch -o cmd:15,%mem --sort=-%mem | head -10' \
     pscpu='ps axch -o cmd:15,%cpu --sort=-%cpu | head -10' \
-    grepinbrackets='grep -oP "\[\K[^\]]+"' \
+    inbrackets='grep -oP "\[\K[^\]]+"' \
     gpuinfo='lspci -nnk | grep -i VGA -A2' \
     soundcardinfo='lspci -nnk | grep -i audio -A2' \
     enabledservices='systemctl list-unit-files --state=enabled --no-pager' \
@@ -109,16 +101,12 @@ alias :w=':' clock='tty-clock -cC 7 -f %d.%m.%y' \
     fumnt='fusermount3 -u' \
     dff='df -Th -t fuse.rclone -t ext4 -t btrfs -t nfs4 --total' \
     tmux_defaults='tmux -f /dev/null -L temp start-server \; show-options -g' \
-    update_gdl='python3 -m pip install --user -U -I --no-deps --no-cache-dir https://github.com/mikf/gallery-dl/archive/master.tar.gz --break-system-packages' \
-    update_ytdl='python3 -m pip install --user --force-reinstall https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz --break-system-packages' \
-    tsxiv='find . -maxdepth 3 -type f -iregex ".*\.\(jpe?g\|png\|gif\)" -printf "%C@ %p\n" | sort -rn | cut -d" " -f2- | sxiv -qi' \
-    tmpv='find . -maxdepth 3 -type f -iregex ".*\.\(mkv\|mp4\|webm\|avi\|m4v\|gif\)" -printf "%C@ %p\n" | sort -rn | cut -d" " -f2- | mpv --playlist=-' \
+    update_gdl='pip install --user -U -I --no-deps --no-cache-dir https://github.com/mikf/gallery-dl/archive/master.tar.gz' \
+    update_ytdl='pip install --user --force-reinstall https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz' \
     pfa='pgrep -fa' \
     stopDocker='sudo systemctl stop docker.service docker.socket' \
     mpvradio='systemctl --user start mpvradio.service' \
-    clone='git clone --depth=1' \
-    sxiv='nsxiv'
-    
+    clone='git clone --depth=1'
 
 ### pacman
 alias pSs='pacman -Ss' \

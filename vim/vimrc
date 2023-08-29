@@ -128,6 +128,7 @@ vnoremap <C-s-j> :m '>+1<CR>gv=gv
 vnoremap <C-s-k> :m '<-2<CR>gv=gv
 " nnoremap <F4> :set hlsearch! hlsearch?<CR>
 nnoremap <F4> :noh<CR>
+nnoremap <leader>x :!chmod +x %<CR>
 
 " }}}
 

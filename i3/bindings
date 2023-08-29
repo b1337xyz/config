@@ -98,8 +98,8 @@ bindsym Print exec print.sh
 bindsym XF86AudioRaiseVolume exec volupdown.sh up
 bindsym XF86AudioLowerVolume exec volupdown.sh down
 bindsym XF86AudioMute exec volupdown.sh toggle
-bindsym XF86MonBrightnessUp  exec brightnessctl s +2%
-bindsym XF86MonBrightnessDown exec brightnessctl s 2%-
+bindsym XF86MonBrightnessUp  exec brightnessctl s +1%
+bindsym XF86MonBrightnessDown exec brightnessctl s 1%-
 bindsym XF86Search exec brightnessctl s +2%
 bindsym XF86Calculator exec brightnessctl s 2%-
 bindsym XF86AudioPlay exec cmus-remote -u
@@ -145,7 +145,7 @@ bindsym $mod+p mode "$print_mode"
 set $launch_mode [f]irefox [q]ute [t]elegram [p]ulsemixer [e]xplorer [r]adio [m]pv
 mode "$launch_mode" {
     bindsym a exec ts -- fzfanime.sh -q ; mode "default"
-    bindsym c exec ts -t cmus -- tmux attach -t cmus ; mode "default"
+    bindsym c exec tmux new-session -s cmus cmus ; mode "default"
     bindsym d exec discord ; mode "default"
     bindsym e exec ts -t nnn -- nnn; mode "default"
     bindsym f exec firefox ; mode "default"

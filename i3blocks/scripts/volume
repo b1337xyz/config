@@ -6,11 +6,15 @@ case "$BLOCK_BUTTON" in
     4|7) volupdown.sh down ;;
 esac
 
-volume=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '/^[ \t]*Volume:/{print substr($5, 1, length($5)-1); exit}')
+get_volume() {
+    pactl get-sink-volume @DEFAULT_SINK@ | awk '/^[ \t]*Volume:/{print substr($5, 1, length($5)-1); exit}'
+}
+volume=$(get_volume)
+[ -z "$volume" ] && sleep 5 && volume=$(get_volume)
 if [ "$volume" -lt 5 ] || pactl list sinks | grep -q 'Mute: yes';then
     # printf 'M %s%%\n' "${volume}"
     echo 󰖁
-else
+elif [ -n "$volume" ];then
     printf '  %s%%\n' "${volume}" 
 fi
 
