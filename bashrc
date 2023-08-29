@@ -1,9 +1,15 @@
 [[ $- != *i* ]] && return
 
-if grep -q pinentry-curses ~/.config/gnupg/gpg-agent.conf 2>/dev/null
-then
+gpg_conf=~/.config/gnupg/gpg-agent.conf
+if [ -z "$DISPLAY" ] && ! grep -q pinentry-curses "$gpg_conf" 2>/dev/null; then
+    sed -i 's/\(.usr.bin.pinentry-\).*/\1curses/' "$gpg_conf"
     export GPG_TTY=$(tty)
-fi
+    gpg-connect-agent reloadagent /bye >/dev/null 2>&1
+elif [ -n "$DISPLAY" ] && grep -q pinentry-curses "$gpg_conf"; then
+    sed -i 's/\(.usr.bin.pinentry-\).*/\1gtk-2/' "$gpg_conf"
+    gpg-connect-agent reloadagent /bye >/dev/null 2>&1
+fi 
+unset gpg_conf
 
 export BAT_STYLE=plain
 export BAT_THEME="OneHalfDark"
@@ -36,7 +42,7 @@ export PROMPT_DIRTRIM=2
 export COLORTERM=truecolor
 
 source /usr/share/bash-completion/bash_completion
-source ~/.config/dircolors 2>/dev/null || eval "$(dircolors -b ~/.config/dircolors)"
+source ~/.config/dircolors 2>/dev/null || eval "$(dircolors -b | tee ~/.config/dircolors)"
 source ~/.config/bash_aliases
 source ~/.scripts/shell/functions.sh
 source ~/.scripts/shell/mediainfo.sh
@@ -89,6 +95,7 @@ fzfgov() {
 undomv() {
     READLINE_LINE="mv -vni !mv:2 !mv:1 "
     READLINE_POINT=${#READLINE_LINE}
+    printf '%b' $'\n'
 }
 fzcd() {
     local p
@@ -108,12 +115,23 @@ goback() {
     d=$(awk '!s[$0]++' ~/.cache/goback | fzf --info=hidden --layout=reverse --height 20 --tac --bind 'tab:accept')
     [ -d "$d" ] && cd "$d"
 }
+_quote() {
+    # foo bar zzz -> alt+q -> foo 'bar' zzz
+    #     ^^^ cursor is here
+    right=${READLINE_LINE:$READLINE_POINT}
+    left=${READLINE_LINE::$READLINE_POINT}
+    word=${left##* }${right%% *}
+    [ "${left% *}" = "$left" ] && left= || left="${left% *} "
+    [ "${right#* }" = "$right" ] && right= || right=" ${right#* }"
+    READLINE_LINE="${left}'${word}'$right"
+}
 
 if ! [[ "$TERM" = xterm* ]];then
     # Ctrl-V + key  to find any keycode
     # https://sparky.rice.edu//~hartigan/del.html
     bind -x '"\em": undomv'
     bind -x '"\eb": bpwd'
+    bind -x '"\eq": _quote'
     bind -x '"\es": s'  # scripts
     bind -x '"\ec": c'  # config
     bind -x '"\C-x": expand_files'
@@ -266,7 +284,7 @@ PROMPT_COMMAND="prompt; timer_stop"
 
 function bye {
     echo "bye ^-^"
-    [ -n "$SSH_CLIENT" ] && cat ~/.local/src/seeyouspacecowboy.txt
+    [ -n "$SSH_CLIENT" ] && cat ~/Documents/txt/seeyouspacecowboy.txt
 }
 trap bye EXIT
 
@@ -284,6 +302,17 @@ fixkbd() {
     # xmodmap -e "keycode 81 = bar backslash " # KP_Prior (9)
     # xmodmap -e "keycode 91 = asciitilde"  # KP_Delete
 }
+hxsj() {
+    setxkbmap -layout us -variant altgr-intl
+    xmodmap -e "keycode  24 = q Q NoSymbol NoSymbol slash"
+    xmodmap -e "keycode  25 = w W NoSymbol NoSymbol question"
+    xmodmap -e "keycode  34 = backslash bar"
+    xmodmap -e "keycode  35 = bracketleft braceleft"
+    xmodmap -e "keycode  47 = asciitilde asciicircum"
+    xmodmap -e "keycode  51 = bracketright braceright"
+    xmodmap -e "keycode  61 = semicolon colon"
+}
+
 
 if [ -n "$DISPLAY" ];then
     todo ls | tail -5
@@ -292,5 +321,5 @@ fi
 # shuf -n1 ~/.cache/quotes.csv | sed 's/|/\n\t- /'
 # printf 'Microsoft Windows XP [Version 5.1.2600]\n(C) Copyright 1985-2004 Microsoft Corp.\n\n'
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
