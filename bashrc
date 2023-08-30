@@ -314,6 +314,7 @@ fixkbd() {
     # xmodmap -e "keycode 91 = asciitilde"  # KP_Delete
 }
 hxsj() {
+    # mappings for the hxsj keyboard
     setxkbmap -layout us -variant altgr-intl
     xmodmap -e "keycode  24 = q Q NoSymbol NoSymbol slash"
     xmodmap -e "keycode  25 = w W NoSymbol NoSymbol question"
@@ -332,5 +333,10 @@ fi
 # shuf -n1 ~/.cache/quotes.csv | sed 's/|/\n\t- /'
 # printf 'Microsoft Windows XP [Version 5.1.2600]\n(C) Copyright 1985-2004 Microsoft Corp.\n\n'
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+nvm() {
+    [ -s "$NVM_DIR/nvm.sh" ] || { printf '%s not found, is nvm installed?' "$NVM_DIR/nvm.sh"; return 1; }
+    unset nvm  # just to be sure
+    source "$NVM_DIR/nvm.sh"
+    source "$NVM_DIR/bash_completion"
+    nvm "$@"
+}
