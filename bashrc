@@ -78,6 +78,7 @@ expand_files() {
     READLINE_POINT=${#cmd}
 }
 fzfhist() {
+    local cmd=
     cmd=$(
         history | sed 's/^ *\?[0-9]* *//' | awk 'length($0) > 2' |
         fzf --info=hidden --layout=reverse --scheme=history \
@@ -87,25 +88,22 @@ fzfhist() {
     READLINE_POINT=${#cmd}
 }
 fzfgov() {
+    local current=
     current=$(</sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
     awk '{for (i=1;i<=NF;++i) print $i}' \
         /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors |
         fzf --header "current: $current" --height 8 | xargs -ro sudo cpupower frequency-set -g 
 }
 undomv() {
-    READLINE_LINE="mv -vni !mv:2 !mv:1 "
+    # undo `mv foo bar` -> `mv bar foo`
+    READLINE_LINE="mv !mv:2 !mv:1 -vn"
     READLINE_POINT=${#READLINE_LINE}
-    printf '%b' $'\n'
 }
 fzcd() {
     local p
     p=$(find . -xdev -mindepth 1 -maxdepth 4 -type d \! -path './\.*' | fzf \
         --info=hidden --layout=reverse --height 20 --bind 'tab:accept')
     [ -e "$p" ] && cd "$p"
-}
-bpwd() {
-    # bookmark current path
-    pwd | tee -a ~/.cache/.bpwd;
 }
 cb() {
     d=$(awk '!s[$0]++' ~/.cache/.bpwd | fzf -0 --info=hidden --reverse --height 20 --bind tab:accept);
@@ -118,19 +116,27 @@ goback() {
 _quote() {
     # foo bar zzz -> alt+q -> foo 'bar' zzz
     #     ^^^ cursor is here
+    local right left word
     right=${READLINE_LINE:$READLINE_POINT}
     left=${READLINE_LINE::$READLINE_POINT}
     word=${left##* }${right%% *}
+    [ -z "$word" ] && return
     [ "${left% *}" = "$left" ] && left= || left="${left% *} "
     [ "${right#* }" = "$right" ] && right= || right=" ${right#* }"
     READLINE_LINE="${left}'${word}'$right"
+    READLINE_POINT=$(( ${#left} + ${#word} + 2 ))
 }
 
 if ! [[ "$TERM" = xterm* ]];then
     # Ctrl-V + key  to find any keycode
     # https://sparky.rice.edu//~hartigan/del.html
-    bind -x '"\em": undomv'
-    bind -x '"\eb": bpwd'
+    
+    # bind enter
+    bind -x '"\C-\xFF": undomv'
+    bind '"\C-\xFE": accept-line'
+    bind '"\em": "\C-\xFF\C-\xFE"'
+
+    bind -x '"\eb": goback'
     bind -x '"\eq": _quote'
     bind -x '"\es": s'  # scripts
     bind -x '"\ec": c'  # config
@@ -138,7 +144,6 @@ if ! [[ "$TERM" = xterm* ]];then
     bind -x '"\C-h": fzfhist'
     bind -x '"\C-g": fzfgov' 
     bind -x '"\C-f": fzcd'
-    bind -x '"\C-t": goback'
 fi
 
 cd() {
