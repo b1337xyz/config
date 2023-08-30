@@ -8,8 +8,8 @@ align=center
 separator=false
 separator_block_width=1
 
-background=#A4A6D9
-color=#000000
+# background=#A4A6D9
+# color=#000000
 
 # White
 # background=#cccccc
@@ -24,7 +24,7 @@ color=#000000
 # color=#80ffff
 
 # Denim
-# background=#4F6D91
+background=#4F6D91
 
 # Dark
 # background=#42515B
@@ -39,7 +39,8 @@ color=#000000
 # border=#253525
 
 [cmus]
-background=#C4C6F9
+# background=#C4C6F9
+background=#5F7DA1
 command=~/.config/i3blocks/scripts/cmus
 interval=once
 signal=20

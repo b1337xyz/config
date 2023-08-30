@@ -1,5 +1,7 @@
 [[ $- != *i* ]] && return
 
+rm ~/.python_history 2>/dev/null
+
 gpg_conf=~/.config/gnupg/gpg-agent.conf
 if [ -z "$DISPLAY" ] && ! grep -q pinentry-curses "$gpg_conf" 2>/dev/null; then
     sed -i 's/\(.usr.bin.pinentry-\).*/\1curses/' "$gpg_conf"
@@ -126,6 +128,9 @@ _quote() {
     READLINE_LINE="${left}'${word}'$right"
     READLINE_POINT=$(( ${#left} + ${#word} + 2 ))
 }
+_pager() {
+    READLINE_LINE="${READLINE_LINE} | bat"
+}
 
 if ! [[ "$TERM" = xterm* ]];then
     # Ctrl-V + key  to find any keycode
@@ -138,6 +143,7 @@ if ! [[ "$TERM" = xterm* ]];then
 
     bind -x '"\eb": goback'
     bind -x '"\eq": _quote'
+    bind -x '"\ep": _pager'
     bind -x '"\es": s'  # scripts
     bind -x '"\ec": c'  # config
     bind -x '"\C-x": expand_files'

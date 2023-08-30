@@ -157,9 +157,9 @@ autocmd CompleteDone * pclose
 
 " Fun {{{
 
-command! -nargs=+ -complete=file Mkdir silent execute '!mkdir -p "<args>"' | execute ':redraw!'
-command! -nargs=+ -complete=file Grep silent execute 'grep! -rI "<args>"' | execute ':redraw!' | copen 12
-command! -nargs=+ RG cgetexpr system('rg --vimgrep <args>') | copen 12
+command! -nargs=+ -complete=file Mkdir silent execute '!mkdir -p <args>' | execute ':redraw!'
+command! -nargs=+ -complete=file Grep silent execute 'grep! -nrI <args>' | execute ':redraw!' | copen 12
+command! -nargs=+ -complete=file RG cgetexpr system('rg --vimgrep <args>') | copen 12
 nnoremap <leader>g :Grep<Space>
 
 function! ResCur()

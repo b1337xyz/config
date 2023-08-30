@@ -15,6 +15,10 @@ set vi-cmd-mode-string "cmd "
 set vi-ins-mode-string ""
 set completion-map-case on
 
+# "\C-xFD": history-and-alias-expand-line
+# "\C-xFC": magic-space
+# Space:"\C-xFD\C-xFC"
+
 "\ew": forward-word
 "\C-d": delete-char
 "\t": menu-complete
