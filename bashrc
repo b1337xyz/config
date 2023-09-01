@@ -2,17 +2,7 @@
 
 rm ~/.python_history 2>/dev/null
 
-gpg_conf=~/.config/gnupg/gpg-agent.conf
-if [ -z "$DISPLAY" ] && ! grep -q pinentry-curses "$gpg_conf" 2>/dev/null; then
-    sed -i 's/\(.usr.bin.pinentry-\).*/\1curses/' "$gpg_conf"
-    export GPG_TTY=$(tty)
-    gpg-connect-agent reloadagent /bye >/dev/null 2>&1
-elif [ -n "$DISPLAY" ] && grep -q pinentry-curses "$gpg_conf"; then
-    sed -i 's/\(.usr.bin.pinentry-\).*/\1gtk-2/' "$gpg_conf"
-    gpg-connect-agent reloadagent /bye >/dev/null 2>&1
-fi 
-unset gpg_conf
-
+export GPG_TTY=$(tty)
 export BAT_STYLE=plain
 export BAT_THEME="OneHalfDark"
 # export BAT_THEME="gruvbox-light"
@@ -81,11 +71,9 @@ expand_files() {
 }
 fzfhist() {
     local cmd=
-    cmd=$(
-        history | sed 's/^ *\?[0-9]* *//' | awk 'length($0) > 2' |
+    cmd=$(history | awk '{sub(/^ +?[0-9 ]+/, "", $0); if (length($0) > 2) print $0}' |
         fzf --info=hidden --layout=reverse --scheme=history \
-            --query "$READLINE_LINE" --height 20 --tac --bind 'tab:accept'
-    )
+        --query "$READLINE_LINE" --height 20 --tac --bind 'tab:accept')
     READLINE_LINE="$cmd"
     READLINE_POINT=${#cmd}
 }
@@ -324,7 +312,6 @@ hxsj() {
     xmodmap -e "keycode  51 = bracketright braceright"
     xmodmap -e "keycode  61 = semicolon colon"
 }
-
 
 if [ -n "$DISPLAY" ];then
     todo ls | tail -5

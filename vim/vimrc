@@ -222,16 +222,6 @@ function! MyTabLabel(n)
     return printf(' %d: %-15s %s', a:n, s, m)
 endfunction
 
-" https://stackoverflow.com/questions/8845400/vim-wiping-out-buffers-editing-nonexistent-files
-" function s:WipeBuffersWithoutFiles()
-"     let bufs=filter(range(1, bufnr('$')), 'bufexists(v:val) && '.
-"                                           \'empty(getbufvar(v:val, "&buftype")) && '.
-"                                           \'!filereadable(bufname(v:val))')
-"     if !empty(bufs)
-"         execute 'bdelete' join(bufs)
-"     endif
-" endfunction
-" command! BWnex call s:WipeBuffersWithoutFiles()
 " }}}
 
 " Theme {{{
