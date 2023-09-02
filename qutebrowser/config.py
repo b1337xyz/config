@@ -1,7 +1,8 @@
 config.load_autoconfig(False)
 config.source('themes/custom.py')
 config.source('searchengines.py')
-config.source('qbfetch.py')
+if 'qbfetch' not in __import__('qutebrowser.misc').misc.objects.commands:
+    config.source('qbfetch.py')
 
 # Keymaps {{{
 nmap = lambda key, cmd: config.bind(key, cmd, mode='normal')
@@ -56,7 +57,7 @@ c.content.notifications.enabled = False
 c.content.pdfjs = False
 c.content.prefers_reduced_motion = True
 c.content.register_protocol_handler = False
-c.content.javascript.clipboard = 'access'
+c.content.javascript.clipboard = 'access-paste'
 c.downloads.location.prompt = False
 c.downloads.remove_finished = 0 # in miliseconds
 c.qt.highdpi = False

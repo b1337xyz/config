@@ -35,7 +35,10 @@ alias mount='sudo mount' \
     neth='sudo nethogs -d 3 wlan0' \
     sss='sudo ss -tupln' \
     cpu='sudo cpupower frequency-set' \
-    gputop='sudo intel_gpu_top'
+    gputop='sudo intel_gpu_top' \
+    rfkill='sudo rfkill' \
+    visudo='EDITOR=vim sudo visudo' \
+    stopDocker='sudo systemctl stop docker.service docker.socket'
 
 ### devour
 alias dv='devour' dsx='devour sxiv'
@@ -104,7 +107,6 @@ alias ...='cd ../..' gb='cd -' \
     update_gdl='pip install --user -U -I --no-deps --no-cache-dir https://github.com/mikf/gallery-dl/archive/master.tar.gz' \
     update_ytdl='pip install --user --force-reinstall https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz' \
     pfa='pgrep -fa' \
-    stopDocker='sudo systemctl stop docker.service docker.socket' \
     mpvradio='systemctl --user start mpvradio.service' \
     clone='git clone --depth=1'
 
