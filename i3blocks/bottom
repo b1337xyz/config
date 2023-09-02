@@ -3,11 +3,11 @@ align=center
 # separator_block_width=1
 color=#000000
 
-[cmus]
-background=#aaaaaa
-command=~/.config/i3blocks/scripts/cmus
-interval=once
-signal=20
+# [cmus]
+# background=#aaaaaa
+# command=~/.config/i3blocks/scripts/cmus
+# interval=once
+# signal=20
 
 # [prev]
 # full_text=" 󰒮 "

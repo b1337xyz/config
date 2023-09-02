@@ -24,7 +24,7 @@ separator_block_width=1
 # color=#80ffff
 
 # Denim
-background=#4F6D91
+# background=#4F6D91
 
 # Dark
 # background=#42515B
@@ -38,12 +38,12 @@ background=#4F6D91
 # color=#253525
 # border=#253525
 
-[cmus]
+# [cmus]
 # background=#C4C6F9
-background=#5F7DA1
-command=~/.config/i3blocks/scripts/cmus
-interval=once
-signal=20
+# background=#5F7DA1
+# command=~/.config/i3blocks/scripts/cmus
+# interval=once
+# signal=20
 
 [scratchpad]
 command=~/.config/i3blocks/scripts/scratchpad.py

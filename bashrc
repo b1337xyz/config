@@ -125,9 +125,10 @@ if ! [[ "$TERM" = xterm* ]];then
     # https://sparky.rice.edu//~hartigan/del.html
     
     # bind enter
-    bind -x '"\C-\xFF": undomv'
-    bind '"\C-\xFE": accept-line'
-    bind '"\em": "\C-\xFF\C-\xFE"'
+    # bind -x '"\C-\xFF": undomv'
+    # bind '"\C-\xFE": accept-line'
+    # bind '"\em": "\C-\xFF\C-\xFE"'
+    bind -x '"\em": undomv'
 
     bind -x '"\eb": goback'
     bind -x '"\eq": _quote'
@@ -327,3 +328,6 @@ nvm() {
     source "$NVM_DIR/bash_completion"
     nvm "$@"
 }
+
+source ~/.local/src/bash-abbrev-alias/abbrev-alias.plugin.bash
+abbrev-alias Status="systemctl --user status"

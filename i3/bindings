@@ -123,7 +123,7 @@ bindsym $mod+shift+Return  exec $term --class floating_terminal
 bindsym $mod+d             exec drun.sh
 bindsym $mod+F5            exec chscreen.sh
 bindsym $mod+t             exec toggle_transparency.sh
-bindsym $mod+c             exec i3cloneterm.py
+bindsym $mod+c             exec sleep .2 && sxcs --hex -o | cut -f2 | tr -d '\n' | xclip -sel c
 bindsym $mod+shift+s       exec print.sh cops
 bindsym ctrl+shift+space   exec dunstctl close
 

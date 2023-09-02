@@ -1,0 +1,38 @@
+set $bar_font Iosevka Nerd Font 10
+set $bg #eeeeee
+set $fg #222222
+set $f0 #999999
+
+bar {
+    padding -2px 0px
+    font pango: $bar_font
+    strip_workspace_numbers yes
+    binding_mode_indicator yes
+    workspace_buttons yes
+    output primary
+    position bottom
+    mode dock
+    workspace_min_width 30
+    colors {
+        background $bg
+        statusline $fg
+        focused_workspace    $bg $bg $fg
+        inactive_workspace   $bg $bg $f0
+        active_workspace     $bg $bg $f0
+        urgent_workspace     $bg $bg $f0
+        binding_mode         $bg $bg $fg
+    }
+}
+
+set $fbg #eeeeee
+set $ffg #000000
+set $ubg #333333
+set $ufg #888888
+
+# class                 border bg fg indicator child_border
+client.focused          $fbg $fbg $ffg $fbg $fbg
+client.focused_inactive $ubg $ubg $ufg $ubg $ubg
+client.unfocused        $ubg $ubg $ufg $ubg $ubg
+client.urgent           $ubg $ubg $ufg $ubg $ubg
+
+# vim: ft=i3config
