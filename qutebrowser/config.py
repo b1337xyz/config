@@ -6,7 +6,7 @@ if 'qbfetch' not in __import__('qutebrowser.misc').misc.objects.commands:
 
 # Keymaps {{{
 nmap = lambda key, cmd: config.bind(key, cmd, mode='normal')
-nmap("<f2>", "inspector")
+nmap("<f2>", "devtools bottom")
 nmap('<Ctrl-v>', 'qbfetch')
 nmap('ab', 'bookmark-add')
 nmap('tb', 'config-cycle -p -t statusbar.show in-mode always ')
