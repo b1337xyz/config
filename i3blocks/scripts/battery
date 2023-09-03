@@ -1,16 +1,26 @@
-#!/usr/bin/env bash
-capacity=$(< /sys/class/power_supply/BAT?/capacity)
-status=$(< /sys/class/power_supply/BAT?/status)
+#!/bin/sh
+capacity=$(cat /sys/class/power_supply/BAT?/capacity)
+status=$(cat /sys/class/power_supply/BAT?/status)
 
+bgcolor=
 case "$status" in
     Disc*)
         if [ "$capacity" -lt 20 ]; then
             notify-send -r 3939 -i battery-low "Battery low!!!" "$(acpi)"
-            printf '<span background="#f05050"> 󰁾 %s%% </span>\n' "$capacity"
+            bgcolor="#f05050"
+            icon=󰁾
+        elif [ "$capacity" -ge 80 ];then
+            icon=󰂂
         else
-            printf '󰁾 %s%%\n' "$capacity"
+            icon=󰁾
         fi
     ;;
-    Char*) printf '󰂄 %s%%\n' "$capacity" ;;
-    *) printf '󰂑 %s%%\n' "$capacity" ;;
+    Char*) icon=󰂄 ;;
+    *) icon=󰂑 ;;
 esac
+    
+if [ -n "$bgcolor" ];then
+    printf '<span bgcolor="%s"><span size="11pt">%s</span> %s%%</span>\n' "$bgcolor" "$icon" "$capacity"
+else
+    printf '<span size="11pt">%s</span> %s%%\n' "$icon" "$capacity"
+fi

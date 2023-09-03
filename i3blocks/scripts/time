@@ -4,6 +4,5 @@ case "$BLOCK_BUTTON" in
     3)   xterm -geometry 69x35-4+22 -name cal -e 'cal -y; read -t 5 -N 1 -s' ;;
 esac
 
-# date +'<span size="11pt"> %b %d %H:%M </span>' # Jun 21 22:10
+date +'<span size="11pt"> %b %d %H:%M </span>' # Jun 21 22:10
 # date +' %H:%M %d/%m/%Y '
-date +' %b %d %H:%M '

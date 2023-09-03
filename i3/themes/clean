@@ -1,9 +1,11 @@
 set $bar_font Iosevka Nerd Font 10
-set $bg #eeeeee
-set $fg #222222
+set $bg #2F343F
+set $b0 #333333
+set $fg #9fbfff
 set $f0 #999999
 
 bar {
+    status_command i3blocks -c ~/.config/i3blocks/config
     padding -2px 0px
     font pango: $bar_font
     strip_workspace_numbers yes
@@ -24,15 +26,10 @@ bar {
     }
 }
 
-set $fbg #eeeeee
-set $ffg #000000
-set $ubg #333333
-set $ufg #888888
-
 # class                 border bg fg indicator child_border
-client.focused          $fbg $fbg $ffg $fbg $fbg
-client.focused_inactive $ubg $ubg $ufg $ubg $ubg
-client.unfocused        $ubg $ubg $ufg $ubg $ubg
-client.urgent           $ubg $ubg $ufg $ubg $ubg
+client.focused          $bg $bg $fg $fg $fg
+client.focused_inactive $b0 $b0 $f0 $bg $bg
+client.unfocused        $b0 $b0 $f0 $bg $bg
+client.urgent           $b0 $b0 $f0 $bg $bg
 
 # vim: ft=i3config

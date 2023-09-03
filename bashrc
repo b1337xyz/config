@@ -1,4 +1,5 @@
 [[ $- != *i* ]] && return
+# hash fish && fish && exit 0
 
 rm ~/.python_history 2>/dev/null
 
@@ -289,13 +290,15 @@ function bye {
 trap bye EXIT
 
 fixkbd() {
+    setxkbmap br
     # localectl list-x11-keymap-options
     # xmodmap -e "keycode 108 = Alt_L" # Alt_Gr
     xmodmap -e "keycode 97 = Alt_L" # backslash
     xmodmap -e "keycode 34 = dead_grave backslash" # dead_acute 
     xmodmap -e "keycode 47 = asciitilde bar" # ccedilla
-    xmodmap -e "keycode 87 = g" # KP_End
-    xmodmap -e "keycode 89 = h" # KP_Next (3)
+    xmodmap -e "keycode 26 = e E NoSymbol NoSymbol g"
+    xmodmap -e "keycode 27 = r R NoSymbol NoSymbol h"
+    xmodmap -e "keycode 28 = t T NoSymbol NoSymbol Up"
     # xmodmap -e "keycode 73 = g" # F7
     # xmodmap -e "keycode 74 = h" # F8
     # xmodmap -e "keycode 15 = 6 backslash"  # dead_diaeresis
@@ -330,4 +333,4 @@ nvm() {
 }
 
 source ~/.local/src/bash-abbrev-alias/abbrev-alias.plugin.bash
-abbrev-alias Status="systemctl --user status"
+abbrev-alias status="systemctl --user status"

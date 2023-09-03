@@ -54,25 +54,26 @@ signal=10
 # command=~/.config/i3blocks/scripts/bluetooth
 # interval=once
 
-[battery]
-markup=pango
-command=~/.config/i3blocks/scripts/battery
-interval=60
-min_width=" B 00% "
 
-[volume]
-markup=pango
-command=~/.config/i3blocks/scripts/volume
-min_width="  V 00% "
-signal=10
-interval=once
+# [volume]
+# markup=pango
+# command=~/.config/i3blocks/scripts/volume
+# min_width="  V 00% "
+# signal=10
+# interval=once
 
 [time]
 markup=pango
 command=~/.config/i3blocks/scripts/time
 interval=15
 align=center
-# separator_block_width=584
+min_width=1260
+
+[battery]
+markup=pango
+command=~/.config/i3blocks/scripts/battery
+interval=60
+min_width=" B 00% "
 
 # [blank]
 # full_text=" "
