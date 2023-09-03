@@ -30,8 +30,8 @@ window:
 font:
   normal:
     # family: Perfect DOS VGA 437 Win
-    family: Source Code Pro
-    # family: Iosevka Nerd Font
+    # family: Source Code Pro
+    family: JetBrainsMono Nerd Font
     style: Normal
 
   # bold:

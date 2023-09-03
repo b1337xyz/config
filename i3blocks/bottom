@@ -1,13 +1,11 @@
 align=center
-# separator=false
+separator=false
 # separator_block_width=1
-color=#000000
 
-# [cmus]
-# background=#aaaaaa
-# command=~/.config/i3blocks/scripts/cmus
-# interval=once
-# signal=20
+[cmus]
+command=~/.config/i3blocks/scripts/cmus
+interval=once
+signal=20
 
 # [prev]
 # full_text=" 󰒮 "
@@ -44,8 +42,8 @@ color=#000000
 # min_width=" 0.00 0.00 0.00 "
 # interval=5
 
-[separator]
-full_text=""
-interval=once
+# [separator]
+# full_text=""
+# interval=once
 
 # vim: ft=cfg
