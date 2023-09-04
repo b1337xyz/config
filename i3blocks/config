@@ -54,7 +54,6 @@ signal=10
 # command=~/.config/i3blocks/scripts/bluetooth
 # interval=once
 
-
 # [volume]
 # markup=pango
 # command=~/.config/i3blocks/scripts/volume
@@ -66,8 +65,11 @@ signal=10
 markup=pango
 command=~/.config/i3blocks/scripts/time
 interval=15
-align=center
 min_width=1260
+
+# [cmus]
+# command=~/.config/i3blocks/scripts/cmus
+# interval=5
 
 [battery]
 markup=pango
@@ -97,9 +99,6 @@ min_width=" B 00% "
 # command=~/.config/i3blocks/scripts/wall
 # interval=once
 
-# [cmus]
-# command=~/.config/i3blocks/scripts/cmus
-# interval=5
 
 # [mpv]
 # command=~/.config/i3blocks/scripts/mpvplaying.sh

@@ -119,7 +119,7 @@ bindsym $mod+period        exec mpvc.sh /tmp/mpvradio toggle
 bindsym $mod+shift+greater exec mpvc.sh /tmp/mpvradio next
 bindsym $mod+shift+less    exec mpvc.sh /tmp/mpvradio prev
 bindsym $mod+Return        exec $term -e tmux
-bindsym $mod+shift+Return  exec $term --class floating_terminal
+bindsym $mod+shift+Return  exec $term --class floating_window
 bindsym $mod+d             exec drun.sh
 bindsym $mod+F5            exec chscreen.sh
 bindsym $mod+t             exec toggle_transparency.sh
@@ -147,11 +147,11 @@ mode "$launch_mode" {
     bindsym a exec ts -- fzfanime.sh ; mode "default"
     bindsym c exec tmux new-session -s cmus cmus ; mode "default"
     bindsym d exec discord ; mode "default"
-    bindsym e exec ts -t nnn -- nnn; mode "default"
+    bindsym e exec ts -n floating_window -t nnn -- nnn; mode "default"
     bindsym f exec firefox ; mode "default"
     bindsym k exec passc.sh ; mode "default"
     bindsym m exec mpv --profile=dragon; mode "default"
-    bindsym p exec ts -n floating_terminal -- pulsemixer ; mode "default"
+    bindsym p exec ts -n floating_window -- pulsemixer ; mode "default"
     bindsym q exec qutebrowser ; mode "default"
     bindsym r exec radio.sh ; mode "default"
     bindsym w exec wrun.sh ; mode "default"

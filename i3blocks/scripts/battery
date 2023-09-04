@@ -7,7 +7,7 @@ case "$status" in
     Disc*)
         if [ "$capacity" -lt 20 ]; then
             notify-send -r 3939 -i battery-low "Battery low!!!" "$(acpi)"
-            bgcolor="#f05050"
+            bgcolor="#a04040"
             icon=󰁾
         elif [ "$capacity" -ge 80 ];then
             icon=󰂂
@@ -20,7 +20,7 @@ case "$status" in
 esac
     
 if [ -n "$bgcolor" ];then
-    printf '<span bgcolor="%s"><span size="11pt">%s</span> %s%%</span>\n' "$bgcolor" "$icon" "$capacity"
+    printf '<span bgcolor="%s"><span size="11pt"> %s</span> %s%% </span>\n' "$bgcolor" "$icon" "$capacity"
 else
-    printf '<span size="11pt">%s</span> %s%%\n' "$icon" "$capacity"
+    printf '<span size="11pt"> %s</span> %s%% \n' "$icon" "$capacity"
 fi

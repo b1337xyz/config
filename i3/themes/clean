@@ -3,6 +3,7 @@ set $bg #2F343F
 set $b0 #333333
 set $fg #9fbfff
 set $f0 #999999
+set $f1 #ff9fb9
 
 bar {
     status_command i3blocks -c ~/.config/i3blocks/config
@@ -21,7 +22,7 @@ bar {
         focused_workspace    $bg $bg $fg
         inactive_workspace   $bg $bg $f0
         active_workspace     $bg $bg $f0
-        urgent_workspace     $bg $bg $f0
+        urgent_workspace     $bg $bg $f1
         binding_mode         $bg $bg $fg
     }
 }
