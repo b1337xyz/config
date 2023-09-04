@@ -332,5 +332,9 @@ nvm() {
     nvm "$@"
 }
 
-source ~/.local/src/bash-abbrev-alias/abbrev-alias.plugin.bash
-abbrev-alias status="systemctl --user status"
+# The best thing ever -> https://github.com/momo-lab/bash-abbrev-alias
+if source ~/.local/src/bash-abbrev-alias/abbrev-alias.plugin.bash 2>/dev/null
+then
+    abbrev-alias status="systemctl --user status"
+    abbrev-alias -g -e Latest='$(command ls -1trc | tail -1)'
+fi
