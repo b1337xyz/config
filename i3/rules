@@ -59,7 +59,6 @@ for_window [class="confirmreset"] floating enable
 for_window [class="dialog"] floating enable
 for_window [class="error"] floating enable
 for_window [class="explorer.exe"] floating enable
-for_window [class="feh"] floating enable
 for_window [class="file_progress"] floating enable
 for_window [class="lxqt-config"] floating enable
 for_window [class="notification"] floating enable
