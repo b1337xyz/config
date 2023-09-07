@@ -105,7 +105,6 @@ alias ...='cd ../..' gb='cd -' \
     dff='df -Th -t fuse.rclone -t ext4 -t btrfs -t nfs4 --total' \
     tmux_defaults='tmux -f /dev/null -L temp start-server \; show-options -g' \
     update_gdl='pip install --user -U -I --no-deps --no-cache-dir https://github.com/mikf/gallery-dl/archive/master.tar.gz' \
-    update_ytdl='pip install --user --force-reinstall https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz' \
     pfa='pgrep -fa' \
     mpvradio='systemctl --user start mpvradio.service' \
     clone='git clone --depth=1'
