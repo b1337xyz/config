@@ -169,7 +169,7 @@ set $xwall [p]rev [n]ext [d]menu [s]xiv [c]urrent [r]andom
 mode "$xwall" {
     bindsym p exec xwall.sh --prev
     bindsym n exec xwall.sh --next
-    bindsym d exec xwall.sh --dmenu ; mode "default"
+    bindsym d exec xwall.sh --dmenu
     bindsym s exec xwall.sh --sxiv ; mode "default"
     bindsym c exec xwall.sh --current
     bindsym r exec xwall.sh
