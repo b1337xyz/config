@@ -144,7 +144,7 @@ bindsym $mod+p mode "$print_mode"
 
 set $launch_mode [f]irefox [q]ute [t]elegram [p]ulsemixer [e]xplorer [r]adio [m]pv
 mode "$launch_mode" {
-    bindsym a exec ts -- fzfanime.sh ; mode "default"
+    bindsym a exec ts -- fzfanime.sh -q ; mode "default"
     bindsym c exec tmux new-session -s cmus cmus ; mode "default"
     bindsym d exec discord ; mode "default"
     bindsym e exec ts -n floating_window -t nnn -- nnn; mode "default"

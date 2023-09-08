@@ -247,7 +247,7 @@ prompt() {
     # PS1+="${hidden_count:-0} ., "
     # PS1+="${files:-0}${end}"
     # test -n "$exts"      && PS1+="${bar}${exts::-2}${rst}${bar}"
-    test -n "$last_mod"  && PS1+="${bar}$rst$last_mod${end}"
+    # test -n "$last_mod"  && PS1+="${bar}$rst$last_mod${end}"
     PS1+="${bar}${grn}${perm}${end}"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
     PS1+="${bar}${blu}\w${end}\n"
@@ -270,7 +270,7 @@ prompt() {
 
     if [ $COLUMNS -ge 100 ];then
         # https://wiki.archlinux.org/title/Bash/Prompt_customization#Right-justified_text
-        PS1=$(printf "\n%*s\r%s" $(( COLUMNS-1 )) "< $(uname -r)" "$PS1")
+        PS1=$(printf "\n%*s\r%s" $(( COLUMNS-1 )) "< $last_mod" "$PS1")
     fi
 
     # set title
