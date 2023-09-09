@@ -158,6 +158,7 @@ mode "$launch_mode" {
     bindsym s exec srun.sh ; mode "default"
     bindsym t exec telegram ; mode "default"
     bindsym y exec ytcli.py --history --dmenu ; mode "default"
+    bindsym v exec quickedit.sh ; mode "default"
 
     bindsym q      mode "default"
     bindsym Escape mode "default"

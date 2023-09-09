@@ -203,7 +203,6 @@ prompt() {
         deactivate
     fi
 
-    PS1=""
     local blk="\[\033[1;30m\]"
     local red="\[\033[1;31m\]"
     local grn="\[\033[1;32m\]"
@@ -215,6 +214,7 @@ prompt() {
     local rst="\[\033[00m\]"
     local bar="$cyn[${rst}"
     local end="$cyn]${rst}"
+    PS1="${blu}┏━${rst}" # ┌ ┍ ┎ ┏ ─ ━
     # local ip=$(command ip route get 1 | awk 'NR==1{print $7}')
     # local file_count=$(find -L . -xdev -mindepth 1 -maxdepth 1 -printf '%y\n' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ') 
     # local hidden_count=$(find . -mindepth 1 -maxdepth 1 -name '.*' | wc -l)
@@ -250,7 +250,8 @@ prompt() {
     # test -n "$last_mod"  && PS1+="${bar}$rst$last_mod${end}"
     PS1+="${bar}${grn}${perm}${end}"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
-    PS1+="${bar}${blu}\w${end}\n"
+    PS1+="${bar}${blu}\w${end}"
+    PS1+="\n${blu}┗${rst}" # └ ┕ ┖ ┗
     PS1+="\${timer_show}"
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
@@ -268,7 +269,7 @@ prompt() {
         PS1+="${red}${out}!${rst} "
     fi
 
-    if [ $COLUMNS -ge 100 ];then
+    if [ $COLUMNS -gt 100 ];then
         # https://wiki.archlinux.org/title/Bash/Prompt_customization#Right-justified_text
         PS1=$(printf "\n%*s\r%s" $(( COLUMNS-1 )) "< $last_mod" "$PS1")
     fi

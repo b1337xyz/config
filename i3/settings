@@ -7,7 +7,7 @@ floating_modifier $mod
 focus_wrapping workspace
 workspace_auto_back_and_forth no
 
-font pango: Sans 10
+font pango: JetBrainsMonoNerdFont 10
 # font pango: Iosevka Nerd Font 11
 
 for_window [all] title_format "%title"
@@ -22,8 +22,8 @@ hide_edge_borders smart
 workspace_layout tabbed
 
 # gaps outer|horizontal|vertical|top|left|bottom|right <gap_size>[px]
-# gaps outer 10
-# gaps inner 10
+gaps outer 4
+gaps inner 4
 # gaps bottom 28
 
 # smart_gaps on|off|inverse_outer

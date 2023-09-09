@@ -18,8 +18,10 @@ nmap(';b', 'hint buttons')
 nmap(';I', 'hint inputs')
 nmap('\\i', 'spawn -u imgdl.sh')
 nmap('\\v', 'spawn -u imgview.sh {url}')
+nmap('\\V', 'hint links spawn -u imgview.sh {hint-url}')
 nmap('\\s', 'hint images spawn -u searchimage.py saucenao {hint-url}')
-nmap(';g', 'hint --rapid links spawn gdl {hint-url}')
+nmap(';g', 'hint --rapid links spawn -d gdl {hint-url}')
+nmap(';4', 'hint --rapid links spawn -d 4ch-dl.sh {hint-url}')
 nmap('yx', 'hint images spawn -u searchimage.py yandex {hint-url}')
 nmap(';d', 'hint links run download {hint-url}')
 nmap('yd', 'hint --rapid links spawn -d ytdl {hint-url}')
@@ -61,6 +63,7 @@ c.content.prefers_reduced_motion = True
 c.content.register_protocol_handler = False
 c.content.javascript.clipboard = 'access-paste'
 c.downloads.location.prompt = False
+c.downloads.location.remember = False
 c.downloads.remove_finished = 0 # in miliseconds
 c.qt.highdpi = False
 c.scrolling.smooth = True
