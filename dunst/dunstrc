@@ -76,4 +76,7 @@
     frame_color = "#CD4533"
     timeout = 0
 
+[log]
+    script = ~/.scripts/shell/dunst/log.sh
+
 # vim: ft=cfg
