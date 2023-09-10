@@ -7,7 +7,7 @@ mimetype=$(file -Lbi -- "$1" | cut -d';' -f1)
 ext=$(printf '%s' "${1##*.}" | tr '[:upper:]' '[:lower:]')
 case "$mimetype" in
     audio/*|video/*|image/gif) devour mpv "$1" ;; # >/dev/null 2>&1 & ;;
-    image/*) nsxiv -q "$1" >/dev/null 2>&1 & ;;
+    image/*) devour nsxiv -q "$1" >/dev/null 2>&1 ;;
     text/*)  vim "$1" ;;
     *) false ;;
 esac && exit 0

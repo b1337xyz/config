@@ -1,9 +1,11 @@
 set $bar_font Iosevka Nerd Font 10
 set $bg #eeeeee
 set $b0 #333333
+set $b1 #dddddd
 set $fg #333333
 set $f0 #999999
 set $f1 #ff9fb9
+set $f2 #ffffff
 
 bar {
     status_command i3blocks -c ~/.config/i3blocks/config
@@ -23,7 +25,7 @@ bar {
         inactive_workspace   $bg $bg $f0
         active_workspace     $bg $bg $f0
         urgent_workspace     $bg $bg $f1
-        binding_mode         $bg $bg $fg
+        binding_mode         $b1 $b1 $fg
     }
 }
 

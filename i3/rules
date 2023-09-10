@@ -12,7 +12,7 @@ assign [class="Tor Browser"] $ws3
 assign [class="firefox"] $ws3
 assign [class="qutebrowser"] $ws3
 
-assign [class="Qemu-system-x86_64"] $ws8
+# assign [class="Qemu-system-x86_64"] $ws8
 assign [title="Steam"] $ws8
 assign [class="Steam"] $ws8
 assign [instance="Steam"] $ws8
