@@ -61,22 +61,19 @@
 
 [urgency_low]
     # background = "#424B50"
-    background = "#333333"
-    foreground = "#ffffff"
+    background = "#eeeeff"
+    foreground = "#333333"
     timeout = 5
 
 [urgency_normal]
-    background = "#333333"
-    foreground = "#ffffff"
+    background = "#eeeeff"
+    foreground = "#333333"
     timeout = 5
 
 [urgency_critical]
-    background = "#333333"
-    foreground = "#ffffff"
-    frame_color = "#CD4533"
+    background = "#eeeeff"
+    foreground = "#333333"
+    frame_color = "#fD5543"
     timeout = 0
-
-[log]
-    script = ~/.scripts/shell/dunst/log.sh
 
 # vim: ft=cfg
