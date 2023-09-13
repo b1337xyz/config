@@ -143,12 +143,7 @@ if ! [[ "$TERM" = xterm* ]];then
 fi
 
 cd() {
-    # if autocd is enabled
-    if [ "$1" = "--" ];then
-        command cd "$@"
-    else
-        command cd -- "$@"
-    fi || return $?
+    command cd "$@" || return $?
     timeout 1 ls --color=always -Nhltr 2>/dev/null || true
 }
 n() {
@@ -214,7 +209,7 @@ prompt() {
     local rst="\[\033[00m\]"
     local bar="$cyn[${rst}"
     local end="$cyn]${rst}"
-    PS1="${blu}┏━${rst}" # ┌ ┍ ┎ ┏ ─ ━
+    PS1="${blu}┎─${rst}" # ┌ ┍ ┎ ┏ ─ ━
     # local ip=$(command ip route get 1 | awk 'NR==1{print $7}')
     # local file_count=$(find -L . -xdev -mindepth 1 -maxdepth 1 -printf '%y\n' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ') 
     # local hidden_count=$(find . -mindepth 1 -maxdepth 1 -name '.*' | wc -l)
@@ -251,7 +246,7 @@ prompt() {
     PS1+="${bar}${grn}${perm}${end}"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
     PS1+="${bar}${blu}\w${end}"
-    PS1+="\n${blu}┗${rst}" # └ ┕ ┖ ┗
+    PS1+="\n${blu}┖${rst}" # └ ┕ ┖ ┗
     PS1+="\${timer_show}"
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
@@ -321,8 +316,6 @@ hxsj() {
 if [ -n "$DISPLAY" ];then
     todo ls | tail -5
 fi
-# printf '\e[1;31m'; cat ~/Documents/ASCII/Nerv; printf '\e[m\n'
-# shuf -n1 ~/.cache/quotes.csv | sed 's/|/\n\t- /'
 # printf 'Microsoft Windows XP [Version 5.1.2600]\n(C) Copyright 1985-2004 Microsoft Corp.\n\n'
 
 nvm() {
