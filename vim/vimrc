@@ -14,6 +14,8 @@ set viminfofile=$XDG_STATE_HOME/vim/viminfo
 let g:netrw_home = $XDG_DATA_HOME . "/vim"
 
 " Plugins {{{
+packadd YouCompleteMe
+
 call plug#begin()
 Plug 'pangloss/vim-javascript'
 Plug 'vim-python/python-syntax'
@@ -45,8 +47,8 @@ nnoremap <leader>b <cmd>Buffers<CR>
 nnoremap <leader>f <cmd>Files %:h<CR>
 
 " https://bitbucket.org/teramako/jscomplete-vim/src/master/
-let g:jscomplete_use = ['dom', 'es6th']
-autocmd FileType javascript :setlocal omnifunc=jscomplete#CompleteJS
+" let g:jscomplete_use = ['dom', 'es6th']
+" autocmd FileType javascript :setlocal omnifunc=jscomplete#CompleteJS
 
 " Plug 'vim-python/python-syntax'
 let g:python_highlight_all = 1
@@ -68,7 +70,7 @@ autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 " }}}
 
 " Settings {{{
-set omnifunc=syntaxcomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
 set completeopt=menuone,popup,noinsert
 set wildmenu
 set wildoptions=pum
@@ -161,6 +163,16 @@ command! -nargs=+ -complete=file Mkdir silent execute '!mkdir -p <args>' | execu
 command! -nargs=+ -complete=file Grep silent execute 'grep! -rI <args>' | execute ':redraw!' | copen 12
 command! -nargs=+ -complete=file RG cgetexpr system('rg --vimgrep <args>') | copen 12
 nnoremap <leader>g :Grep<Space>
+
+function! s:UpdateYCM()
+    exec '!pushd $XDG_CONFIG_HOME/vim/pack/YouCompleteMe/opt/YouCompleteMe && ' ..
+        \ 'git pull && ' .. 
+        \ 'git submodule update --init --recursive && ' ..
+        \ '. "$NVM_DIR/nvm.sh" && ' ..
+        \ './install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer && ' .. 
+        \ 'popd'
+endfun
+command UpdateYCM call s:UpdateYCM()
 
 function! ResCur()
   if line("'\"") <= line("$")
