@@ -15,12 +15,15 @@ let g:netrw_home = $XDG_DATA_HOME . "/vim"
 
 " Plugins {{{
 packadd YouCompleteMe
+let g:ycm_key_list_stop_completion = ['<C-y>']
+inoremap <expr> <CR> pumvisible() ? "\<C-y><CR>" : "<CR>"
 
 call plug#begin()
 Plug 'pangloss/vim-javascript'
 Plug 'vim-python/python-syntax'
 Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'ap/vim-css-color'
 Plug 'nvie/vim-flake8'
 Plug 'HerringtonDarkholme/yats.vim'
@@ -172,7 +175,7 @@ function! s:UpdateYCM()
         \ './install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer && ' .. 
         \ 'popd'
 endfun
-command UpdateYCM call s:UpdateYCM()
+command! UpdateYCM call s:UpdateYCM()
 
 function! ResCur()
   if line("'\"") <= line("$")

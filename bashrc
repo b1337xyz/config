@@ -332,3 +332,6 @@ then
     abbrev-alias Status="systemctl --user status"
     abbrev-alias -g -e Latest='$(command ls -1trc | tail -1)'
 fi
+
+source ~/.local/share/cargo/env
+grep "$(date +%Y-%m-) " ~/.cache/nyarss.log 2>/dev/null || true

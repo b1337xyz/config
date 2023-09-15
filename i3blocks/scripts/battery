@@ -7,7 +7,7 @@ case "$status" in
     Disc*)
         if [ "$capacity" -lt 20 ]; then
             notify-send -r 3939 -i battery-low "Battery low!!!" "$(acpi)"
-            bgcolor="#a04040"
+            bgcolor="#ff8080"
             icon=󰁾
         elif [ "$capacity" -ge 80 ];then
             icon=󰂂

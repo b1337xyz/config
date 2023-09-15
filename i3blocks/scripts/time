@@ -4,5 +4,5 @@ case "$BLOCK_BUTTON" in
     3)   ts -g 70x35 -n floating_window -- 'cal -y; read -N 1 -s' ;;
 esac
 
-date +'<span size="11pt"> %b %d %H:%M </span>' # Jun 21 22:10
+date +'<span size="11pt"> %b %d %Y %H:%M </span>' # Jun 21 22:10
 # date +' %H:%M %d/%m/%Y '
