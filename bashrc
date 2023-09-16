@@ -1,3 +1,10 @@
+# shellcheck disable=SC1090,SC1091,SC2016,SC2034,SC2155
+#   - ShellCheck can't follow non-constant source. Use a directive to specify location. [SC1090]
+#   - Not following: $X was not specified as input (see shellcheck -x). [SC1091]
+#   - Expressions don't expand in single quotes, use double quotes for that. [SC2016]
+#   - $X appears unused. Verify use (or export if used externally). [SC2034]
+#   - Declare and assign separately to avoid masking return values. [SC2155]
+
 [[ $- != *i* ]] && return
 # hash fish && fish && exit 0
 
@@ -95,15 +102,15 @@ fzcd() {
     local p
     p=$(find . -xdev -mindepth 1 -maxdepth 4 -type d \! -path './\.*' | fzf \
         --info=hidden --layout=reverse --height 20 --bind 'tab:accept')
-    [ -e "$p" ] && cd "$p"
+    cd "$p" || return 1
 }
 cb() {
     d=$(awk '!s[$0]++' ~/.cache/.bpwd | fzf -0 --info=hidden --reverse --height 20 --bind tab:accept);
-    [ -d "$d" ] && cd "$d" || return 1
+    cd "$d" || return 1
 }
 goback() {
     d=$(awk '!s[$0]++' ~/.cache/goback | fzf --info=hidden --layout=reverse --height 20 --tac --bind 'tab:accept')
-    [ -d "$d" ] && cd "$d"
+    cd "$d" || return 1
 }
 _quote() {
     # foo bar zzz -> alt+q -> foo 'bar' zzz
@@ -191,11 +198,11 @@ timer_stop() {
 trap 'timer_start' DEBUG
 
 prompt() {
-    out=$?
+    exit_code=$?
 
     if [ -z "$VIRTUAL_ENV" ] && [ -f ./venv/bin/activate ]; then
         source ./venv/bin/activate
-    elif [ -n "$VIRTUAL_ENV" ] && [ "${PWD#${VIRTUAL_ENV%/*}}" = "$PWD" ]; then
+    elif [ -n "$VIRTUAL_ENV" ] && [ "${PWD#"${VIRTUAL_ENV%/*}"}" = "$PWD" ]; then
         deactivate
     fi
 
@@ -208,8 +215,8 @@ prompt() {
     local cyn="\[\033[1;36m\]"
     local whi="\[\033[1;37m\]"
     local rst="\[\033[00m\]"
-    local bar="$cyn[${rst}"
-    local end="$cyn]${rst}"
+    local bar="${cyn}[${rst}"
+    local end="${cyn}]${rst}"
     PS1="${blu}┎─${rst}" # ┌ ┍ ┎ ┏ ─ ━
     # local ip=$(command ip route get 1 | awk 'NR==1{print $7}')
     # local file_count=$(find -L . -xdev -mindepth 1 -maxdepth 1 -printf '%y\n' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ') 
@@ -234,8 +241,8 @@ prompt() {
     local perm=$(stat -c '%a' .)
     local git_branch="$(git branch --show-current 2>/dev/null | sed 's/\(.*\)/(\1) /')"
     
-    # test "${out:-0}" -eq 0 && PS1+="${bar}${grn}" || PS1+="${bar}[${red}"
-    # PS1+="${out}${end}"
+    # test "${exit_code:-0}" -eq 0 && PS1+="${bar}${grn}" || PS1+="${bar}[${red}"
+    # PS1+="${exit_code}${end}"
     # PS1="${bar}${red}\V${end}"
     # PS1+="${bar}${cyn}${ram_usage}${end}"
     # test -n "$fsize" && PS1+="${bar}${red}${fsize}${end}"
@@ -254,7 +261,7 @@ prompt() {
 
     [ -n "$WSLENV" ] && PS1+="(wsl) "
 
-    if test "${out:-0}" -eq 0;then
+    if test "${exit_code:-0}" -eq 0;then
         # PS1+="${grn}( •_•)${rst} "  # λ π β ω μ
         PS1+="\$ "
     else
@@ -262,7 +269,7 @@ prompt() {
         # [ -f "$beep" ] && mpv --no-config --no-video --really-quiet "$beep" &
         # [ -f "$beep" ] && aplay -q "$beep" &
         # PS1+="${red}(；☉_☉)${rst} "
-        PS1+="${red}${out}!${rst} "
+        PS1+="${red}${exit_code}!${rst} "
     fi
 
     if [ $COLUMNS -gt 100 ];then
@@ -275,7 +282,8 @@ prompt() {
     [[ "${PWD//[^\/]/}" = ////* ]] && pwd >> ~/.cache/goback
 }
 ms_prompt() {
-    msdos_pwd() { pwd | tr '/' '\\'; }
+    # shellcheck disable=SC1003,SC2317
+    msdos_pwd() { pwd | tr '/' '\\' ; }
     PS1='C:$(msdos_pwd)> '
 }
 PROMPT_COMMAND="prompt; timer_stop"
@@ -335,4 +343,4 @@ then
 fi
 
 source ~/.local/share/cargo/env
-grep "$(date +%Y-%m-) " ~/.cache/nyarss.log 2>/dev/null || true
+grep --color "^$(date +%Y-%m-%d)" ~/.cache/nyarss.log 2>/dev/null || true

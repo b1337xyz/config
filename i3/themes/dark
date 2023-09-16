@@ -1,42 +1,38 @@
+set $bar_font Iosevka Nerd Font 10
+set $bg #000000
+set $b0 #333333
+set $b1 #dddddd
+set $fg #bfbfff
+set $f0 #999999
+set $f1 #ff9fb9
+set $f2 #ffffff
+
 bar {
-    padding -2px 2px
     status_command i3blocks -c ~/.config/i3blocks/config
-    font pango: Iosevka Nerd Font 10
+    padding -3px 0px
+    font pango: $bar_font
     strip_workspace_numbers yes
     binding_mode_indicator yes
     workspace_buttons yes
+    output primary
     position top
     mode dock
-    tray_output primary
-    output primary
-    workspace_min_width 25
-    set $bbg #32414B
-    set $separator #90f0ff
-    set $bfg #ffffff
-    set $bifg #888888
+    workspace_min_width 30
     colors {
-        background $bbg
-        separator  $separator
-        statusline $bfg
-
-        # class              border bg fg 
-        focused_workspace    $bbg $bbg $bfg
-        inactive_workspace   $bbg $bbg $bifg
-        active_workspace     $bbg $bbg $bifg
-        urgent_workspace     $bbg $bbg $bifg
-        binding_mode         $bbg $bbg $bfg
+        background $bg
+        statusline $fg
+        focused_workspace    $bg $bg $fg
+        inactive_workspace   $bg $bg $f0
+        active_workspace     $bg $bg $f0
+        urgent_workspace     $bg $bg $f1
+        binding_mode         $b1 $b1 $fg
     }
 }
 
-set $fbg #32414B
-set $ffg #ffffff
-set $ubg #19232D
-set $ufg #888888
-
 # class                 border bg fg indicator child_border
-client.focused          $fbg $fbg $ffg $fbg $fbg
-client.focused_inactive $ubg $ubg $ufg $ubg $ubg
-client.unfocused        $ubg $ubg $ufg $ubg $ubg
-client.urgent           $ubg $ubg $ufg $ubg $ubg
+client.focused          $bg $bg $fg $bg $bg
+client.focused_inactive $bg $bg $fg $b0 $b0
+client.unfocused        $b0 $b0 $f0 $b0 $b0
+client.urgent           $b0 $b0 $f0 $b0 $b0
 
 # vim: ft=i3config

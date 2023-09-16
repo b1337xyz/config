@@ -34,7 +34,7 @@ case "$1" in
     d) while read -r i;do rm -v "$i" ;done ;;
     # n) read -r f; rm -rfv "${f%/*}" ;; # dangerous!
     n) read -r f; alacritty -e nnn "${f%/*}" & ;;
-    g) read -r f; gimp "$f" & ;;
+    g) read -r f; setsid -f -- gimp "$f" >/dev/null 2>&1 & ;;
     w) head -1 | xargs -I{} xwall.sh '{}' ;;
     f) head -1 | xargs -I{} xwall.sh --focus '{}' ;;
     t) head -1 | xargs -I{} xwall.sh --tile '{}' ;;

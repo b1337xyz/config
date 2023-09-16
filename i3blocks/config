@@ -5,10 +5,13 @@ align=center
 # border_bottom=2
 # border=#80cfff
 # full_text="|"
-separator=false
-separator_block_width=1
+# separator=false
+# separator_block_width=1
 
 # background=#A4A6D9
+# color=#000000
+
+# background=#bfbfff
 # color=#000000
 
 # White
@@ -61,12 +64,6 @@ signal=10
 # signal=10
 # interval=once
 
-[time]
-markup=pango
-command=~/.config/i3blocks/scripts/time
-interval=15
-min_width=1260
-
 # [cmus]
 # command=~/.config/i3blocks/scripts/cmus
 # interval=5
@@ -76,6 +73,12 @@ markup=pango
 command=~/.config/i3blocks/scripts/battery
 interval=60
 min_width=" B 00% "
+
+[time]
+markup=pango
+command=~/.config/i3blocks/scripts/time
+interval=15
+
 
 # [blank]
 # full_text=" "

@@ -7,7 +7,7 @@ set $b3 #ffffff
 set $b4 #900000
 
 bar {
-    padding -2px 0px
+    padding -4px 0px
     font pango: $bar_font
     # i3bar_command i3bar --transparency
     status_command i3blocks -c ~/.config/i3blocks/config
