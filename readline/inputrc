@@ -19,7 +19,7 @@ set completion-map-case on
 # "\C-xFC": magic-space
 # Space:"\C-xFD\C-xFC"
 
-"\ew": forward-word
+"\C-x\C-e": edit-and-execute-command
 "\C-d": delete-char
 "\t": menu-complete
 "\e[Z": menu-complete-backward

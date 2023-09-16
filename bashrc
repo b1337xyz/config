@@ -33,6 +33,7 @@ export TODOFILE="$XDG_CACHE_HOME"/.todo
 export FZF_DEFAULT_OPTS='--no-border --no-separator --color=dark'
 export PROMPT_DIRTRIM=2
 export COLORTERM=truecolor  # https://github.com/termstandard/colors
+export EXECIGNORE=jackd
 
 source /usr/share/bash-completion/bash_completion
 source ~/.config/dircolors 2>/dev/null || eval "$(dircolors -b | tee ~/.config/dircolors)"
