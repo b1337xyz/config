@@ -36,11 +36,11 @@ export NNN_SSHFS_OPTS='sshfs -o allow_other,follow_symlinks,reconnect'
 export PAGER=less
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export TERM=${TERM:-xterm-256color}
-export TODOFILE="$XDG_CACHE_HOME"/.todo
+export COLORTERM=truecolor  # https://github.com/termstandard/colors
 export FZF_DEFAULT_OPTS='--no-border --no-separator --color=dark'
 export PROMPT_DIRTRIM=2
-export COLORTERM=truecolor  # https://github.com/termstandard/colors
 export EXECIGNORE=jackd
+export TODOFILE="$XDG_CACHE_HOME"/.todo
 
 source /usr/share/bash-completion/bash_completion
 source ~/.config/dircolors 2>/dev/null || eval "$(dircolors -b | tee ~/.config/dircolors)"
@@ -263,7 +263,7 @@ prompt() {
 
     if test "${exit_code:-0}" -eq 0;then
         # PS1+="${grn}( •_•)${rst} "  # λ π β ω μ
-        PS1+="\$ "
+        PS1+="${grn}❱${rst} " # ❭ ❱ ✘
     else
         # local beep=~/Music/Yuu_windows_theme/you_hmm?.wav
         # [ -f "$beep" ] && mpv --no-config --no-video --really-quiet "$beep" &
@@ -329,7 +329,7 @@ fi
 
 nvm() {
     [ -s "$NVM_DIR/nvm.sh" ] || { printf '%s not found, is nvm installed?' "$NVM_DIR/nvm.sh"; return 1; }
-    unset nvm  # just to be sure
+    unset -f nvm  # just to be sure
     source "$NVM_DIR/nvm.sh"
     source "$NVM_DIR/bash_completion"
     nvm "$@"
