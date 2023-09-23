@@ -62,6 +62,7 @@ shopt -s dirspell
 shopt -s cdspell
 shopt -s cmdhist
 shopt -s globstar
+shopt -s extglob
 
 expand_files() {
     # Example:
@@ -342,5 +343,9 @@ then
     abbrev-alias -g -e Latest='$(command ls -1trc | tail -1)'
 fi
 
+cropstr() {
+    awk -v cols=${1:-$((COLUMNS - 8))} '{print (length($0) > cols) ? substr($0, 0, cols - 3)"..." : $0}'
+}
+
 source ~/.local/share/cargo/env
-grep --color "^$(date +%Y-%m-%d)" ~/.cache/nyarss.log 2>/dev/null || true
+grep --color "^$(date +%Y-%m-%d).*:INFO:" ~/.cache/nyarss.log 2>/dev/null | cropstr || true

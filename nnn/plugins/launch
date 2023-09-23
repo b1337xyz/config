@@ -3,31 +3,31 @@
 # FIFO_PID=/tmp/nnn_fifo.pid
 # [ -f "$FIFO_PID" ] && xargs -r kill < "$FIFO_PID"
 
-mimetype=$(file -Lbi -- "$1" | cut -d';' -f1)
-ext=$(printf '%s' "${1##*.}" | tr '[:upper:]' '[:lower:]')
-case "$mimetype" in
-    audio/*|video/*|image/gif) devour mpv "$1" ;; # >/dev/null 2>&1 & ;;
+PAGER=${PAGER:-less -Ri}
+
+mimetype=$(file -Lbi -- "$1")
+case "${mimetype%;*}" in
+    audio/*|video/*|image/gif) devour mpv "$1" ;;
     image/*) devour nsxiv -q "$1" >/dev/null 2>&1 ;;
-    text/*)  vim "$1" ;;
+    text/*)  ${EDITOR:-vi} "$1" ;;
     *) false ;;
 esac && exit 0
 
+ext=$(printf '%s' "${1##*.}" | tr '[:upper:]' '[:lower:]')
 case "$ext" in
     a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|\
     rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)
-        atool --list -- "$1" | eval "$PAGER"
+        atool --list -- "$1" | $PAGER
     ;;
-    rar) unrar lt -p- -- "$1" | eval "$PAGER" ;;
-    7z) 7z l -p -- "$1" | eval "$PAGER" ;;
-    cbz|pdf|epub) zathura "$1" >/dev/null 2>&1 & ;;
     torrent) xdg-open "$1" >/dev/null 2>&1 & ;;
-    md) glow -sdark "$1" | eval "$PAGER" ;;
-    htm|html|xhtml) w3m -dump "$1" | eval "$PAGER" ;;
-    json) jq --color-output . "$1" | eval "$PAGER" ;;
-    mts) mpv "$1" ;;
+    rar) unrar lt -p- -- "$1" | $PAGER ;;
+    7z) 7z l -p -- "$1" | $PAGER ;;
+    htm|html|xhtml) w3m -dump "$1" | $PAGER ;;
+    json) jq --color-output . "$1" | $PAGER ;;
+    md) bat --color=always "$1" ;;
+    cbz|pdf|epub) devour zathura "$1" ;;
+    mts) devour mpv "$1" ;;
     exe) wine "$1" ;;
-    ass|srt|vtt) aegisub "$1" >/dev/null 2>&1 & ;;
-    *) false ;;
-esac && exit 0
-
-exit 1
+    ass|srt|vtt) setsid -f -- aegisub "$1" >/dev/null 2>&1 ;;
+    *) exit 1 ;;
+esac
