@@ -8,8 +8,6 @@
 [[ $- != *i* ]] && return
 # hash fish && fish && exit 0
 
-rm ~/.python_history 2>/dev/null
-
 export GPG_TTY=$(tty)
 export BAT_STYLE=plain
 export BAT_THEME="OneHalfDark"
@@ -79,6 +77,7 @@ expand_files() {
     READLINE_LINE="${cmd:1}"
     READLINE_POINT=${#cmd}
 }
+
 fzfhist() {
     local cmd=
     cmd=$(history | awk '{sub(/^ +?[0-9 ]+/, "", $0); if (length($0) > 2) print $0}' |
@@ -87,6 +86,7 @@ fzfhist() {
     READLINE_LINE="$cmd"
     READLINE_POINT=${#cmd}
 }
+
 fzfgov() {
     local current=
     current=$(</sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
@@ -94,25 +94,30 @@ fzfgov() {
         /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors |
         fzf --header "current: $current" --height 8 | xargs -ro sudo cpupower frequency-set -g 
 }
+
 undomv() {
     # undo `mv foo bar` -> `mv bar foo`
     READLINE_LINE="mv !mv:2 !mv:1 -vn"
     READLINE_POINT=${#READLINE_LINE}
 }
+
 fzcd() {
     local p
     p=$(find . -xdev -mindepth 1 -maxdepth 4 -type d \! -path './\.*' | fzf \
         --info=hidden --layout=reverse --height 20 --bind 'tab:accept')
     cd "$p" || return 1
 }
+
 cb() {
     d=$(awk '!s[$0]++' ~/.cache/.bpwd | fzf -0 --info=hidden --reverse --height 20 --bind tab:accept);
     cd "$d" || return 1
 }
+
 goback() {
     d=$(awk '!s[$0]++' ~/.cache/goback | fzf --info=hidden --layout=reverse --height 20 --tac --bind 'tab:accept')
     cd "$d" || return 1
 }
+
 _quote() {
     # foo bar zzz -> alt+q -> foo 'bar' zzz
     #     ^^^ cursor is here
@@ -126,6 +131,7 @@ _quote() {
     READLINE_LINE="${left}'${word}'$right"
     READLINE_POINT=$(( ${#left} + ${#word} + 2 ))
 }
+
 _pager() {
     READLINE_LINE="${READLINE_LINE} | bat"
 }
@@ -155,6 +161,7 @@ cd() {
     command cd "$@" || return $?
     timeout 1 ls --color=always -Nhltr 2>/dev/null || true
 }
+
 n() {
     if [ -n "$NNNLVL" ] && [ "${NNNLVL:-0}" -ge 1 ]; then
         echo "nnn is already running"; return
@@ -168,14 +175,17 @@ n() {
         command rm -f "$NNN_TMPFILE"
     fi
 }
+
 r() {
     local cache=~/.cache/.rangedir
     ranger --choosedir="$cache" "$@"
     cd -- "$(cat "$cache")" || return 1
 }
+
 timer_start() {
     timer=${timer:-$SECONDS}
 }
+
 timer_stop() {
     local hh mm ss
     timer_show=$((SECONDS - timer))
@@ -196,6 +206,7 @@ timer_stop() {
     fi
     unset timer
 }
+
 trap 'timer_start' DEBUG
 
 prompt() {
@@ -291,7 +302,7 @@ PROMPT_COMMAND="prompt; timer_stop"
 
 function bye {
     echo "bye ^-^"
-    [ -n "$SSH_CLIENT" ] && cat ~/Documents/txt/seeyouspacecowboy.txt
+    # [ -n "$SSH_CLIENT" ] && cat ~/Documents/txt/seeyouspacecowboy.txt
 }
 trap bye EXIT
 
@@ -343,9 +354,5 @@ then
     abbrev-alias -g -e Latest='$(command ls -1trc | tail -1)'
 fi
 
-cropstr() {
-    awk -v cols=${1:-$((COLUMNS - 8))} '{print (length($0) > cols) ? substr($0, 0, cols - 3)"..." : $0}'
-}
-
 source ~/.local/share/cargo/env
-grep --color "^$(date +%Y-%m-%d).*:INFO:" ~/.cache/nyarss.log 2>/dev/null | cropstr || true
+grep --color "^$(date +%Y-%m-%d).*:INFO:" ~/.cache/nyarss.log 2>/dev/null | cut -c -$((COLUMNS - 2))

@@ -1,12 +1,16 @@
 #!/bin/sh
 
-# FIFO_PID=/tmp/nnn_fifo.pid
-# [ -f "$FIFO_PID" ] && xargs -r kill < "$FIFO_PID"
+NNN_FIFO=${NNN_FIFO:-/tmp/nnn.fifo}
+PREVIEW_PID=/tmp/nnn_preview.pid
+if [ -e "$NNN_FIFO" ] && [ -f "$PREVIEW_PID" ];then
+    echo hide > "$NNN_FIFO"
+    trap 'echo unhide > $NNN_FIFO' EXIT
+fi
 
 PAGER=${PAGER:-less -Ri}
 
-mimetype=$(file -Lbi -- "$1")
-case "${mimetype%;*}" in
+mime=$(file -Lbi -- "$1")
+case "${mime%%;*}" in
     audio/*|video/*|image/gif) devour mpv "$1" ;;
     image/*) devour nsxiv -q "$1" >/dev/null 2>&1 ;;
     text/*)  ${EDITOR:-vi} "$1" ;;

@@ -23,7 +23,8 @@ alias ls='ls -vNh --color' \
     ncdu='ncdu -x --color off --graph-style hash' \
     dosbox='dosbox -conf "$XDG_CONFIG_HOME"/dosbox/dosbox.conf' \
     top='top -u $USER' \
-    yay='yay --removemake'
+    yay='yay --removemake' \
+    sqlite3='sqlite3 -init "$XDG_CONFIG_HOME"/sqlite3/sqliterc'
 
 ### sudo
 alias mount='sudo mount' \

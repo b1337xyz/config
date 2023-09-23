@@ -44,7 +44,7 @@ nnoremap <leader>t :NERDTree<CR>
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-let g:fzf_layout = { 'down': '40%', }
+let g:fzf_layout = { 'down': '30%', }
 let g:fzf_preview_window = ['hidden', 'ctrl-/']
 nnoremap <leader>b <cmd>Buffers<CR>
 nnoremap <leader>f <cmd>Files %:h<CR>
@@ -68,7 +68,7 @@ let g:syntastic_ignore_files = ['/completions/']
 " let g:syntastic_javascript_checkers = ['eslint']
 
 " Plug 'nvie/vim-flake8'
-let g:flake8_quickfix_height = 8
+let g:flake8_quickfix_height = 5
 autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 
 " }}}
