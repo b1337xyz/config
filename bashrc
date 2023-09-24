@@ -350,8 +350,10 @@ nvm() {
 # The best thing ever -> https://github.com/momo-lab/bash-abbrev-alias
 if source ~/.local/src/bash-abbrev-alias/abbrev-alias.plugin.bash 2>/dev/null
 then
-    abbrev-alias Status="systemctl --user status"
-    abbrev-alias -g -e Latest='$(command ls -1trc | tail -1)'
+    abbrev-alias status="systemctl --user status"
+    abbrev-alias stop="systemctl --user stop"
+    abbrev-alias start="systemctl --user start"
+    abbrev-alias -g -e LF='$(command ls -1trc | tail -1)' # latest file
 fi
 
 source ~/.local/share/cargo/env
