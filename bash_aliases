@@ -1,6 +1,4 @@
 ### default
-alias DIR='dir -lak --color=never'
-
 alias ls='ls -vNh --color' \
     btm='btm -C ~/.config/bottom/config.toml' \
     dir='dir --color' \
@@ -125,5 +123,4 @@ alias pSs='pacman -Ss' \
     pS='sudo pacman -S' \
     pSyu='sudo pacman -Syu' \
     pRns='pacman -Qtdq | sudo pacman -Rns -' \
-    yScc='yay -Scc' \
-    ySyu='yay -Syu'
+    yScc='yay -Scc'
