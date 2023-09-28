@@ -98,8 +98,8 @@ bindsym Print exec print.sh
 bindsym XF86AudioRaiseVolume exec volupdown.sh up
 bindsym XF86AudioLowerVolume exec volupdown.sh down
 bindsym XF86AudioMute exec volupdown.sh toggle
-bindsym XF86MonBrightnessUp  exec brightnessctl s +1%
-bindsym XF86MonBrightnessDown exec brightnessctl s 1%-
+bindsym XF86MonBrightnessUp  exec brightnessctl s +25
+bindsym XF86MonBrightnessDown exec brightnessctl s 25-
 bindsym XF86Search exec brightnessctl s +2%
 bindsym XF86Calculator exec brightnessctl s 2%-
 bindsym XF86AudioPlay exec cmus-remote -u

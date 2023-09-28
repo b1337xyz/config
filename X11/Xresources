@@ -30,6 +30,12 @@ Nsxiv.window.foreground: #9fbfff
 Nsxiv.mark.foreground: #ff3040
 dmenu.font: monospace-10
 
+/* Grubox */
+dmenu.background: #1d2021
+dmenu.foreground: #EBDBB2
+dmenu.selbackground: #282828
+dmenu.selforeground: #689d68
+
 /* Midori */
 /* dmenu.background: #83A36B */
 /* dmenu.foreground: #253525 */
@@ -55,10 +61,10 @@ dmenu.font: monospace-10
 /* dmenu.selforeground: #ffffff */
 
 /* darker */ 
-dmenu.background: #2F343F
-dmenu.foreground: #999999
-dmenu.selbackground: #1F242F
-dmenu.selforeground: #9fbfff
+/* dmenu.background: #2F343F */
+/* dmenu.foreground: #999999 */
+/* dmenu.selbackground: #1F242F */
+/* dmenu.selforeground: #9fbfff */
 
 /* XP */
 /* dmenu.background: #EBE9D8 */

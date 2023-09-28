@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/Ayu-Mirage.yml
+  - ~/.config/alacritty/themes/gruvbox_dark.yaml
 
 env:
   TERM: xterm-256color
@@ -25,7 +25,7 @@ window:
 
   dynamic_padding: true
   decorations: full
-  opacity: 0.9
+  opacity: 1.0
 
 font:
   normal:

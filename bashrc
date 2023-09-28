@@ -8,10 +8,20 @@
 [[ $- != *i* ]] && return
 # hash fish && fish && exit 0
 
+_update_goback() {
+    tmpgb=$(mktemp --dry-run)
+    while read -r i;do
+        [ -d "$i" ] && echo "$i"
+    done < <(tac ~/.cache/goback) | awk '!s[$0]++' > "$tmpgb"
+    command mv "$tmpgb" ~/.cache/goback
+    unset tmpgb
+}
+
 export GPG_TTY=$(tty)
 export BAT_STYLE=plain
 export BAT_THEME="OneHalfDark"
 # export BAT_THEME="gruvbox-light"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export HISTIGNORE='?:??:???:neofetch:history:sensors:uptime:uptime -?:uname:uname -?'
 export HISTCONTROL='ignoreboth:erasedups'
@@ -24,15 +34,7 @@ export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_so=$'\E[40;32m'    # begin reverse video
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-export NNN_CONTEXT_COLORS="1234"
-export NNN_FCOLORS='c1e22729006033f7c6d6abc4'
-export NNN_FIFO='/tmp/nnn.fifo'
-export NNN_OPENER="$HOME/.config/nnn/plugins/launch"
-export NNN_OPTS='cEA'
-export NNN_PLUG='t:lstar;T:trash;m:mediainf;i:imgview;c:cpb;C:cpp;v:video;e:extract;p:spv;h:crc32check'
-export NNN_SSHFS_OPTS='sshfs -o allow_other,follow_symlinks,reconnect'
 export PAGER=less
-# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export TERM=${TERM:-xterm-256color}
 export COLORTERM=truecolor  # https://github.com/termstandard/colors
 export FZF_DEFAULT_OPTS='--no-border --no-separator --color=dark'
@@ -229,7 +231,7 @@ prompt() {
     local rst="\[\033[00m\]"
     local bar="${cyn}[${rst}"
     local end="${cyn}]${rst}"
-    PS1="${blu}┎─${rst}" # ┌ ┍ ┎ ┏ ─ ━
+    PS1="" # ┌ ┍ ┎ ┏ ─ ━
     # local ip=$(command ip route get 1 | awk 'NR==1{print $7}')
     # local file_count=$(find -L . -xdev -mindepth 1 -maxdepth 1 -printf '%y\n' | sort | uniq -c | sed 's/[ \t]*\([0-9]*\) \(.*\)/\1 \2,/' | tr \\n ' ') 
     # local hidden_count=$(find . -mindepth 1 -maxdepth 1 -name '.*' | wc -l)
@@ -265,8 +267,8 @@ prompt() {
     # test -n "$last_mod"  && PS1+="${bar}$rst$last_mod${end}"
     PS1+="${bar}${grn}${perm}${end}"
     # test -n "$(jobs -p)" && PS1+="${bar}(${rst}\j${bar})-"
-    PS1+="${bar}${blu}\w${end}"
-    PS1+="\n${blu}┖${rst}" # └ ┕ ┖ ┗
+    PS1+="${bar}${blu}\w${end}\n"
+    # PS1+="${blu}┖${rst}" # └ ┕ ┖ ┗
     PS1+="\${timer_show}"
     PS1+="$VIRTUAL_ENV_PROMPT"
     PS1+="$git_branch"
