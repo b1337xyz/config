@@ -31,10 +31,10 @@ Nsxiv.mark.foreground: #ff3040
 dmenu.font: monospace-10
 
 /* Grubox */
-dmenu.background: #1d2021
-dmenu.foreground: #EBDBB2
-dmenu.selbackground: #282828
-dmenu.selforeground: #689d68
+/* dmenu.background: #1d2021 */
+/* dmenu.foreground: #EBDBB2 */
+/* dmenu.selbackground: #282828 */
+/* dmenu.selforeground: #689d68 */
 
 /* Midori */
 /* dmenu.background: #83A36B */
@@ -43,10 +43,10 @@ dmenu.selforeground: #689d68
 /* dmenu.selforeground: #000000 */
 
 /* Dark */
-/* dmenu.background: #19232D */
-/* dmenu.foreground: #ffffff */
-/* dmenu.selbackground: #32414B */
-/* dmenu.selforeground: #90f0ff */
+dmenu.background: #19232D
+dmenu.foreground: #ffffff
+dmenu.selbackground: #32414B
+dmenu.selforeground: #90f0ff
 
 /* Light */
 /* dmenu.background: #eeeeee */

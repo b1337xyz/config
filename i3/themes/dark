@@ -1,7 +1,6 @@
-set $bar_font Iosevka Nerd Font 10
+set $bar_font JetBrains Mono Nerd Font 10
 set $bg #000000
 set $b0 #333333
-set $b1 #dddddd
 set $fg #bfbfff
 set $f0 #999999
 set $f1 #ff9fb9
@@ -25,7 +24,7 @@ bar {
         inactive_workspace   $bg $bg $f0
         active_workspace     $bg $bg $f0
         urgent_workspace     $bg $bg $f1
-        binding_mode         $b1 $b1 $fg
+        binding_mode         $bg $bg $fg
     }
 }
 

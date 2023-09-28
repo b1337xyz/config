@@ -1,4 +1,4 @@
-set $bar_font JetBrains Mono Nerd Font  10
+set $bar_font JetBrains Mono Nerd Font 10
 set $bg #eeeeee
 set $b0 #333333
 set $b1 #dddddd
