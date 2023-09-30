@@ -359,4 +359,4 @@ then
 fi
 
 source ~/.local/share/cargo/env
-grep --color "^$(date +%Y-%m-%d).*:INFO:" ~/.cache/nyarss.log 2>/dev/null | cut -c -$((COLUMNS - 2))
+grep --color "^$(date +%Y-%m-%d).*NEW" ~/.cache/nyarss.log 2>/dev/null | cut -c -$((COLUMNS - 2))

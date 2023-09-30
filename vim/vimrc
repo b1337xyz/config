@@ -147,6 +147,7 @@ autocmd BufWritePost Xresources !xrdb load %
 autocmd BufWritePost dunstrc !~/.scripts/shell/dunst/reload.sh
 autocmd BufWritePost ~/.config/i3/* !i3-msg reload
 autocmd BufWritePost */i3blocks/config !i3-msg restart
+autocmd BufWritePost */i3status/config !i3-msg restart
 autocmd BufWritePost */X11/themes/* !xrdb load ~/.config/X11/Xresources
 autocmd BufWritePost */alacritty/themes/*.yml !touch -m ~/.config/alacritty/*.yml
 autocmd BufWritePost */polybar/config.ini !~/.config/polybar/launch

@@ -5,7 +5,7 @@
     height = 300
     gap_size = 0
     origin = top-right
-    offset = 5x5
+    offset = 5x25
     scale = 0
     notification_limit = 0
     progress_bar = true
@@ -53,26 +53,20 @@
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
     frame_width = 2
-    # frame_color = "#af80cf"
+    background = "#222222"
+    foreground = "#ffffff"
     frame_color = "#9fbfff"
 
 # [fullscreen]
 #     fullscreen = pushback
 
 [urgency_low]
-    # background = "#424B50"
-    background = "#eeeeff"
-    foreground = "#333333"
     timeout = 5
 
 [urgency_normal]
-    background = "#eeeeff"
-    foreground = "#333333"
     timeout = 5
 
 [urgency_critical]
-    background = "#eeeeff"
-    foreground = "#333333"
     frame_color = "#fD5543"
     timeout = 0
 

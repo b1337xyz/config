@@ -2,7 +2,7 @@ set $exec exec --no-startup-id
 
 $exec qbittorrent
 $exec tmux new-session -d -s cmus cmus
-$exec unclutter --idle 1 --jitter 2 --root
+# $exec unclutter --idle 1 --jitter 2 --root
 $exec ~/.cache/xwallpaper
 $exec setscreen.sh
 
