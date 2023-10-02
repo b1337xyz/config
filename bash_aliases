@@ -106,7 +106,9 @@ alias ...='cd ../..' gb='cd -' \
     update_gdl='pip install --user -U -I --no-deps --no-cache-dir https://github.com/mikf/gallery-dl/archive/master.tar.gz' \
     pfa='pgrep -fa' \
     mpvradio='systemctl --user start mpvradio.service' \
-    clone='git clone --depth=1'
+    clone='git clone --depth=1' \
+    aplay='mpv --no-video'
+
 
 ### pacman
 alias pSs='pacman -Ss' \

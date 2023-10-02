@@ -31,6 +31,8 @@ case "$1" in
     comma)  rotate 270 ;;
     period) rotate  90 ;;
     slash)  rotate 180 ;;
+    i) while read -r i;do mogrify -flip "$i" ;done ;;
+    o) while read -r i;do mogrify -flop "$i" ;done ;;
     d) while read -r i;do rm -v "$i" ;done ;;
     # n) read -r f; rm -rfv "${f%/*}" ;; # dangerous!
     n) read -r f; alacritty -e nnn "${f%/*}" & ;;
