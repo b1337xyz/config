@@ -76,8 +76,8 @@ bindsym $mod+shift+minus exec i3-scratchpad-dmenu.py && pkill -SIGRTMIN+10 i3blo
 # 82  KP_Subtract
 # 86  KP_Add
 # 129 KP_Decimal
-bindcode 86 exec volupdown.sh up
-bindcode 82 exec volupdown.sh down
+# bindcode 86 exec volupdown.sh up
+# bindcode 82 exec volupdown.sh down
 
 # 80  KP_Up
 # 83  KP_Left
@@ -98,8 +98,8 @@ bindsym Print exec print.sh
 bindsym XF86AudioRaiseVolume exec volupdown.sh up
 bindsym XF86AudioLowerVolume exec volupdown.sh down
 bindsym XF86AudioMute exec volupdown.sh toggle
-bindsym XF86MonBrightnessUp  exec brightnessctl s +25
-bindsym XF86MonBrightnessDown exec brightnessctl s 25-
+bindsym XF86MonBrightnessUp  exec brightnessctl s +35
+bindsym XF86MonBrightnessDown exec brightnessctl s 35-
 bindsym XF86Search exec brightnessctl s +2%
 bindsym XF86Calculator exec brightnessctl s 2%-
 bindsym XF86AudioPlay exec cmus-remote -u
