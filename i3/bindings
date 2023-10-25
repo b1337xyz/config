@@ -118,7 +118,7 @@ bindsym --release $mod+shift+ccedilla exec run_i3lock.sh
 bindsym $mod+period        exec mpvc.sh /tmp/mpvradio toggle 
 bindsym $mod+shift+greater exec mpvc.sh /tmp/mpvradio next
 bindsym $mod+shift+less    exec mpvc.sh /tmp/mpvradio prev
-bindsym $mod+Return        exec $term -e tmux
+bindsym $mod+Return        exec $term
 bindsym $mod+shift+Return  exec $term --class floating_window
 bindsym $mod+d             exec drun.sh
 bindsym $mod+F5            exec chscreen.sh

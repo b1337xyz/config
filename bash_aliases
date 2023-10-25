@@ -1,6 +1,5 @@
 ### default
 alias ls='ls -vNh --color' \
-    btm='btm -C ~/.config/bottom/config.toml' \
     dir='dir --color' \
     vdir='vdir --color' \
     diff='diff --color --unified=0' \
@@ -75,6 +74,7 @@ alias ...='cd ../..' gb='cd -' \
     cmd='command' \
     +x='chmod u+x' -x='chmod a-x' \
     so='source' \
+    sX='startx "$XINITRC" -- /etc/X11/xinit/xserverrc vt${XDG_VTNR:-0}' \
     v='vim' vi='vim' \
     :q=exit :x=exit \
     linuxlogo='linux_logo -c -u -y -L 13' \

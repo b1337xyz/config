@@ -6,6 +6,7 @@
 #   - Declare and assign separately to avoid masking return values. [SC2155]
 
 [[ $- != *i* ]] && return
+[ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ] && hash tmux && exec tmux
 # hash fish && fish && exit 0
 
 _update_goback() {
@@ -50,7 +51,7 @@ source ~/.scripts/shell/mediainfo.sh
 source ~/.scripts/shell/aria2.sh
 source ~/.scripts/shell/fzf.sh
 
-umask 0077
+# umask 0077
 
 set -o vi
 set -o noclobber
@@ -274,6 +275,7 @@ prompt() {
     PS1+="$git_branch"
 
     [ -n "$WSLENV" ] && PS1+="(wsl) "
+    [ -n "$SSH_CLIENT" ] && PS1+="(ssh from ${SSH_CLIENT%% *}) "
 
     if test "${exit_code:-0}" -eq 0;then
         # PS1+="${grn}( •_•)${rst} "  # λ π β ω μ
@@ -353,5 +355,5 @@ then
     abbrev-alias -g -e LF='$(command ls -1trc | tail -1)' # latest file
 fi
 
-source ~/.local/share/cargo/env
-grep --color "^$(date +%Y-%m-%d).*NEW" ~/.cache/nyarss.log 2>/dev/null | cut -c -$((COLUMNS - 2))
+source ~/.local/share/cargo/env >/dev/null 2>&1
+true
