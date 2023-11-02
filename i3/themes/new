@@ -1,0 +1,46 @@
+set $bar_font Iosevka Nerd Font 11
+set $bar_bg #333333
+set $bar_fg #ffbfff
+set $bar_f0 #bbbbbb
+
+bar {
+    padding -2px 0px
+    font pango: $bar_font
+    # i3bar_command i3bar --transparency
+    status_command i3status -c ~/.config/i3status/config
+    strip_workspace_numbers yes
+    binding_mode_indicator yes
+    workspace_buttons yes
+    # separator_symbol "╱"
+    # separator_symbol "│"
+    # separator_symbol "⁝"
+    position bottom
+    mode dock
+    workspace_min_width 30
+
+    colors {
+        background $bar_bg
+        statusline $bar_fg
+        separator  $bar_f0
+
+        # class              border background color
+        focused_workspace    $bar_bg $bar_bg $bar_fg
+        inactive_workspace   $bar_bg $bar_bg $bar_f0
+        active_workspace     $bar_bg $bar_bg $bar_f0
+        urgent_workspace     $bar_bg $bar_bg $bar_f0
+        binding_mode         $bar_bg $bar_bg $bar_fg
+    }
+}
+
+set $bg #466666
+set $fg #ffffff
+set $b0 #333333
+set $f0 #888888
+
+# class                 border bg fg indicator child_border
+client.focused          $bg $bg $fg $bg $bg
+client.focused_inactive $b0 $b0 $f0 $b0 $b0
+client.unfocused        $b0 $b0 $f0 $b0 $b0
+client.urgent           $b0 $b0 $f0 $b0 $b0
+
+# vim: ft=i3config

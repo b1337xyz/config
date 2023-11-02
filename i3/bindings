@@ -102,12 +102,12 @@ bindsym XF86MonBrightnessUp  exec brightnessctl s +35
 bindsym XF86MonBrightnessDown exec brightnessctl s 35-
 bindsym XF86Search exec brightnessctl s +2%
 bindsym XF86Calculator exec brightnessctl s 2%-
-bindsym XF86AudioPlay exec cmus-remote -u
-bindsym XF86AudioNext exec cmus-remote -n
-bindsym XF86AudioPrev exec cmus-remote -r
-# bindsym XF86AudioPlay         exec mpc toggle
-# bindsym XF86AudioNext         exec mpc next
-# bindsym XF86AudioPrev         exec mpc prev
+# bindsym XF86AudioPlay exec cmus-remote -u
+# bindsym XF86AudioNext exec cmus-remote -n
+# bindsym XF86AudioPrev exec cmus-remote -r
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
 
 
 bindsym $mod+q kill
@@ -144,14 +144,14 @@ bindsym $mod+p mode "$print_mode"
 
 set $launch_mode [f]irefox [q]ute [t]elegram [p]ulsemixer [e]xplorer [r]adio [m]pv
 mode "$launch_mode" {
-    bindsym a exec ts -- fzfanime.sh -q ; mode "default"
+    bindsym a exec $term -e fzfanime.sh -q ; mode "default"
     bindsym c exec tmux new-session -s cmus cmus ; mode "default"
     bindsym d exec discord ; mode "default"
-    bindsym e exec ts -n floating_window -t nnn -- nnn; mode "default"
+    bindsym e exec $term --class floating_window --title nnn -e nnn; mode "default"
     bindsym f exec firefox ; mode "default"
     bindsym k exec passc.sh ; mode "default"
     bindsym m exec mpv --profile=dragon; mode "default"
-    bindsym p exec ts -n floating_window -- pulsemixer ; mode "default"
+    bindsym p exec $term --class floating_window -e pulsemixer ; mode "default"
     bindsym q exec qutebrowser ; mode "default"
     bindsym r exec radio.sh ; mode "default"
     bindsym w exec wrun.sh ; mode "default"

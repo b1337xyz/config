@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/themes/custom.yml
+  - ~/.config/alacritty/themes/afterglow.yaml
 
 env:
   TERM: xterm-256color

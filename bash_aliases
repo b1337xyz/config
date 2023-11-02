@@ -1,5 +1,6 @@
 ### default
 alias ls='ls -vNh --color' \
+    btm='btm -C ~/.config/bottom/config.toml' \
     dir='dir --color' \
     vdir='vdir --color' \
     diff='diff --color --unified=0' \
@@ -74,7 +75,6 @@ alias ...='cd ../..' gb='cd -' \
     cmd='command' \
     +x='chmod u+x' -x='chmod a-x' \
     so='source' \
-    sX='startx "$XINITRC" -- /etc/X11/xinit/xserverrc vt${XDG_VTNR:-0}' \
     v='vim' vi='vim' \
     :q=exit :x=exit \
     linuxlogo='linux_logo -c -u -y -L 13' \
@@ -103,7 +103,7 @@ alias ...='cd ../..' gb='cd -' \
     fumnt='fusermount3 -u' \
     dff='df -Th -t fuse.rclone -t ext4 -t btrfs -t nfs4 --total' \
     tmux_defaults='tmux -f /dev/null -L temp start-server \; show-options -g' \
-    update_gdl='pip install --user -U -I --no-deps --no-cache-dir https://github.com/mikf/gallery-dl/archive/master.tar.gz' \
+    update_gdl='pip install --user -U -I --no-deps --no-cache-dir --break-system-packages https://github.com/mikf/gallery-dl/archive/master.tar.gz' \
     pfa='pgrep -fa' \
     mpvradio='systemctl --user start mpvradio.service' \
     clone='git clone --depth=1' \

@@ -71,6 +71,6 @@ c.spellcheck.languages = ['pt-BR', 'en-US']
 c.statusbar.show = 'always'
 c.tabs.background = False
 c.tabs.indicator.width = 0
-c.tabs.show = 'multiple'
+c.tabs.show = 'always'
 c.zoom.default = 100
 # }}}

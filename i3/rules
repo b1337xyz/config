@@ -4,13 +4,13 @@ assign [instance="Cava"] $ws1
 assign [instance="btm"] $ws1
 assign [instance="ws1"] $ws1
 
-assign [class="Brave-browser"] $ws3
-assign [class="Chromium"] $ws3
-assign [class="Google-chrome"] $ws3
-# assign [class="TelegramDesktop"] $ws3
-assign [class="Tor Browser"] $ws3
-assign [class="firefox"] $ws3
-assign [class="qutebrowser"] $ws3
+assign [class="Brave-browser"] $ws2
+assign [class="Chromium"] $ws2
+assign [class="Google-chrome"] $ws2
+# assign [class="TelegramDesktop"] $ws2
+assign [class="Tor Browser"] $ws2
+assign [class="firefox"] $ws2
+assign [class="qutebrowser"] $ws2
 
 # assign [class="Qemu-system-x86_64"] $ws8
 assign [title="Steam"] $ws8

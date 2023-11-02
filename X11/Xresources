@@ -1,5 +1,3 @@
-#include "/home/anon/.config/X11/themes/base16-default-dark-256"
-
 Xcursor.theme: Adwaita
 Xcursor.size: 21
 XTerm*metaSendsEscape:  true

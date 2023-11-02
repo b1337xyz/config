@@ -10,7 +10,7 @@ FIFO_PID=/tmp/nnn_fifo.pid
 NNN_FIFO=${NNN_FIFO:-/tmp/nnn.fifo}
 UEBERZUG_FIFO=/tmp/nnn.ueberzug.fifo
 THUMBS=~/.cache/thumbnails/video
-PREVIEW_SIZE=70%
+PREVIEW_SIZE=60%
 
 pidkill() { [ -f "$1" ] && kill "$(cat "$1")" >/dev/null 2>&1; }
 fifo_pager() {
