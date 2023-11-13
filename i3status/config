@@ -1,0 +1,42 @@
+general {
+    colors = false
+    interval = 15
+}
+
+order += "read_file k10"
+order += "read_file amdgpu"
+order += "read_file nvme"
+order += "load"
+order += "disk /"
+order += "tztime local"
+
+tztime local {
+    separator_block_width = 528
+    format = " %b %d %Y %H:%M "
+}
+
+load {
+    format = " %1min %5min %15min "
+}
+
+disk "/" {
+    format = " %avail "
+}
+
+read_file k10 {
+    path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input"
+    format = " %title: %content°C "
+    Max_characters = 2
+}
+
+read_file amdgpu {
+    path = "/sys/devices/pci0000:00/0000:00:08.1/0000:30:00.0/hwmon/hwmon1/temp1_input"
+    format = " %title: %content°C "
+    Max_characters = 2
+}
+
+read_file nvme {
+    path = "/sys/devices/pci0000:00/0000:00:02.2/0000:23:00.0/nvme/nvme0/hwmon0/temp1_input"
+    format = " %title: %content°C "
+    Max_characters = 2
+}
