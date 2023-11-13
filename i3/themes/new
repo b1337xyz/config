@@ -1,7 +1,8 @@
 set $bar_font Iosevka Nerd Font 11
 set $bar_bg #333333
-set $bar_fg #ffbfff
-set $bar_f0 #bbbbbb
+set $bar_fg #dddddd
+set $bar_f0 #aaaaaa
+set $bar_f1 #96fbc4
 
 bar {
     padding -2px 0px
@@ -24,7 +25,7 @@ bar {
         separator  $bar_f0
 
         # class              border background color
-        focused_workspace    $bar_bg $bar_bg $bar_fg
+        focused_workspace    $bar_bg $bar_bg $bar_f1
         inactive_workspace   $bar_bg $bar_bg $bar_f0
         active_workspace     $bar_bg $bar_bg $bar_f0
         urgent_workspace     $bar_bg $bar_bg $bar_f0
