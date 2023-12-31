@@ -28,6 +28,93 @@ Nsxiv.window.foreground: #9fbfff
 Nsxiv.mark.foreground: #ff3040
 dmenu.font: monospace-10
 
+URxvt.geometry: 100x28
+URxvt.iconName: terminal
+URxvt.font: xft:JetBrainsMono Nerd Font:pixelsize=14
+URxvv.italicFont: false
+URxvt.internalBorder: 8
+URxvt.letterSpace: 0
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.scrollBar: false
+URxvt.pointerBlank: true
+URxvt.pointerBlankDelay: 987654321
+URxvt.depth: 32
+URxvt.fading: 0
+URxvt.scrollBar_right: true
+URxvt.mouseWheelScrollPage:false
+URxvt.saveLines: 9999
+
+! URxvt.cursorColor: #d3ffd3
+! URxvt.foreground: #C2F8C2
+! URxvt.background: #282A36
+
+! Dracula {{{
+
+! *.color0:     #000000
+! *.color8:     #4D4D4D
+! *.color1:     #FF5555
+! *.color9:     #FF6E67
+! *.color2:     #50FA7B
+! *.color10:    #5AF78E
+! *.color3:     #F1FA8C
+! *.color11:    #F4F99D
+! *.color4:     #BD93F9
+! *.color12:    #CAA9FA
+! *.color5:     #FF79C6
+! *.color13:    #FF92D0
+! *.color6:     #8BE9FD
+! *.color14:    #9AEDFE
+! *.color7:     #BFBFBF
+! *.color15:    #E6E6E6
+
+! }}}
+
+! Ayu Dark {{{
+*.foreground:  #e6e1cf
+*.background:  #0f1419
+*.cursorColor: #f29718
+! Black
+*.color0:      #000000
+*.color8:      #323232
+! Red
+*.color1:      #ff3333
+*.color9:      #ff6565
+! Green
+*.color2:      #b8cc52
+*.color10:     #eafe84
+! Yellow
+*.color3:      #e7c547
+*.color11:     #fff779
+! Blue
+*.color4:      #36a3d9
+*.color12:     #68d5ff
+! Magenta
+*.color5:      #f07178
+*.color13:     #ffa3aa
+! Cyan
+*.color6:      #95e6cb
+*.color14:     #c7fffd
+! White
+*.color7:      #ffffff
+*.color15:     #ffffff
+! Bold, Italic, Underline
+*.colorBD:     #e6e1cf
+!*.colorIT:
+!*.colorUL:
+! }}}
+
+!fake transparency
+URxvt*inheritPixmap: false
+URxvt*transparent: false
+
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  firefox
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+
 /* Grubox */
 /* dmenu.background: #1d2021 */
 /* dmenu.foreground: #EBDBB2 */
