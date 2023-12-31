@@ -13,15 +13,13 @@ assign [class="firefox"] $ws2
 assign [class="qutebrowser"] $ws2
 
 # assign [class="Qemu-system-x86_64"] $ws8
-assign [title="Steam"] $ws8
-assign [class="Steam"] $ws8
-assign [instance="Steam"] $ws8
 
 assign [instance="ncmpcpp"] $ws9
 
 assign [class="Amule"] $ws0
 assign [class="qBittorrent"] $ws0
 
+for_window [class="java-lang-Thread"] floating enable
 # for_window [all] floating enable
 # for_window [class="Alacritty"] border none
 # for_window [class="GLava"] sticky enable
@@ -35,6 +33,7 @@ for_window [instance="newsboat"] floating enable
 for_window [instance="tabbed"] border pixel 1
 for_window [instance="tabbed"] floating enable
 for_window [class="dhewm3"] floating disable
+for_window [title="glxgears"] floating enable
 
 
 for_window [class="Blueman-manager"] floating enable

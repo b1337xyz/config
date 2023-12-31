@@ -4,11 +4,12 @@ general {
     markup = "pango"
 }
 
+order += "read_file nct"
 order += "read_file k10"
 order += "read_file amdgpu"
 order += "read_file nvme"
-order += "load"
-order += "disk /"
+# order += "load"
+# order += "disk /"
 order += "tztime local"
 
 tztime local {
@@ -24,14 +25,20 @@ disk "/" {
     format = " <span color='#f0c0f0'>%avail</span> "
 }
 
+read_file nct {
+    path = "/sys/devices/platform/nct6683.2592/hwmon/hwmon4/temp1_input"
+    format = " <span color='#ff9090'>%title</span>: %content°C "
+    Max_characters = 2
+}
+
 read_file k10 {
-    path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input"
+    path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input"
     format = " <span color='#ff9090'>%title</span>: %content°C "
     Max_characters = 2
 }
 
 read_file amdgpu {
-    path = "/sys/devices/pci0000:00/0000:00:08.1/0000:30:00.0/hwmon/hwmon1/temp1_input"
+    path = "/sys/devices/pci0000:00/0000:00:01.1/0000:10:00.0/0000:11:00.0/0000:12:00.0/hwmon/hwmon1/temp1_input"
     format = " <span color='#ff9090'>%title</span>: %content°C "
     Max_characters = 2
 }

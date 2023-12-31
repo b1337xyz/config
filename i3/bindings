@@ -146,7 +146,7 @@ set $launch_mode [f]irefox [q]ute [t]elegram [p]ulsemixer [e]xplorer [r]adio [m]
 mode "$launch_mode" {
     bindsym a exec $term -e fzfanime.sh -q ; mode "default"
     bindsym c exec tmux new-session -s cmus cmus ; mode "default"
-    bindsym d exec discord ; mode "default"
+    # bindsym d exec discord ; mode "default"
     bindsym e exec $term --class floating_window --title nnn -e nnn; mode "default"
     bindsym f exec firefox ; mode "default"
     bindsym k exec passc.sh ; mode "default"
@@ -166,7 +166,7 @@ mode "$launch_mode" {
 }
 bindsym $mod+o mode "$launch_mode"
 
-set $xwall [p]rev [n]ext [d]menu [s]xiv [c]urrent [r]andom
+set $xwall [p]rev [n]ext [d]menu [s]xiv [c]urrent [r]andom [o]pen
 mode "$xwall" {
     bindsym p exec xwall.sh --prev
     bindsym n exec xwall.sh --next
@@ -175,6 +175,7 @@ mode "$xwall" {
     bindsym c exec xwall.sh --current
     bindsym r exec xwall.sh
     bindsym x exec xwall.sh
+    bindsym o exec xwall.sh open ; mode "default"
 
     bindsym q      mode "default"
     bindsym Escape mode "default"
