@@ -1,4 +1,4 @@
-set $term alacritty
+set $term kitty
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
