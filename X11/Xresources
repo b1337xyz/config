@@ -13,7 +13,7 @@ XTerm*cursorUnderline: false
 XTerm*pointerBlank: true
 XTerm*pointerBlankDelay: 987654321
 XTerm*saveLines: 9000
-Xft.dpi:       96
+Xft.dpi:       110
 Xft.antialias: true
 Xft.hinting:   true
 Xft.rgba:      rgb

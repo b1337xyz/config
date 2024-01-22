@@ -8,6 +8,7 @@ order += "read_file nct"
 order += "read_file k10"
 order += "read_file amdgpu"
 order += "read_file nvme"
+order += "volume master"
 # order += "load"
 # order += "disk /"
 order += "tztime local"
@@ -16,6 +17,13 @@ tztime local {
     separator_block_width = 528
     format = " <span color='#ffffff'>%b %d %Y %H:%M</span> "
 }
+
+volume master {
+    format = " VOL %volume "
+    format_muted = " MUTED "
+    device = "default"
+}
+
 
 load {
     format = " <span color='#eeeeaa'>%1min %5min %15min</span> "
