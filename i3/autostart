@@ -5,7 +5,8 @@ $exec qbittorrent
 $exec ~/.cache/xwallpaper
 $exec setscreen.sh
 # $exec easyeffects
-$exec steam
-$exec kitty --class=newsboat --title=newsboat -e newsboat
+# $exec steam
+# $exec kitty --class=newsboat --title=newsboat -e newsboat
+$exec tmux new -d -n newsboat -s newsboat newsboat
 
 # vim: ft=i3config
