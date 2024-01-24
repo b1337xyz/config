@@ -43,7 +43,7 @@ set $ws5 "5: ws5 "
 set $ws6 "6: ws6 "
 set $ws7 "7: ws7 "
 set $ws8 "8: usr "
-set $ws9 "9: ws9 "
+set $ws9 "9: opt "
 set $ws0 "10: snd "
 
 workspace $ws1 output nonprimary

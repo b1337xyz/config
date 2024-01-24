@@ -21,7 +21,8 @@ assign [instance="ncmpcpp"] $ws9
 assign [class="Amule"] $ws0
 assign [class="qBittorrent"] $ws0
 assign [class="easyeffects"] $ws0
-assign [class="steam"] $ws0
+
+assign [class="steam"] $ws9
 
 for_window [class="java-lang-Thread"] floating enable
 # for_window [all] floating enable
