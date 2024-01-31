@@ -15,7 +15,7 @@ bar {
     # separator_symbol "╱"
     # separator_symbol "│"
     # separator_symbol "⁝"
-    position bottom
+    position top
     mode dock
     workspace_min_width 30
 
