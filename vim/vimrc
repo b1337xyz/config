@@ -14,8 +14,9 @@ set viminfofile=$XDG_STATE_HOME/vim/viminfo
 let g:netrw_home = $XDG_DATA_HOME . "/vim"
 
 " Plugins {{{
-packadd YouCompleteMe
-let g:ycm_key_list_stop_completion = ['<C-y>']
+" packadd YouCompleteMe
+" let g:ycm_key_list_stop_completion = ['<C-y>']
+
 inoremap <expr> <CR> pumvisible() ? "\<C-y><CR>" : "<CR>"
 
 call plug#begin()
@@ -123,8 +124,10 @@ let g:netrw_liststyle=3
 " INSERT <tag and press Ctrl+s the result is <tag></tag>
 " won't work with <tag src="example"... 
 inoremap <C-s> <esc>F<yeea><esc>pa><esc>F<a/<esc>F>a
-nnoremap <C-c> :silent .w !xclip -sel c<CR>
-vnoremap <C-c> "cy <bar> :call system('xclip -sel c', @c)<CR>
+" nnoremap <C-c> :silent .w !xclip -sel c<CR>
+nnoremap <C-c> :silent .w !wl-copy<CR>
+" vnoremap <C-c> "cy <bar> :call system('xclip -sel c', @c)<CR>
+vnoremap <C-c> "cy <bar> :call system('wl-copy', @c)<CR>
 nnoremap cn :cnext<CR>
 nnoremap cp :cprevious<CR>
 nnoremap <C-s-j> :m .+1<CR>==

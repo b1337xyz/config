@@ -1,4 +1,4 @@
-set $bar_font Iosevka Nerd Font 11
+set $bar_font JetBrainsMonoNerdFont 11
 set $bar_bg #333333
 set $bar_fg #dddddd
 set $bar_f0 #aaaaaa

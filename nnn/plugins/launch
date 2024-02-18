@@ -11,8 +11,8 @@ PAGER=${PAGER:-less -Ri}
 
 mime=$(file -Lbi -- "$1")
 case "${mime%%;*}" in
-    audio/*|video/*|image/gif) devour mpv "$1" ;;
-    image/*) devour nsxiv -q "$1" >/dev/null 2>&1 ;;
+    audio/*|video/*|image/gif) mpv "$1" ;;
+    image/*) nsxiv -q "$1" >/dev/null 2>&1 ;;
     text/*)  ${EDITOR:-vi} "$1" ;;
     *) false ;;
 esac && exit 0
@@ -29,8 +29,8 @@ case "$ext" in
     htm|html|xhtml) w3m -dump "$1" | $PAGER ;;
     json) jq --color-output . "$1" | $PAGER ;;
     md) bat --color=always "$1" ;;
-    cbz|pdf|epub) devour zathura "$1" ;;
-    mts) devour mpv "$1" ;;
+    cbz|pdf|epub) zathura "$1" ;;
+    mts) mpv "$1" ;;
     exe) wine "$1" ;;
     ass|srt|vtt) setsid -f -- aegisub "$1" >/dev/null 2>&1 ;;
     *) exit 1 ;;

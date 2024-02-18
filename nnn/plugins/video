@@ -1,7 +1,7 @@
 #!/bin/sh
 e='.*\.(opus|flac|mp3|mkv|webm|flv|ogv|ogg|avi|ts|mts|m2ts|mov|wmv|rmvb|mp4|m4v|m4p|mpg|mpeg|3gp|gif)'
 if [ -d "$1" ];then
-    find "$1" -maxdepth 3 -regextype posix-extended -iregex "$e" | sort -V | devour mpv --playlist=-
+    find "$1" -maxdepth 3 -regextype posix-extended -iregex "$e" | sort -V | mpv --playlist=-
 else
-    devour mpv "$PWD"
+    mpv "$PWD"
 fi

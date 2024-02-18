@@ -5,7 +5,7 @@ $exec qbittorrent
 $exec ~/.cache/xwallpaper
 $exec setscreen.sh
 # $exec easyeffects
-# $exec steam
+$exec steam
 # $exec kitty --class=newsboat --title=newsboat -e newsboat
 $exec tmux new -d -n newsboat -s newsboat newsboat
 
