@@ -1,12 +1,12 @@
 set $exec exec --no-startup-id
 
-$exec qbittorrent
+# $exec qbittorrent
 # $exec unclutter --idle 1 --jitter 2 --root
 $exec ~/.cache/xwallpaper
 $exec setscreen.sh
 # $exec easyeffects
-$exec steam
+# $exec steam
 # $exec kitty --class=newsboat --title=newsboat -e newsboat
-$exec tmux new -d -n newsboat -s newsboat newsboat
+# $exec tmux new -d -n newsboat -s newsboat newsboat
 
 # vim: ft=i3config
