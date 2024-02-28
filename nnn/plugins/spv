@@ -8,8 +8,6 @@
 PREVIEW_PID=/tmp/nnn_preview.pid
 FIFO_PID=/tmp/nnn_fifo.pid
 NNN_FIFO=${NNN_FIFO:-/tmp/nnn.fifo}
-UEBERZUG_FIFO=/tmp/nnn.ueberzug.fifo
-THUMBS=~/.cache/thumbnails/video
 PREVIEW_SIZE=60%
 
 pidkill() { [ -f "$1" ] && kill "$(cat "$1")" >/dev/null 2>&1; }
@@ -36,34 +34,10 @@ fifo_pager() {
 
     rm "$tmpfifopath"
 }
-drawimg() { 
-    path=$1
-    cols=$(tput cols) lines=$(tput lines)
-    printf '{"action": "remove", "identifier": "test"}\n' > "$UEBERZUG_FIFO"
-    printf '{"action": "add", "identifier": "test", "x": %d, "y": %d, "width": "%d", "height": "%d", "scaler": "cover", "path": "%s"}\n' \
-        "${x:-1}" "${y:-0}" "$((cols - 2))" "$((lines - 2))" "$path" > "$UEBERZUG_FIFO"
-}
-gen_thumb() {
-    img=${THUMBS}/${1}.jpg
-    if ! [ -f "$img" ];then
-        mkdir -p "${img%/*}"
-        ffmpegthumbnailer -s 512 -i "$1" -o "$img" 2>/dev/null 
-    fi
-    printf '%s' "$img"
-}
 handle_mime() {
     mime=$(file -Lbi -- "$1" | cut -d';' -f1)
     case "$mime" in
-        image*)
-            if [ -n "$DISPLAY" ];then drawimg "$1"; else mediainfo -- "$1" ;fi ;;
-        video*)
-            if [ -n "$DISPLAY" ];then
-                img=$(gen_thumb "$1")
-                drawimg "$img"
-            else
-                mediainfo -- "$1"
-            fi
-        ;;
+        image*|video*) mediainfo -- "$1" ;;
         text/*) fifo_pager bat "$1" ;;
         */x-bittorrent) fifo_pager aria2c -S "$1" ;;
         *) file -b -- "$1" ;;
@@ -83,11 +57,7 @@ handle_ext() {
 }
 preview() {
     clear
-    # lines=$(tput lines)
     cols=$(tput cols)
-    [ -e "$UEBERZUG_FIFO" ] &&
-        printf '{"action": "remove", "identifier": "test"}\n' > "$UEBERZUG_FIFO"
-
     if [ -d "$1" ];then
         fifo_pager tree -C -L 1 --dirsfirst "$1"
     else
@@ -108,14 +78,10 @@ preview_fifo() {
 }
 end() {
     jobs -p | xargs -r kill
-    rm "$PREVIEW_PID" "$FIFO_PID" "$UEBERZUG_FIFO" 2>/dev/null
+    rm "$PREVIEW_PID" "$FIFO_PID" 2>/dev/null
 }
 
 if [ "$PREVIEW_MODE" ];then
-    if [ -n "$DISPLAY" ];then
-        mkfifo "$UEBERZUG_FIFO"
-        tail --follow "$UEBERZUG_FIFO" | ueberzug layer --parser json &
-    fi
     preview "$1"
     preview_fifo &
     printf '%s' "$!" > "$FIFO_PID"
@@ -129,7 +95,7 @@ else
             -e "NNN_FIFO=$NNN_FIFO" -e "PREVIEW_SIZE=$PREVIEW_SIZE" \
             -e "FIFO_PID=$FIFO_PID" -e "PREVIEW_PID=$PREVIEW_PID" \
             -e "BAT_STYLE=$BAT_STYLE" -e "BAT_THEME=$BAT_THEME" \
-            -e "PREVIEW_MODE=1" -e "UEBERZUG_FIFO=$UEBERZUG_FIFO" "$0" "$1" &
+            -e "PREVIEW_MODE=1" "$0" "$1" &
     fi
 fi
 

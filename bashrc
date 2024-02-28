@@ -6,7 +6,8 @@
 #   - Declare and assign separately to avoid masking return values. [SC2155]
 
 [[ $- != *i* ]] && return
-if [ -n "$DISPLAY" ] && [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ] && hash tmux;then
+if [ -n "$DISPLAY" ] && [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ] && hash tmux
+then
     sessions=$(tmux ls | grep -vF '(attached)' | grep -v newsboat)
     if [ -n "$sessions" ];then
         exec tmux attach
@@ -14,6 +15,7 @@ if [ -n "$DISPLAY" ] && [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ] && hash tmux;then
         exec tmux
     fi
 fi
+
 # hash fish && fish && exit 0
 
 _update_goback() {
