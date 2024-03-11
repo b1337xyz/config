@@ -5,6 +5,8 @@
 # nnn SimplePreView 
 #
 
+[ -z "$TMUX" ] && { printf '\n$TMUX not set\n'; sleep 1; exit 1; } 
+
 PREVIEW_PID=/tmp/nnn_preview.pid
 FIFO_PID=/tmp/nnn_fifo.pid
 NNN_FIFO=${NNN_FIFO:-/tmp/nnn.fifo}

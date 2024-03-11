@@ -8,7 +8,7 @@
 [[ $- != *i* ]] && return
 if [ -n "$DISPLAY" ] && [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ] && hash tmux
 then
-    sessions=$(tmux ls | grep -vF '(attached)' | grep -v newsboat)
+    sessions=$(tmux ls 2>/dev/null | grep -vF '(attached)' | grep -v newsboat)
     if [ -n "$sessions" ];then
         exec tmux attach
     else

@@ -12,7 +12,7 @@ PAGER=${PAGER:-less -Ri}
 mime=$(file -Lbi -- "$1")
 case "${mime%%;*}" in
     audio/*|video/*|image/gif) mpv "$1" ;;
-    image/*) nsxiv -q "$1" >/dev/null 2>&1 ;;
+    image/*) imv "$1" ;; # nsxiv -q "$1" >/dev/null 2>&1 ;;
     text/*)  ${EDITOR:-vi} "$1" ;;
     *) false ;;
 esac && exit 0
