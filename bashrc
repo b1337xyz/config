@@ -148,7 +148,7 @@ _pager() {
     READLINE_LINE="${READLINE_LINE} | bat"
 }
 
-if ! [[ "$TERM" = xterm* ]];then
+if ! [[ "$TERM" = xterm* ]] && [ -z "$SSH_CLIENT" ];then
     # Ctrl-V + key  to find any keycode
     # https://sparky.rice.edu//~hartigan/del.html
     
