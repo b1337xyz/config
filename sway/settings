@@ -1,0 +1,22 @@
+title_align center
+default_border pixel 2
+default_floating_border pixel 2
+floating_modifier $mod
+focus_wrapping workspace
+workspace_auto_back_and_forth no
+# floating_maximum_size 1900 x 1000
+
+font pango: JetBrainsMonoNerdFont 10
+
+for_window [all] title_format "%title"
+for_window [all] title_window_icon no
+# for_window [all] title_window_icon padding 3px
+# for_window [all] floating enable
+
+# none|vertical|horizontal|both|smart
+hide_edge_borders smart
+
+# default|stacking|tabbed
+workspace_layout tabbed
+
+# vim: ft=swayconfig

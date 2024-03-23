@@ -1,0 +1,22 @@
+set $bar_font JetBrainsMonoNerdFont 10
+
+bar {
+    position top
+    strip_workspace_numbers yes
+    font pango: $bar_font
+    strip_workspace_numbers yes
+    binding_mode_indicator yes
+    workspace_buttons yes
+    workspace_min_width 30
+    tray_output none
+    status_command while date +'%b %d %Y %H:%M '; do sleep 1; done
+
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #323232 #323232 #5c5c5c
+        binding_mode #285577 #285577 #ffffff
+    }
+}
+
+# vim: ft=swayconfig

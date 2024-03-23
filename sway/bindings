@@ -1,0 +1,125 @@
+floating_modifier $mod normal
+bindsym $mod+Return exec $term
+bindsym $mod+q kill
+bindsym $mod+y sticky toggle
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+e exit
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+bindsym $mod+shift+1 move container to workspace $ws1
+bindsym $mod+shift+2 move container to workspace $ws2
+bindsym $mod+shift+3 move container to workspace $ws3
+bindsym $mod+shift+4 move container to workspace $ws4
+bindsym $mod+shift+5 move container to workspace $ws5
+bindsym $mod+shift+6 move container to workspace $ws6
+bindsym $mod+shift+7 move container to workspace $ws7
+bindsym $mod+shift+8 move container to workspace $ws8
+bindsym $mod+shift+9 move container to workspace $ws9
+bindsym $mod+shift+0 move container to workspace $ws0
+
+bindsym Mod1+Tab focus right
+bindsym Mod1+shift+Tab focus left
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+shift+Tab workspace prev_on_output
+
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+bindsym Print exec print.sh
+bindsym XF86AudioRaiseVolume exec volupdown.sh up
+bindsym XF86AudioLowerVolume exec volupdown.sh down
+bindsym XF86AudioMute exec volupdown.sh toggle
+bindsym XF86MonBrightnessUp  exec brightnessctl s +35
+bindsym XF86MonBrightnessDown exec brightnessctl s 35-
+bindsym XF86Search exec brightnessctl s +2%
+bindsym XF86Calculator exec brightnessctl s 2%-
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+bindsym $mod+period        exec mpvc.sh /tmp/mpvradio toggle 
+bindsym $mod+shift+greater exec mpvc.sh /tmp/mpvradio next
+bindsym $mod+shift+less    exec mpvc.sh /tmp/mpvradio prev
+bindsym $mod+d exec drun.sh
+bindsym $mod+shift+s       exec print.sh cops
+bindsym ctrl+shift+space   exec makoctl dismiss -a
+
+mode "resize" {
+    bindsym backslash resize shrink left 20 px
+    bindsym h resize shrink width 20 px
+    bindsym j resize grow height 20 px
+    bindsym k resize shrink height 20 px
+    bindsym l resize grow width 20 px
+
+    bindsym minus resize shrink width 20 px ; resize shrink height 10 px
+    bindsym equal resize grow   width 20 px ; resize grow height 10 px
+    bindsym c move position center
+
+    bindsym q      mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+
+set $print_mode [p]rint [f]ocused [c]opy [C]opy-focused [s]elect [S]elect-copy
+mode "$print_mode" {
+    bindsym p       exec print.sh ; mode "default"
+    bindsym f       exec print.sh focused ; mode "default"
+    bindsym c       exec print.sh copy ; mode "default"
+    bindsym s       exec print.sh select ; mode "default"
+    bindsym shift+c exec print.sh copf ; mode "default"
+    bindsym shift+s exec print.sh cops ; mode "default"
+    
+    bindsym q      mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+bindsym $mod+p mode "$print_mode"
+
+set $wall [p]rev [n]ext [d]menu [s]xiv [c]urrent [r]andom [o]pen
+mode "$wall" {
+    bindsym p exec wall.sh --prev
+    bindsym n exec wall.sh --next
+    bindsym d exec wall.sh --rofi
+    bindsym s exec wall.sh --sxiv ; mode "default"
+    bindsym c exec wall.sh --current
+    bindsym r exec wall.sh
+    bindsym x exec wall.sh
+    bindsym o exec wall.sh open ; mode "default"
+
+    bindsym q      mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+bindsym $mod+x mode "$wall"
+
+
+# vim: ft=swayconfig

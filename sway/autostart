@@ -1,0 +1,3 @@
+exec_always ~/.cache/swaybg
+
+# vim: ft=swayconfig

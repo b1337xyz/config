@@ -1,0 +1,24 @@
+set $mod Mod4
+set $term foot
+
+set $ws1 "1: home "
+set $ws2 "2: www "
+set $ws3 "3: soc "
+set $ws4 "4: rss "
+set $ws5 "5: ws5 "
+set $ws6 "6: ws6 "
+set $ws7 "7: ws7 "
+set $ws8 "8: usr "
+set $ws9 "9: opt "
+set $ws0 "10: snd "
+
+output * adaptive_sync on
+
+include /etc/sway/config.d/*
+include bindings
+include theme
+include rules
+include settings
+include autostart
+
+# vim: ft=swayconfig
