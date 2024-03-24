@@ -14,7 +14,7 @@ order += "volume master"
 order += "tztime local"
 
 tztime local {
-    separator_block_width = 528
+    # separator_block_width = 528
     format = " <span color='#ffffff'>%b %d %Y %H:%M</span> "
 }
 
@@ -23,7 +23,6 @@ volume master {
     format_muted = " MUTED "
     device = "default"
 }
-
 
 load {
     format = " <span color='#eeeeaa'>%1min %5min %15min</span> "

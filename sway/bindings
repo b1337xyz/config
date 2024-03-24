@@ -68,7 +68,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+period        exec mpvc.sh /tmp/mpvradio toggle 
 bindsym $mod+shift+greater exec mpvc.sh /tmp/mpvradio next
 bindsym $mod+shift+less    exec mpvc.sh /tmp/mpvradio prev
-bindsym $mod+d exec drun.sh
+bindsym $mod+d exec run.sh
 bindsym $mod+shift+s       exec print.sh cops
 bindsym ctrl+shift+space   exec makoctl dismiss -a
 
@@ -124,7 +124,7 @@ set $wall [p]rev [n]ext [d]menu [s]xiv [c]urrent [r]andom [o]pen
 mode "$wall" {
     bindsym p exec wall.sh --prev
     bindsym n exec wall.sh --next
-    bindsym d exec wall.sh --rofi
+    bindsym d exec wall.sh --rofi ; mode "default"
     bindsym s exec wall.sh --sxiv ; mode "default"
     bindsym c exec wall.sh --current
     bindsym r exec wall.sh

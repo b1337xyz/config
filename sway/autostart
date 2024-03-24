@@ -1,3 +1,3 @@
-exec_always ~/.cache/swaybg
+exec_always ~/.cache/setwall
 
 # vim: ft=swayconfig

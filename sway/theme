@@ -8,7 +8,8 @@ bar {
     binding_mode_indicator yes
     workspace_buttons yes
     workspace_min_width 30
-    status_command while date +'%b %d %Y %H:%M '; do sleep 15; done
+    # status_command while date +'%b %d %Y %H:%M '; do sleep 15; done
+    status_command i3status -c ~/.config/i3status/config
 
     colors {
         statusline #ffffff

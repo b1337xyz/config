@@ -33,7 +33,7 @@ export BAT_THEME="OneHalfDark"
 # export BAT_THEME="gruvbox-light"
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-export HISTIGNORE='?:??:???:neofetch:history:sensors:uptime:uptime -?:uname:uname -?'
+export HISTIGNORE='?:??:???:neofetch:history:uptime:uptime -?:uname:uname -?'
 export HISTCONTROL='ignoreboth:erasedups'
 export HISTSIZE=99999
 export LESS=-Ri
