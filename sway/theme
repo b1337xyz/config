@@ -8,8 +8,7 @@ bar {
     binding_mode_indicator yes
     workspace_buttons yes
     workspace_min_width 30
-    tray_output none
-    status_command while date +'%b %d %Y %H:%M '; do sleep 1; done
+    status_command while date +'%b %d %Y %H:%M '; do sleep 15; done
 
     colors {
         statusline #ffffff

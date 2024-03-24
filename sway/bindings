@@ -1,5 +1,6 @@
 floating_modifier $mod normal
 bindsym $mod+Return exec $term
+bindsym $mod+shift+Return exec $term -a floating_window
 bindsym $mod+q kill
 bindsym $mod+y sticky toggle
 bindsym $mod+Shift+r reload
@@ -40,15 +41,15 @@ bindsym Mod1+shift+Tab focus left
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+shift+Tab workspace prev_on_output
 
-bindsym $mod+b splith
+bindsym $mod+g splith
 bindsym $mod+v splitv
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+f fullscreen
+bindsym $mod+a focus parent
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
-bindsym $mod+a focus parent
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
@@ -88,6 +89,21 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+set $launch_mode [f]irefox [q]utebrowser [p]ulsemixer [e]xplorer [m]pv [y]tm
+mode "$launch_mode" {
+    bindsym e exec nautilus; mode "default"
+    bindsym f exec firefox ; mode "default"
+    bindsym q exec qutebrowser ; mode "default"
+    bindsym v exec vesktop ; mode "default"
+    bindsym k exec passc.sh ; mode "default"
+    bindsym m exec mpv --profile=dragon; mode "default"
+    bindsym y exec youtube-music; mode "default"
+    bindsym p exec $term pulsemixer ; mode "default"
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+bindsym $mod+o mode "$launch_mode"
 
 set $print_mode [p]rint [f]ocused [c]opy [C]opy-focused [s]elect [S]elect-copy
 mode "$print_mode" {

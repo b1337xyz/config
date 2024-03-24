@@ -8,18 +8,19 @@ assign [class="Google-chrome"] $ws2
 assign [class="Tor Browser"] $ws2
 assign [class="firefox"] $ws2
 assign [class="qutebrowser"] $ws2
-assign [class="YouTube Music"] $ws3
+assign [class="vesktop"] $ws3
 assign [instance="ncmpcpp"] $ws9
 assign [class="Amule"] $ws0
 assign [class="qBittorrent"] $ws0
 assign [class="easyeffects"] $ws0
-assign [class="steam"] $ws9
+assign [class="YouTube Music"] $ws0
+
 
 # for_window [all] floating enable
 for_window [class="java-lang-Thread"] floating enable
 for_window [instance="Cava"] floating enable
-for_window [instance="tabbed"] border pixel 1
-for_window [instance="tabbed"] floating enable
+# for_window [instance="tabbed"] border pixel 1
+# for_window [instance="tabbed"] floating enable
 for_window [class="dhewm3"] floating disable
 for_window [title="glxgears"] floating enable
 for_window [class="Blueman-manager"] floating enable
@@ -59,6 +60,7 @@ for_window [instance="Picture-in-Picture"] border none
 for_window [instance="branchdialog"] floating enable
 for_window [instance="clock"] floating enable
 for_window [instance="floating_window"] floating enable
+for_window [app_id="floating_window"] floating enable
 for_window [instance="pinentry"] floating enable
 for_window [title="Event Tester"] floating enable
 for_window [title="Picture-in-Picture"] border none

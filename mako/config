@@ -1,4 +1,9 @@
-font="monospace 10"
+font=monospace 10
 width=400
 height=300
 default-timeout=5000
+background-color=#222222
+text-color=#ffffff
+border-color=#9fbfff
+margin=5,5
+max-visible=10
