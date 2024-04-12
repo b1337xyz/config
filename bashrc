@@ -16,7 +16,7 @@ then
     fi
 fi
 
-# hash fish && fish && exit 0
+# hash fish && exec fish
 
 _update_goback() {
     tmpgb=$(mktemp --dry-run)
@@ -345,7 +345,8 @@ hxsj() {
 if [ -n "$DISPLAY" ];then
     todo ls | tail -5
 fi
-# printf 'Microsoft Windows XP [Version 5.1.2600]\n(C) Copyright 1985-2004 Microsoft Corp.\n\n'
+ 
+# printf 'Michaelsoft Binbows [Version 4.10.2600]\n(C) Copyright 1985-2000 Michaelsoft Corp.\n\n'
 
 nvm() {
     [ -s "$NVM_DIR/nvm.sh" ] || { printf '%s not found, is nvm installed?' "$NVM_DIR/nvm.sh"; return 1; }
