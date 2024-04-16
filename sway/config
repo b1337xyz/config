@@ -10,14 +10,14 @@ set $ws6 "6: ws6 "
 set $ws7 "7: ws7 "
 set $ws8 "8: usr "
 set $ws9 "9: opt "
-set $ws0 "10: snd "
+set $ws0 "10: mus "
 
 output * adaptive_sync on
 
 include /etc/sway/config.d/*
 include bindings
-include theme
 include rules
+# include theme
 include settings
 include autostart
 

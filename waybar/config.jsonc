@@ -1,0 +1,30 @@
+{
+    "reload_style_on_change": true,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "tray"],
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}"
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+    "clock": {
+        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        // "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%b %d %Y %H:%M}",
+	"on-click": "foot -a floating_window -w 240x240 -H cal"
+    },
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "VOL {volume}%",
+        "on-click": "foot -a floating_window pulsemixer"
+    }
+}
