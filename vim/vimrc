@@ -46,9 +46,10 @@ nnoremap <leader>t :NERDTree<CR>
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-let g:fzf_layout = { 'down': '30%', }
+let g:fzf_vim = {}
+let g:fzf_layout = { 'down': '30%' }
 let g:fzf_preview_window = ['hidden', 'ctrl-/']
-nnoremap <leader>b <cmd>Buffers<CR>
+nnoremap <leader>b <cmd>call fzf#vim#buffers({'options': '--keep-right'})<CR>
 nnoremap <leader>f <cmd>Files %:h<CR>
 
 " https://bitbucket.org/teramako/jscomplete-vim/src/master/
@@ -78,7 +79,7 @@ autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 " Settings {{{
 " set omnifunc=syntaxcomplete#Complete
 set completeopt=menuone,popup,noinsert
-set cino+=(0
+" set cino+=(0
 set wildmenu
 set wildoptions=pum
 set autowriteall
@@ -87,7 +88,7 @@ set previewheight=14
 set tags+=./.tags
 set path+=**5
 set foldmethod=marker
-set statusline=%<%f\ %m%h%r%=%-8.(%y\ %l,%c,%L%)\ %P\ %#warningmsg#
+set statusline=%<%F\ %m%h%r%=%-8.(%y\ %l,%c,%L%)\ %P\ %#warningmsg#
 set switchbuf=usetab
 set nocompatible
 set showcmd
@@ -96,7 +97,7 @@ set smartcase
 set backspace=indent,eol,start
 set autoindent 
 set nostartofline
-set autochdir
+" set autochdir
 set ruler
 set laststatus=2
 set t_vb=

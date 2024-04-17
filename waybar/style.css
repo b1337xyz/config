@@ -4,6 +4,14 @@
     font-size: 14px;
     border-radius: 0;
 }
+#mode,
+#tray,
+.modules-right {
+    padding: 0 10px;
+}
+#mode {
+    background-color: #404040;
+}
 window#waybar {
     background: #222222;
     color: #ffffff;
@@ -23,7 +31,4 @@ button:hover {
 }
 .modules-center {
     font-weight: bold;
-}
-#tray {
-    padding: 0 5px 0 10px;
 }

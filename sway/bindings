@@ -98,7 +98,7 @@ mode "$launch_mode" {
     bindsym k exec passc.sh ; mode "default"
     bindsym m exec mpv --profile=dragon; mode "default"
     bindsym y exec youtube-music; mode "default"
-    bindsym p exec $term pulsemixer ; mode "default"
+    bindsym p exec $term -a floating_window pulsemixer ; mode "default"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"

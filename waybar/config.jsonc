@@ -10,7 +10,7 @@
         "format": "{name}"
     },
     "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+        "format": "{}"
     },
     "tray": {
         "icon-size": 15,
