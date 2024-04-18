@@ -59,6 +59,7 @@ for_window [instance="branchdialog"] floating enable
 for_window [instance="clock"] floating enable
 for_window [instance="floating_window"] floating enable
 for_window [app_id="floating_window"] floating enable
+for_window [app_id="org.ijhack.qtpass"] floating enable
 for_window [instance="pinentry"] floating enable
 for_window [title="Event Tester"] floating enable
 for_window [title="Picture-in-Picture"] border none
