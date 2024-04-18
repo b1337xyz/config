@@ -1,6 +1,6 @@
 # man 5 mako
 font=monospace 10
-anchor=top-center
+anchor=top-right
 width=400
 height=300
 default-timeout=5000
