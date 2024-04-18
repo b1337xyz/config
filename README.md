@@ -4,9 +4,9 @@
      /  \        Shell: bash
     /\   \       WM: sway
    /      \      Bar: waybar
-  /   ,,   \     Terminal Font: JetBrainsMono Nerd Font
+  /   ,,   \     Notifications: mako
  /   |  |  -\    Terminal: foot+tmux
-/_-''    ''-_\    
+/_-''    ''-_\   Terminal Font: JetBrainsMono Nerd Font 
 ```
 
 ![Screenshot](screenshot.jpg)
