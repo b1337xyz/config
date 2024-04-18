@@ -2,10 +2,10 @@
 ```
       /\         OS: Arch Linux x86_64
      /  \        Shell: bash
-    /\   \       WM: i3/sway
-   /      \      Terminal: alacritty/tmux
+    /\   \       WM: sway
+   /      \      Bar: waybar
   /   ,,   \     Terminal Font: JetBrainsMono Nerd Font
- /   |  |  -\    
+ /   |  |  -\    Terminal: foot+tmux
 /_-''    ''-_\    
 ```
 
