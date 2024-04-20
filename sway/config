@@ -14,6 +14,10 @@ set $ws0 "10: mus "
 
 output * adaptive_sync on
 
+mode passthrough {
+	bindsym $mod+0 mode default
+}
+
 include /etc/sway/config.d/*
 include bindings
 include rules
