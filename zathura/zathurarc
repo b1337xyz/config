@@ -15,3 +15,8 @@ set zoom-min 10
 # unmap f
 # map f toggle_fullscreen
 # map [fullscreen] f toggle_fullscreen
+
+set recolor true
+set recolor-keephue true
+set recolor-darkcolor "#000000"
+set recolor-lightcolor "#fffcee"

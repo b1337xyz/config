@@ -99,7 +99,7 @@ set smartcase
 set backspace=indent,eol,start
 set autoindent 
 set nostartofline
-" set autochdir
+set autochdir
 set ruler
 set laststatus=2
 set t_vb=

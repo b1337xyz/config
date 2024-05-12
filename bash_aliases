@@ -83,7 +83,6 @@ alias ...='cd ../..' gb='cd -' \
     jmtp='jmtpfs -o allow_other,noatime' \
     edi3='vim ~/.config/i3/config' \
     mdlnad='/sbin/minidlnad -f ~/.config/minidlna/minidlna.conf' \
-    za='zathura' \
     py='python3' \
     mi='mediainfo' \
     fe='find . -maxdepth 1 -empty' \

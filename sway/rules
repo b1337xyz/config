@@ -2,6 +2,7 @@ assign [class="Conky"] $ws1
 assign [class="GLava"] $ws1
 assign [instance="Cava"] $ws1
 assign [instance="btm"] $ws1
+assign [app_id="firefox"] $ws2
 assign [class="Brave-browser"] $ws2
 assign [class="Chromium"] $ws2
 assign [class="Google-chrome"] $ws2

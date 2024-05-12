@@ -19,7 +19,7 @@ window#waybar {
 #workspaces button {
     background-color: transparent;
     color: #808080;
-    padding: 2px 8px;
+    padding: 0 8px;
 }
 #workspaces button.focused {
     background-color: #285577;

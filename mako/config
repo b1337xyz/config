@@ -9,3 +9,6 @@ text-color=#ffffff
 border-color=#9fbfff
 margin=5,5
 max-visible=10
+
+[mode=silent]
+invisible=1

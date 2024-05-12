@@ -3,7 +3,7 @@ set $term foot
 
 set $ws1 "1: home "
 set $ws2 "2: www "
-set $ws3 "3: soc "
+set $ws3 "3: chat "
 set $ws4 "4: rss "
 set $ws5 "5: ws5 "
 set $ws6 "6: ws6 "
