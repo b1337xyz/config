@@ -1,6 +1,6 @@
 exec_always ~/.cache/setwall
 exec_always 'pkill waybar; waybar -c ~/.config/waybar/config.jsonc'
 # exec vesktop
-# exec youtube-music
+exec youtube-music
 
 # vim: ft=swayconfig
