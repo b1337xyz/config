@@ -49,7 +49,9 @@ export TERM=${TERM:-xterm-256color}
 export COLORTERM=truecolor  # https://github.com/termstandard/colors
 export FZF_DEFAULT_OPTS='--no-border --no-separator --color=dark'
 export PROMPT_DIRTRIM=2
-export EXECIGNORE=jackd
+export EXECIGNORE=jackd:backup
+export FIGNORE=${EXECIGNORE}
+export GLOBIGNORE=${EXECIGNORE}
 export TODOFILE="$XDG_CACHE_HOME"/.todo
 
 source /usr/share/bash-completion/bash_completion
@@ -363,6 +365,7 @@ then
     abbrev-alias stop="systemctl --user stop"
     abbrev-alias start="systemctl --user start"
     abbrev-alias -g -e LF='$(command ls -1trc | tail -1)' # latest file
+    abbrev-alias -g -e bysize=' | sort -h' # latest file
 fi
 
 source ~/.local/share/cargo/env >/dev/null 2>&1
