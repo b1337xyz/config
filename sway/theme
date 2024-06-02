@@ -1,22 +1,12 @@
-set $bar_font JetBrainsMonoNerdFont 10
+set $fbg #4F0A9C
+set $ffg #ffffff
+set $ubg #333333
+set $ufg #888888
 
-bar {
-    position top
-    strip_workspace_numbers yes
-    font pango: $bar_font
-    strip_workspace_numbers yes
-    binding_mode_indicator yes
-    workspace_buttons yes
-    workspace_min_width 30
-    # status_command while date +'%b %d %Y %H:%M '; do sleep 15; done
-    status_command i3status -c ~/.config/i3status/config
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #323232 #323232 #5c5c5c
-        binding_mode #285577 #285577 #ffffff
-    }
-}
+# class                 border bg fg indicator child_border
+client.focused          $fbg $fbg $ffg $fbg $fbg
+client.focused_inactive $ubg $ubg $ufg $ubg $ubg
+client.unfocused        $ubg $ubg $ufg $ubg $ubg
+client.urgent           $ubg $ubg $ufg $ubg $ubg
 
 # vim: ft=swayconfig

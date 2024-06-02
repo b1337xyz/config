@@ -66,11 +66,11 @@ c.downloads.location.prompt = False
 c.downloads.location.remember = False
 c.downloads.remove_finished = 0 # in miliseconds
 c.qt.highdpi = False
-c.scrolling.smooth = True
+c.scrolling.smooth = False
 c.spellcheck.languages = ['pt-BR', 'en-US']
 c.statusbar.show = 'always'
 c.tabs.background = False
 c.tabs.indicator.width = 0
 c.tabs.show = 'always'
-c.zoom.default = 100
+c.zoom.default = 115
 # }}}

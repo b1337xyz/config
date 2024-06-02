@@ -83,6 +83,9 @@ mode "resize" {
     bindsym equal resize grow   width 20 px ; resize grow height 10 px
     bindsym c move position center
 
+    bindsym g gaps inner all plus 5
+    bindsym f gaps inner all minus 5
+
     bindsym q      mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"

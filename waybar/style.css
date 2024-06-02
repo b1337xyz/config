@@ -7,13 +7,14 @@
 #mode,
 #tray,
 .modules-right {
+    background-color: #4F0A9C;
     padding: 0 10px;
 }
 #mode {
     background-color: #404040;
 }
 window#waybar {
-    background: #222222;
+    background: rgba(0, 0, 0, 0.6);
     color: #ffffff;
 }
 #workspaces button {
@@ -22,7 +23,9 @@ window#waybar {
     padding: 0 8px;
 }
 #workspaces button.focused {
-    background-color: #285577;
+    /* background-color: #285577; */
+    /* background-color: #772855; */
+    background-color: #4F0A9C;
     color: #ffffff;
 }
 button:hover {

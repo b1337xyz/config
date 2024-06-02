@@ -15,13 +15,17 @@ set $ws0 "10: mus "
 output * adaptive_sync on
 
 mode passthrough {
-	bindsym $mod+0 mode default
+    bindsym $mod+0 mode default
 }
 
+# swaymsg -t get_inputs
+input "1133:49271:Logitech_USB_Optical_Mouse" {
+    scroll_factor 1.22
+}
 include /etc/sway/config.d/*
 include bindings
 include rules
-# include theme
+include theme
 include settings
 include autostart
 
