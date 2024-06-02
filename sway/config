@@ -9,7 +9,7 @@ set $ws5 "5: ws5 "
 set $ws6 "6: ws6 "
 set $ws7 "7: ws7 "
 set $ws8 "8: usr "
-set $ws9 "9: opt "
+set $ws9 "9: steam "
 set $ws0 "10: mus "
 
 output * adaptive_sync on

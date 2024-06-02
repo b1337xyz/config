@@ -1,17 +1,22 @@
 * {
     border: none;
-    font-family: Cantarell, monospace;
+    font-family: JetBrainsMono Nerd Font, Cantarell, monospace;
     font-size: 14px;
     border-radius: 0;
 }
 #mode,
 #tray,
 .modules-right {
-    background-color: #4F0A9C;
+    background-color: #556EA1;
     padding: 0 10px;
 }
 #mode {
-    background-color: #404040;
+    background-color: #333333;
+    color: #ffff9f;
+    font-weight: bold;
+}
+#pulseaudio {
+    padding: 0 8px;
 }
 window#waybar {
     background: rgba(0, 0, 0, 0.6);
@@ -20,12 +25,13 @@ window#waybar {
 #workspaces button {
     background-color: transparent;
     color: #808080;
-    padding: 0 8px;
+    padding: 0 10px;
 }
 #workspaces button.focused {
     /* background-color: #285577; */
     /* background-color: #772855; */
-    background-color: #4F0A9C;
+    /* background-color: #4F0A9C; */
+    background-color: #556EA1;
     color: #ffffff;
 }
 button:hover {

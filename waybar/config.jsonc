@@ -24,7 +24,11 @@
     },
     "pulseaudio": {
         "scroll-step": 5,
-        "format": "VOL {volume}%",
+        "format": "{icon} {volume}%",
+        "format-muted": "MUTED",
+        "format-icons": {
+            "default": [""]
+        },
         "on-click": "foot -a floating_window pulsemixer"
     }
 }
