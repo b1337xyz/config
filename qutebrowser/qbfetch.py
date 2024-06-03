@@ -88,7 +88,7 @@ if 'qbfetch' not in objects.commands:
 
         lines.append(('qutebrowser v', qtver))
         gitver = vs._git_str()
-        if gitver is not None:
+        if gitver:
             lines.append(("Git commit", gitver))
 
         lines.append(('Backend', vs._backend()))
