@@ -4,14 +4,8 @@
     font-size: 14px;
     border-radius: 0;
 }
-#mode,
-#tray,
-.modules-right {
-    background-color: #556EA1;
-    padding: 0 10px;
-}
-#mode {
-    background-color: #333333;
+#tray, #mode {
+    background-color: transparent;
     color: #ffff9f;
     font-weight: bold;
 }
@@ -19,7 +13,7 @@
     padding: 0 8px;
 }
 window#waybar {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(23, 29, 38, 0.6);
     color: #ffffff;
 }
 #workspaces button {
@@ -31,12 +25,18 @@ window#waybar {
     /* background-color: #285577; */
     /* background-color: #772855; */
     /* background-color: #4F0A9C; */
-    background-color: #556EA1;
+    /* background-color: #556EA1; */
+    /* background-color: #6D8976; */
+    background-color: #323F4E;
     color: #ffffff;
 }
 button:hover {
     background: inherit;
     box-shadow: inset 0 -3px #ffffff;
+}
+.modules-right {
+    background-color: #323F4E;
+    padding: 0 10px;
 }
 .modules-center {
     font-weight: bold;
