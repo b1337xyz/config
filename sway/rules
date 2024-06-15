@@ -14,7 +14,7 @@ assign [class="qBittorrent"] $ws0
 assign [class="easyeffects"] $ws0
 assign [class="YouTube Music"] $ws0
 # assign [class="steam"] $ws9
-# assign [instance="steamwebhelper"] $ws9
+assign [instance="steamwebhelper"] $ws9
 
 # for_window [all] floating enable
 for_window [class="java-lang-Thread"] floating enable
