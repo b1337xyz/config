@@ -1,8 +1,8 @@
 set $bar_font JetBrainsMonoNerdFont 11
-set $bar_bg #33333399
-set $bar_fg #dddddd
-set $bar_f0 #aaaaaa
-set $bar_f1 #96fbc4
+set $focused_bg #606697
+set $focused_fg #dddddd
+set $unfocused_bg #33333399
+set $unfocused_fg #999999
 
 bar {
     padding -2px 0px
@@ -20,28 +20,23 @@ bar {
     workspace_min_width 40
 
     colors {
-        background $bar_bg
-        statusline $bar_fg
-        separator  $bar_f0
+        background $unfocused_bg
+        statusline $focused_fg
+        separator  $unfocused_fg
 
         # class              border background color
-        focused_workspace    $bar_bg $bar_bg $bar_f1
-        inactive_workspace   $bar_bg $bar_bg $bar_f0
-        active_workspace     $bar_bg $bar_bg $bar_f0
-        urgent_workspace     $bar_bg $bar_bg $bar_f0
-        binding_mode         $bar_bg $bar_bg $bar_fg
+        focused_workspace    $focused_bg  $focused_bg $focused_fg
+        inactive_workspace   $unfocused_bg $unfocused_bg $unfocused_fg
+        active_workspace     $unfocused_bg $unfocused_bg $unfocused_fg
+        urgent_workspace     $unfocused_bg $unfocused_bg $unfocused_fg
+        binding_mode         $unfocused_bg $unfocused_bg $unfocused_fg
     }
 }
 
-set $bg #466666A0
-set $fg #ffffff
-set $b0 #333333E0
-set $f0 #888888
-
 # class                 border bg fg indicator child_border
-client.focused          $bg $bg $fg $bg $bg
-client.focused_inactive $b0 $b0 $f0 $b0 $b0
-client.unfocused        $b0 $b0 $f0 $b0 $b0
-client.urgent           $b0 $b0 $f0 $b0 $b0
+client.focused          $focused_bg $focused_bg $focused_fg $focused_bg $focused_bg
+client.focused_inactive $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg
+client.unfocused        $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg 
+client.urgent           $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg 
 
 # vim: ft=i3config

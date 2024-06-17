@@ -125,13 +125,17 @@ let g:netrw_liststyle=3
 
 " Mappings {{{
 
+if !empty($WAYLAND_DISPLAY)
+    nnoremap <C-c> :silent .w !wl-copy<CR>
+    vnoremap <C-c> "cy <bar> :call system('wl-copy', @c)<CR>
+else
+    nnoremap <C-c> :silent .w !xclip -sel c<CR>
+    vnoremap <C-c> "cy <bar> :call system('xclip -sel c', @c)<CR>
+endif
+
 " INSERT <tag and press Ctrl+s the result is <tag></tag>
 " won't work with <tag src="example"... 
 inoremap <C-s> <esc>F<yeea><esc>pa><esc>F<a/<esc>F>a
-" nnoremap <C-c> :silent .w !xclip -sel c<CR>
-nnoremap <C-c> :silent .w !wl-copy<CR>
-" vnoremap <C-c> "cy <bar> :call system('xclip -sel c', @c)<CR>
-vnoremap <C-c> "cy <bar> :call system('wl-copy', @c)<CR>
 nnoremap cn :cnext<CR>
 nnoremap cp :cprevious<CR>
 nnoremap <C-s-j> :m .+1<CR>==
