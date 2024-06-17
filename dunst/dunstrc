@@ -35,7 +35,7 @@
     show_indicators = yes
     icon_position = left
     enable_recursive_icon_lookup = true
-    icon_theme = "Chicago95, Adwaita, hicolor"
+    icon_theme = "Adwaita, hicolor"
     min_icon_size = 32
     max_icon_size = 128
     sticky_history = yes

@@ -2,10 +2,10 @@
 ```
       /\         OS: Arch Linux x86_64
      /  \        Shell: bash
-    /\   \       WM: sway
-   /      \      Bar: waybar
-  /   ,,   \     Notifications: mako
- /   |  |  -\    Terminal: foot+tmux
+    /\   \       WM: i3
+   /      \      Bar: i3status
+  /   ,,   \     Notifications: dunst
+ /   |  |  -\    Terminal: alacritty+tmux
 /_-''    ''-_\   Terminal Font: JetBrainsMono Nerd Font 
 ```
 

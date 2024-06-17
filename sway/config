@@ -22,6 +22,7 @@ mode passthrough {
 input "1133:49271:Logitech_USB_Optical_Mouse" {
     scroll_factor 1.22
 }
+
 include /etc/sway/config.d/*
 include bindings
 include rules

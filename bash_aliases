@@ -1,4 +1,6 @@
 ### default
+alias backup=backup.sh
+
 alias ls='ls -vNh --color' \
     btm='btm -C ~/.config/bottom/config.toml' \
     dir='dir --color' \

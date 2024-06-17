@@ -35,7 +35,7 @@ export BAT_THEME="OneHalfDark"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export HISTIGNORE='?:??:???:neofetch:history:uptime:uptime -?:uname:uname -?'
 export HISTCONTROL='ignoreboth:erasedups'
-export HISTSIZE=99999
+export HISTSIZE=-1
 export LESS=-Ri
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
 export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold

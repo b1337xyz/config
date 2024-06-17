@@ -37,14 +37,14 @@ set $mod Mod4
 
 set $ws1 "1: home "
 set $ws2 "2: www "
-set $ws3 "3: soc "
+set $ws3 "3: chat "
 set $ws4 "4: rss "
 set $ws5 "5: ws5 "
 set $ws6 "6: ws6 "
 set $ws7 "7: ws7 "
 set $ws8 "8: usr "
-set $ws9 "9: opt "
-set $ws0 "10: snd "
+set $ws9 "9: steam "
+set $ws0 "10: mus "
 
 workspace $ws1 output nonprimary
 workspace $ws2 output primary

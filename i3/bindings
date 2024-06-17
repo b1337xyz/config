@@ -69,6 +69,7 @@ bindsym $mod+b exec toggle_bar.sh
 bindsym $mod+shift+b exec i3-msg border toggle 3
 bindsym $mod+minus move scratchpad ; exec pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+shift+minus exec i3-scratchpad-dmenu.py && pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+m exec ~/.scripts/shell/i3/windowswitcher.sh
 
 # 106 KP_Divide
 # 63  KP_Multiply
@@ -104,10 +105,12 @@ bindsym XF86Calculator exec brightnessctl s 2%-
 # bindsym XF86AudioPlay exec cmus-remote -u
 # bindsym XF86AudioNext exec cmus-remote -n
 # bindsym XF86AudioPrev exec cmus-remote -r
-bindsym XF86AudioPlay exec mpc toggle
-bindsym XF86AudioNext exec mpc next
-bindsym XF86AudioPrev exec mpc prev
-
+# bindsym XF86AudioPlay exec mpc toggle
+# bindsym XF86AudioNext exec mpc next
+# bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 bindsym $mod+q kill
 # bindsym --release Caps_Lock           exec pkill -SIGRTMIN+12 i3blocks
