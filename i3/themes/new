@@ -1,7 +1,7 @@
 set $bar_font JetBrainsMonoNerdFont 11
-set $focused_bg #606697
-set $focused_fg #dddddd
-set $unfocused_bg #33333399
+set $focused_bg #333333
+set $focused_fg #ffff8f
+set $unfocused_bg #33333390
 set $unfocused_fg #999999
 
 bar {
@@ -21,22 +21,22 @@ bar {
 
     colors {
         background $unfocused_bg
-        statusline $focused_fg
+        statusline $unfocused_fg
         separator  $unfocused_fg
 
         # class              border background color
-        focused_workspace    $focused_bg  $focused_bg $focused_fg
+        focused_workspace    $focused_bg   $focused_bg   $focused_fg
         inactive_workspace   $unfocused_bg $unfocused_bg $unfocused_fg
         active_workspace     $unfocused_bg $unfocused_bg $unfocused_fg
         urgent_workspace     $unfocused_bg $unfocused_bg $unfocused_fg
-        binding_mode         $unfocused_bg $unfocused_bg $unfocused_fg
+        binding_mode         $focused_bg   $focused_bg   $focused_fg
     }
 }
 
-# class                 border bg fg indicator child_border
-client.focused          $focused_bg $focused_bg $focused_fg $focused_bg $focused_bg
-client.focused_inactive $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg
-client.unfocused        $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg 
-client.urgent           $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg 
+# class                 border        bg            fg            indicator     child_border
+client.focused          $focused_bg   $focused_bg   $focused_fg   $focused_bg   $focused_bg
+client.focused_inactive $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg $unfocused_bg
+client.unfocused        $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg $unfocused_bg
+client.urgent           $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg $unfocused_bg
 
 # vim: ft=i3config

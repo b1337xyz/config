@@ -26,7 +26,7 @@ Nsxiv.bar.background: #2F343F
 Nsxiv.window.background: #222222
 Nsxiv.window.foreground: #9fbfff
 Nsxiv.mark.foreground: #ff3040
-dmenu.font: monospace-10
+dmenu.font: monospace-12
 
 URxvt.geometry: 100x28
 URxvt.iconName: terminal
@@ -128,10 +128,10 @@ URxvt.keysym.M-s:           perl:keyboard-select:search
 /* dmenu.selforeground: #000000 */
 
 /* Dark */
-dmenu.background: #19232D
-dmenu.foreground: #ffffff
-dmenu.selbackground: #32414B
-dmenu.selforeground: #90f0ff
+dmenu.background: #333333
+dmenu.foreground: #999999
+dmenu.selbackground: #222222
+dmenu.selforeground: #ffff8f
 
 /* Light */
 /* dmenu.background: #eeeeee */

@@ -22,11 +22,10 @@ for_window [all] title_window_icon no
 workspace_layout tabbed
 
 # gaps outer|horizontal|vertical|top|left|bottom|right <gap_size>[px]
-# gaps outer 8
-# gaps inner 8
+gaps inner 15
 # gaps bottom 28
 
 # smart_gaps on|off|inverse_outer
-# smart_gaps off
+smart_gaps off
 
 # vim: ft=i3config
