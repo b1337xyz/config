@@ -4,7 +4,7 @@ bindsym $mod+shift+Return exec $term -a floating_window
 bindsym $mod+q kill
 bindsym $mod+y sticky toggle
 bindsym $mod+Shift+r reload
-# bindsym $mod+Shift+e exit
+bindsym $mod+Shift+e exit
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down

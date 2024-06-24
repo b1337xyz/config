@@ -1,13 +1,13 @@
 set $bar_font JetBrainsMonoNerdFont 11
 set $focused_bg #333333
-set $focused_fg #ffff8f
-set $unfocused_bg #33333390
+set $focused_fg #eeeeee
+set $unfocused_bg #333333
 set $unfocused_fg #999999
 
 bar {
     padding -2px 0px
     font pango: $bar_font
-    i3bar_command i3bar --transparency
+    # i3bar_command i3bar --transparency
     status_command i3status -c ~/.config/i3status/config
     strip_workspace_numbers yes
     binding_mode_indicator yes

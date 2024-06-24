@@ -15,7 +15,7 @@ order += "tztime local"
 
 tztime local {
     # separator_block_width = 528
-    format = "<span bgcolor='#333333'> %b %d %Y %H:%M </span>"
+    format = " %b %d %Y %H:%M "
 }
 
 volume master {
