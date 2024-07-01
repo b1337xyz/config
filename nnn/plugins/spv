@@ -5,6 +5,7 @@
 # nnn SimplePreView 
 #
 
+# shellcheck disable=SC2016
 [ -z "$TMUX" ] && { printf '\n$TMUX not set\n'; sleep 1; exit 1; } 
 
 PREVIEW_PID=/tmp/nnn_preview.pid

@@ -1,5 +1,5 @@
 set $bar_font JetBrainsMonoNerdFont 11
-set $focused_bg #333333
+set $focused_bg #444444
 set $focused_fg #eeeeee
 set $unfocused_bg #333333
 set $unfocused_fg #999999
