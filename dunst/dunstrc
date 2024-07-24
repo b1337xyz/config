@@ -55,7 +55,7 @@
     frame_width = 2
     background = "#222222"
     foreground = "#ffffff"
-    frame_color = "#9fbfff"
+    frame_color = "#319078"
 
 # [fullscreen]
 #     fullscreen = pushback
