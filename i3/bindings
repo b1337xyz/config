@@ -52,7 +52,7 @@ bindsym $mod+v split v
 
 bindsym $mod+f fullscreen toggle
 
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -128,6 +128,7 @@ bindsym $mod+t             exec toggle_transparency.sh
 bindsym --release $mod+c   exec cpick.sh
 bindsym $mod+shift+s       exec print.sh cops
 bindsym ctrl+shift+space   exec dunstctl close
+bindsym $mod+s             exec lutrislauncher.sh
 
 set $print_mode [p]rint [f]ocused [c]opy [C]opy-focused [s]elect [S]elect-copy
 mode "$print_mode" {
@@ -159,7 +160,7 @@ mode "$launch_mode" {
     bindsym w exec wrun.sh ; mode "default"
     bindsym s exec srun.sh ; mode "default"
     bindsym t exec telegram ; mode "default"
-    bindsym y exec ytcli.py --history --dmenu ; mode "default"
+    bindsym y exec youtube-music ; mode "default"
     bindsym v exec quickedit.sh ; mode "default"
 
     bindsym q      mode "default"

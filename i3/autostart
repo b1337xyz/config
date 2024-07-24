@@ -8,7 +8,7 @@ set $exec exec --no-startup-id
 # $exec picom
 $exec setscreen.sh
 $exec steam
-$exec youtube-music
+$exec sh -c 'sleep 15; youtube-music'
 $exec ~/.cache/xwallpaper
 
 # vim: ft=i3config
