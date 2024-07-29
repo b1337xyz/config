@@ -37,7 +37,7 @@ case "$1" in
     # n) read -r f; rm -rfv "${f%/*}" ;; # dangerous!
     n) read -r f; alacritty -e nnn "${f%/*}" & ;;
     g) read -r f; setsid -f -- gimp "$f" >/dev/null 2>&1 & ;;
-    w) head -1 | xargs -I{} wall.sh '{}' ;;
+    w) head -1 | xargs -I{} xwall.sh '{}' ;;
     p) head -1 | tr \\n \\0 | xargs -0 realpath -- | tr -d \\n | xclip -sel clip ;;
     b) head -1 | tr \\n \\0 | xargs -0 basename -- | tr -d \\n | xclip -sel clip ;;
     v) head -1 | tr \\n \\0 | xargs -0 dirname -z | xargs -0 nsxiv -s w -bqr & ;;
