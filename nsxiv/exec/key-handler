@@ -1,6 +1,6 @@
 #!/bin/sh
 # https://saucenao.com/user.php?page=search-api
-API_KEY=$(cat ~/.config/.sauce)
+API_KEY=$(cat ~/.config/.sauce 2>/dev/null)
 
 tmpfile=$(mktemp)
 end() { rm "$tmpfile"; }
@@ -55,7 +55,7 @@ case "$1" in
     ;;
     m|y)
         cat > "$tmpfile"
-        target=$(find ~/Pictures -xdev -type d | rofi -dmenu -l 15 -i)
+        target=$(find ~/Pictures -xdev -type d | dmenu -c -l 15 -i)
         [ -z "$target" ] && exit 0
         while read -r i;do
             if [ "$1" = m ];then

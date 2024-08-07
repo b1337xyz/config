@@ -7,7 +7,7 @@ set $exec exec --no-startup-id
 # $exec unclutter --idle 1 --jitter 2 --root
 # $exec picom
 $exec setscreen.sh
-# $exec steam
+$exec steam
 $exec sh -c 'sleep 10; exec youtube-music'
 $exec ~/.cache/xwallpaper
 
