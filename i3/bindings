@@ -115,7 +115,6 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+q kill
 # bindsym --release Caps_Lock           exec pkill -SIGRTMIN+12 i3blocks
 # bindsym --release Num_Lock            exec pkill -SIGRTMIN+12 i3blocks
-bindsym --release $mod+ccedilla       exec lock.sh
 bindsym --release $mod+shift+ccedilla exec run_i3lock.sh
 bindsym $mod+period        exec mpvc.sh /tmp/mpvradio toggle 
 bindsym $mod+shift+greater exec mpvc.sh /tmp/mpvradio next
