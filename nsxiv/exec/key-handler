@@ -44,7 +44,7 @@ case "$1" in
     # v) head -1 | tr \\n \\0 | xargs -0 vbg.sh ;;
     s) while read -r i;do sauce "$i" ;done ;;
     T) tr \\n \\0 | xargs -0I{} trash.sh '{}' ;;
-    P) grep -oP '[^/]*\.(mkv|webm|mp4|avi|m4v)(?=\.\w+)' | mpv --playlist=- --really-quiet=yes >/dev/null 2>&1 ;;
+    P) grep -oP '[^/]*\.(mkv|webm|mp4|avi|m4v)(?=\.\w+)' | mpv --playlist=- >/dev/null 2>&1 ;;
     x)
         read -r file
         if [ "${file##*.}" != "png" ];then
