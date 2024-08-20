@@ -21,7 +21,7 @@ sauce() {
         jq -r '.results[0].data | if .ext_urls then .ext_urls[0] else .source end')
 
     case "$r" in
-        http*) $BROWSER "$r" ;;
+        http*) $BROWSER "$r" >/dev/null 2>&1 & ;;
         *)  printf '%s' "$r" | xclip -sel clip
             notify-send 'Copied to clipboard' "$r" ;;
     esac
@@ -47,8 +47,9 @@ case "$1" in
     P) grep -oP '[^/]*\.(mkv|webm|mp4|avi|m4v)(?=\.\w+)' | mpv --playlist=- >/dev/null 2>&1 ;;
     x)
         read -r file
+        notify-send "$file copied to clipboard"
         if [ "${file##*.}" != "png" ];then
-            convert "$file" PNG:- | xclip -sel clip -target image/png
+            magick "$file" PNG:- | xclip -sel clip -target image/png
         else
             xclip -sel clip -target image/png "$file"
         fi
