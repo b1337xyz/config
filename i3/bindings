@@ -93,6 +93,8 @@ bindcode $mod+83 exec i3_edge.py -r left
 bindcode $mod+85 exec i3_edge.py -r right
 bindcode $mod+80 exec i3_edge.py -r up
 bindcode $mod+88 exec i3_edge.py -r down
+bindcode $mod+87 exec i3_edge.py up
+bindcode $mod+89 exec i3_edge.py down
 
 bindsym Print exec print.sh
 bindsym XF86AudioRaiseVolume exec volupdown.sh up

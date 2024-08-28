@@ -12,7 +12,7 @@ assign [instance="ncmpcpp"] $ws9
 assign [class="Amule"] $ws0
 assign [class="qBittorrent"] $ws0
 assign [class="easyeffects"] $ws0
-assign [class="YouTube Music"] $ws0
+assign [class="YouTube Music"] $ws4
 # assign [class="steam"] $ws9
 assign [instance="steamwebhelper"] $ws9
 

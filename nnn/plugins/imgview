@@ -3,5 +3,5 @@
 if [ -f "$1" ]; then
     nsxiv -q "$1" >/dev/null 2>&1
 elif [ -d "$1" ]; then
-    nsxiv -rqt "$1" #>/dev/null 2>&1
+    nsxiv -rqt "$1" >/dev/null 2>&1
 fi
