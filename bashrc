@@ -18,22 +18,13 @@ fi
 
 # hash fish && exec fish
 
-_update_goback() {
-    tmpgb=$(mktemp --dry-run)
-    while read -r i;do
-        [ -d "$i" ] && echo "$i"
-    done < <(tac ~/.cache/goback) | awk '!s[$0]++' > "$tmpgb"
-    command mv "$tmpgb" ~/.cache/goback
-    unset tmpgb
-}
-
-export GPG_TTY=$(tty)
+# export GPG_TTY=$(tty)
 export BAT_STYLE=plain
 export BAT_THEME="OneHalfDark"
 # export BAT_THEME="gruvbox-light"
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-export HISTIGNORE='?:??:???:neofetch:history:uptime:uptime -?:uname:uname -?'
+export HISTIGNORE='?:neofetch:history:uptime:uptime -?:uname:uname -?'
 export HISTCONTROL='ignoreboth:erasedups'
 export HISTSIZE=-1
 export LESS=-Ri
@@ -50,8 +41,6 @@ export COLORTERM=truecolor  # https://github.com/termstandard/colors
 export FZF_DEFAULT_OPTS='--no-border --no-separator --color=dark'
 export PROMPT_DIRTRIM=2
 export EXECIGNORE=jackd:backup
-export FIGNORE=${EXECIGNORE}
-export GLOBIGNORE=${EXECIGNORE}
 export TODOFILE="$XDG_CACHE_HOME"/.todo
 
 source /usr/share/bash-completion/bash_completion
@@ -76,6 +65,19 @@ shopt -s cmdhist
 shopt -s globstar
 shopt -s extglob
 
+cd() {
+    command cd "$@" || return $?
+    timeout 1 ls --color=always -Nhltr 2>/dev/null || true
+}
+
+nvm() {
+    [ -s "$NVM_DIR/nvm.sh" ] || { printf '%s not found, is nvm installed?' "$NVM_DIR/nvm.sh"; return 1; }
+    unset -f nvm  # just to be sure
+    source "$NVM_DIR/nvm.sh"
+    source "$NVM_DIR/bash_completion"
+    nvm "$@"
+}
+
 expand_files() {
     # Example:
     #  ls ~/.bashrc file -> ls /home/<user>/.bashrc /home/<user>/file
@@ -94,7 +96,7 @@ expand_files() {
 
 fzfhist() {
     local cmd=
-    cmd=$(history | awk '{sub(/^ +?[0-9 ]+/, "", $0); if (length($0) > 2) print $0}' |
+    cmd=$(history | awk '{sub(/^ +?[0-9 ]+/, "", $0); if (length($0) > 2) print $0}' | awk '!s[$0]++' |
         fzf --info=hidden --layout=reverse --scheme=history \
         --query "$READLINE_LINE" --height 20 --tac --bind 'tab:accept')
     READLINE_LINE="$cmd"
@@ -130,6 +132,15 @@ cb() {
 goback() {
     d=$(awk '!s[$0]++' ~/.cache/goback | fzf --info=hidden --layout=reverse --height 20 --tac --bind 'tab:accept')
     cd "$d" || return 1
+}
+
+_update_goback() {
+    tmpgb=$(mktemp --dry-run)
+    while read -r i;do
+        [ -d "$i" ] && echo "$i"
+    done < <(tac ~/.cache/goback) | awk '!s[$0]++' > "$tmpgb"
+    command mv "$tmpgb" ~/.cache/goback
+    unset tmpgb
 }
 
 _quote() {
@@ -170,31 +181,6 @@ if ! [[ "$TERM" = xterm* ]] && [ -z "$SSH_CLIENT" ];then
     bind -x '"\C-g": fzfgov' 
     bind -x '"\C-f": fzcd'
 fi
-
-cd() {
-    command cd "$@" || return $?
-    timeout 1 ls --color=always -Nhltr 2>/dev/null || true
-}
-
-n() {
-    if [ -n "$NNNLVL" ] && [ "${NNNLVL:-0}" -ge 1 ]; then
-        echo "nnn is already running"; return
-    fi
-    export NNN_TMPFILE="$HOME/.config/nnn/.lastd"
-
-    nnn "$@"
-
-    if [ -f "$NNN_TMPFILE" ]; then
-        . "$NNN_TMPFILE"
-        command rm -f "$NNN_TMPFILE"
-    fi
-}
-
-r() {
-    local cache=~/.cache/.rangedir
-    ranger --choosedir="$cache" "$@"
-    cd -- "$(cat "$cache")" || return 1
-}
 
 timer_start() {
     timer=${timer:-$SECONDS}
@@ -303,11 +289,15 @@ prompt() {
     echo -ne "\033]0;${PWD/$HOME/\~}\007"
     [[ "${PWD//[^\/]/}" = ////* ]] && pwd >> ~/.cache/goback
 }
+
 ms_prompt() {
     # shellcheck disable=SC1003,SC2317
     msdos_pwd() { pwd | tr '/' '\\' ; }
     PS1='C:$(msdos_pwd)> '
 }
+
+# printf 'Michaelsoft Binbows [Version 4.10.2600]\n(C) Copyright 1985-2000 Michaelsoft Corp.\n\n'
+
 PROMPT_COMMAND="prompt; timer_stop"
 
 function bye {
@@ -316,49 +306,11 @@ function bye {
 }
 trap bye EXIT
 
-fixkbd() {
-    setxkbmap br
-    # localectl list-x11-keymap-options
-    # xmodmap -e "keycode 108 = Alt_L" # Alt_Gr
-    xmodmap -e "keycode 97 = Alt_L" # backslash
-    xmodmap -e "keycode 34 = dead_grave backslash" # dead_acute 
-    xmodmap -e "keycode 47 = asciitilde bar" # ccedilla
-    xmodmap -e "keycode 26 = e E NoSymbol NoSymbol g"
-    xmodmap -e "keycode 27 = r R NoSymbol NoSymbol h"
-    xmodmap -e "keycode 28 = t T NoSymbol NoSymbol Up"
-    # xmodmap -e "keycode 73 = g" # F7
-    # xmodmap -e "keycode 74 = h" # F8
-    # xmodmap -e "keycode 15 = 6 backslash"  # dead_diaeresis
-    # xmodmap -e "keycode 81 = bar backslash " # KP_Prior (9)
-    # xmodmap -e "keycode 91 = asciitilde"  # KP_Delete
-}
-hxsj() {
-    # mappings for the hxsj keyboard
-    setxkbmap -layout us -variant altgr-intl
-    xmodmap -e "keycode  24 = q Q NoSymbol NoSymbol slash"
-    xmodmap -e "keycode  25 = w W NoSymbol NoSymbol question"
-    xmodmap -e "keycode  34 = backslash bar"
-    xmodmap -e "keycode  35 = bracketleft braceleft"
-    xmodmap -e "keycode  47 = asciitilde asciicircum"
-    xmodmap -e "keycode  51 = bracketright braceright"
-    xmodmap -e "keycode  61 = semicolon colon"
-}
-
 if [ -n "$DISPLAY" ];then
     todo ls | tail -5
 fi
- 
-# printf 'Michaelsoft Binbows [Version 4.10.2600]\n(C) Copyright 1985-2000 Michaelsoft Corp.\n\n'
 
-nvm() {
-    [ -s "$NVM_DIR/nvm.sh" ] || { printf '%s not found, is nvm installed?' "$NVM_DIR/nvm.sh"; return 1; }
-    unset -f nvm  # just to be sure
-    source "$NVM_DIR/nvm.sh"
-    source "$NVM_DIR/bash_completion"
-    nvm "$@"
-}
-
-# The best thing ever -> https://github.com/momo-lab/bash-abbrev-alias
+# https://github.com/momo-lab/bash-abbrev-alias
 if source ~/.local/src/bash-abbrev-alias/abbrev-alias.plugin.bash 2>/dev/null
 then
     abbrev-alias status="systemctl --user status"
@@ -368,5 +320,5 @@ then
     abbrev-alias -g -e bysize=' | sort -h' # latest file
 fi
 
-source ~/.local/share/cargo/env >/dev/null 2>&1
+# source ~/.local/share/cargo/env >/dev/null 2>&1
 true
