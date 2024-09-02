@@ -57,6 +57,6 @@ include settings
 include bindings
 include rules
 include autostart
-include themes/new
+include themes/main
 
 # vim: ft=i3config

@@ -128,10 +128,10 @@ URxvt.keysym.M-s:           perl:keyboard-select:search
 /* dmenu.selforeground: #000000 */
 
 /* Dark */
-dmenu.background: #333333
+dmenu.background: #000000
 dmenu.foreground: #999999
-dmenu.selbackground: #222222
-dmenu.selforeground: #ffff8f
+dmenu.selbackground: #000000
+dmenu.selforeground: #9999ff
 
 /* Light */
 /* dmenu.background: #eeeeee */

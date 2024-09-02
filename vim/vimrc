@@ -51,6 +51,7 @@ let g:fzf_layout = { 'down': '30%' }
 let g:fzf_preview_window = ['hidden', 'ctrl-/']
 nnoremap <leader>b <cmd>call fzf#vim#buffers({'options': '--keep-right'})<CR>
 nnoremap <leader>f <cmd>Files %:h<CR>
+nnoremap <leader>s <cmd>call fzf#run({'source': '~/.scripts/find.sh', 'sink': 'e'})<CR>
 
 " https://bitbucket.org/teramako/jscomplete-vim/src/master/
 " let g:jscomplete_use = ['dom', 'es6th']
