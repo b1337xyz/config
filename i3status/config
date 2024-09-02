@@ -4,18 +4,21 @@ general {
     markup = "pango"
 }
 
-#order += "read_file nct"
-#order += "read_file k10"
-#order += "read_file amdgpu"
-#order += "read_file nvme"
-# order += "load"
+# order += "read_file nct"
+# order += "read_file k10"
+# order += "read_file amdgpu"
+# order += "read_file nvme"
 # order += "disk /"
 # order += "volume master"
 order += "tztime local"
+# order += "load"
 
 tztime local {
-    # separator_block_width = 528
-    format = " %b %d %Y %H:%M "
+    min_width = 1920
+    align = "center"
+    # format = " <span color='#ffffff'>%b %d %Y %H:%M</span> "
+    format = " <span size='12pt' color='#eeeeee'>%Y.%m.%d %H:%M</span> "
+    separator = false
 }
 
 volume master {
@@ -29,7 +32,7 @@ load {
 }
 
 disk "/" {
-    format = " <span color='#f0c0f0'>%avail</span> "
+    format = " <span color='#90ee90'>%avail</span> "
 }
 
 #read_file nct {

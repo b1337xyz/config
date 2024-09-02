@@ -18,6 +18,7 @@ bar {
     position top
     mode dock
     workspace_min_width 40
+    tray_output none
 
     colors {
         background $unfocused_bg
