@@ -18,6 +18,7 @@ fi
 
 # hash fish && exec fish
 
+export $(grep ^XDG ~/.config/user-dirs.dirs | xargs -d \\n)
 # export GPG_TTY=$(tty)
 export BAT_STYLE=plain
 export BAT_THEME="OneHalfDark"
@@ -321,4 +322,5 @@ then
 fi
 
 # source ~/.local/share/cargo/env >/dev/null 2>&1
+
 true
