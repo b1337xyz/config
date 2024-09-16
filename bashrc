@@ -46,6 +46,7 @@ export FZF_DEFAULT_OPTS='--no-border --no-separator --color=dark'
 export PROMPT_DIRTRIM=2
 export EXECIGNORE=jackd:backup
 export TODOFILE="$XDG_CACHE_HOME"/.todo
+export DEFAULT_WINEPREFIX=${WINEPREFIX:-${HOME}/.local/share/wine}
 
 source /usr/share/bash-completion/bash_completion
 source ~/.config/dircolors 2>/dev/null || eval "$(dircolors -b | tee ~/.config/dircolors)"
@@ -218,8 +219,16 @@ prompt() {
 
     if [ -z "$VIRTUAL_ENV" ] && [ -f ./venv/bin/activate ]; then
         source ./venv/bin/activate
-    elif [ -n "$VIRTUAL_ENV" ] && [ "${PWD#"${VIRTUAL_ENV%/*}"}" = "$PWD" ]; then
+    elif [ -n "$VIRTUAL_ENV" ] && [ "${PWD#${VIRTUAL_ENV%/*}}" = "$PWD" ]; then
         deactivate
+    fi
+
+    if [ -d wine ];then
+        WINEPREFIX=$(realpath ./wine)
+    elif [ "$WINEPREFIX" != "$DEFAULT_WINEPREFIX" ];then
+        if [ "${PWD#${WINEPREFIX%/*}*}" = "$PWD" ];then
+            WINEPREFIX=${DEFAULT_WINEPREFIX}
+        fi
     fi
 
     local blk="\[\033[1;30m\]"
