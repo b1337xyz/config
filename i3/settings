@@ -16,13 +16,13 @@ for_window [all] title_window_icon no
 # for_window [all] floating enable
 
 # none|vertical|horizontal|both|smart
-# hide_edge_borders smart
+hide_edge_borders smart
 
 # default|stacking|tabbed
 workspace_layout tabbed
 
 # gaps outer|horizontal|vertical|top|left|bottom|right <gap_size>[px]
-gaps outer 20
+# gaps outer 20
 # gaps bottom 28
 
 # smart_gaps on|off|inverse_outer

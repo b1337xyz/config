@@ -57,6 +57,6 @@ include settings
 include bindings
 include rules
 include autostart
-include themes/main
+include themes/midori
 
 # vim: ft=i3config

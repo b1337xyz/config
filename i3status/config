@@ -17,7 +17,7 @@ tztime local {
     # min_width = 1920
     # align = "center"
     # format = " <span color='#ffffff'>%b %d %Y %H:%M</span> "
-    format = "<span color='#ffffff' bgcolor='#4E0E1C' size='12pt'> %Y.%m.%d %H:%M </span>"
+    format = "<span color='#ffffff' bgcolor='#314637' size='12pt'> %Y.%m.%d %H:%M </span>"
     separator = false
 }
 
