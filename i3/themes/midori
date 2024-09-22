@@ -3,6 +3,7 @@ set $focused_fg #ffffff
 set $focused_bg #314637
 set $unfocused_bg #111111
 set $unfocused_fg #aaaaaa
+set $indicator #4E0E1C
 
 bar {
     padding -2px 0px
@@ -35,7 +36,7 @@ bar {
 }
 
 # class                 border        bg            fg            indicator     child_border
-client.focused          $focused_bg   $focused_bg   $focused_fg   $focused_bg   $focused_bg
+client.focused          $focused_bg   $focused_bg   $focused_fg   $indicator    $focused_bg
 client.focused_inactive $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg $unfocused_bg
 client.unfocused        $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg $unfocused_bg
 client.urgent           $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg $unfocused_bg

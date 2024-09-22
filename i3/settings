@@ -16,7 +16,7 @@ for_window [all] title_window_icon no
 # for_window [all] floating enable
 
 # none|vertical|horizontal|both|smart
-hide_edge_borders smart
+hide_edge_borders none
 
 # default|stacking|tabbed
 workspace_layout tabbed
