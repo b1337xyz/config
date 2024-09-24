@@ -46,12 +46,8 @@ set $ws8 "8: usr "
 set $ws9 "9: steam "
 set $ws0 "10: void "
 
-workspace $ws1 output nonprimary
-workspace $ws2 output primary
-workspace $ws3 output primary
-workspace $ws4 output primary
-workspace $ws9 output primary
-workspace $ws0 output primary
+workspace $ws1 output primary
+workspace $ws3 output nonprimary
 
 include settings
 include bindings

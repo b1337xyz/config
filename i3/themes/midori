@@ -20,6 +20,7 @@ bar {
     mode dock
     workspace_min_width 40
     #tray_output primary
+    output primary
 
     colors {
         background $unfocused_bg

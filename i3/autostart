@@ -7,9 +7,9 @@ set $exec exec --no-startup-id
 # $exec unclutter --idle 1 --jitter 2 --root
 # $exec picom
 $exec setscreen.sh
+$exec ~/.cache/xwallpaper
 $exec steam
 $exec sh -c 'sleep 8; exec youtube-music'
-$exec ~/.cache/xwallpaper
-$exec sh -c 'sleep 8; exec vesktop'
+# $exec sh -c 'sleep 8; exec vesktop'
 
 # vim: ft=i3config
