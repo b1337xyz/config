@@ -47,7 +47,7 @@ set $ws9 "9: steam "
 set $ws0 "10: void "
 
 workspace $ws1 output primary
-workspace $ws3 output nonprimary
+workspace $ws0 output nonprimary
 
 include settings
 include bindings
