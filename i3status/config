@@ -17,7 +17,7 @@ order += "tztime local"
 
 read_file scratchpad {
     path = "/tmp/i3status.scratchpad"
-    format = " %content "
+    format = "<span color='#B06969'>%content</span>"
     format_bad = ""
 }
 
@@ -25,7 +25,7 @@ tztime local {
     # min_width = 1920
     # align = "center"
     # format = " <span color='#ffffff'>%b %d %Y %H:%M</span> "
-    format = "<span color='#000000' bgcolor='#4B5843' weight='bold' size='12pt'> %Y.%m.%d %H:%M </span>"
+    format = "<span color='#BBBB90' bgcolor='#4B5843' weight='bold' size='12pt'> %Y.%m.%d %H:%M </span>"
 }
 
 volume master {
