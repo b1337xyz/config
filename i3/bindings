@@ -67,8 +67,10 @@ bindsym $mod+shift+e exec i3-msg exit
 # bindsym $mod+b exec polybar-msg cmd toggle
 bindsym $mod+b exec toggle_bar.sh
 bindsym $mod+shift+b exec i3-msg border toggle 3
-bindsym $mod+minus move scratchpad ; exec pkill -SIGRTMIN+10 i3blocks
-bindsym $mod+shift+minus exec i3-scratchpad-dmenu.py && pkill -SIGRTMIN+10 i3blocks
+
+# exec pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+minus move scratchpad ; exec ~/.scripts/shell/i3/scratchpad.sh
+bindsym $mod+shift+minus exec i3-scratchpad-dmenu.py && ~/.scripts/shell/i3/scratchpad.sh
 bindsym $mod+m exec ~/.scripts/shell/i3/windowswitcher.sh
 
 # 106 KP_Divide

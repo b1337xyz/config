@@ -2,6 +2,7 @@ general {
     colors = false
     interval = 15
     markup = "pango"
+    separator = false
 }
 
 # order += "read_file nct"
@@ -10,15 +11,21 @@ general {
 # order += "read_file nvme"
 # order += "disk /"
 # order += "volume master"
+order += "read_file scratchpad"
 order += "tztime local"
 # order += "load"
+
+read_file scratchpad {
+    path = "/tmp/i3status.scratchpad"
+    format = " %content "
+    format_bad = ""
+}
 
 tztime local {
     # min_width = 1920
     # align = "center"
     # format = " <span color='#ffffff'>%b %d %Y %H:%M</span> "
     format = "<span color='#000000' bgcolor='#4B5843' weight='bold' size='12pt'> %Y.%m.%d %H:%M </span>"
-    separator = false
 }
 
 volume master {
