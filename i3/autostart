@@ -8,7 +8,7 @@ set $exec exec --no-startup-id
 # $exec picom
 $exec setscreen.sh
 $exec ~/.cache/xwallpaper
-$exec steam
+# $exec steam
 $exec sh -c 'sleep 8; exec youtube-music'
 # $exec sh -c 'sleep 8; exec vesktop'
 
