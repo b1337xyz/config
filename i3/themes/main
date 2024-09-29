@@ -1,7 +1,7 @@
-set $bar_font JetBrainsMonoNerdFont 11
-set $focused_fg #ffffff
-set $focused_bg #4E0E1C
-set $unfocused_bg #111111
+set $bar_font JetBrainsMonoNerdFont Bold 11
+set $focused_fg #E0FFF0
+set $focused_bg #2A2F34
+set $unfocused_bg #0A0F14
 set $unfocused_fg #aaaaaa
 
 bar {
@@ -15,10 +15,12 @@ bar {
     # separator_symbol "╱"
     # separator_symbol "│"
     # separator_symbol "⁝"
+    separator_symbol " "
     position top
     mode dock
     workspace_min_width 40
     #tray_output primary
+    output primary
 
     colors {
         background $unfocused_bg

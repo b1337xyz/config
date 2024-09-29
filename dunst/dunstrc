@@ -35,8 +35,8 @@
     show_indicators = yes
     icon_position = left
     enable_recursive_icon_lookup = true
-    icon_theme = "Adwaita, hicolor"
-    min_icon_size = 32
+    icon_theme = "Chicago95, hicolor"
+    min_icon_size = 24
     max_icon_size = 128
     sticky_history = yes
     history_length = 20
@@ -53,7 +53,7 @@
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
     frame_width = 2
-    background = "#222222"
+    background = "#313A2D"
     foreground = "#ffffff"
     frame_color = "#319078"
 
