@@ -17,7 +17,7 @@ order += "tztime local"
 
 read_file scratchpad {
     path = "/tmp/i3status.scratchpad"
-    format = "<span color='#B06969'>%content</span>"
+    format = "%content"
     format_bad = ""
 }
 

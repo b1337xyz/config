@@ -55,6 +55,7 @@ source ~/.scripts/shell/functions.sh
 source ~/.scripts/shell/mediainfo.sh
 source ~/.scripts/shell/aria2.sh
 source ~/.scripts/shell/fzf.sh
+source ~/.scripts/shell/i3.sh
 
 # umask 0077
 
