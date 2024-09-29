@@ -51,14 +51,10 @@ export DEFAULT_WINEPREFIX=${WINEPREFIX:-${HOME}/.local/share/wine}
 source /usr/share/bash-completion/bash_completion
 source ~/.config/dircolors 2>/dev/null || eval "$(dircolors -b | tee ~/.config/dircolors)"
 source ~/.config/bash_aliases
-# source ~/.scripts/shell/functions.sh
-# source ~/.scripts/shell/mediainfo.sh
-# source ~/.scripts/shell/aria2.sh
-# source ~/.scripts/shell/fzf.sh
-
-if ! [[ "$PATH" =~ shell/functions ]];then
-    export PATH="${PATH}:${HOME}/.scripts/shell/functions"
-fi
+source ~/.scripts/shell/functions.sh
+source ~/.scripts/shell/mediainfo.sh
+source ~/.scripts/shell/aria2.sh
+source ~/.scripts/shell/fzf.sh
 
 # umask 0077
 
