@@ -70,4 +70,6 @@ for_window [window_role="task_dialog"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="popup_menu"] floating enable
 
+for_window [title=".* \(DEBUG\)$"] floating enable
+
 # vim: ft=i3config

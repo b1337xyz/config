@@ -116,10 +116,10 @@ URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
 
 /* Grubox */
-/* dmenu.background: #1d2021 */
-/* dmenu.foreground: #EBDBB2 */
-/* dmenu.selbackground: #282828 */
-/* dmenu.selforeground: #689d68 */
+dmenu.background: #1d2021
+dmenu.foreground: #EBDBB2
+dmenu.selbackground: #282828
+dmenu.selforeground: #689d68
 
 /* Midori */
 /* dmenu.background: #83A36B */
@@ -128,10 +128,10 @@ URxvt.keysym.M-s:           perl:keyboard-select:search
 /* dmenu.selforeground: #000000 */
 
 /* Dark */
-dmenu.background: #000000
-dmenu.foreground: #999999
-dmenu.selbackground: #000000
-dmenu.selforeground: #DE2E4C
+! dmenu.background: #000000
+! dmenu.foreground: #999999
+! dmenu.selbackground: #000000
+! dmenu.selforeground: #DE2E4C
 
 /* Light */
 /* dmenu.background: #eeeeee */
@@ -168,3 +168,5 @@ XTerm*decTerminalID: vt340
 XTerm*numColorRegisters: 256
 XTerm*disallowedWindowOps: 1,2,3,4,5,6,7,8,9,11,13,19,20,21,GetSelection,SetSelection,SetWinLines,SetXprop
 */
+
+let b:current_syntax = "xdefaults"
