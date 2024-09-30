@@ -115,58 +115,56 @@ URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
 
-/* Grubox */
-dmenu.background: #1d2021
-dmenu.foreground: #EBDBB2
-dmenu.selbackground: #282828
-dmenu.selforeground: #689d68
+/* Grubox
+! dmenu.background: #1d2021
+! dmenu.foreground: #EBDBB2
+! dmenu.selbackground: #282828
+! dmenu.selforeground: #689d68
 
-/* Midori */
-/* dmenu.background: #83A36B */
-/* dmenu.foreground: #253525 */
-/* dmenu.selbackground: #B3D39B */
-/* dmenu.selforeground: #000000 */
+/* Midori
+! dmenu.background: #83A36B
+! dmenu.foreground: #253525
+! dmenu.selbackground: #B3D39B
+! dmenu.selforeground: #000000
 
-/* Dark */
+/* Dark
 ! dmenu.background: #000000
 ! dmenu.foreground: #999999
 ! dmenu.selbackground: #000000
 ! dmenu.selforeground: #DE2E4C
 
-/* Light */
-/* dmenu.background: #eeeeee */
-/* dmenu.foreground: #888888 */
-/* dmenu.selbackground: #ffffff */
-/* dmenu.selforeground: #000000 */
+/* Light
+! dmenu.background: #eeeeee
+! dmenu.foreground: #888888
+! dmenu.selbackground: #ffffff
+! dmenu.selforeground: #000000
 
 /* gray */ 
-/* dmenu.background: #353E44 */
-/* dmenu.foreground: #999999 */
-/* dmenu.selbackground: #424B50 */
-/* dmenu.selforeground: #ffffff */
+! dmenu.background: #353E44
+! dmenu.foreground: #999999
+! dmenu.selbackground: #424B50
+! dmenu.selforeground: #ffffff
 
 /* darker */ 
-/* dmenu.background: #2F343F */
-/* dmenu.foreground: #999999 */
-/* dmenu.selbackground: #1F242F */
-/* dmenu.selforeground: #9fbfff */
+dmenu.background: #2F343F
+dmenu.foreground: #999999
+dmenu.selbackground: #1F242F
+dmenu.selforeground: #9fbfff
 
-/* XP */
-/* dmenu.background: #EBE9D8 */
-/* dmenu.foreground: #999999 */
-/* dmenu.selbackground: #7997DF */
-/* dmenu.selforeground: #ffffff */
+/* XP
+! dmenu.background: #EBE9D8
+! dmenu.foreground: #999999
+! dmenu.selbackground: #7997DF
+! dmenu.selforeground: #ffffff
 
-/* Plan9 */
-/* dmenu.background: #edefda */
-/* dmenu.foreground: #888888 */
-/* dmenu.selbackground: #FDFFEA */
-/* dmenu.selforeground: #000000 */
+/* Plan9
+! dmenu.background: #edefda
+! dmenu.foreground: #888888
+! dmenu.selbackground: #FDFFEA
+! dmenu.selforeground: #000000
 
 /* Sixel support
 XTerm*decTerminalID: vt340
 XTerm*numColorRegisters: 256
 XTerm*disallowedWindowOps: 1,2,3,4,5,6,7,8,9,11,13,19,20,21,GetSelection,SetSelection,SetWinLines,SetXprop
 */
-
-let b:current_syntax = "xdefaults"

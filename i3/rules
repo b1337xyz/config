@@ -15,6 +15,12 @@ assign [class="easyeffects"] $ws0
 # assign [class="steam"] $ws9
 assign [instance="steamwebhelper"] $ws9
 
+for_window [all] title_format "%title"
+for_window [all] title_window_icon no
+# for_window [all] title_window_icon padding 3px
+# for_window [all] floating enable
+
+
 for_window [class="YouTube Music"] move scratchpad
 # for_window [all] floating enable
 for_window [class="java-lang-Thread"] floating enable
