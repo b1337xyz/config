@@ -14,37 +14,30 @@ set viminfofile=$XDG_STATE_HOME/vim/viminfo
 let g:netrw_home = $XDG_DATA_HOME . "/vim"
 
 " Plugins {{{
-" packadd YouCompleteMe
-" let g:ycm_key_list_stop_completion = ['<C-y>']
+let g:ycm_key_list_stop_completion = ['<C-y>']
 
 inoremap <expr> <CR> pumvisible() ? "\<C-y><CR>" : "<CR>"
 
 call plug#begin()
-" Plug 'pangloss/vim-javascript'
-" lug 'vim-python/python-syntax'
-" Plug 'vim-syntastic/syntastic'
-Plug 'tpope/vim-commentary'
-" Plug 'tpope/vim-fugitive'
-Plug 'ap/vim-css-color'
-" Plug 'nvie/vim-flake8'
+" Plug 'Fymyte/rasi.vim'
 " Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'davidhalter/jedi-vim'
 " Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'nvie/vim-flake8'
+" Plug 'pangloss/vim-javascript'
+" Plug 'preservim/nerdtree'
+" Plug 'tpope/vim-fugitive'
+" Plug 'vim-syntastic/syntastic'
+" lug 'vim-python/python-syntax'
+Plug 'ap/vim-css-color'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'preservim/nerdtree'
-" Plug 'davidhalter/jedi-vim'
 Plug 'mbbill/undotree'
-" Plug 'Fymyte/rasi.vim'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 " Plug 'mbbill/undotree' 
 nnoremap <F2> :UndotreeToggle<CR>
-
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <leader>t :NERDTree<CR>
-" nnoremap <leader>f :NERDTreeFind<CR>
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 let g:fzf_vim = {}
 let g:fzf_layout = { 'down': '30%' }
@@ -189,7 +182,7 @@ function! s:UpdateYCM()
         \ 'git pull && ' .. 
         \ 'git submodule update --init --recursive && ' ..
         \ '. "$NVM_DIR/nvm.sh" && ' ..
-        \ './install.py --clang-completer --clangd-completer --go-completer --rust-completer --ts-completer && ' .. 
+        \ './install.py --all && ' .. 
         \ 'popd'
 endfun
 command! UpdateYCM call s:UpdateYCM()

@@ -37,7 +37,7 @@ set $mod Mod4
 
 set $ws1 "1: home "
 set $ws2 "2: www "
-set $ws3 "3: chat "
+set $ws3 "3: var "
 set $ws4 "4: mus "
 set $ws5 "5: ws5 "
 set $ws6 "6: ws6 "
