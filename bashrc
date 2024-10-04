@@ -8,7 +8,7 @@
 [[ $- != *i* ]] && return
 if [ -n "$DISPLAY" ] && [ -z "$TMUX" ] && [ -z "$SSH_CLIENT" ] && hash tmux
 then
-    sessions=$(tmux ls 2>/dev/null | grep -vF '(attached)' | grep -v newsboat)
+    sessions=$(tmux ls 2>/dev/null | grep -vF '(attached)' | grep -v HIDE)
     if [ -n "$sessions" ];then
         exec tmux attach
     else
@@ -17,10 +17,6 @@ then
 fi
 
 # hash fish && exec fish
-
-if [ -f ~/.config/user-dirs.dirs ];then
-    source ~/.config/user-dirs.dirs
-fi
 
 # export GPG_TTY=$(tty)
 export BAT_STYLE=plain
@@ -48,6 +44,7 @@ export EXECIGNORE=jackd:backup
 export TODOFILE="$XDG_CACHE_HOME"/.todo
 export DEFAULT_WINEPREFIX=${WINEPREFIX:-${HOME}/.local/share/wine}
 
+source ~/.config/user-dirs.dirs
 source /usr/share/bash-completion/bash_completion
 source ~/.config/dircolors 2>/dev/null || eval "$(dircolors -b | tee ~/.config/dircolors)"
 source ~/.config/bash_aliases
