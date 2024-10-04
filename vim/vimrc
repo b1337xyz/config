@@ -147,7 +147,6 @@ nnoremap <leader>x :!chmod +x %<CR>
 
 " Auto {{{
 autocmd BufEnter * :syntax sync fromstart
-autocmd BufWritePost */glava/* !~/.config/glava/restart
 autocmd BufWritePost *tmux.conf !tmux source-file % \; display "Reloaded"
 autocmd BufWritePost Xresources !xrdb load %
 autocmd BufWritePost dunstrc !~/.scripts/shell/dunst/reload.sh

@@ -1,5 +1,4 @@
 assign [class="Conky"] $ws1
-assign [class="GLava"] $ws1
 assign [instance="Cava"] $ws1
 assign [instance="btm"] $ws1
 assign [class="firefox"] $ws2
