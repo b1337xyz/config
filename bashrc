@@ -227,7 +227,7 @@ prompt() {
     elif [ "$WINEPREFIX" != "$DEFAULT_WINEPREFIX" ];then
         if [ "${PWD#${WINEPREFIX%/*}*}" = "$PWD" ];then
             WINEPREFIX=${DEFAULT_WINEPREFIX}
-            wineindicator=
+            printf '\nwine prefix changed to \033[1;33m%s\033[m\n' "${WINEPREFIX}"
         fi
     fi
 

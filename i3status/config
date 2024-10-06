@@ -24,8 +24,8 @@ read_file scratchpad {
 tztime local {
     # min_width = 1920
     # align = "center"
-    # format = " <span color='#ffffff'>%b %d %Y %H:%M</span> "
-    format = "<span color='#E0FFF0' weight='bold' size='12pt'> %Y.%m.%d %H:%M </span>"
+    format = " <span color='#ffffff' weight='bold'>%a - %b %d %Y - %H:%M</span> "
+    # format = "<span color='#E0FFF0' weight='bold' size='12pt'> %Y.%m.%d %H:%M </span>"
 }
 
 volume master {
