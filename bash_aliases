@@ -1,5 +1,5 @@
 ### default
-alias backup=backup.sh
+alias backup=backup.sh pfx='echo $WINEPREFIX'
 
 alias ls='ls -vNh --color' \
     btm='btm -C ~/.config/bottom/config.toml' \
