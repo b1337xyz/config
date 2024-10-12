@@ -206,6 +206,7 @@ mode "resize" {
     bindsym minus resize shrink width 25 px ; resize shrink height 5 px
     bindsym equal resize grow   width 25 px ; resize grow height 5 px
     bindsym c move position center
+    bindsym 0 resize set width 960
 
     bindsym --whole-window button4 resize grow width 25 px; resize grow height 15 px 
     bindsym --whole-window button5 resize shrink width 25 px; resize shrink height 15 px
