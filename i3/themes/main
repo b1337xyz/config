@@ -3,6 +3,7 @@ set $focused_fg #E0FFF0
 set $focused_bg #2A2F34
 set $unfocused_bg #0A0F14
 set $unfocused_fg #aaaaaa
+set $statusline #666666
 
 bar {
     padding -2px 0px
@@ -24,7 +25,7 @@ bar {
 
     colors {
         background $unfocused_bg
-        statusline $focused_bg
+        statusline $statusline
         separator  $unfocused_fg
 
         # class              border        background    color
