@@ -53,24 +53,24 @@ disk "/" {
 
 read_file nct {
     path = "/sys/devices/platform/nct6683.2592/hwmon/hwmon4/temp1_input"
-    format = " <span color='#ff9090'>%title</span>: %content°C "
+    format = "<span color='#ff9090'>%title</span>: %content°C"
     Max_characters = 2
 }
 
 read_file k10 {
     path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input"
-    format = " <span color='#ff9090'>%title</span>: %content°C "
+    format = "<span color='#ff9090'>cpu</span>: %content°C"
     Max_characters = 2
 }
 
 read_file amdgpu {
     path = "/sys/devices/pci0000:00/0000:00:01.1/0000:10:00.0/0000:11:00.0/0000:12:00.0/hwmon/hwmon1/temp1_input"
-    format = " <span color='#ff9090'>%title</span>: %content°C "
+    format = "<span color='#ff9090'>gpu</span>: %content°C"
     Max_characters = 2
 }
 
 read_file nvme {
     path = "/sys/devices/pci0000:00/0000:00:02.2/0000:23:00.0/nvme/nvme0/hwmon0/temp1_input"
-    format = " <span color='#ff9090'>%title</span>: %content°C "
+    format = "<span color='#ff9090'>%title</span>: %content°C"
     Max_characters = 2
 }

@@ -3,7 +3,7 @@ set $focused_fg #E0FFF0
 set $focused_bg #2A2F34
 set $unfocused_bg #0A0F14
 set $unfocused_fg #aaaaaa
-set $statusline #666666
+set $statusline #888888
 
 bar {
     padding -2px 0px
@@ -16,7 +16,7 @@ bar {
     # separator_symbol "╱"
     # separator_symbol "│"
     # separator_symbol "⁝"
-    separator_symbol " "
+    separator_symbol "|"
     position top
     mode dock
     workspace_min_width 40
@@ -26,7 +26,7 @@ bar {
     colors {
         background $unfocused_bg
         statusline $statusline
-        separator  $unfocused_fg
+        separator  $focused_bg
 
         # class              border        background    color
         focused_workspace    $focused_bg   $focused_bg   $focused_fg
