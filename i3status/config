@@ -11,7 +11,7 @@ order += "read_file scratchpad"
 order += "read_file k10"
 order += "read_file amdgpu"
 order += "read_file nvme"
-# order += "disk /"
+order += "disk /"
 # order += "volume master"
 order += "tztime local"
 # order += "load"
@@ -48,7 +48,10 @@ load {
 }
 
 disk "/" {
-    format = " <span color='#90ee90'>%avail</span> "
+    format = ""
+    prefix_type = "decimal"
+    low_threshold = 5
+    format_below_threshold = " <span color='#ee9090'>%avail</span> "
 }
 
 read_file nct {
