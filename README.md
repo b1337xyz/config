@@ -8,8 +8,8 @@
  /   |  |  -\    Terminal: alacritty/foot+tmux
 /_-''    ''-_\   Terminal Font: JetBrainsMono Nerd Font 
 ```
-# Sway
-![sway](sway.jpg)
-
-# i3
+## i3
 ![i3](i3.jpg)
+
+## Sway
+![sway](sway.jpg)
