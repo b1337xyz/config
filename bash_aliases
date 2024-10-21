@@ -80,6 +80,7 @@ alias ...='cd ../..' gb='cd -' \
     :q=exit :x=exit \
     linuxlogo='linux_logo -c -u -y -L 13' \
     mpipe='mpv --playlist=- --no-resume-playback' \
+    fmpv='fvideo | mpipe' \
     termux='sshfs termux:/data/data/com.termux/files/home ~/mnt/termux -o port=8022,allow_other,no_check_root,follow_symlinks,reconnect' \
     kcat='kitty icat' \
     jmtp='jmtpfs -o allow_other,noatime' \
