@@ -12,5 +12,6 @@ $exec ~/.cache/xwallpaper
 $exec sh -c 'sleep 8; exec youtube-music'
 # $exec sh -c 'sleep 8; exec vesktop'
 $exec ~/.scripts/shell/i3/i3_watch.sh
+$exec 'pactl set-sink-volume @DEFAULTSINK@ 25%'
 
 # vim: ft=i3config
