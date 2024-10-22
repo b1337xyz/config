@@ -65,7 +65,7 @@ bindsym $mod+shift+c reload
 bindsym $mod+shift+r restart
 bindsym $mod+shift+e exec i3-msg exit
 # bindsym $mod+b exec polybar-msg cmd toggle
-bindsym $mod+b exec toggle_bar.sh
+bindsym $mod+b bar mode toggle
 bindsym $mod+shift+b exec i3-msg border toggle 3
 
 # exec pkill -SIGRTMIN+10 i3blocks

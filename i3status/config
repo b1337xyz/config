@@ -51,7 +51,7 @@ disk "/" {
     format = ""
     prefix_type = "decimal"
     low_threshold = 5
-    format_below_threshold = " <span color='#ee9090'>%avail</span> "
+    format_below_threshold = "<span color='#ff8080'>%avail !!</span>"
 }
 
 read_file nct {
