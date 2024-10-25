@@ -329,7 +329,7 @@ then
     abbrev-alias status="systemctl --user status"
     abbrev-alias stop="systemctl --user stop"
     abbrev-alias start="systemctl --user start"
-    abbrev-alias -g -e LF='$(command ls -1trc | tail -1)' # latest file
+    abbrev-alias -g -e LF='$(command ls -Q1trc | tail -1)' # latest file
     abbrev-alias -g -e bysize=' | sort -h' # latest file
 fi
 
