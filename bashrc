@@ -43,6 +43,7 @@ export PROMPT_DIRTRIM=2
 export EXECIGNORE=jackd:backup
 export TODOFILE="$XDG_CACHE_HOME"/.todo
 export DEFAULT_WINEPREFIX=${WINEPREFIX:-${HOME}/.local/share/wine}
+export QUOTING_STYLE=shell
 
 source ~/.config/user-dirs.dirs
 source /usr/share/bash-completion/bash_completion

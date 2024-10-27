@@ -1,6 +1,8 @@
 ### default
 alias backup=backup.sh
 
+alias .update='~/.local/src/b1337xyz/update'
+
 alias ls='ls -vNh --color' \
     btm='btm -C ~/.config/bottom/config.toml' \
     dir='dir --color' \
