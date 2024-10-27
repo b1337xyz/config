@@ -23,7 +23,7 @@ call plug#begin()
 " Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'davidhalter/jedi-vim'
 " Plug 'maxmellon/vim-jsx-pretty'
-" Plug 'nvie/vim-flake8'
+Plug 'nvie/vim-flake8'
 " Plug 'pangloss/vim-javascript'
 " Plug 'preservim/nerdtree'
 " Plug 'tpope/vim-fugitive'

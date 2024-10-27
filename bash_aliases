@@ -1,7 +1,9 @@
 ### default
 alias backup=backup.sh
 
-alias .update='~/.local/src/b1337xyz/update'
+alias dotup='~/.local/src/b1337xyz/update' \
+      dotadd='~/.local/src/b1337xyz/add' \
+      dotdel='~/.local/src/b1337xyz/del'
 
 alias ls='ls -vNh --color' \
     btm='btm -C ~/.config/bottom/config.toml' \
