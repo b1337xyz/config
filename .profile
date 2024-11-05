@@ -59,15 +59,28 @@ export RENPY_PATH_TO_SAVES=${XDG_DATA_HOME}/renpy
 
 [ -f "$PYTHONSTARTUP" ] || unset PYTHONSTARTUP
 
+append_path() {
+    case ":$PATH:" in
+        *:"$1":*) ;;
+        *) PATH="${PATH:+$PATH:}$1"
+    esac
+}
+
+# Append our default paths
+append_path '/usr/local/sbin'
+append_path '/usr/local/bin'
+append_path '/usr/bin'
+append_path '/usr/lib/wsl/lib'
+append_path '/mnt/c/mpv'
+append_path "${CARGO_HOME}/bin"
+append_path "${HOME}/.local/bin"
+
+export PATH
+
 if [ -n "$WSLENV" ];then
     export XDG_RUNTIME_DIR=/run/user/1000
-    export PULSE_SERVER=unix:/mnt/wslg/PulseServer # you don't need to install pulseaudio/pipewire (maybe)
-    export BROWSER="/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
-    export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/wsl/lib:/mnt/c/mpv
-fi
-
-if ! [[ "$PATH" =~ "$HOME" ]];then
-    export PATH=${PATH}:${CARGO_HOME}/bin:${HOME}/.local/bin
+    export PULSE_SERVER=unix:/mnt/wslg/PulseServer # you don't need to install pulseaudio/pipewire
+    export BROWSER='/mnt/c/Program Files/Mozilla Firefox/firefox.exe'
 fi
 
 # fix font problem
@@ -116,4 +129,7 @@ then
     exec startx "$XINITRC" -- /etc/X11/xinit/xserverrc vt1 >/dev/null 2>&1
 fi
 
-. ~/.bashrc
+if test "$BASH" && test "$PS1" && test -z "$POSIXLY_CORRECT" && test "${0#-}" != sh && test -r ~/.bashrc
+then
+    . ~/.bashrc
+fi
