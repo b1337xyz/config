@@ -82,11 +82,11 @@ nvm() {
     nvm "$@"
 }
 
-expand_files() {
+expand_path() {
     # Example:
     #  ls ~/.bashrc file -> ls /home/<user>/.bashrc /home/<user>/file
     local cmd=
-    for arg in $READLINE_LINE;do
+    for arg in "$READLINE_LINE";do
         if test -e "${arg/\~/$HOME}";then
             path=$(realpath "${arg/\~/$HOME}")
             cmd="$cmd '$path'"
@@ -155,7 +155,7 @@ _quote() {
     left=${READLINE_LINE::$READLINE_POINT}
     word=${left##* }${right%% *}
     [ -z "$word" ] && return
-    [ "${left% *}" = "$left" ] && left= || left="${left% *} "
+    [ "${left% *}" = "$left" ]   && left=  || left="${left% *} "
     [ "${right#* }" = "$right" ] && right= || right=" ${right#* }"
     READLINE_LINE="${left}'${word}'$right"
     READLINE_POINT=$(( ${#left} + ${#word} + 2 ))
@@ -180,7 +180,7 @@ if ! [[ "$TERM" = xterm* ]] && [ -z "$SSH_CLIENT" ];then
     bind -x '"\ep": _pager'
     bind -x '"\es": s'  # scripts
     bind -x '"\ec": c'  # config
-    bind -x '"\C-x": expand_files'
+    bind -x '"\C-x": expand_path'
     bind -x '"\C-h": fzfhist'
     bind -x '"\C-g": fzfgov' 
     bind -x '"\C-f": fzcd'
@@ -330,7 +330,7 @@ then
     abbrev-alias status="systemctl --user status"
     abbrev-alias stop="systemctl --user stop"
     abbrev-alias start="systemctl --user start"
-    abbrev-alias -g -e LF='$(command ls -Q1trc | tail -1)' # latest file
+    abbrev-alias -g -e LF="'"'$(command ls -1trc | tail -1)'"'" # latest file
     abbrev-alias -g -e bysize=' | sort -h' # latest file
 fi
 
