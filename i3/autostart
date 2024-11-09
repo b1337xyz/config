@@ -8,7 +8,7 @@ $exec unclutter --idle 1 --jitter 2 --root
 # $exec picom
 $exec setscreen.sh
 $exec ~/.cache/xwallpaper
-# $exec sh -c 'sleep 8; exec steam'
+$exec sh -c 'sleep 8; exec steam'
 $exec sh -c 'sleep 8; exec youtube-music'
 # $exec sh -c 'sleep 8; exec vesktop'
 $exec ~/.scripts/shell/i3/i3_watch.sh

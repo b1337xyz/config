@@ -1,5 +1,5 @@
 ### default
-alias backup=backup.sh
+alias backup=backup.sh winetricks='winetricks --optout'
 
 alias dotup='~/.local/src/b1337xyz/update' \
       dotadd='~/.local/src/b1337xyz/add' \

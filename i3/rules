@@ -11,7 +11,7 @@ assign [instance="ncmpcpp"] $ws9
 assign [class="Amule"] $ws0
 assign [class="qBittorrent"] $ws0
 assign [class="easyeffects"] $ws0
-# assign [instance="steamwebhelper"] $ws9
+assign [instance="steamwebhelper"] $ws9
 
 for_window [all] title_format "<b>%title</b>"
 for_window [all] title_window_icon no
