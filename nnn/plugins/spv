@@ -8,6 +8,9 @@
 # shellcheck disable=SC2016
 [ -z "$TMUX" ] && { printf '\n$TMUX not set\n'; sleep 1; exit 1; } 
 
+SESSION=$(tmux list-sessions | awk -F':' '/attached.$/{print $1}')
+PANE=$(tmux list-panes | awk -F':' '/active.$/{print $1}')
+TARGET=${SESSION}:${PANE}
 PREVIEW_PID=/tmp/nnn_preview.pid
 FIFO_PID=/tmp/nnn_fifo.pid
 NNN_FIFO=${NNN_FIFO:-/tmp/nnn.fifo}
@@ -37,6 +40,7 @@ fifo_pager() {
 
     rm "$tmpfifopath"
 }
+
 handle_mime() {
     mime=$(file -Lbi -- "$1" | cut -d';' -f1)
     case "$mime" in
@@ -46,6 +50,7 @@ handle_mime() {
         *) file -b -- "$1" ;;
     esac
 }
+
 handle_ext() {
     ext=$(printf '%s' "${1##*.}" | tr '[:upper:]' '[:lower:]')
     case "$ext" in
@@ -67,18 +72,20 @@ preview() {
         handle_ext "$1"
     fi
 }
+
 preview_fifo() {
     while read -r sel; do
         case "$sel" in
             close) break ;;
             hide) tmux new -d -s tmp sleep 1 \; movep -s 1 -t tmp ;;
-            unhide) tmux joinp -l "$PREVIEW_SIZE" -h -d -s tmp -t 1 ;;
+            unhide) tmux joinp -l "$PREVIEW_SIZE" -h -d -s tmp -t "${TARGET}"; sleep .5 ;&
             *)
                 pidkill "$PREVIEW_PID"
                 [ -n "$sel" ] && preview "$sel" ;;
         esac
     done < "$NNN_FIFO"
 }
+
 end() {
     jobs -p | xargs -r kill
     rm "$PREVIEW_PID" "$FIFO_PID" 2>/dev/null
@@ -98,7 +105,7 @@ else
             -e "NNN_FIFO=$NNN_FIFO" -e "PREVIEW_SIZE=$PREVIEW_SIZE" \
             -e "FIFO_PID=$FIFO_PID" -e "PREVIEW_PID=$PREVIEW_PID" \
             -e "BAT_STYLE=$BAT_STYLE" -e "BAT_THEME=$BAT_THEME" \
-            -e "PREVIEW_MODE=1" "$0" "$1" &
+            -e "PREVIEW_MODE=1" -e "TARGET=${TARGET}" "$0" "$1" &
     fi
 fi
 

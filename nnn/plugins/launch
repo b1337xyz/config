@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 NNN_FIFO=${NNN_FIFO:-/tmp/nnn.fifo}
 PREVIEW_PID=/tmp/nnn_preview.pid
@@ -26,9 +26,8 @@ case "$ext" in
             tmp=$(mktemp -d)
             7z x -o"${tmp}" "$1"
             tmux split-window -h "nnn ${tmp} ; rm -rf ${tmp}"
-        else
-            atool --list -- "$1" | $PAGER
         fi
+        atool --list -- "$1" | $PAGER
     ;;
     torrent) xdg-open "$1" >/dev/null 2>&1 & ;;
     rar) unrar lt -p- -- "$1" | $PAGER ;;
