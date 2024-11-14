@@ -222,11 +222,12 @@ prompt() {
         deactivate
     fi
 
-    if [ -d wine/pfx ] && [ "$WINEPREFIX" = "$DEFAULT_WINEPREFIX" ];then
+    if [ -d wine ] && [ "$WINEPREFIX" = "$DEFAULT_WINEPREFIX" ];then
         WINEPREFIX=$(realpath ./wine)
         printf '\nwine prefix changed to \033[1;33m%s\033[m\n' "${WINEPREFIX}"
     elif [ "$WINEPREFIX" != "$DEFAULT_WINEPREFIX" ];then
-        if [ "${PWD#${WINEPREFIX%/*}*}" = "$PWD" ];then
+        if ! [[ "$PWD" = "${WINEPREFIX%/*}"* ]];then
+            echo "$PWD $WINEPREFIX"
             WINEPREFIX=${DEFAULT_WINEPREFIX}
             printf '\nwine prefix changed to \033[1;33m%s\033[m\n' "${WINEPREFIX}"
         fi
