@@ -291,7 +291,7 @@ prompt() {
 
     # set title
     echo -ne "\033]0;${PWD/$HOME/\~}\007"
-    [[ "${PWD//[^\/]/}" = ////* ]] && pwd >> ~/.cache/goback
+    [[ "${PWD//[^\/]/}" = ///* ]] && pwd >> ~/.cache/goback
 }
 
 ms_prompt() {
