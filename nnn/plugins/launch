@@ -17,27 +17,32 @@ case "${mime%%;*}" in
     *) false ;;
 esac && exit 0
 
+tmp=$(mktemp -d)
+trap 'rm -rf "${tmp}"' EXIT
+open() {
+    if [ -n "$TMUX" ];then
+        tmux split-window -h "nnn ${tmp}"
+    else
+        xdg-open "${tmp}" &
+    fi
+}
+
+#7z) 7z l -p -- "$1" | $PAGER ;;
 ext=$(printf '%s' "${1##*.}" | tr '[:upper:]' '[:lower:]')
 case "$ext" in
-    a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|\
-    rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)
-        if [[ "$ext" =~ ^(zip|7z)$ ]] && [ -n "$TMUX" ]
-        then
-            tmp=$(mktemp -d)
-            7z x -o"${tmp}" "$1"
-            tmux split-window -h "nnn ${tmp} ; rm -rf ${tmp}"
-        fi
+    tar)    open; tar axf "$1" -C "${tmp}"  ;;&
+    zip|7z) open; 7z x -o"${tmp}" "$1"      ;;&
+    rar)    open; unrar x -op"${tmp}" "$1"; unrar lt -p- -- "$1" | $PAGER ;;
+    a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rpm|rz|t7z|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|tar|zip|7z)
         atool --list -- "$1" | $PAGER
-    ;;
-    torrent) xdg-open "$1" >/dev/null 2>&1 & ;;
-    rar) unrar lt -p- -- "$1" | $PAGER ;;
-    7z) 7z l -p -- "$1" | $PAGER ;;
-    htm|html|xhtml) w3m -dump "$1" | $PAGER ;;
-    json) jq --color-output . "$1" | $PAGER ;;
+        ;;
+    htm|html|xhtml) w3m -dump "$1" | $PAGER     ;;
+    torrent) xdg-open "$1" >/dev/null 2>&1 &    ;;
+    json) jq --color-output . "$1" | $PAGER     ;;
     md) bat --color=always "$1" ;;
     cbz|pdf|epub) zathura "$1" ;;
     mts) mpv "$1" ;;
     exe) wine "$1" ;;
     ass|srt|vtt) setsid -f -- aegisub "$1" >/dev/null 2>&1 ;;
-    *) exit 1 ;;
+    *) exit 0 ;;
 esac
