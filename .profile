@@ -88,7 +88,16 @@ export _JAVA_OPTIONS="${_JAVA_OPTIONS} -Dawt.useSystemAAFontSettings=on -Dswing.
 # -Dawt.useSystemAAFontSettings=lcd_hrgb
 # -Dawt.useSystemAAFontSettings=gasp
 
-_setup_my_env() {
+
+if [ ! -d "${XDG_CONFIG_HOME}" ] || [ ! -d "${XDG_DATA_HOME}" ]
+then
+    mkdir -vp "$XDG_STATE_HOME" "$GNUPGHOME" "${PYTHONHISTFILE%/*}" \
+             "${INPUTRC%/*}" "${ADB_VENDOR_KEYS%/*}"    \
+             "${GTK2_RC_FILES%/*}" "${GTK_RC_FILES%/*}" \
+             "$XDG_CONFIG_HOME"/{git,java} \
+             "$XDG_CACHE_HOME"/{aria2,openjfx} \
+             "$NUGET_PACKAGES" "${NPM_CONFIG_USERCONFIG%/*}"
+
     if ! [ -f "$WGETRC" ]
     then
         echo "hsts-file = ${XDG_CACHE_HOME}/wget-hsts" > "$WGETRC"
@@ -96,21 +105,12 @@ _setup_my_env() {
 
     if ! [ -f "$NPM_CONFIG_USERCONFIG" ]
     then
-        mkdir -vp "${NPM_CONFIG_USERCONFIG%/*}"
-        printf '%s\n%s\n' 'cache=${XDG_CACHE_HOME}/npm' \
-                          'init-module=${XDG_CONFIG_HOME}/npm/config/npm-init.js' > "${NPM_CONFIG_USERCONFIG}"
+        printf '%s\n%s\n' \
+            'cache=${XDG_CACHE_HOME}/npm' \
+            'init-module=${XDG_CONFIG_HOME}/npm/config/npm-init.js' \
+            > "${NPM_CONFIG_USERCONFIG}"
     fi
-
-    mkdir -vp "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME"      \
-             "$XDG_DATA_HOME" "$XDG_STATE_HOME"         \
-             "$GNUPGHOME" "${PYTHONHISTFILE%/*}"        \
-             "${INPUTRC%/*}" "${ADB_VENDOR_KEYS%/*}"    \
-             "${GTK2_RC_FILES%/*}" "${GTK_RC_FILES%/*}" \
-             "$XDG_CONFIG_HOME"/java \
-             "$XDG_CACHE_HOME"/openjfx \
-             "$NUGET_PACKAGES" "${XDG_CONFIG_HOME}/git"
-}
-# _setup_my_env
+fi
 
 # if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "${XDG_VTNR:-0}" -eq 1 ];then
 #     export TERMINAL=/usr/bin/foot
