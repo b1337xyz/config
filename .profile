@@ -56,6 +56,9 @@ export XINITRC=${XDG_CONFIG_HOME}/X11/xinitrc
 export NUGET_PACKAGES=${XDG_CACHE_HOME}/NuGetPackages
 export PYTHONSTARTUP=~/.scripts/python/.startup.py
 export RENPY_PATH_TO_SAVES=${XDG_DATA_HOME}/renpy
+export GTK_THEME=Adwaita:dark
+export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+export QT_STYLE_OVERRIDE=Adwaita-Dark
 
 [ -f "$PYTHONSTARTUP" ] || unset PYTHONSTARTUP
 
@@ -70,18 +73,19 @@ append_path() {
 append_path '/usr/local/sbin'
 append_path '/usr/local/bin'
 append_path '/usr/bin'
-append_path '/usr/lib/wsl/lib'
-append_path '/mnt/c/mpv'
 append_path "${CARGO_HOME}/bin"
 append_path "${HOME}/.local/bin"
 
-export PATH
-
 if [ -n "$WSLENV" ];then
+    append_path '/usr/lib/wsl/lib'
+    append_path '/mnt/c/mpv'
+
     export XDG_RUNTIME_DIR=/run/user/1000
     export PULSE_SERVER=unix:/mnt/wslg/PulseServer # you don't need to install pulseaudio/pipewire
     export BROWSER='/mnt/c/Program Files/Mozilla Firefox/firefox.exe'
 fi
+
+export PATH
 
 # fix font problem
 export _JAVA_OPTIONS="${_JAVA_OPTIONS} -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.xrender=true"
