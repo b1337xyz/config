@@ -2,10 +2,10 @@
     monitor = 1
     follow = none
     width = 400
-    height = 300
+    height = (0, 300)
     gap_size = 0
     origin = top-right
-    offset = 5x25
+    offset = (5, 25)
     scale = 0
     notification_limit = 0
     progress_bar = true

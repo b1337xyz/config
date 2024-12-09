@@ -2,12 +2,12 @@ set $exec exec --no-startup-id
 
 # $exec easyeffects
 # $exec kitty --class=newsboat --title=newsboat -e newsboat
-$exec qbittorrent
 # $exec tmux new -d -n newsboat -s newsboat newsboat
 $exec unclutter --idle 1 --jitter 2 --root
 # $exec picom
 $exec setscreen.sh
 $exec ~/.cache/xwallpaper
+$exec sh -c 'sleep 8; exec qbittorrent'
 $exec sh -c 'sleep 5; pactl set-sink-volume @DEFAULTSINK@ 20%'
 $exec sh -c 'sleep 8; exec steam'
 $exec sh -c 'sleep 8; exec youtube-music'
