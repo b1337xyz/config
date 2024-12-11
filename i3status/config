@@ -50,7 +50,7 @@ load {
 disk "/" {
     format = ""
     prefix_type = "decimal"
-    low_threshold = 5
+    low_threshold = 3
     format_below_threshold = "<span color='#ff8080'>%avail !!</span>"
 }
 
