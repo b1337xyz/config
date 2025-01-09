@@ -20,6 +20,7 @@ for_window [all] title_window_icon no
 # for_window [instance="tabbed"] floating enable
 
 for_window [class="YouTube Music"] move scratchpad
+for_window [class="com.github.th_ch.youtube_music"] move scratchpad
 for_window [class="java-lang-Thread"] floating enable
 for_window [instance="Cava"] floating enable
 for_window [class="dhewm3"] floating disable
