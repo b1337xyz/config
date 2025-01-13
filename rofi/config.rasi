@@ -1,0 +1,23 @@
+configuration {
+    modes: "drun,run";
+
+    kb-remove-to-eol: "";
+    kb-secondary-copy: "";
+    kb-cancel: "Escape,Control+c";
+    kb-accept-entry: "Control+m,Return,KP_Enter";
+    kb-row-down: "Down,Control+j,Control+n";
+    kb-row-up: "Up,Control+k,Control+p";
+}
+
+@theme "Arc-Dark"
+
+* {
+    background:                  rgba ( 42, 42, 42, 95 % );
+    selected-normal-background:  rgba ( 62, 62, 62, 100 % );
+    alternate-normal-background: none;
+    border-color:                none;
+}
+
+scrollbar {
+    handle-width: 3px;
+}

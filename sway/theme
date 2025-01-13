@@ -1,12 +1,14 @@
-set $fbg #60669780
-set $ffg #ffffff
-set $ubg #333333
-set $ufg #888888
+set $focused_fg #E0FFF0
+set $focused_bg #2A2F34
+set $unfocused_bg #0A0F14
+set $unfocused_fg #666666
 
 # class                 border bg fg indicator child_border
-client.focused          $fbg $fbg $ffg $fbg $fbg
-client.focused_inactive $ubg $ubg $ufg $ubg $ubg
-client.unfocused        $ubg $ubg $ufg $ubg $ubg
-client.urgent           $ubg $ubg $ufg $ubg $ubg
+client.focused          $focused_bg   $focused_bg   $focused_fg   $focused_bg   $focused_fg
+client.focused_inactive $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg $unfocused_bg
+client.unfocused        $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg $unfocused_bg
+client.urgent           $unfocused_bg $unfocused_bg $unfocused_fg $unfocused_bg $unfocused_bg
+
+
 
 # vim: ft=swayconfig

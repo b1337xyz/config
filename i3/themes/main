@@ -2,7 +2,9 @@ set $bar_font JetBrainsMonoNerdFont Bold 11
 set $focused_fg #E0FFF0
 set $focused_bg #2A2F34
 set $unfocused_bg #0A0F14
-set $unfocused_fg #aaaaaa
+# set $focused_bg #05839A
+# set $unfocused_bg #FFF8F5
+set $unfocused_fg #666666
 set $statusline #888888
 
 bar {

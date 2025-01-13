@@ -1,8 +1,4 @@
-assign [class="Conky"] $ws1
-assign [class="GLava"] $ws1
-assign [instance="Cava"] $ws1
-assign [instance="btm"] $ws1
-assign [class="firefox"] $ws2
+assign [app_id="firefox"] $ws2
 assign [class="Brave-browser"] $ws2
 assign [class="Chromium"] $ws2
 assign [class="Google-chrome"] $ws2
@@ -10,24 +6,27 @@ assign [class="Tor Browser"] $ws2
 assign [class="vesktop"] $ws3
 assign [instance="ncmpcpp"] $ws9
 assign [class="Amule"] $ws0
-assign [class="qBittorrent"] $ws0
+assign [app_id="org.qbittorrent.qBittorrent"] $ws0
 assign [class="easyeffects"] $ws0
-assign [class="YouTube Music"] $ws0
-# assign [class="steam"] $ws9
-assign [instance="steamwebhelper"] $ws9
 
+for_window [all] title_format "<b>%title</b>"
+for_window [all] title_window_icon no
+# for_window [all] title_window_icon padding 3px
 # for_window [all] floating enable
-for_window [class="java-lang-Thread"] floating enable
-for_window [instance="Cava"] floating enable
 # for_window [instance="tabbed"] border pixel 1
 # for_window [instance="tabbed"] floating enable
+
+for_window [class="YouTube Music"] move scratchpad
+for_window [class="com.github.th_ch.youtube_music"] move scratchpad
+for_window [class="java-lang-Thread"] floating enable
+for_window [instance="Cava"] floating enable
 for_window [class="dhewm3"] floating disable
 for_window [title="glxgears"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="PPSSPPQt"] floating enable
 for_window [class="PPSSPPSDL"] floating enable
 for_window [class="Anydesk"] floating enable
-for_window [class="GLava"] floating enable
+# for_window [class="GLava"] floating enable
 for_window [class="Gcolor3"] floating enable
 for_window [class="Gkrellm"] floating enable
 for_window [class="Gpick"] floating enable
@@ -35,7 +34,7 @@ for_window [class="Lightdm-gtk-greeter-settings"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="MEGAsync"] floating enable
 for_window [class="Pavucontrol"] floating enable
-for_window [class="Pcmanfm"] floating enable
+# for_window [class="Pcmanfm"] floating enable
 for_window [class="Pea"] floating enable
 for_window [class="ROX-Filer"] floating enable
 for_window [class="Snes9x-gtk"] floating enable
@@ -69,5 +68,6 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="popup_menu"] floating enable
+for_window [title=".* \(DEBUG\)$"] floating enable
 
 # vim: ft=i3config

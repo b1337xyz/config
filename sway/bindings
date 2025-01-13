@@ -50,8 +50,8 @@ bindsym $mod+f fullscreen
 bindsym $mod+a focus parent
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+minus move scratchpad
+bindsym $mod+Shift+minus scratchpad show
 
 bindsym Print exec print.sh
 bindsym XF86AudioRaiseVolume exec volupdown.sh up
@@ -68,7 +68,7 @@ bindsym $mod+shift+b exec swaymsg border toggle
 bindsym $mod+period        exec mpvc.sh /tmp/mpvradio toggle 
 bindsym $mod+shift+greater exec mpvc.sh /tmp/mpvradio next
 bindsym $mod+shift+less    exec mpvc.sh /tmp/mpvradio prev
-bindsym $mod+d exec run.sh
+bindsym $mod+d             exec run.sh
 bindsym $mod+shift+s       exec print.sh cops
 bindsym ctrl+shift+space   exec makoctl dismiss -a
 bindsym $mod+c exec wlpick.sh

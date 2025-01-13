@@ -3,14 +3,39 @@ set $term foot
 
 set $ws1 "1: home "
 set $ws2 "2: www "
-set $ws3 "3: chat "
-set $ws4 "4: rss "
+set $ws3 "3: var "
+set $ws4 "4: mus "
 set $ws5 "5: ws5 "
 set $ws6 "6: ws6 "
 set $ws7 "7: ws7 "
 set $ws8 "8: usr "
 set $ws9 "9: steam "
-set $ws0 "10: mus "
+set $ws0 "10: void "
+
+title_align center
+default_border pixel 2
+default_floating_border pixel 2
+floating_modifier $mod
+focus_wrapping workspace
+workspace_auto_back_and_forth no
+floating_minimum_size 75 x 50
+floating_maximum_size 1900 x 1000
+
+font pango: JetBrainsMonoNerdFont 10
+
+for_window [all] title_format "%title"
+for_window [all] title_window_icon no
+# for_window [all] title_window_icon padding 3px
+# for_window [all] floating enable
+
+# none|vertical|horizontal|both|smart
+# hide_edge_borders --i3 smart
+
+# default|stacking|tabbed
+workspace_layout tabbed
+
+# gaps inner 15
+# smart_gaps off
 
 output * adaptive_sync on
 
@@ -27,7 +52,6 @@ include /etc/sway/config.d/*
 include bindings
 include rules
 include theme
-include settings
 include autostart
 
 # vim: ft=swayconfig

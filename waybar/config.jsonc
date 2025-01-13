@@ -2,7 +2,7 @@
     "reload_style_on_change": true,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "tray"],
+    "modules-right": ["tray"],
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": true,
@@ -22,13 +22,13 @@
         "format": "{:%b %d %Y %H:%M}",
 	"on-click": "foot -a floating_window -w 240x240 -H cal"
     },
-    "pulseaudio": {
-        "scroll-step": 5,
-        "format": "{icon} {volume}%",
-        "format-muted": "MUTED",
-        "format-icons": {
-            "default": [""]
-        },
-        "on-click": "foot -a floating_window pulsemixer"
-    }
+    // "pulseaudio": {
+    //     "scroll-step": 5,
+    //     "format": "{icon} {volume}%",
+    //     "format-muted": "MUTED",
+    //     "format-icons": {
+    //         "default": [""]
+    //     },
+    //     "on-click": "foot -a floating_window pulsemixer"
+    // }
 }
