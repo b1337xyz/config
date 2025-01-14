@@ -36,7 +36,6 @@ export GDRIVE_CONFIG_DIR=${XDG_CONFIG_HOME}/gdrive
 export GNUPGHOME=${XDG_CONFIG_HOME}/gnupg
 export GOPATH=${XDG_DATA_HOME}/go
 export GTK_RC_FILES=${XDG_CONFIG_HOME}/gtk-1.0/gtkrc
-export GTK2_RC_FILES=${XDG_CONFIG_HOME}/gtk-2.0/gtkrc
 export HISTFILE=${XDG_CACHE_HOME}/bash_history
 export I3SOCK=${XDG_RUNTIME_DIR}/i3/ipc.sock
 export SWAYSOCK=${XDG_RUNTIME_DIR}/sway-ipc.sock
@@ -54,11 +53,12 @@ export WGETRC=${XDG_CONFIG_HOME}/wgetrc
 export WINEPREFIX=${XDG_DATA_HOME}/wine
 export XINITRC=${XDG_CONFIG_HOME}/X11/xinitrc
 export NUGET_PACKAGES=${XDG_CACHE_HOME}/NuGetPackages
-export PYTHONSTARTUP=~/.scripts/python/.startup.py
 export RENPY_PATH_TO_SAVES=${XDG_DATA_HOME}/renpy
-export GTK_THEME=Adwaita:dark
+#export GTK2_RC_FILES=${XDG_CONFIG_HOME}/gtk-2.0/gtkrc
 export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+export GTK_THEME=Adwaita:dark
 export QT_STYLE_OVERRIDE=Adwaita-Dark
+export PYTHONSTARTUP=~/.scripts/python/.startup.py
 
 [ -f "$PYTHONSTARTUP" ] || unset PYTHONSTARTUP
 
@@ -69,21 +69,21 @@ append_path() {
     esac
 }
 
-# Append our default paths
-append_path '/usr/local/sbin'
-append_path '/usr/local/bin'
-append_path '/usr/bin'
-append_path "${CARGO_HOME}/bin"
-append_path "${HOME}/.local/bin"
-
 if [ -n "$WSLENV" ];then
+    unset PATH
     append_path '/usr/lib/wsl/lib'
     append_path '/mnt/c/mpv'
+    append_path '/usr/local/sbin'
+    append_path '/usr/local/bin'
+    append_path '/usr/bin'
 
     export XDG_RUNTIME_DIR=/run/user/1000
-    export PULSE_SERVER=unix:/mnt/wslg/PulseServer # you don't need to install pulseaudio/pipewire
+    export PULSE_SERVER=unix:/mnt/wslg/PulseServer
     export BROWSER='/mnt/c/Program Files/Mozilla Firefox/firefox.exe'
 fi
+
+append_path "${CARGO_HOME}/bin"
+append_path "${HOME}/.local/bin"
 
 export PATH
 
@@ -97,8 +97,7 @@ if [ ! -d "${XDG_CONFIG_HOME}" ] || [ ! -d "${XDG_DATA_HOME}" ]
 then
     mkdir -vp "$XDG_STATE_HOME" "$GNUPGHOME" "${PYTHONHISTFILE%/*}" \
              "${INPUTRC%/*}" "${ADB_VENDOR_KEYS%/*}"    \
-             "${GTK2_RC_FILES%/*}" "${GTK_RC_FILES%/*}" \
-             "$XDG_CONFIG_HOME"/{git,java} \
+             "$XDG_CONFIG_HOME"/{git,java,gtk-2.0,gtk-1.0} \
              "$XDG_CACHE_HOME"/{aria2,openjfx} \
              "$NUGET_PACKAGES" "${NPM_CONFIG_USERCONFIG%/*}"
 
@@ -116,22 +115,23 @@ then
     fi
 fi
 
-# if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "${XDG_VTNR:-0}" -eq 1 ];then
-#     export TERMINAL=/usr/bin/foot
-#     export QT_QPA_PLATFORM=wayland
-#     export SDL_VIDEODRIVER=wayland
-#     export XDG_SESSION_TYPE=wayland
-#     # export ASAN_OPTIONS=abort_on_error=1:disable_coredump=0:unmap_shadow_on_exit=1
-#     cp ~/.cache/sway.log ~/.cache/sway.log.old >/dev/null 2>&1 || true
-#     exec sway >~/.cache/sway.log 2>&1
-# fi
-
-if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "${XDG_VTNR:-0}" -eq 1 ]
-then
-    export TERMINAL=/usr/bin/alacritty
-    export XAUTHORITY=${XDG_RUNTIME_DIR}/Xauthority
-    exec startx "$XINITRC" -- /etc/X11/xinit/xserverrc vt1 >/dev/null 2>&1
+if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "${XDG_VTNR:-0}" -eq 1 ];then
+    export TERMINAL=/usr/bin/foot
+    export QT_QPA_PLATFORM=wayland
+    export SDL_VIDEODRIVER=wayland
+    export XDG_SESSION_TYPE=wayland
+    export _JAVA_AWT_WM_NONREPARENTING=1
+    # export ASAN_OPTIONS=abort_on_error=1:disable_coredump=0:unmap_shadow_on_exit=1
+    # cp ~/.cache/sway.log ~/.cache/sway.log.old >/dev/null 2>&1 || true
+    exec sway >/dev/null 2>&1 # >~/.cache/sway.log 2>&1
 fi
+
+# if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "${XDG_VTNR:-0}" -eq 1 ]
+# then
+#     export TERMINAL=/usr/bin/alacritty
+#     export XAUTHORITY=${XDG_RUNTIME_DIR}/Xauthority
+#     exec startx "$XINITRC" -- /etc/X11/xinit/xserverrc vt1 >/dev/null 2>&1
+# fi
 
 if test "$BASH" && test "$PS1" && test -z "$POSIXLY_CORRECT" && test "${0#-}" != sh && test -r ~/.bashrc
 then
