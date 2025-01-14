@@ -29,12 +29,12 @@ for_window [all] title_window_icon no
 # for_window [all] floating enable
 
 # none|vertical|horizontal|both|smart
-# hide_edge_borders --i3 smart
+hide_edge_borders --i3 smart
 
 # default|stacking|tabbed
 workspace_layout tabbed
 
-# gaps inner 15
+gaps inner 10
 # smart_gaps off
 
 output * adaptive_sync on

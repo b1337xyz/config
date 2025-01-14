@@ -51,7 +51,7 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+minus move scratchpad
-bindsym $mod+Shift+minus scratchpad show
+bindsym $mod+Shift+minus exec sway-scratchpad.sh
 
 bindsym Print exec print.sh
 bindsym XF86AudioRaiseVolume exec volupdown.sh up

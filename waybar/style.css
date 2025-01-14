@@ -13,13 +13,15 @@
     padding: 0 8px;
 }
 window#waybar {
-    background: rgba(8.56, 4.76, 4.41, 0.8);
+    /* background: rgba(8.56, 4.76, 4.41, 0.8); */
+    background-color: transparent;
     color: #ffffff;
 }
 #workspaces button {
     background-color: transparent;
     color: #808080;
-    padding: 0 10px;
+    padding: 0 8px;
+    border-bottom: 2px none #999999;
 }
 #workspaces button.focused {
     /* background-color: #285577; */
@@ -31,7 +33,9 @@ window#waybar {
     /* background-color: #986A69; */
     /* background-color: #606697; */
     background-color: #0A0F14;
-    color: #ffffff;
+    color: #9fffff;
+    font-weight: bold;
+    border-bottom: 2px solid #9fffff;
 }
 button:hover {
     background: inherit;
@@ -39,8 +43,12 @@ button:hover {
 }
 .modules-right {
     background-color: #0A0F14;
-    padding: 0 10px;
+    padding: 0 10px 0 25px;
+    border-radius: 0 0 0px 40px;
 }
 .modules-center {
     font-weight: bold;
+    background-color: #0A0F14;
+    padding: 0 25px; 
+    border-radius: 0 0 40px 40px;
 }
