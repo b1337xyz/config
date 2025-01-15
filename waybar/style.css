@@ -4,9 +4,11 @@
     font-size: 11pt;
     border-radius: 0;
 }
-#tray, #mode {
-    background-color: transparent;
-    color: #ffff9f;
+#mode {
+    /* background: rgba(8.56, 4.76, 4.41, 0.8); */
+    background: #0A0F14;
+    color: #f2A0ff;
+    padding: 0 5px;
     font-weight: bold;
 }
 #pulseaudio {
@@ -51,4 +53,12 @@ button:hover {
     background-color: #0A0F14;
     padding: 0 25px; 
     border-radius: 0 0 40px 40px;
+}
+#disk {
+    font-size: 0; 
+}
+#disk.warning {
+    font-size: 11pt;    
+    color: #ff9090;
+    font-weight: bold;
 }

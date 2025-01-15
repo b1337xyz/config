@@ -2,7 +2,7 @@
     "reload_style_on_change": true,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["clock"],
-    "modules-right": ["tray"],
+    "modules-right": ["disk", "tray"],
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": true,
@@ -11,6 +11,13 @@
     },
     "sway/mode": {
         "format": "{}"
+    },
+    "disk": {
+        "states": {
+            "warning": 95
+        },
+        "interval": 30,
+        "format": "{free}!! "
     },
     "tray": {
         "icon-size": 15,

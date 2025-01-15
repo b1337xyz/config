@@ -53,7 +53,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+minus move scratchpad
 bindsym $mod+Shift+minus exec sway-scratchpad.sh
 
-bindsym Print exec print.sh
+bindsym Print exec wprint.sh
 bindsym XF86AudioRaiseVolume exec volupdown.sh up
 bindsym XF86AudioLowerVolume exec volupdown.sh down
 bindsym XF86AudioMute exec volupdown.sh toggle
@@ -69,7 +69,7 @@ bindsym $mod+period        exec mpvc.sh /tmp/mpvradio toggle
 bindsym $mod+shift+greater exec mpvc.sh /tmp/mpvradio next
 bindsym $mod+shift+less    exec mpvc.sh /tmp/mpvradio prev
 bindsym $mod+d             exec run.sh
-bindsym $mod+shift+s       exec print.sh cops
+bindsym $mod+shift+s       exec wprint.sh cops
 bindsym ctrl+shift+space   exec makoctl dismiss -a
 bindsym $mod+c exec wlpick.sh
 bindsym $mod+m exec winsw.sh
@@ -96,10 +96,9 @@ bindsym $mod+r mode "resize"
 
 set $launch_mode [f]irefox [q]utebrowser [p]ulsemixer [e]xplorer [m]pv [y]tm
 mode "$launch_mode" {
-    bindsym e exec nautilus; mode "default"
+    bindsym e exec pcmanfm; mode "default"
     bindsym f exec firefox ; mode "default"
     bindsym q exec qutebrowser ; mode "default"
-    bindsym v exec vesktop ; mode "default"
     bindsym k exec passc.sh ; mode "default"
     bindsym m exec mpv --profile=dragon; mode "default"
     bindsym y exec youtube-music; mode "default"
@@ -112,12 +111,12 @@ bindsym $mod+o mode "$launch_mode"
 
 set $print_mode [p]rint [f]ocused [c]opy [C]opy-focused [s]elect [S]elect-copy
 mode "$print_mode" {
-    bindsym p       exec print.sh ; mode "default"
-    bindsym f       exec print.sh focused ; mode "default"
-    bindsym c       exec print.sh copy ; mode "default"
-    bindsym s       exec print.sh select ; mode "default"
-    bindsym shift+c exec print.sh copf ; mode "default"
-    bindsym shift+s exec print.sh cops ; mode "default"
+    bindsym p       exec wprint.sh ; mode "default"
+    bindsym f       exec wprint.sh focused ; mode "default"
+    bindsym c       exec wprint.sh copy ; mode "default"
+    bindsym s       exec wprint.sh select ; mode "default"
+    bindsym shift+c exec wprint.sh copf ; mode "default"
+    bindsym shift+s exec wprint.sh cops ; mode "default"
     
     bindsym q      mode "default"
     bindsym Escape mode "default"
