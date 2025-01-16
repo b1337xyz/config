@@ -34,7 +34,7 @@ hide_edge_borders --i3 smart
 # default|stacking|tabbed
 workspace_layout tabbed
 
-gaps inner 10
+gaps outer 10
 # smart_gaps off
 
 output * adaptive_sync on
@@ -46,6 +46,13 @@ mode passthrough {
 # swaymsg -t get_inputs
 input "1133:49271:Logitech_USB_Optical_Mouse" {
     scroll_factor 1.22
+}
+
+input type:keyboard {
+  xkb_layout "br"
+
+  # See /usr/share/X11/xkb/rules/xorg.lst for options
+  xkb_options caps:escape
 }
 
 include /etc/sway/config.d/*
