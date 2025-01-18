@@ -124,14 +124,14 @@ mode "$print_mode" {
 }
 bindsym $mod+p mode "$print_mode"
 
-set $wall [p]rev [n]ext [d]menu [s]xiv [c]urrent [r]andom [o]pen
+set $wall [p]rev [n]ext [d]menu [s]xiv [c]urrent [x]random [r]emove [o]pen
 mode "$wall" {
     bindsym p exec wall.sh --prev
     bindsym n exec wall.sh --next
     bindsym d exec wall.sh --rofi ; mode "default"
     bindsym s exec wall.sh --sxiv ; mode "default"
     bindsym c exec wall.sh --current
-    bindsym r exec wall.sh
+    bindsym r exec wall.sh --remove
     bindsym x exec wall.sh
     bindsym o exec wall.sh open ; mode "default"
 

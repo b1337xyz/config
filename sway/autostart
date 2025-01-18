@@ -1,8 +1,8 @@
 exec_always ~/.cache/swaybg.sh
 exec_always 'pkill waybar; waybar -c ~/.config/waybar/config.jsonc'
 exec --no-startup-id swaymsg workspace '"9: steam "'
-exec sh -c 'sleep 5; exec qbittorrent'
-exec sh -c 'sleep 5; exec youtube-music'
-exec sh -c 'sleep 5; exec steam'
+exec sh -c 'sleep 6; exec qbittorrent'
+exec sh -c 'sleep 6; exec youtube-music'
+exec sh -c 'sleep 6; exec steam'
 
 # vim: ft=swayconfig
