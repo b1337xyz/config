@@ -96,7 +96,7 @@ bindsym $mod+r mode "resize"
 
 set $launch_mode [f]irefox [q]utebrowser [p]ulsemixer [e]xplorer [m]pv [y]tm
 mode "$launch_mode" {
-    bindsym e exec pcmanfm; mode "default"
+    bindsym e exec pcmanfm-qt; mode "default"
     bindsym f exec firefox ; mode "default"
     bindsym q exec qutebrowser ; mode "default"
     bindsym k exec passc.sh ; mode "default"

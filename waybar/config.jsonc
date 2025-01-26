@@ -24,10 +24,9 @@
         "spacing": 10
     },
     "clock": {
-        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        // "format-alt": "{:%Y-%m-%d}"
-        "format": "{:%b <span color='#d48888'>%d</span> %Y <span color='#90c9c9'>%H:%M</span>}",
-	"on-click": "foot -a floating_window -w 240x240 -H cal"
+        // "format-alt": "{:%Y-%m-%d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
+        "format": "{:%b <span color='#d48888'>%d</span> %Y <span color='#90c9c9'>%H:%M</span>}"
     }
     // "pulseaudio": {
     //     "scroll-step": 5,
