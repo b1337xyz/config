@@ -45,7 +45,7 @@ export TODOFILE="$XDG_CACHE_HOME"/.todo
 export DEFAULT_WINEPREFIX=${WINEPREFIX:-${HOME}/.local/share/wine}
 export QUOTING_STYLE=shell
 
-source ~/.config/user-dirs.dirs
+source ~/.config/user-dirs.dirs 2>/dev/null
 source /usr/share/bash-completion/bash_completion
 source ~/.config/dircolors 2>/dev/null || eval "$(dircolors -b | tee ~/.config/dircolors)"
 source ~/.config/bash_aliases

@@ -131,7 +131,7 @@ mode "$wall" {
     bindsym d exec wall.sh --rofi ; mode "default"
     bindsym s exec wall.sh --sxiv ; mode "default"
     bindsym c exec wall.sh --current
-    bindsym r exec wall.sh --remove
+    bindsym r exec wall.sh --remove ; mode "default"
     bindsym x exec wall.sh
     bindsym o exec wall.sh open ; mode "default"
 
