@@ -79,7 +79,7 @@ if [ -n "$WSLENV" ];then
 
     export XDG_RUNTIME_DIR=/run/user/1000
     export PULSE_SERVER=unix:/mnt/wslg/PulseServer
-    export BROWSER='/mnt/c/Program Files/Mozilla Firefox/firefox.exe'
+    BROWSER='/mnt/c/Program Files/Mozilla Firefox/firefox.exe'
 fi
 
 append_path "${CARGO_HOME}/bin"
@@ -95,7 +95,7 @@ export _JAVA_OPTIONS="${_JAVA_OPTIONS} -Dawt.useSystemAAFontSettings=on -Dswing.
 
 if [ ! -d "${XDG_CONFIG_HOME}" ] || [ ! -d "${XDG_DATA_HOME}" ]
 then
-    mkdir -vp "$XDG_STATE_HOME" "$GNUPGHOME" "${PYTHONHISTFILE%/*}" \
+    mkdir -vp ~/.local/bin "$XDG_STATE_HOME" "$GNUPGHOME" "${PYTHONHISTFILE%/*}" \
              "${INPUTRC%/*}" "${ADB_VENDOR_KEYS%/*}"    \
              "$XDG_CONFIG_HOME"/{git,java,gtk-2.0,gtk-1.0} \
              "$XDG_CACHE_HOME"/{aria2,openjfx} \
