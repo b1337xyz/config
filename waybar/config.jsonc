@@ -1,8 +1,7 @@
 {
     "reload_style_on_change": true,
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["clock"],
-    "modules-right": ["disk", "tray"],
+    "modules-right": ["disk", "clock", "tray"],
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": true,
