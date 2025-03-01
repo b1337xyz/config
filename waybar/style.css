@@ -6,27 +6,18 @@
 }
 #mode {
     /* background: rgba(8.56, 4.76, 4.41, 0.8); */
-    background: #0A0F14;
-    color: #f2A0ff;
+    background: #ffffff;
+    color: #333333;
     padding: 0 5px;
     font-weight: bold;
 }
+#tray {
+    padding-left: 10px;
+}
 #workspaces button.focused,
 .modules-right {
-    /* background-color: #285577; */
-    /* background-color: #772855; */
-    /* background-color: #4F0A9C; */
-    /* background-color: #556EA1; */
-    /* background-color: #6D8976; */
-    /* background-color: #323F4E; */
-    /* background-color: #986A69; */
-    /* background-color: #606697; */
-    /* background-color: #0A0F14; */
-    /* background-color: #394249; */
-    /* background-color: #000080; */
-    background-color: #222222;
-    color: #ffffff;
-}
+    background-color: #ffffff;
+    color: #333333; }
 #pulseaudio {
     padding: 0 8px;
 }
@@ -36,8 +27,8 @@ window#waybar {
     color: #ffffff;
 }
 #workspaces button {
-    background-color: rgba(0.0, 0.0, 0.0, 0.3);
-    color: #cccccc;
+    background-color: #cccccc;
+    color: #666666;
     padding: 0 10px;
     /* border-bottom: 2px none #999999; */
     border: none;
@@ -46,10 +37,6 @@ window#waybar {
 
     font-weight: bold;
     /* border-bottom: 2px solid #9fffff; */
-}
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #eeeeee;
 }
 .modules-right {
     padding: 0 10px 0 10px;

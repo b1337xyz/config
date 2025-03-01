@@ -1,6 +1,6 @@
-set $focused_fg #E0FFF0
-set $focused_bg #2A2F34
-set $unfocused_bg #0A0F14
+set $focused_fg #333333
+set $focused_bg #ffffff
+set $unfocused_bg #cccccc
 set $unfocused_fg #666666
 
 # class                 border bg fg indicator child_border

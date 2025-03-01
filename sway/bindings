@@ -94,10 +94,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $launch_mode [f]irefox [q]utebrowser [p]ulsemixer [e]xplorer [m]pv [y]tm
+set $launch_mode [l]ibrewolf [q]utebrowser [p]ulsemixer [e]xplorer [m]pv [y]tm
 mode "$launch_mode" {
     bindsym e exec pcmanfm-qt; mode "default"
-    bindsym f exec firefox ; mode "default"
+    bindsym f exec librewolf ; mode "default"
+    bindsym l exec librewolf ; mode "default"
     bindsym q exec qutebrowser ; mode "default"
     bindsym k exec passc.sh ; mode "default"
     bindsym m exec mpv --profile=dragon; mode "default"

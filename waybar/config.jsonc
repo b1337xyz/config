@@ -25,7 +25,8 @@
     "clock": {
         // "format-alt": "{:%Y-%m-%d}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
-        "format": "{:%b <span color='#d48888'>%d</span> %Y <span color='#90c9c9'>%H:%M</span>}"
+        // "format": "{:%b <span color='#d48888'>%d</span> %Y <span color='#90c9c9'>%H:%M</span>}"
+        "format": "{:%b <span color='#842222'>%d</span> %Y <span color='#206969'>%H:%M</span>}"
     }
     // "pulseaudio": {
     //     "scroll-step": 5,
