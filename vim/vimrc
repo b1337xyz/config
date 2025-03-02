@@ -251,8 +251,9 @@ endfunction
 
 " Theme {{{
 
-colorscheme habamax
-hi Normal guibg=NONE ctermbg=NONE cterm=NONE
+" colorscheme habamax
+colorscheme shine
+" hi Normal guibg=NONE ctermbg=NONE cterm=NONE
 " hi ColorColumn ctermbg=236
 " hi LineNr ctermfg=7 ctermbg=NONE
 " hi CursorLine cterm=NONE ctermbg=233

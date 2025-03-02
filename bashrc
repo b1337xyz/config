@@ -20,7 +20,7 @@ fi
 
 # export GPG_TTY=$(tty)
 export BAT_STYLE=plain
-export BAT_THEME="OneHalfDark"
+export BAT_THEME="OneHalfLight"
 # export BAT_THEME="gruvbox-light"
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -38,7 +38,7 @@ export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export PAGER=less
 export TERM=${TERM:-xterm-256color}
 export COLORTERM=truecolor  # https://github.com/termstandard/colors
-export FZF_DEFAULT_OPTS='--no-border --no-separator --color=dark'
+export FZF_DEFAULT_OPTS='--no-border --no-separator --color=light'
 export PROMPT_DIRTRIM=2
 export EXECIGNORE=jackd:backup
 export TODOFILE="$XDG_CACHE_HOME"/.todo
