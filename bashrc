@@ -92,7 +92,6 @@ expand_path() {
             cmd="$cmd '$path'"
         else
             cmd="$cmd $arg"
-            echo "$cmd" >> ~/test
         fi
     done
     READLINE_LINE="${cmd:1}"
