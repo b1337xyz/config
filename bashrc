@@ -86,12 +86,13 @@ expand_path() {
     # Example:
     #  ls ~/.bashrc file -> ls /home/<user>/.bashrc /home/<user>/file
     local cmd=
-    for arg in "$READLINE_LINE";do
+    for arg in $READLINE_LINE;do
         if test -e "${arg/\~/$HOME}";then
             path=$(realpath "${arg/\~/$HOME}")
             cmd="$cmd '$path'"
         else
             cmd="$cmd $arg"
+            echo "$cmd" >> ~/test
         fi
     done
     READLINE_LINE="${cmd:1}"
