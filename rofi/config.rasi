@@ -12,11 +12,10 @@ configuration {
 @theme "Arc-Dark"
 
 * {
-    // background:                  rgba ( 42, 42, 42, 95 % );
-    background:                  rgba ( 255, 255, 255, 95 % );
-    foreground: #666666;
-    selected-normal-foreground: #333333;
-    selected-normal-background:  rgb ( 240, 240, 240);
+    background:                  rgba ( 42, 42, 42, 95 % );
+    foreground: #999999;
+    selected-normal-foreground: #ffffff;
+    selected-normal-background: #333333;
     alternate-normal-background: none;
     border-color:                none;
 }

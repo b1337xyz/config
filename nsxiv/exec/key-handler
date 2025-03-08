@@ -37,7 +37,7 @@ case "$1" in
     # n) read -r f; rm -rfv "${f%/*}" ;; # dangerous!
     n) read -r f; alacritty -e nnn "${f%/*}" & ;;
     g) read -r f; setsid -f -- gimp "$f" >/dev/null 2>&1 & ;;
-    w) head -1 | xargs -I{} xwall.sh '{}' ;;
+    w) head -1 | xargs -I{} wall.sh '{}' ;;
     p) head -1 | tr \\n \\0 | xargs -0 realpath -- | tr -d \\n | xclip -sel clip ;;
     b) head -1 | tr \\n \\0 | xargs -0 basename -- | tr -d \\n | xclip -sel clip ;;
     v) grep -oP '[^/]*\.(mkv|webm|mp4|avi|m4v)(?=\.\w+)' | mpv --playlist=- >/dev/null 2>&1 ;;
@@ -56,7 +56,7 @@ case "$1" in
     ;;
     m|y)
         cat > "$tmpfile"
-        target=$(find ~/Pictures -xdev -type d | dmenu -c -l 15 -i)
+        target=$(find ~/Pictures -xdev -type d | rofi -dmenu -l 15 -i)
         [ -z "$target" ] && exit 0
         while read -r i;do
             if [ "$1" = m ];then

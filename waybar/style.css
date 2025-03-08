@@ -1,50 +1,67 @@
 * {
-    border: none;
     font-family: JetBrainsMono Nerd Font, Cantarell, monospace;
     font-size: 11pt;
+    border: none;
     border-radius: 0;
 }
+
 #mode {
-    /* background: rgba(8.56, 4.76, 4.41, 0.8); */
-    background: #ffffff;
-    color: #333333;
+    background: rgba(8.56, 4.76, 4.41, 0.8);
+    color: #Cf3f3f;
     padding: 0 5px;
     font-weight: bold;
 }
+
 #tray {
     padding-left: 10px;
 }
+
 #workspaces button.focused,
 .modules-right {
-    background-color: #ffffff;
-    color: #333333; }
+    background-color: #1C1C1C;
+    color: #cccccc;
+}
+
 #pulseaudio {
     padding: 0 8px;
 }
+
 window#waybar {
     /* background: rgba(8.56, 4.76, 4.41, 0.8); */
     background-color: transparent;
     color: #ffffff;
 }
-#workspaces button {
-    background-color: #cccccc;
-    color: #666666;
-    padding: 0 10px;
-    /* border-bottom: 2px none #999999; */
-    border: none;
-}
-#workspaces button.focused {
 
-    font-weight: bold;
-    /* border-bottom: 2px solid #9fffff; */
+#workspaces button {
+    background-color: transparent;
+    color: #333333;
+    padding: 0 10px;
+    border: none;
+    /* border-bottom: 2px none #999999; */
+    border-bottom: 2px solid rgba(0.0, 0.0, 0.0, 0.0);
 }
+
+#workspaces button.focused {
+    font-weight: bold;
+    color: #Cf3f3f;
+    border-bottom: 2px solid #Cf3f3f;
+}
+
+#workspaces button:hover {
+    font-weight: bold;
+    color: #ffffff;
+    border-bottom: 2px solid #Cf3f3f;
+}
+
 .modules-right {
     padding: 0 10px 0 10px;
     /* border-radius: 0 0 0px 40px; */
 }
+
 #disk {
     font-size: 0; 
 }
+
 #disk.warning {
     font-size: 11pt;    
     color: #ff9090;
