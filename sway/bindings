@@ -66,8 +66,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+shift+b exec swaymsg border toggle
 bindsym $mod+period        exec mpvc.sh toggle 
-bindsym $mod+shift+greater exec mpvc.sh next
-bindsym $mod+shift+less    exec mpvc.sh prev
+bindsym $mod+shift+period  exec mpvc.sh next
+bindsym $mod+shift+comma  exec mpvc.sh prev
 bindsym $mod+d             exec run.sh
 bindsym $mod+shift+s       exec wprint.sh cops
 bindsym ctrl+shift+space   exec makoctl dismiss -a

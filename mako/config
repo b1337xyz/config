@@ -6,8 +6,8 @@ height=300
 default-timeout=5000
 background-color=#222222
 text-color=#ffffff
-border-color=#9fbfff
-margin=5,5
+border-color=#Cf3f3f
+margin=10,10
 max-visible=10
 
 [mode=silent]
