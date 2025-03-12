@@ -3,14 +3,14 @@ set $exec exec --no-startup-id
 # $exec easyeffects
 # $exec kitty --class=newsboat --title=newsboat -e newsboat
 # $exec tmux new -d -n newsboat -s newsboat newsboat
-$exec unclutter --idle 1 --jitter 2 --root
+# $exec unclutter --idle 1 --jitter 2 --root
 # $exec picom
 $exec setscreen.sh
 $exec ~/.cache/xwallpaper
-$exec sh -c 'sleep 8; exec qbittorrent'
-$exec sh -c 'sleep 8; pactl set-sink-volume @DEFAULTSINK@ 15%'
-$exec sh -c 'sleep 8; exec steam'
-$exec sh -c 'sleep 8; exec youtube-music'
+# $exec sh -c 'sleep 8; exec qbittorrent'
+# $exec sh -c 'sleep 8; pactl set-sink-volume @DEFAULTSINK@ 15%'
+# $exec sh -c 'sleep 8; exec steam'
+# $exec sh -c 'sleep 8; exec youtube-music'
 # $exec sh -c 'sleep 8; exec vesktop'
 $exec ~/.scripts/shell/i3/i3_watch.sh
 # $exec corectrl --minimize-systray

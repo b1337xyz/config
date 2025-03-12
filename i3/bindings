@@ -157,7 +157,7 @@ mode "$launch_mode" {
     bindsym a exec $term -e fzfanime.sh -q ; mode "default"
     bindsym c exec tmux new-session -s cmus cmus ; mode "default"
     bindsym e exec $term --class floating_window --title nnn -e nnn; mode "default"
-    bindsym f exec firefox ; mode "default"
+    bindsym f exec librewolf ; mode "default"
     bindsym k exec passc.sh ; mode "default"
     bindsym m exec mpv --profile=dragon; mode "default"
     bindsym p exec $term --class floating_window -e pulsemixer ; mode "default"
