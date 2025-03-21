@@ -118,7 +118,7 @@ fi
 if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "${XDG_VTNR:-0}" -eq 1 ];then
     export TERMINAL=/usr/bin/foot
     export QT_QPA_PLATFORM=wayland
-    export SDL_VIDEODRIVER=wayland
+    export SDL_VIDEODRIVER=wayland,x11
     export XDG_SESSION_TYPE=wayland
     export _JAVA_AWT_WM_NONREPARENTING=1
     # export ASAN_OPTIONS=abort_on_error=1:disable_coredump=0:unmap_shadow_on_exit=1

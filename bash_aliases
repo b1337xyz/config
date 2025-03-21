@@ -41,7 +41,7 @@ alias mount='sudo mount' \
     cpu='sudo cpupower frequency-set' \
     gputop='sudo intel_gpu_top' \
     rfkill='sudo rfkill' \
-    visudo='EDITOR=vim sudo visudo' \
+    visudo='EDITOR=/usr/bin/nvim sudo visudo' \
     stopDocker='sudo systemctl stop docker.service docker.socket'
 
 ### devour
@@ -71,7 +71,7 @@ alias lx='ls -X' \
     loh='ls -d .*'
 
 ### shortcuts
-alias ...='cd ../..' gb='cd -' \
+alias ...='cd ../..' gb='cd -' v='nvim' vi='nvim' vim='nvim' \
     clock='tty-clock -cC 7 -f %d.%m.%y' \
     doit='git add -Av --chmod=-x && git commit -m "$(date +%Y.%m.%d)" && git push' \
     update_readme='git add README.md && git commit -m "Update README.md" && git push' \
@@ -80,7 +80,6 @@ alias ...='cd ../..' gb='cd -' \
     cmd='command' \
     +x='chmod u+x' -x='chmod a-x' \
     so='source' \
-    v='vim' vi='vim' \
     :q=exit :x=exit \
     linuxlogo='linux_logo -c -u -y -L 13' \
     mpipe='mpv --playlist=- --no-resume-playback' \
@@ -111,7 +110,8 @@ alias ...='cd ../..' gb='cd -' \
     pfa='pgrep -fa' \
     mpvradio='systemctl --user start mpvradio.service' \
     clone='git clone --depth=1' \
-    aplay='mpv --no-video'
+    aplay='mpv --no-video' \
+    music='mpv --no-video --shuffle --no-resume-playback ~/Music'
 
 
 ### pacman
